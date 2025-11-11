@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+    <meta charset="UTF-8">
+    <title>ログイン</title>
+    <links/ログイン.css></links>
+</head>
+<body>
+    <!-- 戻るボタン -->
+    ../html/ホーム.html
+        <div class="disp-img"></div>
+    </a>
+
+    <!-- ログインフォーム -->
+    <div class="container">
+        <h2>ログイン</h2>
+        <p id="email" class="email-display"></p>
+        <form>
+            <input type="password" id="password" name="password" placeholder="パスワード"><br><br>
+            <button type="submit">ログイン</button>
+        </form>
+        <div class="forgot-link">
+            <a href="../html/パスワードスワードを忘れた場合"></a>
+        </div>
+    </div>
+
+    <!-- JavaScriptをここに追加 -->
+    <script>
+        const email = sessionStorage.getItem('userEmail');
+        document.getElementById('email').textContent = email ? email : 'メールアドレスが未設定です';
+    </script>
+</body>
