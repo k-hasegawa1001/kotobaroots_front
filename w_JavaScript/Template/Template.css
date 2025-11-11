@@ -1,0 +1,46 @@
+/* ======== 全体設定 ======== */
+body {
+  margin: 0;
+  font-family: "Segoe UI", "ヒラギノ角ゴ ProN", "Meiryo", sans-serif;
+  display: flex;
+  background-color: #f4f4f4;
+}
+
+/* ======== サイドバー ======== */
+.sidebar {
+  width: 240px;
+  height: 100vh;
+  background-color: #131f24;
+  color: #ffffff;
+  display: flex;
+  flex-direction: column;
+  border-right: 1px solid #37364f;
+}
+
+/* ======== サイドバー項目 ======== */
+.sidebar a {
+  color: #ffffff;
+  text-decoration: none;
+  padding: 16px 20px;
+  font-size: 16px;
+  border-bottom: 1px solid #37364f;
+  transition: all 0.3s ease;
+}
+
+/* ======== ホバー時 ======== */
+.sidebar a:hover {
+  background-color: #1d2b31;
+  padding-left: 28px;
+}
+
+/* ======== 選択中の項目 ======== */
+.sidebar a.active {
+  background-color: #2c3e47;
+  font-weight: bold;
+}
+
+/* ======== メインコンテンツ ======== */
+.main-content {
+  flex-grow: 1;
+  padding: 30px;
+}
