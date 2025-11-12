@@ -1,46 +1,105 @@
-/* ======== 全体設定 ======== */
-body {
-  margin: 0;
-  font-family: "Segoe UI", "ヒラギノ角ゴ ProN", "Meiryo", sans-serif;
-  display: flex;
-  background-color: #f4f4f4;
+:root{
+  --bg:#0e2628;      /* 画面全体の暗い背景 */
+  --panel:#0f2b2d;   /* メイン領域 */
+  --sidebar:#0b2a2b; /* サイドバー背景 */
+  --divider:#476166; /* 縦のライン */
+  --accent:#2aa6ff;  /* 選択ボタンの青色 */
+  --text:#e6f3f4;    /* テキスト色 */
 }
 
-/* ======== サイドバー ======== */
-.sidebar {
-  width: 240px;
-  height: 100vh;
-  background-color: #131f24;
-  color: #ffffff;
-  display: flex;
-  flex-direction: column;
-  border-right: 1px solid #37364f;
+*{box-sizing:border-box}
+html,body{height:100%;margin:0;font-family:"Noto Sans JP", "Hiragino Kaku Gothic ProN", Meiryo, sans-serif;background:var(--bg);color:var(--text);-webkit-font-smoothing:antialiased}
+.app{display:flex;height:100vh;align-items:stretch}
+
+/* サイドバー */
+.sidebar{
+  width:220px;
+  min-width:220px;
+  padding:32px 18px;
+  background:linear-gradient(180deg,var(--sidebar),var(--sidebar));
+  position:relative;
+  border-right:3px solid rgba(255,255,255,0.03);
+  display:flex;
+  flex-direction:column;
+  align-items:flex-start;
+}
+.logo{
+  margin:0 0 28px 4px;
+  font-size:22px;
+  font-weight:600;
+  color:var(--text);
 }
 
-/* ======== サイドバー項目 ======== */
-.sidebar a {
-  color: #ffffff;
-  text-decoration: none;
-  padding: 16px 20px;
-  font-size: 16px;
-  border-bottom: 1px solid #37364f;
-  transition: all 0.3s ease;
+/* メニュー */
+.menu{display:flex;flex-direction:column;gap:18px;width:100%}
+.menu-item{
+  background:transparent;
+  border:0;
+  color:var(--text);
+  text-align:left;
+  padding:12px 20px;
+  font-size:16px;
+  cursor:pointer;
+  outline:none;
+  border-radius:999px;
+  width:fit-content;
+  transition:all .16s ease;
+}
+.menu-item:hover{transform:translateX(4px);opacity:0.95}
+
+/* 選択中のボタン（画像の楕円枠） */
+.menu-item.active{
+  color:var(--accent);
+  box-shadow: 0 0 0 3px rgba(42,166,255,0.12) inset;
+  border:3px solid rgba(42,166,255,0.65);
+  background:transparent;
+  padding:10px 26px;
+  font-weight:600;
 }
 
-/* ======== ホバー時 ======== */
-.sidebar a:hover {
-  background-color: #1d2b31;
-  padding-left: 28px;
+/* サイドの縦ライン（画像の細い線） */
+.sidebar::after{
+  content:"";
+  position:absolute;
+  right:-12px;
+  top:18px;
+  bottom:18px;
+  width:2px;
+  background:var(--divider);
+  opacity:0.9;
 }
 
-/* ======== 選択中の項目 ======== */
-.sidebar a.active {
-  background-color: #2c3e47;
-  font-weight: bold;
+/* メイン領域 */
+.content{
+  flex:1;
+  background:var(--panel);
+  display:flex;
+  align-items:flex-start;
+  justify-content:center;
+  position:relative;
+  min-height:100vh;
 }
 
-/* ======== メインコンテンツ ======== */
-.main-content {
-  flex-grow: 1;
-  padding: 30px;
+/* 中央は空白（画像通り）*/
+.placeholder{width:100%;height:100%;}
+
+/* 右下のmiroの透かし */
+.watermark{
+  position:absolute;
+  right:18px;
+  bottom:18px;
+  color:rgba(255,255,255,0.12);
+  font-weight:700;
+  padding:6px 10px;
+  border-radius:6px;
+  font-size:14px;
+  background:rgba(0,0,0,0.02);
+}
+
+/* 小画面時の調整 */
+@media (max-width:640px){
+  .sidebar{width:160px;padding:18px}
+  .logo{font-size:18px}
+  .menu-item{font-size:14px;padding:8px 12px}
+  .menu-item.active{padding:6px 16px}
 }
