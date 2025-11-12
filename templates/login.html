@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+    <meta charset="UTF-8">
+    <title>ログイン</title>
+    <link rel="stylesheet" href="../css/ログイン.css">
+</head>
+<body>
+    <div class="container">
+        <h2>ログイン</h2>
+        <form onsubmit="saveEmail(); return false;">
+            <input type="email" id="email" name="email" placeholder="メールアドレス" required><br><br>
+            <input type="password" id="password" name="password" placeholder="パスワード" required><br><br>
+            <button type="submit">ログイン</button>
+        </form>
+        <p><a href="#">パスワードを忘れた場合</a></p>
+    </div>
+
+    <script>
+        function saveEmail() {
+            // 入力されたメールアドレスを取得
+            const email = document.getElementById("email").value;
+            
+            // sessionStorageに保存
+            sessionStorage.setItem("userEmail", email);
+
+            // 次のページ（例：ホームページ）に移動
+            window.location.href = "../html/ホーム.html";
+        }
+    </script>
+</body>
+</html>
