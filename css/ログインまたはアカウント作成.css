@@ -55,16 +55,21 @@ button {
 }
 
 .back-btn {
-    position: absolute; /* 画面上で絶対位置指定 */
-    top: 20px;          /* 上から20px */
-    left: 20px;         /* 左から20px */
+    position: absolute;
+    top: 20px;
+    left: 20px;
+    width: 40px;
+    height: 40px;
+    z-index: 10;
     display: inline-block;
 }
 
 .disp-img {
-    background-image: url(../png/arrow2.png); /* パス確認 */
-    background-repeat: no-repeat;
-    background-size: contain;
     width: 40px;
     height: 40px;
+    position: absolute; /* 親内での絶対配置 */
+    top: 0;             /* 親の左上に合わせる */
+    left: 0;            /* 親の左上に合わせる */
+    cursor: pointer;
+    z-index: 11;        /* 確実に上に表示 */
 }

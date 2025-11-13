@@ -6,10 +6,16 @@
     <link rel="stylesheet" href="../css/rogin.css">
 </head>
 <body>
+    <!-- 左上の戻るボタン -->
+    <a href="../html/ログインまたはアカウント作成.html" class="back-btn">
+        <div class="disp-img"></div>
+    </a>
+
     <div class="container">
         <h2>ログイン</h2>
         <div id="displayEmail"></div> <!-- メールアドレス表示 -->
-        <form onsubmit="saveEmail(); return false;">
+
+        <form onsubmit="login(); return false;">
             <input type="password" id="password" name="password" placeholder="パスワード" required><br><br>
             <button type="submit">ログイン</button>
         </form>
@@ -17,14 +23,17 @@
     </div>
 
     <script>
-        function saveEmail() {
-            // 入力されたメールアドレスを取得
-            const email = document.getElementById("email").value;
-            
-            // sessionStorageに保存
-            sessionStorage.setItem("userEmail", email);
+        // ページ読み込み時にメールを表示
+        window.onload = function() {
+            const email = sessionStorage.getItem("userEmail");
+            if (email) {
+                document.getElementById("displayEmail").textContent = `メールアドレス：${email}`;
+            }
+        }
 
-            // 次のページ（例：ホームページ）に移動
+        function login() {
+            const password = document.getElementById("password").value;
+            // ここでパスワードチェックなどを行う
             window.location.href = "../html/ホーム.html";
         }
     </script>
