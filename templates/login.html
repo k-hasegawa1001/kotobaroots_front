@@ -3,13 +3,13 @@
 <head>
     <meta charset="UTF-8">
     <title>ログイン</title>
-    <link rel="stylesheet" href="../css/ログイン.css">
+    <link rel="stylesheet" href="../css/rogin.css">
 </head>
 <body>
     <div class="container">
         <h2>ログイン</h2>
+        <div id="displayEmail"></div> <!-- メールアドレス表示 -->
         <form onsubmit="saveEmail(); return false;">
-            <input type="email" id="email" name="email" placeholder="メールアドレス" required><br><br>
             <input type="password" id="password" name="password" placeholder="パスワード" required><br><br>
             <button type="submit">ログイン</button>
         </form>

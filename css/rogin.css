@@ -19,16 +19,28 @@ h2 {
 }
 
 /* メール・パスワード入力欄共通 */
-input[type="email"],
+#displayEmail {
+    font-size: 13px;
+    color: #dce6ec;
+    margin-bottom: 15px;
+    font-weight: bold;
+}
+
+
 input[type="password"] {
     width: 250px;
     padding: 12px;
     border-radius: 9px;
     border: 2px solid #37464f;
-    margin-bottom: 15px;
+    margin-bottom: 1px;
     background-color: #202f36;
     color: #dce6ec;
 }
+
+input[type="password"]::placeholder {
+    font-size: 16px; /* パスワード専用 */
+}
+
 
 /* プレースホルダーの文字色 */
 input::placeholder {
@@ -48,16 +60,21 @@ button {
 }
 
 button:hover {
-    background-color: #36a8d6;
+    background-color: #36a8d6; /* 水色ホバー */
 }
 
 /* パスワード忘れリンク */
 p a {
-    color: #49c0f8;
-    text-decoration: none;
-    font-size: 14px;
+    color: #dce6ec;
+    text-decoration: none; /* ← 常に下線を表示 */
+    font-size: 18px;
 }
 
 p a:hover {
     text-decoration: underline;
+    color: #a4a9aa;
+}
+
+.container p {
+    margin-top: 20px;
 }
