@@ -3,20 +3,16 @@ body {
     color: #dce6ec;
     font-family: sans-serif;
     display: flex;
+    flex-direction: column;
     justify-content: center;
     align-items: center;
     height: 100vh;
     margin: 0;
-    position: relative; /*追加 */
+    position: relative;
 }
 
 .container {
     text-align: center;
-}
-
-h1 {
-    margin-bottom: 30px;
-    font-size: 24px;
 }
 
 input[type="email"] {
@@ -24,14 +20,14 @@ input[type="email"] {
     padding: 12px;
     border-radius: 9px;
     border: 2px solid #37464f;
-    margin-bottom: 1px;
     background-color: #202f36;
     color: #dce6ec;
+    font-size: 14px;
 }
 
-/* プレースホルダーの文字色指定 */
 input[type="email"]::placeholder {
-    color: #dce6ec; /* ←ここで色を変更 */
+    color: #b2babe;
+    font-size: 14px; /* メール専用 */
 }
 
 button {
@@ -46,34 +42,6 @@ button {
     font-weight: 700;
 }
 
-.account-btn button {
-    background-color: #333;
-    color: #dce6ec;
-    margin-top: 20px;
-    border-radius: 8px;
-    padding: 10px 20px;
-}
-
-.back-btn {
-    position: absolute;
-    top: 20px;
-    left: 20px;
-    width: 40px;
-    height: 40px;
-    z-index: 10;
-    display: inline-block;
-}
-
-.disp-img {
-    background-image: url(../png/arrow.png);
-    background-repeat: no-repeat;
-    background-size: contain;
-    background-position: center;
-    width: 50px;
-    height: 50px;
-}
-
-.disp-img:hover {
-    opacity: 0.8; /* ホバーで少し透明に */
-    transition: 0.2s;
+button:hover {
+    background-color: #36a8d6; /* 水色ホバー */
 }

@@ -39,7 +39,7 @@ input[type="password"] {
 }
 
 input[type="password"]::placeholder {
-    font-size: 16px; /* パスワード専用 */
+    font-size: 14px; /* パスワード専用 */
 }
 
 
