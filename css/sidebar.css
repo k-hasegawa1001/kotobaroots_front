@@ -10,7 +10,7 @@ body {
 .container {
   display: flex;
   height: 100vh;
-  zoom: 2.1; /* PC向け拡大 */
+  /* zoom: 2.1;  PC向け拡大 */
 }
 
 /* === サイドバー === */
