@@ -1,0 +1,95 @@
+
+/* === 全体設定と中央寄せ === */
+body {
+    margin: 0;
+    padding: 0;
+    background-color: #131f24; /* 背景色 */
+    font-family: 'Noto Sans JP', sans-serif;
+    color: #dce6ec; /* テキスト色 */
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start; /* 水平方向の中央寄せ */
+    align-items: center; /* 垂直方向の中央寄せ */
+    min-height: 100vh; /* 画面全体の高さ */
+    text-align: center;
+    padding-top: 10vh; /* 画面高さの10%を上部の余白とする */
+    box-sizing: border-box; /* paddingがheightに含まれるように */
+}
+
+.container {
+    display: flex;
+    flex-direction: column; /* 縦に並べる */
+    align-items: center; /* コンテンツを中央に揃える */
+}
+
+/* === タイトル === */
+.title {
+    font-size: 5.0em; /* 見出しの大きさ */
+    font-weight: 700;
+    margin-bottom: 80px; /* 説明文との間隔 */
+    color: #dce6ec;
+}
+
+/* === 説明文 === */
+.description {
+    font-size: 2.5em;
+    line-height: 1.6;
+    margin-bottom: 200px; /* ボタン群との間隔 */
+    color: #dce6ec;
+    max-width: 1000px;
+}
+
+/* === ボタン群のレイアウト === */
+.button-group {
+    display: flex;
+    flex-direction: column; /* ボタンを縦に並べる */
+    gap: 35px; /* ボタン間の間隔 */
+    width: 500px; /* ボタンの幅を統一 */
+}
+
+/* === ボタンの共通スタイル === */
+.btn {
+    padding:24px 60px;
+    font-size: 1.8em;
+    font-weight: 1000;
+    border-radius: 10px;
+    cursor: pointer;
+    transition: background-color 0.3s, border-color 0.3s;
+}
+
+/* === 1. メインボタン (青色) === */
+.btn.primary {
+    border: none;
+    background-color: #49c0f8; /* 画像のような明るい青 */
+    color: #131f24; /* 濃い背景色と同じ色 (見やすいように) */
+}
+
+.btn.primary:hover {
+    background-color: #3f85a7;
+}
+
+/* === 2. セカンダリボタン (枠線のみ) === */
+.btn.secondary {
+    background-color: transparent; /* 背景透明 */
+    border: 1px solid #dce6ec; /* 白っぽい枠線 */
+    color: #dce6ec; /* 枠線と同じ色 */
+}
+
+.btn.secondary:hover {
+    background-color: #202536; /* ホバーで少し暗い背景色 */
+}
+
+/* === スマホ対応（例） === */
+@media (max-width: 600px) {
+    .title {
+        font-size: 2em;
+    }
+    .description {
+        font-size: 1em;
+        padding: 0 15px;
+    }
+    .button-group {
+        width: 80%;
+        max-width: 250px;
+    }
+}
