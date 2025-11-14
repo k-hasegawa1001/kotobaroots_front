@@ -2,7 +2,7 @@
 <html lang="ja">
 <head>
     <meta charset="UTF-8">
-    <title>ログインまたはアカウント作成</title>
+    <title>ログイン</title>
 
     <!-- 共通CSS -->
     <link rel="stylesheet" href="../css/common.css">
@@ -17,11 +17,17 @@
     <a href="login_or_account.html" class="back-icon"></a>
 
     <div class="container">
-        <h2>ログインまたはアカウント作成</h2>
+        <h2>ログイン</h2>
         <form>
+            <!-- メールアドレス -->
             <input type="email" id="email" name="email" placeholder="メールアドレス"><br><br>
+            <!-- パスワード -->
+            <input type="password" id="password" name="password" placeholder="パスワード" class="input-field"><br>
+            <p><a href="#">パスワードを忘れた場合</a></p>
             <button type="submit">次へ進む</button>
+            <p><a href="#">初めての方はコチラ</a></p>
         </form>
+        
     </div>
 
 </body>
