@@ -1,0 +1,51 @@
+body {
+    background-color: #131f24;
+    color: #dce6ec;
+    font-family: sans-serif;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+    margin: 0;
+    position: relative;
+}
+
+.container {
+    text-align: center;
+}
+
+/* 入力欄共通デザイン */
+.input-field {
+    width: 290px;
+    padding: 12px;
+    border-radius: 9px;
+    border: 2px solid #37464f;
+    background-color: #202f36;
+    color: #dce6ec;
+    font-size: 14px;
+    margin-bottom: 5px; /* 入力欄間の上下間隔 */
+}
+
+/* プレースホルダー */
+.input-field::placeholder {
+    color: #b2babe;
+    font-size: 14px;
+}
+
+button {
+    background-color: #49c0f8;
+    color: #131f24;
+    border: none;
+    padding: 10px 20px;
+    border-radius: 20px;
+    cursor: pointer;
+    font-size: 16px;
+    width: 310px; /* ログインCSSと同じ幅 */
+    font-weight: 700;
+    margin-top: 3px; /* 入力欄との間隔 */
+}
+
+button:hover {
+    background-color: #36a8d6; /* ログインCSSと同じホバー色 */
+}
