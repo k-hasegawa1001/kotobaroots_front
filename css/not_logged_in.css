@@ -21,7 +21,7 @@
     width: 200px;
     height: 100vh;
     background-color: #131f24;
-    border-right: 1px solid #1e3a45;
+    border-right: 3px solid #5A6A71;
     padding: 20px 0;
     display: flex;
     flex-direction: column;
@@ -31,27 +31,28 @@
 
     /* === タイトル === */
     .title {
-    font-size: 22px;
+    font-size: 28px;
     margin-bottom: 40px;
+    font-weight: 450;
     }
 
     /* === メニュー === */
     .menu {
     display: flex;
     flex-direction: column;
-    gap: 20px;
+    gap: 12px; /* ← この値を小さくすると項目の間隔が縮まる */
     width: 100%;
     align-items: center;
     }
 
     .menu-item {
-    width: 80%;
-    padding: 10px 0;
+    width: 88%; /* ← この値を変更すると横幅が変わる */
+    padding: 13px 0; /* ← 上下のパディング */
     background: none;
     border: none;
     color: #dce6ec;
     font-size: 16px;
-    border-radius: 20px;
+    border-radius: 30px; /* ← この値が丸み */
     cursor: pointer;
     transition: 0.2s;
     }
@@ -139,7 +140,7 @@
 
     .menu {
         flex-direction: row;
-        gap: 10px;
+        gap: 10px; 
         justify-content: space-around;
         width: 100%;
     }
@@ -165,3 +166,63 @@
         padding: 6px 8px;
     }
     }
+
+
+/* ログイン/新規登録ボタン */
+.login-btn {
+    background-color: #49c0f8;
+    color: #131f24;
+    border: 1.5px solid #3f85a7;
+    width: 88%;
+    font-weight: 500;
+}
+
+.login-btn:hover {
+    background-color: #36a8d6;
+}
+
+
+/* タイトル下の横ライン */
+.title-line {
+    display: block; /* ← 明示的に指定 */
+    border: none;
+    border-bottom: 3px solid #5A6A71;
+    width: calc(100% - 65px);
+    margin: -5px 30px 25px; /* ← 位置調整 上・左右・下 */
+}
+
+
+/* ページタイトル */
+.page-title {
+    font-size: 42px; /* お好みで変更 */
+    font-weight: 450; /* 太さを調整（任意） */
+    margin: 25px 50px 5px; /* 位置調整（任意） */
+}
+
+
+/* タイトルとドロップダウンを横並びにする */
+.title-row {
+    display: flex;
+    align-items: center;
+    justify-content: space-between; 
+    margin-bottom: 10px;
+}
+
+/* ドロップダウンの並び */
+.filter-bar {
+    display: flex;
+    gap: 25px; /* ドロップダウン同士の間隔 */
+    margin-right: 40px; /* ← ここで左へ寄せる量を調整 */
+    margin-top: 30px;   /* ← これで下にずらせる */
+}
+
+/* ドロップダウンの見た目調整 */
+.dropdown {
+    background-color: #202f36;
+    color: #dce6ec;
+    border: 2px solid #9da4aa;
+    border-radius: 8px;
+    padding: 11px 25px 11px 20px; /* 上 右 下 左 */
+    font-size: 16px;
+    text-indent: 0px; /* ← 文字を5pxだけ右へ移動（数字を小さくすると左へ） */
+}
