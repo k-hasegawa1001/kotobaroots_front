@@ -1,0 +1,242 @@
+/* === 全体の背景と文字色 === */
+body {
+    margin: 0;
+    font-family: "Noto Sans JP", sans-serif;
+    background-color: #131f24;
+    color: #dce6ec;
+}
+
+/* === 全体レイアウト === */
+.container {
+    display: flex;
+    height: 100vh;
+}
+
+/* === サイドバー === */
+.sidebar {
+    position: fixed;
+    left: 0;
+    top: 0;
+    width: 200px;
+    height: 100vh;
+    background-color: #131f24;
+    border-right: 3px solid #5A6A71;
+    padding: 20px 0;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+/* === タイトル === */
+.title {
+    font-size: 28px;
+    margin-bottom: 40px;
+    font-weight: 450;
+}
+
+/* === メニュー === */
+.menu {
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+    width: 100%;
+    align-items: center;
+}
+
+.menu-item {
+    width: 88%;
+    padding: 13px 0;
+    background: none;
+    border: none;
+    color: #dce6ec;
+    font-size: 16px;
+    border-radius: 30px;
+    cursor: pointer;
+    transition: 0.2s;
+}
+
+/* === アクティブ（選択中） === */
+.menu-item.active {
+    background-color: #202536;
+    border: 3px solid #3f85a7;
+    color: #49c0f8;
+}
+
+/* === ホバー === */
+.menu-item:hover {
+    background-color: #202536;
+}
+
+/* === メインコンテンツ === */
+.main-content {
+    flex: 1;
+    background-color: #131f24;
+    margin-left: 200px; /* ← サイドバーと同じ幅 */
+    overflow-y: auto;
+}
+
+/* === スクロールバー === */
+.main-content::-webkit-scrollbar {
+    width: 8px;
+}
+.main-content::-webkit-scrollbar-thumb {
+    background-color: #3f85a7;
+    border-radius: 4px;
+}
+
+/* === タイトル行 === */
+.title-row {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    margin-bottom: 10px;
+}
+
+/* === ページタイトル === */
+.page-title {
+    font-size: 42px;
+    font-weight: 450;
+    margin: 25px 50px 5px;
+}
+
+/* === タイトル下の横線 === */
+.title-line {
+    border: none;
+    border-bottom: 3px solid #5A6A71;
+    width: calc(100% - 65px);
+    margin: -5px 30px 25px;
+}
+
+/* === フィルターバー（ドロップダウン） === */
+.filter-bar {
+    display: flex;
+    gap: 25px;
+    margin-right: 40px;
+    margin-top: 30px;
+}
+
+.dropdown {
+    background-color: #202f36;
+    color: #dce6ec;
+    border: 2px solid #9da4aa;
+    border-radius: 8px;
+    padding: 11px 25px 11px 20px;
+    font-size: 16px;
+}
+
+/* ========================================================= */
+/* === iPad (横〜縦：768〜1024px) === */
+/* ========================================================= */
+@media (max-width: 1024px) and (min-width: 601px) {
+    .container {
+        zoom: 1.6;
+    }
+
+    .sidebar {
+        width: 150px;
+    }
+
+    .main-content {
+        margin-left: 150px;
+    }
+
+    .menu-item {
+        font-size: 15px;
+        padding: 8px 0;
+    }
+
+    .title {
+        font-size: 20px;
+    }
+}
+
+/* ========================================================= */
+/* === スマホ（〜600px） === */
+/* ========================================================= */
+@media (max-width: 600px) {
+    .container {
+        flex-direction: column;
+        height: auto;
+        zoom: 1;
+    }
+
+    .sidebar {
+        position: relative;
+        width: 100%;
+        height: auto;
+        border-right: none;
+        border-bottom: 1px solid #1e3a45;
+        padding: 10px 0;
+        flex-direction: row;
+        justify-content: space-around;
+    }
+
+    .title {
+        display: none;
+    }
+
+    .menu {
+        flex-direction: row;
+        gap: 10px;
+        justify-content: space-around;
+        width: 100%;
+    }
+
+    .menu-item {
+        font-size: 13px;
+        padding: 8px 10px;
+        width: auto;
+    }
+
+    .main-content {
+        margin-left: 0;
+        padding: 20px;
+    }
+}
+
+/* ========================================================= */
+/* === iPhone SEなど超小画面（〜400px） === */
+/* ========================================================= */
+@media (max-width: 400px) {
+    .menu-item {
+        font-size: 12px;
+        padding: 6px 8px;
+    }
+}
+
+.level-title {
+    font-size: 33px; /* タイトルは42px */
+    font-weight: 450;
+    margin: 20px 60px;       /* 上下=10px 左右=50px の余白 */
+    color: #dce6ec;
+}
+
+.profile-info {
+    padding: 15px 60px;       /* 上下=10px 左右=50px の余白 */
+    margin: 0;
+    font-size: 20px;
+    color: #dce6ec;
+    line-height: 1.8; /* 行間を少し広げて見やすく */
+}
+
+.profile-info > div {
+    margin-bottom: 20px; /* 各行の下に20pxの間隔 */
+}
+
+.profile-info > div:last-child {
+    margin-bottom: 0; /* 最後の行は余白なし */
+}
+
+
+
+.edit-link {
+    color: #49c0f8;          /* 青色リンク */
+    margin-left: 10px;       /* テキストとの余白 */
+    text-decoration: underline;
+    cursor: pointer;
+    font-size: 19px;     /* 隣の文字は20pxだが1px小さく */
+}
+
+.edit-link:hover {
+    color: #36a8d6;          /* ホバーで少し濃く */
+}
