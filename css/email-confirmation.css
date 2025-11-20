@@ -1,0 +1,75 @@
+body {
+    margin: 0;
+    font-family: "Noto Sans JP", sans-serif;
+    background-color: #131f24;
+    color: #dce6ec;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+}
+
+/* 全体の中央揃え */
+.container {
+    text-align: center;
+    width: 90%;
+    max-width: 600px;
+}
+
+/* 見出し h2 */
+h2 {
+    font-size: 26px;
+    font-weight: 500;
+    margin-bottom: 25px; /* emailとの間隔 */
+}
+
+/* メールアドレス部分 */
+.email {
+    display: inline-block; /* ← これを追加するだけ！ */
+    font-size: 18px;
+    font-weight: bold;
+    color: #dce6ec;
+    margin-bottom: 10px; /* message との間隔を追加 */
+}
+
+/* 説明文 */
+.message {
+    font-size: 17px;
+    line-height: 1.6;
+    margin-bottom: 35px; /* ボタンとの間隔 */
+}
+
+/* トップページへボタン */
+.login-btn {
+    display: block;
+    margin: 0 auto 20px;
+    background-color: #49c0f8;
+    color: #131f24;
+    border: none;
+    border-radius: 25px;
+    padding: 12px 30px;
+    font-size: 16px;
+    cursor: pointer;
+    width: 310px;
+    font-weight: 600;
+    transition: background-color 0.3s ease;
+    text-decoration: none;
+}
+
+.login-btn:hover {
+    background-color: #36a8d6;
+}
+
+/* メール再送信リンク */
+.resend-link {
+    display: inline-block;
+    text-align: center;
+    font-size: 17px;
+    color: #dce6ec;
+    text-decoration: underline;
+    margin-top: 5px;
+}
+
+.resend-link:hover {
+    color: #a4a9aa;
+}
