@@ -1,0 +1,96 @@
+body {
+    background-color: #131f24;
+    color: #dce6ec;
+    font-family: sans-serif;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+    margin: 0;
+    position: relative;
+}
+
+.container {
+    text-align: center;
+}
+
+/* タイトル（h2） */
+.container h2 {
+    font-size: 28px;
+    font-weight: 500;
+    margin-bottom: 25px; /* ユーザー名と重ならないように余白を増やす */
+}
+
+/* トップページへボタン */
+.login-btn {
+    display: block;
+    margin: 0 auto 20px;
+    background-color: #49c0f8;
+    color: #131f24;
+    border: none;
+    border-radius: 25px;
+    padding: 12px 30px;
+    font-size: 16px;
+    cursor: pointer;
+    width: 310px;
+    font-weight: 600;
+    transition: background-color 0.3s ease;
+    text-decoration: none;
+}
+
+.login-btn:hover {
+    background-color: #36a8d6;
+}
+
+/* ▼ ユーザー名（h2 と同じ見た目） */
+.username-display {
+    font-size: 28px;
+    font-weight: 450;
+    margin-bottom: 30px; /* メール欄との間をしっかり確保 */
+    text-align: center;
+}
+
+/* ▼ メールアドレス（pタグサイズ） */
+.email-display {
+    font-size: 16px;
+    margin-bottom: 15px; /* 入力欄との距離を確保 */
+    text-align: left;
+    color: #dce6ec;
+    width: 290px;
+    margin-left: auto;
+    margin-right: auto;
+}
+
+input[type="password"] {
+    width: 290px;
+    padding: 12px;
+    border-radius: 9px;
+    border: 2px solid #37464f;
+    background-color: #202f36;
+    color: #dce6ec;
+    font-size: 14px;
+    margin-bottom: 25px; /* メールとの余白を少し追加 */
+}
+
+input[type="password"]::placeholder {
+    color: #b2babe;
+    font-size: 14px;
+}
+
+button {
+    background-color: #49c0f8;
+    color: #131f24;
+    border: none;
+    padding: 10px 20px;
+    border-radius: 20px;
+    cursor: pointer;
+    font-size: 16px;
+    width: 310px;
+    font-weight: 700;
+    margin-top: 5px;
+}
+
+button:hover {
+    background-color: #36a8d6;
+}

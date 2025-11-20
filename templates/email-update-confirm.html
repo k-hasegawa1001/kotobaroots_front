@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+    <meta charset="UTF-8">
+    <title>メールアドレス変更の確認</title>
+
+    <!-- 個別CSS -->
+    <link rel="stylesheet" href="../css/email-update-confirm.css">
+</head>
+
+<body>
+
+    <div class="container">
+        <h2>メールアドレス変更の確認</h2>
+
+        <!-- ▼ 追加：ユーザー名（h2と同じサイズで表示） -->
+        <h2 class="username-display">
+            <span id="username"></span>
+        </h2>
+
+        <form>
+
+            <!-- ▼ 追加：メールアドレス変数（pタグサイズ） -->
+            <p class="email-display">
+                <span id="email"></span>
+            </p>
+
+            <!-- パスワード入力欄 -->
+            <input type="password" id="password" name="password"
+                placeholder="パスワードを入力" class="input-field"><br>
+
+            <a href="email-complete.html" class="login-btn">変更を確定</a>
+        </form>
+        
+    </div>
+
+</body>
+</html>
