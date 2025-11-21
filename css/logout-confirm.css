@@ -45,7 +45,7 @@
     flex: 1;
     padding: 12px 0;         /* ← 10px → 12px */
     background: none;
-    border: 2px solid #5A6A71;
+    border: 2.5px solid #5A6A71;
     color: #dce6ec;
     border-radius: 13px; /* アカウント関連は24px */
     font-size: 19px;
