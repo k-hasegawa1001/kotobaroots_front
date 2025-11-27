@@ -1,0 +1,238 @@
+body {
+    background-color: #131f24; 
+    color: #dce6ec;             
+    font-family: 'Arial', sans-serif;
+    margin: 0;
+    padding: 0;
+    display: flex;
+    justify-content: center;
+    min-height: 100vh;
+}
+
+.container {
+    width: 90%;
+    max-width: 1800px;
+    padding: 20px; 
+}
+
+/* タイトル */
+.main-title {
+    text-align: center;
+    font-size: 75px;
+    font-weight: bold;
+    margin-bottom: 40px;
+}
+
+/* 固定部分 */
+.fixed-header {
+    position: sticky;  /* スクロール時に固定 */
+    top: 0;            /* 上端に固定 */
+    background-color: #131f24; 
+    z-index: 10;       /* テーブルより前面に表示 */
+    padding-bottom: 20px;
+}
+
+.accuracy-rate-container {
+    display: flex;
+    justify-content: flex-end;
+    margin-bottom: 10px;
+}
+
+.accuracy-rate {
+    font-size: 55px;
+    font-weight: bold;
+    color: #93d333;
+}
+
+.explanation-note {
+    font-size: 35px;
+    color: #dce6ec;
+    margin-bottom: 20px;
+}
+
+/* テーブルスクロール用ラッパー */
+.table-area-wrapper {
+    max-height: 900px;  /* テーブル縦幅を広げる */
+    overflow-y: auto;   /* 縦スクロールのみ */
+}
+
+.table-area-wrapper::-webkit-scrollbar {
+    
+    width: 20px;       /* スクロールバー幅 */
+}
+
+.table-area-wrapper::-webkit-scrollbar-thumb {
+    background-color: #4f4f4f;
+    border-radius: 6px;
+    border: 2px solid #131f24;
+}
+
+/* --- テーブル --- */
+.result-table {
+    width: 100%;
+    border-collapse: collapse;
+    background-color: #131f24;
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.7); 
+}
+
+.result-table th,
+.result-table td {
+    padding: 25px 20px;
+    border: 2px solid #dce6ec;
+    text-align: left;
+    font-size: 30px;
+}
+
+.result-table thead th {
+    background-color: #131f24;
+    font-weight: normal;
+    font-size: 22px;
+    position: sticky;   /* ヘッダー固定 */
+    top: 0;
+    z-index: 5;
+}
+
+.result-table tbody tr:hover {
+    background-color: #202536;
+    cursor: pointer;
+}
+
+/* 列幅の調整 */
+.result-table th:nth-child(1),
+.result-table td:nth-child(1) { width: 30%; }
+.result-table th:nth-child(2),
+.result-table td:nth-child(2) { width: 65%; }
+.result-table th:nth-child(3),
+.result-table td:nth-child(3) { width: 5%; text-align: center; }
+
+/* 正誤の記号のスタイル */
+.status {
+    font-size: 30px;
+    font-weight: bold;
+}
+
+.status.correct { color: #dce6ec; }
+.status.incorrect { color: #dce6ec; }
+
+/* ボタン */
+.button-area {
+    position: fixed;         /* 固定表示 */
+    bottom: 20px;            /* 画面下から20px */
+    right: 650px;             /* 画面右から50px */
+    z-index: 999;            /* 最前面に出す */
+    width: auto;             /* 幅はボタン分だけ */
+}
+
+.finish-button {
+    background-color: #49c0f8;
+    color: #131f24;
+    border: none;
+    padding: 22px 80px;
+    font-size: 40px;
+    font-weight: bold;
+    cursor: pointer;
+    border-radius: 15px;
+    transition: background-color 0.2s;
+}
+
+.finish-button:hover {
+    background-color: #36a8da;
+}
+
+/* ============================
+   ここからレスポンシブ
+============================ */
+
+/* --- スマホ（〜480px） --- */
+@media (max-width: 480px) {
+
+    .container {
+        width: 100%;
+        padding: 10px;
+    }
+
+    .main-title {
+        font-size: 40px;
+    }
+
+    .accuracy-rate {
+        font-size: 35px;
+    }
+
+    .explanation-note {
+        font-size: 22px;
+    }
+
+    .result-table th,
+    .result-table td {
+        font-size: 18px;
+        padding: 15px;
+    }
+
+    .result-table th:nth-child(1),
+    .result-table td:nth-child(1) { width: 40%; }
+    .result-table th:nth-child(2),
+    .result-table td:nth-child(2) { width: 55%; }
+    .result-table th:nth-child(3),
+    .result-table td:nth-child(3) { width: 5%; }
+
+    .finish-button {
+        width: 100%;
+        font-size: 28px;
+        padding: 18px 0;
+        border-radius: 12px;
+    }
+
+    .button-area {
+        padding-right: 0;
+    }
+}
+
+/* --- タブレット（〜768px） --- */
+@media (max-width: 768px) {
+
+    .main-title {
+        font-size: 55px;
+    }
+
+    .accuracy-rate {
+        font-size: 45px;
+    }
+
+    .explanation-note {
+        font-size: 28px;
+    }
+
+    .result-table th,
+    .result-table td {
+        font-size: 22px;
+        padding: 18px;
+    }
+
+    .finish-button {
+        font-size: 32px;
+        padding: 20px 60px;
+    }
+}
+
+/* --- 小さめPC（〜1200px） --- */
+@media (max-width: 1200px) {
+
+    .main-title {
+        font-size: 65px;
+    }
+
+    .accuracy-rate {
+        font-size: 50px;
+    }
+
+    .result-table th,
+    .result-table td {
+        font-size: 26px;
+    }
+
+    .finish-button {
+        font-size: 32px;
+        padding: 18px 50px;
+    }
+}
