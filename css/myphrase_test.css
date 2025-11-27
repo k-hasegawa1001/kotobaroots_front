@@ -1,0 +1,154 @@
+@import url('https://fonts.googleapis.com/css2?family=Noto+Sans+JP:wght@400;700&display=swap');
+
+/* === 全体設定 === */
+body {
+    margin: 0;
+    padding: 0;
+    background-color: #131f24;
+    font-family: 'Noto Sans JP', sans-serif;
+    color: #dce6ec;
+    
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    min-height: 100vh; 
+    text-align: center;
+}
+
+.container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    width: 90%; 
+    max-width: 1100px;
+    height: 100vh;
+    padding-top: 30vh;
+    padding-bottom: 50px;
+    box-sizing: border-box;
+    justify-content: flex-start; 
+}
+
+/* === ✖ ボタンのスタイル === */
+.close-button {
+    position: fixed;
+    top: 150px;
+    left: 800px;
+    width: 70px;
+    height: 70px;
+    background: none;
+    border: none;
+    cursor: pointer;
+    z-index: 10;
+}
+
+.close-button::before,
+.close-button::after {
+    content: "";
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    width: 60px;
+    height: 2px;
+    background-color: #37464f;
+    transform-origin: center;
+    opacity: 0.7;
+}
+
+.close-button::before {
+    transform: translate(-50%, -50%) rotate(45deg);
+}
+
+.close-button::after {
+    transform: translate(-50%, -50%) rotate(-45deg);
+}
+
+/* 英語の単語 */
+.question {
+    color: #dce6ec;
+    font-size: 55px;
+    margin-top: 0; 
+    margin-bottom: 80px;
+}
+
+/* === 入力欄 === */
+.answer-input {
+    width: 90vw;
+    max-width: 1100px;
+    padding: 20px;
+    font-size: 30px;
+    border-radius: 6px;
+    border: 1px solid #37464f;
+    background-color: #202f36;
+    color: #dce6ec;
+    outline: none;
+    margin-bottom: 500px; 
+}
+
+/* === ボタン配置（画面幅いっぱいで最大間隔） === */
+.button-area {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    width: 100vw;
+    max-width: 100%;
+    padding: 0 550px;
+    box-sizing: border-box;
+}
+
+/* スキップボタン（左） */
+.skip-btn {
+    background: none;
+    color: #dce6ec;
+    border: 2px solid #37464f;   /* 少し太めに */
+    padding: 22px 0;             /* 縦幅を大きく */
+    border-radius: 25px;
+    font-size: 40px;             /* 文字サイズを大きく */
+    cursor: pointer;
+    width: 300px;                /* 横幅を少し広く */
+    transition: background-color 0.2s;
+}
+
+.skip-btn:hover {
+    background-color: #202536;
+}
+
+/* 送信ボタン（右） */
+.send-btn {
+    background: #49c0f8;
+    color: #131f24;
+    padding: 22px 0;             /* 縦幅を大きく */
+    border: none;
+    border-radius: 25px;
+    font-size: 40px;             /* 文字サイズを大きく */
+    font-weight: bold;
+    cursor: pointer;
+    width: 300px;                /* 横幅を少し広く */
+    transition: background-color 0.2s;
+}
+
+.send-btn:hover {
+    background-color: #36a8d6;
+}
+
+/* === iPad対応 === */
+@media (max-width: 1024px) {
+    .button-area {
+        padding: 0 200px; /* 左右余白を調整して画面内に収める */
+    }
+}
+
+/* === タブレット縦向き・大きめスマホ === */
+@media (max-width: 768px) {
+    .button-area {
+        padding: 0 100px; /* 左右余白を減らす */
+    }
+}
+
+/* === スマホ対応 === */
+@media (max-width: 480px) {
+    .button-area {
+        padding: 0 20px; /* 画面端に収まるよう調整 */
+        overflow-x: auto; /* 横スクロールで収める */
+        -webkit-overflow-scrolling: touch; /* スマホで滑らかスクロール */
+    }
+}
