@@ -1,0 +1,57 @@
+/* === 画面全体の薄暗い背景 === */
+body {
+    background: transparent; /* ← 背景なし。下の本来の画面が見える */
+}
+
+.confirm-overlay {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(0, 0, 0, 0.55);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    z-index: 999;
+}
+
+/* === 完了ポップアップ本体 === */
+.confirm-box {
+    background: #131f24;
+    padding: 100px 80px;
+    border-radius: 18px;
+    width: 92%;
+    max-width: 520px;
+    text-align: center;
+    box-shadow: 0 4px 24px rgba(0, 0, 0, 0.55);
+    border: 1px solid #2c3a40;
+}
+
+/* メッセージ */
+.done-message {
+    font-size: 45px;
+    color: #dce6ec;
+    margin: 5px 0;
+}
+
+/* === レスポンシブ追加：done-popup === */
+@media screen and (max-width: 1024px) {
+    .confirm-box {
+        padding: 70px 60px;
+        max-width: 450px;
+    }
+    .done-message {
+        font-size: 36px;
+    }
+}
+
+@media screen and (max-width: 768px) {
+    .confirm-box {
+        padding: 50px 30px;
+        width: 90%;
+    }
+    .done-message {
+        font-size: 28px;
+    }
+}
