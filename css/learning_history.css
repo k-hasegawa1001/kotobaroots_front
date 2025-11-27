@@ -118,3 +118,33 @@ th:nth-child(3), td:nth-child(3) { width: 20%; text-align: center; }
 .status.incorrect i { color: #f0ad4e; }
  
  
+@media screen and (max-width: 768px) {
+    .main-content {
+        margin-left: 0;           /* サイドバーを潰すなど */
+        padding: 20px;
+        grid-template-rows: max-content auto 1fr;
+        row-gap: 12px;
+    }
+
+    .page-title {
+        font-size: 24px;          /* タイトル小さく */
+    }
+
+    .header-controls i {
+        font-size: 24px;
+        margin-left: 15px;
+    }
+
+    .divider {
+        margin: 5px;
+    }
+
+    .table-wrapper {
+        max-height: calc(50vh - var(--table-vertical-chrome));
+    }
+
+    thead th, tbody td {
+        padding: 10px;
+        font-size: 14px;          /* 文字小さく */
+    }
+}
