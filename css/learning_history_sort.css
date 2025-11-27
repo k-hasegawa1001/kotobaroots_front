@@ -1,0 +1,94 @@
+@import url('https://fonts.googleapis.com/css2?family=Noto+Sans+JP:wght@400;700&display=swap');
+
+body, html {
+    margin: 0;
+    padding: 0;
+    font-family: 'Noto Sans JP', sans-serif;
+    background: transparent;  /* 元画面背景は透明に */
+    color: #dce6ec;
+    height: 100%;
+}
+
+/* ===== モーダルオーバーレイ ===== */
+.modal-overlay {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0,0,0,0.55); /* 薄暗く */
+    z-index: 1000;
+}
+
+/* ===== モーダル本体（右上カード） ===== */
+.modal-content {
+    background-color: #131f24;   /* カードの背景 */
+    border-radius: 15px;
+    display: flex;
+    flex-direction: column;
+    width: 280px;
+    padding: 30px 25px;
+    box-shadow: 0 5px 20px rgba(0,0,0,0.5);
+    position: absolute;
+}
+
+/* 右上に固定 */
+.modal-content.right-top {
+    top: 200px;
+    right: 10px;
+}
+
+/* ヘッダー */
+.modal-header {
+    width: 100%;
+    margin-bottom: 20px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.modal-title {
+    font-size: 22px;
+    font-weight: 700;
+    text-align: center;
+    margin: 0;
+}
+
+/* ボタン群 */
+.modal-buttons {
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+}
+
+.modal-button {
+    background-color: #24333a;
+    color: #dce6ec;
+    border: 1px solid #3a4a51;
+    border-radius: 10px;
+    padding: 12px 0;
+    font-size: 23px;
+    cursor: pointer;
+    transition: background 0.2s;
+}
+
+.modal-button:hover {
+    background-color: #2f4a55;
+}
+
+/* レスポンシブ */
+@media screen and (max-width: 768px) {
+    .modal-content.right-top {
+        width: 90%;
+        right: 5%;
+        top: 15px;
+        padding: 20px;
+    }
+    .modal-title {
+        font-size: 18px;
+    }
+    .modal-button {
+        font-size: 14px;
+        padding: 10px 0;
+    }
+}
