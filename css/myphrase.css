@@ -1,0 +1,202 @@
+/* ===== マイフレーズ帳ページ ===== */
+body{
+    overflow: hidden;
+}
+
+.main-content {
+    flex: 1;
+    margin-left: 200px;
+    padding: 40px;
+    background-color: #131f24;
+}
+
+
+.page-title {
+    font-size: 36px;
+    margin: 0 0 30px;
+}
+
+.divider {
+    width: 95%;
+    border: 1px solid #52656d;
+    margin: 10px auto 30px;
+}
+
+/* メインレイアウト（左：テーブル / 右：ボタン） */
+.phrase-container {
+    display: flex;
+    gap: 80px;  /* ← 300px → 80px にする */
+    align-items: flex-start;
+    padding-left: 20px;
+}
+
+
+/* スクロールエリア */
+.phrase-table-wrapper {
+    width: 900px;
+    height: 480px;
+    border: 1px solid #2a4b56;
+    overflow-y: scroll;
+    background-color: #131f24;
+}
+
+/* スクロールバー */
+.phrase-table-wrapper::-webkit-scrollbar {
+    width: 10px;
+    border: 1px solid #dce6ec;
+}
+
+.phrase-table-wrapper::-webkit-scrollbar-thumb {
+    background-color: #37464f;
+    border-radius: 4px;
+    border: 1px solid #dce6ec;
+}
+
+/* テーブル */
+.phrase-table {
+    width: 100%;
+    border-collapse: collapse;
+}
+
+
+.phrase-table th {
+    background-color: #131f24;
+    padding: 14px;
+    text-align: left;
+    color: #dce6ec;
+    border-bottom: 1px solid #37464f;
+    font-size: 16px;
+}
+
+.phrase-table td {
+    padding: 14px;
+    border-bottom: 1px solid #37464f;
+    color: #dce6ec;
+    font-size: 15px;
+}
+
+/* 右のボタン群 */
+.phrase-buttons {
+    display: flex;
+    flex-direction: column;
+    gap: 22px;
+}
+
+/* 基本ボタン */
+.btn {
+    width: 150px;
+    padding: 12px 0;
+    font-size: 16px;
+    border-radius: 20px;
+    border: none;
+    cursor: pointer;
+    font-weight: bold;
+}
+
+/* 追加ボタン */
+.add-btn {
+    background-color: #49c0f8;
+    color: #000;
+}
+.add-btn:hover {
+    background-color: #67d0ff;
+}
+
+/* 削除ボタン */
+.delete-btn {
+    background-color: #ef6060;
+    color: #000;
+    margin-bottom: 200px;
+}
+.delete-btn:hover {
+    background-color: #ff7b7b;
+}
+
+/* 問題数プルダウン */
+.question-select {
+    padding: 10px;
+    font-size: 16px;
+    border-radius: 10px;
+    background-color: #131f24;
+    color: #dce6ec;
+    border: 1px solid #37464f;
+    width: 150px;
+    
+}
+
+/* テストする */
+.test-btn {
+    background-color: #93d333;
+    color: #000;
+}
+.test-btn:hover {
+    background-color: #9aec5c;
+}
+
+
+.space-push {
+    flex-grow: 1;
+}
+
+.phrase-table {
+    width: 100%;
+    border-collapse: collapse;
+    table-layout: fixed;  /* ← 列幅を固定にする */
+}
+
+.phrase-table th:nth-child(1),
+.phrase-table td:nth-child(1) {
+    width: 35%;  /* 単語・フレーズ列を狭く */
+    border-right: 2px solid #37464f;
+    text-align: center;
+    vertical-align: middle;
+}
+
+.phrase-table th:nth-child(2),
+.phrase-table td:nth-child(2) {
+    width: 65%;  /* 意味列を広く */
+    text-align: center;
+    vertical-align: middle;
+}
+
+
+/* ===== 最小限のスマホ修正（幅 768px 以下） ===== */
+@media screen and (max-width: 768px) {
+
+    /* メイン領域の左右の余白を狭くする */
+    .main-content {
+        margin-left: 0;
+        padding: 20px;
+    }
+
+    /* 左右レイアウトがはみ出るのを防ぐ */
+    .phrase-container {
+        flex-direction: column;
+        gap: 40px;
+        width: 100%;
+    }
+
+    /* テーブルの幅を画面いっぱいに収める */
+    .phrase-table-wrapper {
+        width: 100%;
+        height: 320px;
+    }
+
+    /* ボタン群は中央寄せ */
+    .phrase-buttons {
+        align-items: center;
+        width: 100%;
+    }
+
+    /* ボタンをスマホに合わせた幅にする */
+    .btn,
+    .question-select {
+        width: 80%;
+        max-width: 250px;
+    }
+
+    /* 削除ボタンの余白を除去 */
+    .delete-btn {
+        margin-bottom: 0;
+    }
+}
