@@ -1,0 +1,147 @@
+/* ベース */
+:root {
+    --bg: #131f24;
+    --panel: #131f24;
+    --text: #dce6ec;
+    --muted: #dce6ec;
+    --outline: #37464f;
+    --accent: #27b0ff;
+    font-family: "Noto Sans JP", sans-serif;
+}
+
+body {
+    margin: 0;
+    background: transparent; /* ← 背景なし。下の本来の画面が見える */
+    color: var(--text);
+}
+/* --- overlay --- */
+.overlay {
+    position: fixed;
+    inset: 0;
+    background: rgba(0, 0, 0, 0.55); /* ← 背景はこれだけでOK。後ろの画面が見える */
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 20px;
+    backdrop-filter: blur(2px); /* ← ぼかし効果（任意） */
+}
+/* --- modal（大きめ & #131f24 ベース） --- */
+.modal {
+    width: 1000px;
+    max-width: calc(100% - 40px);
+    background: var(--panel);         /* ← 完全に #131f24 */
+    border-radius: 20px;
+    padding: 60px 60px 40px;
+    border: 1px solid rgba(255,255,255,0.05);
+    box-shadow: 0 10px 40px rgba(0,0,0,0.6);
+}
+
+/* --- fields --- */
+.field {
+    margin-bottom: 30px;
+    width: 70%;          /* ← 横幅を少し小さく */
+    margin: 0 auto;      /* ← 中央寄せ */
+    resize: none;
+    min-height: 140px;
+}
+
+.field label {
+    display: block;
+    text-align: center;
+    font-size: 40px;
+    color: var(--muted);
+    margin-bottom: 20px;
+}
+
+.input,
+.textarea {
+    width: calc(100% - 0px);  /* → 100% のままでOK */
+    background: #202f36;
+    border: 1px solid #37464f;
+    color: var(--text);
+    padding: 20px 16px;
+    border-radius: 10px;
+    font-size: 27px;
+    outline: none;
+    width: calc(100% - 0px);  /* → 100% のままでOK */
+    box-sizing: border-box;   /* ★これが重要 */
+}
+
+.input::placeholder,
+.textarea::placeholder {
+    color: #dce6ec;
+    font-size: 30px;
+}
+
+.textarea {
+    resize: none;
+    min-height: 180px;
+}
+
+/* --- actions --- */
+.actions {
+    display: flex;
+    justify-content: space-between;
+    margin-top: 20px;
+}
+
+/* --- ボタン --- */
+.btn {
+    padding: 14px 28px;
+    min-width: 150px;
+    border-radius: 28px;
+    font-weight: 700;
+    font-size: 17px;
+    cursor: pointer;
+}
+
+/* キャンセルボタン (#131f24 系) */
+.btn-cancel {
+    background: #131f24;
+    border: 1.0px solid var(--outline);
+    color: var(--text);
+    font-size: 35px;      /* 文字サイズを大きく */
+    padding: 12px 32px;   /* 上下16px 左右32pxの余白で大きく */
+    border-radius: 12px;  /* 角丸も少し大きめ */
+    min-width: 180px;     /* 最低幅を指定して横幅も確保 */
+    cursor: pointer;
+}
+
+.btn-cancel:hover {
+    background-color: #202536;
+}
+
+
+/* 追加ボタン（アクセントカラー） */
+.btn-add {
+    background: #49c0f8;
+    border: none;
+    color: #06202a;
+    font-size: 35px;      /* 文字サイズを大きく */
+    padding: 12px 90px;   /* 上下左右の余白を大きく */
+    border-radius: 12px;
+    min-width: 180px;
+    box-shadow: 0 6px 18px rgba(39,176,255,0.16);
+    cursor: pointer;
+}
+
+.btn-add:hover {
+    background-color: #36a8d6;
+}
+
+
+/* --- スマホレスポンシブ --- */
+@media (max-width: 480px) {
+    .modal {
+    width: 95%;
+    padding: 24px;
+    }
+    .title {
+    font-size: 20px;
+    }
+    .btn {
+    min-width: 120px;
+    font-size: 15px;
+    padding: 12px 20px;
+    }
+}
