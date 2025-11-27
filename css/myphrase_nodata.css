@@ -1,0 +1,134 @@
+body{
+    overflow: hidden;
+}
+
+.main-content {
+    flex: 1;
+    margin-left: 200px;
+    padding: 40px;
+    background-color: #131f24;
+}
+
+
+.page-title {
+    font-size: 36px;
+    margin: 0 0 30px;
+}
+
+.divider {
+    width: 95%;
+    border: 1px solid #52656d;
+    margin: 10px auto 30px;
+}
+
+/* ===== フレーズ 0 件のときのメッセージ ===== */
+.empty-message {
+    text-align: center;
+    margin-top: 60px;
+    color: #dce6ec;
+}
+
+.empty-message h3 {
+    font-size: 28px;
+    margin-bottom: 60px;
+}
+
+.empty-message p {
+    font-size: 17px;
+    color: #c7d4da;
+    line-height: 1.7;
+    margin-bottom: 40px;
+}
+
+/* 追加ボタン（中央表示用の調整） */
+.empty-message .add-btn {
+    background-color: #49c0f8;
+    color: #131f24;
+    width: 150px;
+    padding: 12px 0;
+    font-size: 18px;
+    border-radius: 20px;
+    border: none;
+    cursor: pointer;
+    font-weight: bold;
+}
+
+.add-btn:hover {
+    background-color: #36a8d6;
+}
+
+
+/* ===============================
+   スマホ・タブレット対応
+   画面幅 768px 以下
+=============================== */
+@media screen and (max-width: 768px) {
+
+    /* メインコンテンツの左右余白を調整 */
+    .main-content {
+        margin-left: 0; /* サイドバーが縦に来る場合に対応 */
+        padding: 20px;
+    }
+
+    .page-title {
+        font-size: 28px;
+        text-align: center;
+        margin-bottom: 20px;
+    }
+
+    .divider {
+        width: 100%;
+        margin: 10px 0 30px;
+    }
+
+    /* フレーズ0件メッセージを少し小さく */
+    .empty-message {
+        margin-top: 40px;
+        padding: 0 10px;
+    }
+
+    .empty-message h3 {
+        font-size: 22px;
+        margin-bottom: 30px;
+        line-height: 1.4;
+    }
+
+    .empty-message p {
+        font-size: 15px;
+        line-height: 1.6;
+        margin-bottom: 30px;
+    }
+
+    /* ボタンを少し小さく */
+    .empty-message .add-btn {
+        width: 140px;
+        font-size: 16px;
+        padding: 10px 0;
+        border-radius: 16px;
+    }
+}
+
+
+/* ===============================
+   さらに画面幅 480px 以下（iPhone SE等）
+=============================== */
+@media screen and (max-width: 480px) {
+
+    .page-title {
+        font-size: 24px;
+    }
+
+    .empty-message h3 {
+        font-size: 20px;
+    }
+
+    .empty-message p {
+        font-size: 14px;
+    }
+
+    .empty-message .add-btn {
+        width: 130px;
+        font-size: 15px;
+        padding: 9px 0;
+    }
+}
