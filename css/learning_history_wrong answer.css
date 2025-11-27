@@ -1,0 +1,219 @@
+@import url('https://fonts.googleapis.com/css2?family=Noto+Sans+JP:wght@400;700&display=swap');
+
+/* === ベース設定 === */
+body {
+    margin: 0;
+    padding: 0;
+    font-family: 'Noto Sans JP', sans-serif;
+    background: transparent;
+    color: #dce6ec;
+}
+
+/* === 1. モーダルオーバーレイ === */
+.modal-overlay {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.55);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    z-index: 1000;
+}
+
+/* === 2. モーダル本体 === */
+.modal-content {
+    background-color: #131f24;
+    border-radius: 15px;
+    display: flex;
+    flex-direction: column;
+    width: 95%;
+    max-width: 1100px;
+    padding: 20px 40px;
+    padding-bottom: 50px;
+    box-shadow: 0 5px 20px rgba(0, 0, 0, 0.5);
+    position: relative;
+}
+
+/* === ヘッダー === */
+.modal-header {
+    width: 100%;
+    margin-bottom: 30px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding-top: 40px;
+}
+
+/* 正解と同じデザインだが色が違う */
+.result-title {
+    font-size: 52px;
+    font-weight: 700;
+    margin: 0;
+    text-align: center;
+}
+
+/* ★不正解用（赤色） */
+.result-title.wrong {
+    color: #ee5555;
+}
+
+/* === ボディ === */
+.modal-body {
+    text-align: left;
+    margin-bottom: 30px;
+}
+
+.section-label {
+    font-size: 28px;
+    font-weight: 700;
+    color: #dce6ec;
+    margin-bottom: 5px;
+}
+
+/* あなたの答え */
+.user-answer-text {
+    font-size: 27px;
+    font-weight: 400;
+    color: #dce6ec;
+    margin-top: 11px;
+    margin-bottom: 20px;
+    margin-left: 70px;
+}
+
+/* 正しい答え */
+.content-text {
+    font-size: 27px;
+    font-weight: 400;
+    color: #dce6ec;
+    margin-top: 11px;
+    margin-bottom: 15px;
+    margin-left: 70px;
+}
+
+/* 解説（スクロール付き） */
+.explanation-text {
+    font-size: 27px;
+    line-height: 1.6;
+    color: #dce6ec;
+    margin-left: 70px;
+
+    /* ★スクロール可能にする */
+    max-height: 300px;
+    overflow-y: auto;
+    padding-right: 15px; 
+}
+
+/* スクロールバー装飾（optional） */
+.explanation-text::-webkit-scrollbar {
+    width: 14px;
+}
+.explanation-text::-webkit-scrollbar-track {
+    background: #1e2a30;
+    border-radius: 10px;
+}
+.explanation-text::-webkit-scrollbar-thumb {
+    background: #37464f;
+    border-radius: 10px;
+}
+
+/* === 次へボタン === */
+.next-button {
+    width: 100%;
+    max-width: 250px;
+    background: #49c0f8;
+    color: #131f24;
+    padding: 15px 0;
+    border: none;
+    border-radius: 10px;
+    font-size: 35px;
+    font-weight: bold;
+    cursor: pointer;
+    transition: background-color 0.2s;
+    align-self: center;
+    margin-top: 40px;
+    position: relative;
+}
+
+/* 区切り線 */
+.next-button::before {
+    content: "";
+    position: absolute;
+    top: -20px;
+    width: 1100px;
+    height: 2px;
+    background-color: #52656d;
+    border-radius: 2px;
+    left: 50%;
+    transform: translateX(-50%);
+}
+
+.next-button:hover {
+    background-color: #36a8d6;
+}
+
+/* === レスポンシブ === */
+@media screen and (max-width: 1024px) {
+    .modal-content {
+        padding: 15px 30px;
+        max-width: 90%;
+    }
+    .modal-header {
+        padding-top: 30px;
+        margin-bottom: 20px;
+    }
+    .result-title {
+        font-size: 42px;
+    }
+    .section-label {
+        font-size: 24px;
+    }
+    .user-answer-text,
+    .content-text,
+    .explanation-text {
+        font-size: 22px;
+        margin-left: 50px;
+    }
+    .next-button {
+        max-width: 200px;
+        font-size: 18px;
+        margin-top: 30px;
+    }
+    .next-button::before {
+        width: 90%;
+    }
+}
+
+@media screen and (max-width: 768px) {
+    .modal-content {
+        padding: 10px 20px;
+        width: 95%;
+    }
+    .modal-header {
+        padding-top: 20px;
+        margin-bottom: 15px;
+    }
+    .result-title {
+        font-size: 32px;
+    }
+    .section-label {
+        font-size: 20px;
+    }
+    .user-answer-text,
+    .content-text,
+    .explanation-text {
+        font-size: 18px;
+        margin-left: 20px;
+    }
+    .next-button {
+        max-width: 150px;
+        font-size: 16px;
+        padding: 12px 0;
+        margin-top: 20px;
+    }
+    .next-button::before {
+        width: 95%;
+    }
+}
