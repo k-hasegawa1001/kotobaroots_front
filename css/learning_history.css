@@ -1,0 +1,120 @@
+/* ===== レイアウト維持 ===== */
+html {
+    height: 100%;
+    overflow: hidden; /* lock page scroll */
+}
+ 
+:root {
+    --table-vertical-chrome: 220px; /* padding + title/controls + divider ??? */
+}
+ 
+body {
+    background-color: #131f24;
+    margin: 0;
+    font-family: "Noto Sans JP", sans-serif;
+    color: #dce6ec;
+    height: 100vh; /* ページ全体の高さ */
+    overflow: hidden; /* lock page scroll */
+    box-sizing: border-box;
+}
+ 
+.container {
+    height: 100vh;
+    overflow: hidden; /* prevent outer scroll */
+}
+ 
+ 
+.main-content {
+    margin-left: 200px;
+    padding: 40px;
+    display: grid;
+    grid-template-rows: max-content auto 1fr; /* header / divider / table */
+    row-gap: 16px;
+    height: 100vh; /* ????????? */
+    box-sizing: border-box;
+    overflow: hidden; /* keep scrolling inside the table wrapper */
+    min-height: 0; /* allow children to shrink */
+    max-height: 100vh;
+}
+ 
+/* ===== ヘッダー行 ===== */
+.header-row {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+ 
+ 
+.page-title {
+    font-size: 36px;
+    margin: 0;
+}
+ 
+.header-controls i {
+    font-size: 32px;
+    margin-left: 25px;
+    color: #49c0f8;
+    cursor: pointer;
+}
+ 
+/* ===== 下線 ===== */
+.divider {
+    border-bottom: 2px solid #52656D;
+    margin: 10px; /* spacing handled by grid gap */
+
+}
+ 
+/* ===== 表だけスクロール ===== */
+.table-wrapper {
+    min-height: 0; /* allow inner scroll area to shrink in grid */
+    height: auto;
+    max-height: calc(52vh - var(--table-vertical-chrome)); /* viewport?????????? */
+    overflow-y: auto;
+    border: 1px solid #32434a;
+}
+ 
+ 
+/* スクロールバー */
+.table-wrapper::-webkit-scrollbar {
+    width: 10px;
+}
+ 
+.table-wrapper::-webkit-scrollbar-track {
+    background: #1e2a30;
+}
+ 
+.table-wrapper::-webkit-scrollbar-thumb {
+    background: #37464f;
+}
+ 
+/* ===== テーブル ===== */
+table {
+    width: 100%;
+    border-collapse: collapse;
+    table-layout: fixed;
+}
+ 
+thead th {
+    background: #1e3a45;
+    padding: 14px;
+    border-bottom: 2px solid #49c0f8;
+    position: sticky;
+    top: 0; /* スクロール時にtheadを固定 */
+    z-index: 2;
+}
+ 
+tbody td {
+    padding: 14px;
+    border-bottom: 1px solid #1e3a45;
+}
+ 
+/* 列幅 */
+th:nth-child(1), td:nth-child(1) { width: 15%; }
+th:nth-child(2), td:nth-child(2) { width: 65%; }
+th:nth-child(3), td:nth-child(3) { width: 20%; text-align: center; }
+ 
+/* 正誤アイコン */
+.status.correct i { color: #5cb85c; }
+.status.incorrect i { color: #f0ad4e; }
+ 
+ 
