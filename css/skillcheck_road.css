@@ -1,0 +1,161 @@
+@import url('https://fonts.googleapis.com/css2?family=Noto+Sans+JP:wght@400;700&display=swap');
+
+body {
+    margin: 0;
+    padding: 0;
+    background-color: #131f24; /* 画像の暗い背景色 */
+    font-family: 'Noto Sans JP', sans-serif;
+    color: #dce6ec; /* 明るい文字色 */
+    
+    /* 画面中央寄せの設定 */
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    min-height: 100vh; /* 画面全体を使用 */
+    text-align: center;
+}
+
+.container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    width: 100%;
+    max-width: 600px;
+}
+
+/* === ✖ ボタンのスタイルを追加 === */
+.close-button {
+    position: fixed;
+    top: 150px;
+    left: 800px;
+    width: 70px;
+    height: 70px;
+    background: none;
+    border: none;
+    cursor: pointer;
+    z-index: 10;
+}
+
+/* X の線（左右） */
+.close-button::before,
+.close-button::after {
+    content: "";
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    width: 60px;              /* X の長さ */
+    height: 2px;              /* 線の細さ（ここが重要） */
+    background-color: #37464f; /* 薄いグレー */
+    transform-origin: center;
+    opacity: 0.7;             /* うっすらに見せる */
+}
+
+/* 左上→右下の線 */
+.close-button::before {
+    transform: translate(-50%, -50%) rotate(45deg);
+}
+
+/* 右上→左下の線 */
+.close-button::after {
+    transform: translate(-50%, -50%) rotate(-45deg);
+}
+
+
+
+/* === メッセージスタイル === */
+.message-title {
+    font-size: 4em;
+    font-weight: 700;
+    margin-bottom: 50px;
+}
+
+/* === 次へボタン === */
+.next-button {
+    padding: 25px 70px;
+    font-size: 2.0em;
+    font-weight: bold;
+    border: none;
+    border-radius: 20px;
+    background-color: #49c0f8; /* 画像の青色のボタン */
+    color: #131f24;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+}
+
+.next-button:hover {
+    background-color: #1899d6;
+}
+
+/* ========================================================= */
+/* === iPad対応 (768px〜1024px) === */
+/* ========================================================= */
+@media (max-width: 1024px) and (min-width: 601px) {
+    
+        
+    .close-button {
+        top: 70px;
+        left: auto;
+        right: 40px;
+        width: 35px;
+        height: 35px;
+    }
+
+    .close-button::before,
+    .close-button::after {
+        width: 22px;
+        height: 2px;
+    }
+
+
+    .message-title {
+        font-size: 3.5em; /* タイトルを縮小 */
+        margin-bottom: 40px;
+    }
+
+    .next-button {
+        padding: 20px 60px; /* パディングを調整 */
+        font-size: 1.8em; /* ボタンのテキストを縮小 */
+        border-radius: 15px; /* 角丸を調整 */
+    }
+}
+
+/* ========================================================= */
+/* === スマホ対応 (600px以下) === */
+/* ========================================================= */
+@media (max-width: 600px) {
+    
+
+    .close-button {
+        top: 50px;
+        right: 20px;
+        left: auto;
+        width: 30px;
+        height: 30px;
+    }
+
+    .close-button::before,
+    .close-button::after {
+        width: 18px;
+        height: 1.5px; /* スマホは細め */
+        opacity: 0.6;
+    }
+
+
+
+    .message-title {
+        font-size: 2.5em; /* タイトルを大幅に縮小 */
+        margin-bottom: 30px;
+    }
+
+    .next-button {
+        padding: 15px 40px; /* パディングをさらに縮小 */
+        font-size: 1.5em; /* ボタンのテキストを調整 */
+        border-radius: 10px;
+        /* スマホで横幅いっぱいに広げたい場合は以下を使用
+        width: 80%;
+        max-width: 300px;
+        */
+    }
+}
