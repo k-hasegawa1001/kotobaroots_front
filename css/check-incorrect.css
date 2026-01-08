@@ -58,8 +58,8 @@
 }
 
 /* JSで注入される本文テキスト */
-#answer,
-#explanation {
+#modal-answer,
+#modal-explanation {
     font-size: 15px;
     line-height: 1.6;
     color: #dce6ec;
