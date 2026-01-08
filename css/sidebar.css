@@ -1,167 +1,183 @@
-/* === 全体の背景と文字色 === */
-body {
-  margin: 0;
-  font-family: "Noto Sans JP", sans-serif;
-  background-color: #131f24;
-  color: #dce6ec;
-}
+    /* === 全体の背景と文字色 === */
+    body {
+    margin: 0;
+    font-family: "Noto Sans JP", sans-serif;
+    background-color: #131f24;
+    color: #dce6ec;
+    }
 
-/* === 全体レイアウト === */
-.container {
-  display: flex;
-  height: 100vh;
-  zoom: 2.1; /* PC向け拡大 */
-}
+    /* === 全体レイアウト === */
+    .container {
+    display: flex;
+    height: 100vh;
+    /* PCはzoomを削除 */
+    }
 
-/* === サイドバー === */
-.sidebar {
-  position: fixed;
-  left: 0;
-  top: 0;
-  width: 200px;
-  height: 100vh;
-  background-color: #131f24;
-  border-right: 1px solid #52656d;
-  padding: 20px 0;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  transition: all 0.3s ease;
-}
-
-/* === タイトル === */
-.title {
-  font-size: 22px;
-  margin-bottom: 40px;
-}
-
-/* === メニュー === */
-.menu {
-  display: flex;
-  flex-direction: column;
-  gap: 20px;
-  width: 100%;
-  align-items: center;
-}
-
-.menu-item {
-  width: 80%;
-  padding: 10px 0;
-  background: none;
-  border: none;
-  color: #dce6ec;
-  font-size: 16px;
-  border-radius: 20px;
-  cursor: pointer;
-  transition: 0.2s;
-}
-
-/* === アクティブ状態 === */
-.menu-item.active {
-  background-color: #202536;
-  border: 1.5px solid #3f85a7;
-  color: #49c0f8;
-}
-
-/* === ホバー時 === */
-.menu-item:hover {
-  background-color: #202536;
-}
-
-/* === メインコンテンツ === */
-.main-content {
-  flex: 1;
-  background-color: #131f24;
-  margin-left: 200px;
-  overflow-y: auto;
-  transition: margin 0.3s ease;
-}
-
-/* === スクロールバー装飾 === */
-.main-content::-webkit-scrollbar {
-  width: 8px;
-}
-.main-content::-webkit-scrollbar-thumb {
-  background-color: #3f85a7;
-  border-radius: 4px;
-}
-
-/* ========================================================= */
-/* === iPad対応（横・縦）: 幅 768px〜1024px === */
-/* ========================================================= */
-@media (max-width: 1024px) and (min-width: 601px) {
-  .container {
-    zoom: 1.6; /* iPad向けに軽く縮小 */
-  }
-
-  .sidebar {
-    width: 150px; /* 少しスリム化 */
-  }
-
-  .main-content {
-    margin-left: 180px;
-  }
-
-  .menu-item {
-    font-size: 15px;
-    padding: 8px 0;
-  }
-
-  .title {
-    font-size: 20px;
-  }
-}
-
-/* ========================================================= */
-/* === スマホ対応（縦持ち・横持ち）: 幅600px以下 === */
-/* ========================================================= */
-@media (max-width: 600px) {
-  .container {
+    /* === サイドバー === */
+    .sidebar {
+    position: fixed;
+    left: 0;
+    top: 0;
+    width: 200px;
+    height: 100vh;
+    background-color: #131f24;
+    border-right: 3px solid #5A6A71;
+    padding: 20px 0;
+    display: flex;
     flex-direction: column;
-    height: auto;
-    zoom: 1;
-  }
+    align-items: center;
+    transition: all 0.3s ease;
+    }
 
-  .sidebar {
-    position: relative;
+    /* === タイトル === */
+    .title {
+    font-size: 28px;
+    margin-bottom: 40px;
+    font-weight: 450;
+    }
+
+    /* === メニュー === */
+    .menu {
+    display: flex;
+    flex-direction: column;
+    gap: 12px; /* ← この値を小さくすると項目の間隔が縮まる */
     width: 100%;
-    height: auto;
-    border-right: none;
-    border-bottom: 1px solid #1e3a45;
-    padding: 10px 0;
-    flex-direction: row;
-    justify-content: space-around;
-  }
+    align-items: center;
+    }
 
-  .title {
-    display: none; /* スマホでは非表示 */
-  }
+    .menu-item {
+    width: 88%; /* ← この値を変更すると横幅が変わる */
+    padding: 13px 0; /* ← 上下のパディング */
+    background: none;
+    border: none;
+    color: #dce6ec;
+    font-size: 16px;
+    border-radius: 30px; /* ← この値が丸み */
+    cursor: pointer;
+    transition: 0.2s;
+    }
 
-  .menu {
-    flex-direction: row;
-    gap: 10px;
-    justify-content: space-around;
-    width: 100%;
-  }
+    /* === アクティブ状態 === */
+    .menu-item.active {
+    background-color: #202536;
+    border: 3.0px solid #3f85a7;
+    color: #49c0f8;
+    }
 
-  .menu-item {
-    font-size: 13px;
-    padding: 8px 10px;
-    width: auto;
-  }
+    /* === ホバー時 === */
+    .menu-item:hover {
+    background-color: #202536;
+    }
 
-  .main-content {
-    margin-left: 0;
-    padding: 20px;
-  }
+    /* === メインコンテンツ === */
+    .main-content {
+    flex: 1;
+    background-color: #131f24;
+    margin-left: 200px;
+    overflow-y: auto;
+    transition: margin 0.3s ease;
+    }
+
+    /* === スクロールバー装飾 === */
+    .main-content::-webkit-scrollbar {
+    width: 8px;
+    }
+    .main-content::-webkit-scrollbar-thumb {
+    background-color: #3f85a7;
+    border-radius: 4px;
+    }
+
+    /* ========================================================= */
+    /* === iPad対応（横・縦）: 幅 768px〜1024px === */
+    /* ========================================================= */
+    @media (max-width: 1024px) and (min-width: 601px) {
+    .container {
+        zoom: 1.6; /* iPad向けに軽く縮小 */
+    }
+
+    .sidebar {
+        width: 150px; /* 少しスリム化 */
+    }
+
+    .main-content {
+        margin-left: 180px;
+    }
+
+    .menu-item {
+        font-size: 15px;
+        padding: 8px 0;
+    }
+
+    .title {
+        font-size: 20px;
+    }
+    }
+
+    /* ========================================================= */
+    /* === スマホ対応（縦持ち・横持ち）: 幅600px以下 === */
+    /* ========================================================= */
+    @media (max-width: 600px) {
+    .container {
+        flex-direction: column;
+        height: auto;
+        zoom: 1;
+    }
+
+    .sidebar {
+        position: relative;
+        width: 100%;
+        height: auto;
+        border-right: none;
+        border-bottom: 1px solid #1e3a45;
+        padding: 10px 0;
+        flex-direction: row;
+        justify-content: space-around;
+    }
+
+    .title {
+        display: none; /* スマホでは非表示 */
+    }
+
+    .menu {
+        flex-direction: row;
+        gap: 10px; 
+        justify-content: space-around;
+        width: 100%;
+    }
+
+    .menu-item {
+        font-size: 13px;
+        padding: 8px 10px;
+        width: auto;
+    }
+
+    .main-content {
+        margin-left: 0;
+        padding: 20px;
+    }
+    }
+
+    /* ========================================================= */
+    /* === iPhone SEなど超小型画面 === */
+    /* ========================================================= */
+    @media (max-width: 400px) {
+    .menu-item {
+        font-size: 12px;
+        padding: 6px 8px;
+    }
+    }
+
+
+/* ログイン/新規登録ボタン */
+.login-btn {
+    background-color: #49c0f8;
+    color: #131f24;
+    border: 1.5px solid #3f85a7;
+    width: 88%;
+    font-weight: 500;
 }
 
-/* ========================================================= */
-/* === iPhone SEなど超小型画面 === */
-/* ========================================================= */
-@media (max-width: 400px) {
-  .menu-item {
-    font-size: 12px;
-    padding: 6px 8px;
-  }
+.login-btn:hover {
+    background-color: #36a8d6;
 }
+

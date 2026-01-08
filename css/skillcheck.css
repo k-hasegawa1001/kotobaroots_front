@@ -1,4 +1,3 @@
-
 /* === 全体設定と中央寄せ === */
 body {
     margin: 0;
@@ -8,12 +7,12 @@ body {
     color: #dce6ec; /* テキスト色 */
     display: flex;
     flex-direction: column;
-    justify-content: flex-start; /* 水平方向の中央寄せ */
-    align-items: center; /* 垂直方向の中央寄せ */
+    justify-content: flex-start;
+    align-items: center;
     min-height: 100vh; /* 画面全体の高さ */
     text-align: center;
-    padding-top: 10vh; /* 画面高さの10%を上部の余白とする */
-    box-sizing: border-box; /* paddingがheightに含まれるように */
+    padding-top: 5vh; /* 上部余白半分に */
+    box-sizing: border-box;
 }
 
 .container {
@@ -24,17 +23,17 @@ body {
 
 /* === タイトル === */
 .title {
-    font-size: 5.0em; /* 見出しの大きさ */
+    font-size: 2.5em; /* 半分に */
     font-weight: 700;
-    margin-bottom: 80px; /* 説明文との間隔 */
+    margin-bottom: 40px; /* 半分に */
     color: #dce6ec;
 }
 
 /* === 説明文 === */
 .description {
-    font-size: 2.5em;
+    font-size: 1.25em; /* 半分に */
     line-height: 1.6;
-    margin-bottom: 200px; /* ボタン群との間隔 */
+    margin-bottom: 100px; /* 半分に */
     color: #dce6ec;
     max-width: 1000px;
 }
@@ -43,16 +42,16 @@ body {
 .button-group {
     display: flex;
     flex-direction: column; /* ボタンを縦に並べる */
-    gap: 35px; /* ボタン間の間隔 */
-    width: 500px; /* ボタンの幅を統一 */
+    gap: 17px; /* 半分に */
+    width: 250px; /* 半分に */
 }
 
 /* === ボタンの共通スタイル === */
 .btn {
-    padding:24px 60px;
-    font-size: 1.8em;
+    padding: 12px 30px; /* 半分に */
+    font-size: 0.9em; /* 半分に */
     font-weight: 1000;
-    border-radius: 10px;
+    border-radius: 5px; /* 半分に */
     cursor: pointer;
     transition: background-color 0.3s, border-color 0.3s;
 }
@@ -60,8 +59,8 @@ body {
 /* === 1. メインボタン (青色) === */
 .btn.primary {
     border: none;
-    background-color: #49c0f8; /* 画像のような明るい青 */
-    color: #131f24; /* 濃い背景色と同じ色 (見やすいように) */
+    background-color: #49c0f8;
+    color: #131f24;
 }
 
 .btn.primary:hover {
@@ -70,26 +69,26 @@ body {
 
 /* === 2. セカンダリボタン (枠線のみ) === */
 .btn.secondary {
-    background-color: transparent; /* 背景透明 */
-    border: 1px solid #dce6ec; /* 白っぽい枠線 */
-    color: #dce6ec; /* 枠線と同じ色 */
+    background-color: transparent;
+    border: 1px solid #dce6ec;
+    color: #dce6ec;
 }
 
 .btn.secondary:hover {
-    background-color: #202536; /* ホバーで少し暗い背景色 */
+    background-color: #202536;
 }
 
 /* === スマホ対応（例） === */
 @media (max-width: 600px) {
     .title {
-        font-size: 2em;
+        font-size: 1em; /* 半分に */
     }
     .description {
-        font-size: 1em;
+        font-size: 0.5em; /* 半分に */
         padding: 0 15px;
     }
     .button-group {
-        width: 80%;
-        max-width: 250px;
+        width: 40%; /* 半分に */
+        max-width: 125px; /* 半分に */
     }
 }

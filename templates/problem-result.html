@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+    <meta charset="UTF-8">
+    <title>学習問題結果</title>
+
+    <!-- 個別CSS -->
+    <link rel="stylesheet" href="../css/problem-result.css">
+</head>
+
+<body>
+    <div class="container">
+        <h2>結果</h2>
+
+        <div class="info-row">
+            <p class="note">問題をクリックすると解説が表示されます。</p>
+
+            <!-- 正解率（％部分はJSで表示） -->
+            <p class="note accuracy-line">
+                正解率：<span id="accuracy"></span>
+            </p>
+        </div>
+
+        <!-- 結果一覧（JSで生成） -->
+        <div id="results-table"></div>
+
+        <!-- 終了ボタン -->
+        <div class="button-area">
+            <button id="finish-btn">終了する</button>
+        </div>
+
+    </div>
+
+</body>
+</html>

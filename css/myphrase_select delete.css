@@ -1,6 +1,6 @@
 /* 画面全体の薄暗い背景 */
 body {
-    background: transparent; /* 背景なしで下の画面が見える */
+    background: transparent;
 }
 
 /* ポップアップ用オーバーレイ */
@@ -10,42 +10,42 @@ body {
     left: 0;
     width: 100%;
     height: 100%;
-    background: rgba(0, 0, 0, 0.55); /* 少し暗くする */
+    background: rgba(0, 0, 0, 0.55);
     display: flex;
     justify-content: center;
     align-items: center;
-    z-index: 999; /* 他の要素より前面に表示 */
+    z-index: 999;
 }
 
-/* ポップアップ本体 */
+/* ポップアップ本体（全て半分に縮小） */
 .popup-content {
     background: #131f24;
     color: #dce6ec;
-    border-radius: 12px;
-    padding: 30px;
+    border-radius: 6px; /* 12px → 半分 */
+    padding: 15px;      /* 30px → 半分 */
     width: 95%;
-    max-width: 1600px;
-    height: 90vh;
-    max-height: 800px;
-    box-shadow: 0 0 30px rgba(0,0,0,0.7);
+    max-width: 800px;   /* 1600px → 半分 */
+    height: 45vh;       /* 90vh → 半分 */
+    max-height: 400px;  /* 800px → 半分 */
+    box-shadow: 0 0 15px rgba(0,0,0,0.7); /* 全体 half */
     position: relative;
-    padding-bottom: 120px; /* ボタンの高さ分の余白 */
+    padding-bottom: 60px; /* 120px → 半分 */
 }
-
 
 /* 見出し */
 .popup-content h2 {
     margin-top: 0;
     text-align: center;
+    font-size: 20px; /* 元の約半分に調整 */
 }
 
 .select-all-wrapper {
-    margin-bottom: 15px;
-    font-size: 30px;
+    margin-bottom: 1px; /* 15px → 半分 */
+    font-size: 15px;    /* 30 → 半分 */
     cursor: pointer;
     display: inline-block;
-    padding: 10px 20px;
-    border-radius: 8px;
+    padding: 5px 10px; /* 半分 */
+    border-radius: 4px; /* 半分 */
     transition: background-color 0.2s;
 }
 
@@ -53,30 +53,29 @@ body {
     background-color: #202536;
 }
 
-/* 表をスクロール可能にするラッパー */
+/* 表スクロール部分 */
 .table-wrapper {
-    max-height: calc(100% - 180px); /* ポップアップ全体の高さからボタンや余白分を引く */
-    overflow-y: auto;   /* 表だけスクロール */
-    border: 1px solid #32434a; /* 好みに応じて枠追加 */
-    margin: 15px 0;
+    max-height: calc(100% - 90px); /* 元 180px → 半分 */
+    overflow-y: auto;
+    border: 1px solid #32434a;
+    margin: 1px 0; /* 15px → 半分 */
 }
 
-/* 表スクロール部分だけに適用 */
+/* スクロールバー */
 .table-wrapper::-webkit-scrollbar {
-    width: 22px;               /* スクロールバーの幅 */
+    width: 11px; /* 22px → 半分 */
 }
 
 .table-wrapper::-webkit-scrollbar-track {
-    background: #1e2a30;       /* スクロールバーの背景色（トラック） */
-    border-radius: 8px;
+    background: #1e2a30;
+    border-radius: 4px; /* 半分 */
 }
 
 .table-wrapper::-webkit-scrollbar-thumb {
-    background-color: #37464f; /* スクロールバーのつまみ色 */
-    border-radius: 8px;
-    border: 4px solid #1e2a30; /* つまみの周りの余白で見た目を調整 */
+    background-color: #37464f;
+    border-radius: 4px;
+    border: 2px solid #1e2a30; /* 4px → 半分 */
 }
-
 
 /* テーブル */
 .word-table {
@@ -86,42 +85,40 @@ body {
 
 .word-table td {
     border: 1px solid #32434a;
-    padding: 10px;
+    padding: 5px;     /* 10px → 半分 */
     text-align: left;
-    font-size: 30px;
+    font-size: 15px;  /* 30px → 半分 */
 }
 
-
-
+/* チェックボックス */
 .word-table input[type="checkbox"] {
-    transform: scale(3.0);
-    margin: 5px;
-    vertical-align: middle;
+    transform: scale(1.5); /* 3.0 → 半分 */
+    margin: 3px;           /* 5px → 半分 */
+    margin-bottom: 7px;    /* 15px → 半分 */
     cursor: pointer;
-    margin-bottom: 15px;
+    vertical-align: middle;
 }
 
+/* 列幅（50% → 50%のまま・配分はそのまま） */
 .word-table th:nth-child(1),
 .word-table td:nth-child(1) {
-    width: 2%;   /* チェックボックス列 */
+    width: 1%; /* 2% → 半分 */
 }
 
 .word-table th:nth-child(2),
-.word-table td:nth-child(2) {
-    width: 49%;   /* 英語列 */
+word-table td:nth-child(2) {
+    width: 49%;
 }
 
 .word-table th:nth-child(3),
 .word-table td:nth-child(3) {
-    width: 49%;   /* 日本語列 */
+    width: 49%;
 }
 
-
-
-/* ボタンのエリア（下に固定） */
+/* 下部ボタンエリア（固定） */
 .popup-buttons {
     position: absolute;
-    bottom: 20px;
+    bottom: 10px; /* 20px → 半分 */
     left: 50%;
     transform: translateX(-50%);
     width: 90%;
@@ -129,96 +126,96 @@ body {
     justify-content: space-between;
 }
 
+/* キャンセルボタン */
 .btn-cancel {
     background: #131f24;
-    border: 1.5px solid #6b7f88;
+    border: 0.75px solid #6b7f88; /* 1.5px → 半分 */
     color: #dce6ec;
-    padding: 26px 60px;
-    border-radius: 10px;
+    padding: 10px 30px; /* 半分 */
+    border-radius: 5px;
+    font-size: 18px; /* 35 → 半分 */
     cursor: pointer;
-    font-size: 35px;
 }
 
 .btn-cancel:hover {
     background-color: #202536;
 }
 
+/* 削除ボタン */
 .btn-delete {
     background: #ff5c5c;
     border: none;
     color: #fff;
-    padding: 26px 110px;
-    border-radius: 10px;
+    padding: 10px 55px; /* 半分 */
+    border-radius: 5px;
+    font-size: 18px; /* 半分 */
     cursor: pointer;
-    font-size: 35px;
 }
 
 .btn-delete:hover {
     background: #d94444;
 }
 
-/* 画面幅が1200px以下のとき */
+
+/* === レスポンシブもすべて 半分に調整 === */
+
+/* 1200px以下 */
 @media screen and (max-width: 1200px) {
     .popup-content {
         width: 95%;
-        padding: 20px;
+        padding: 10px;
+        max-width: 600px; /* 元の半分基準に再調整 */
     }
 
     .word-table td, .word-table th {
-        font-size: 24px;
-        padding: 8px;
+        font-size: 12px;
+        padding: 4px;
     }
 
     .select-all-wrapper {
-        font-size: 24px;
-        padding: 8px 16px;
+        font-size: 12px;
+        padding: 4px 8px;
     }
 
     .btn-cancel, .btn-delete {
-        font-size: 28px;
-        padding: 18px 40px;
+        font-size: 14px;
+        padding: 9px 20px;
     }
 
     .table-wrapper::-webkit-scrollbar {
-        width: 16px;
+        width: 8px; /* 16px → 半分 */
     }
 }
 
-/* 画面幅が768px以下のとき（スマホ向け） */
+/* 768px以下（スマホ） */
 @media screen and (max-width: 768px) {
     .popup-content {
         width: 90%;
-        padding: 15px;
+        padding: 8px;
+        max-width: 500px;
     }
 
     .word-table td, .word-table th {
-        font-size: 18px;
-        padding: 6px;
+        font-size: 9px;
+        padding: 3px;
     }
 
     .select-all-wrapper {
-        font-size: 18px;
-        padding: 6px 12px;
+        font-size: 9px;
+        padding: 3px 6px;
     }
 
     .btn-cancel, .btn-delete {
-        font-size: 20px;
-        padding: 12px 24px;
+        font-size: 10px;
+        padding: 6px 12px;
     }
 
     .word-table th:nth-child(1),
     .word-table td:nth-child(1) {
-        width: 10%;  /* チェックボックス列を少し広めに */
-    }
-
-    .word-table th:nth-child(2),
-    .word-table td:nth-child(2),
-    .word-table th:nth-child(3),
-    .word-table td:nth-child(3) {
-        width: 45%;  /* 英語・日本語列 */
+        width: 5%; /* 元 10% → 半分 */
     }
 
     .table-wrapper {
-        max-height: 50vh; /* 高さも少し縮小 */
+        max-height: 25vh; /* 50vh → 半分 */
     }
 }

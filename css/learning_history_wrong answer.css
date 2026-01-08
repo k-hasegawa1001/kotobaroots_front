@@ -26,36 +26,36 @@ body {
 /* === 2. モーダル本体 === */
 .modal-content {
     background-color: #131f24;
-    border-radius: 15px;
+    border-radius: 7.5px; /* 半分 */
     display: flex;
     flex-direction: column;
     width: 95%;
-    max-width: 1100px;
-    padding: 20px 40px;
-    padding-bottom: 50px;
-    box-shadow: 0 5px 20px rgba(0, 0, 0, 0.5);
+    max-width: 550px; /* 半分程度 */
+    padding: 10px 20px;
+    padding-bottom: 25px; /* 半分 */
+    box-shadow: 0 2.5px 10px rgba(0, 0, 0, 0.5);
     position: relative;
 }
 
 /* === ヘッダー === */
 .modal-header {
     width: 100%;
-    margin-bottom: 30px;
+    margin-bottom: 15px;
     display: flex;
     justify-content: center;
     align-items: center;
-    padding-top: 40px;
+    padding-top: 20px; /* 半分 */
 }
 
-/* 正解と同じデザインだが色が違う */
+/* 結果タイトル */
 .result-title {
-    font-size: 52px;
+    font-size: 26px; /* 半分 */
     font-weight: 700;
     margin: 0;
     text-align: center;
 }
 
-/* ★不正解用（赤色） */
+/* 不正解用 */
 .result-title.wrong {
     color: #ee5555;
 }
@@ -63,77 +63,75 @@ body {
 /* === ボディ === */
 .modal-body {
     text-align: left;
-    margin-bottom: 30px;
+    margin-bottom: 15px; /* 半分 */
 }
 
 .section-label {
-    font-size: 28px;
+    font-size: 14px; /* 半分 */
     font-weight: 700;
     color: #dce6ec;
-    margin-bottom: 5px;
+    margin-bottom: 2px; /* 半分 */
 }
 
 /* あなたの答え */
 .user-answer-text {
-    font-size: 27px;
+    font-size: 14px; /* 半分 */
     font-weight: 400;
     color: #dce6ec;
-    margin-top: 11px;
-    margin-bottom: 20px;
-    margin-left: 70px;
+    margin-top: 5px; /* 半分 */
+    margin-bottom: 10px;
+    margin-left: 35px; /* 半分 */
 }
 
 /* 正しい答え */
 .content-text {
-    font-size: 27px;
+    font-size: 14px; /* 半分 */
     font-weight: 400;
     color: #dce6ec;
-    margin-top: 11px;
-    margin-bottom: 15px;
-    margin-left: 70px;
+    margin-top: 5px;
+    margin-bottom: 7px;
+    margin-left: 35px; /* 半分 */
 }
 
 /* 解説（スクロール付き） */
 .explanation-text {
-    font-size: 27px;
+    font-size: 14px; /* 半分 */
     line-height: 1.6;
     color: #dce6ec;
-    margin-left: 70px;
-
-    /* ★スクロール可能にする */
-    max-height: 300px;
+    margin-left: 35px;
+    max-height: 150px; /* 半分 */
     overflow-y: auto;
-    padding-right: 15px; 
+    padding-right: 7px; /* 半分 */
 }
 
-/* スクロールバー装飾（optional） */
+/* スクロールバー */
 .explanation-text::-webkit-scrollbar {
-    width: 14px;
+    width: 7px; /* 半分 */
 }
 .explanation-text::-webkit-scrollbar-track {
     background: #1e2a30;
-    border-radius: 10px;
+    border-radius: 5px;
 }
 .explanation-text::-webkit-scrollbar-thumb {
     background: #37464f;
-    border-radius: 10px;
+    border-radius: 5px;
 }
 
 /* === 次へボタン === */
 .next-button {
     width: 100%;
-    max-width: 250px;
+    max-width: 125px; /* 半分 */
     background: #49c0f8;
     color: #131f24;
-    padding: 15px 0;
+    padding: 7px 0; /* 半分 */
     border: none;
-    border-radius: 10px;
-    font-size: 35px;
+    border-radius: 5px; /* 半分 */
+    font-size: 17px; /* 半分 */
     font-weight: bold;
     cursor: pointer;
     transition: background-color 0.2s;
     align-self: center;
-    margin-top: 40px;
+    margin-top: 20px; /* 半分 */
     position: relative;
 }
 
@@ -141,11 +139,11 @@ body {
 .next-button::before {
     content: "";
     position: absolute;
-    top: -20px;
-    width: 1100px;
-    height: 2px;
+    top: -10px; /* 半分 */
+    width: 550px; /* 半分 */
+    height: 1px;  /* 半分 */
     background-color: #52656d;
-    border-radius: 2px;
+    border-radius: 1px;
     left: 50%;
     transform: translateX(-50%);
 }
@@ -157,63 +155,63 @@ body {
 /* === レスポンシブ === */
 @media screen and (max-width: 1024px) {
     .modal-content {
-        padding: 15px 30px;
-        max-width: 90%;
+        padding: 7px 15px;
+        max-width: 45%;
     }
     .modal-header {
-        padding-top: 30px;
-        margin-bottom: 20px;
+        padding-top: 15px;
+        margin-bottom: 10px;
     }
     .result-title {
-        font-size: 42px;
+        font-size: 21px;
     }
     .section-label {
-        font-size: 24px;
+        font-size: 12px;
     }
     .user-answer-text,
     .content-text,
     .explanation-text {
-        font-size: 22px;
-        margin-left: 50px;
+        font-size: 11px;
+        margin-left: 25px;
     }
     .next-button {
-        max-width: 200px;
-        font-size: 18px;
-        margin-top: 30px;
+        max-width: 100px;
+        font-size: 9px;
+        margin-top: 15px;
     }
     .next-button::before {
-        width: 90%;
+        width: 45%;
     }
 }
 
 @media screen and (max-width: 768px) {
     .modal-content {
-        padding: 10px 20px;
+        padding: 5px 10px;
         width: 95%;
     }
     .modal-header {
-        padding-top: 20px;
-        margin-bottom: 15px;
+        padding-top: 10px;
+        margin-bottom: 7px;
     }
     .result-title {
-        font-size: 32px;
+        font-size: 16px;
     }
     .section-label {
-        font-size: 20px;
+        font-size: 10px;
     }
     .user-answer-text,
     .content-text,
     .explanation-text {
-        font-size: 18px;
-        margin-left: 20px;
+        font-size: 9px;
+        margin-left: 10px;
     }
     .next-button {
-        max-width: 150px;
-        font-size: 16px;
-        padding: 12px 0;
-        margin-top: 20px;
+        max-width: 75px;
+        font-size: 8px;
+        padding: 6px 0;
+        margin-top: 10px;
     }
     .next-button::before {
-        width: 95%;
+        width: 48%;
     }
 }

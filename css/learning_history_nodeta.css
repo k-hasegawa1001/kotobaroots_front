@@ -23,8 +23,6 @@ body {
     display: flex;
     justify-content: space-between;
     align-items: center;
-    height: 80px; /* 固定高さ */
-    flex-shrink: 0; /* 高さを固定 */
 }
 
 
@@ -33,24 +31,26 @@ body {
     margin: 0;
 }
 
+
+
 .header-controls i {
-    font-size: 32px;
-    margin-left: 25px;
+    font-size: 32px;   /* 上のCSSと同じ */
+    margin-left: 25px; /* 上のCSSと同じ */
     color: #49c0f8;
     cursor: pointer;
 }
 
+
 /* ===== 下線 ===== */
 .divider {
     border-bottom: 1px solid #52656D;
-    margin: 30px 0;
-    flex-shrink: 0;
+    margin: 10px ;
 }
 
 .thank-you-message {
-  font-size: 30px;
+  font-size: 35px;
   color: #dce6ec;
-  margin-top: 0;
+  margin-top: 100px;
   text-align: center; 
 }
 

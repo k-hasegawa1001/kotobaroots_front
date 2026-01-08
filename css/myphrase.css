@@ -6,20 +6,22 @@ body{
 .main-content {
     flex: 1;
     margin-left: 200px;
-    padding: 40px;
+    padding: 50px;
     background-color: #131f24;
 }
 
 
 .page-title {
-    font-size: 36px;
-    margin: 0 0 30px;
+    font-size: 40px;
+    margin: 0 0 35px;
+    font-weight: 700;
+    text-align: left;
 }
 
 .divider {
     width: 95%;
     border: 1px solid #52656d;
-    margin: 10px auto 30px;
+    margin: 20px auto 40px;
 }
 
 /* メインレイアウト（左：テーブル / 右：ボタン） */
@@ -27,7 +29,7 @@ body{
     display: flex;
     gap: 80px;  /* ← 300px → 80px にする */
     align-items: flex-start;
-    padding-left: 20px;
+    padding-left: 0 20px;
 }
 
 

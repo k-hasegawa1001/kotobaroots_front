@@ -5,52 +5,59 @@ body{
 .main-content {
     flex: 1;
     margin-left: 200px;
-    padding: 40px;
+    padding: 50px;
     background-color: #131f24;
-}
-
-
-.page-title {
-    font-size: 36px;
-    margin: 0 0 30px;
-}
-
-.divider {
-    width: 95%;
-    border: 1px solid #52656d;
-    margin: 10px auto 30px;
-}
-
-/* ===== フレーズ 0 件のときのメッセージ ===== */
-.empty-message {
-    text-align: center;
-    margin-top: 60px;
     color: #dce6ec;
 }
 
+/* ===== タイトル ===== */
+.page-title {
+    font-size: 40px;
+    margin: 0 0 35px;
+    font-weight: 700;
+    text-align: left;
+}
+
+/* ===== 仕切り線 ===== */
+.divider {
+    width: 95%;
+    border: 1px solid #52656d;
+    margin: 20px auto 40px;
+}
+
+/* ===== 0 件メッセージ ===== */
+.empty-message {
+    text-align: center;
+    margin-top: 80px;
+    color: #dce6ec;
+    padding: 0 20px;
+}
+
 .empty-message h3 {
-    font-size: 28px;
-    margin-bottom: 60px;
+    font-size: 34px;
+    margin-bottom: 50px;
+    font-weight: 700;
 }
 
 .empty-message p {
-    font-size: 17px;
+    font-size: 22px;
     color: #c7d4da;
-    line-height: 1.7;
-    margin-bottom: 40px;
+    line-height: 1.9;
+    margin-bottom: 50px;
 }
 
-/* 追加ボタン（中央表示用の調整） */
+/* ===== 追加ボタン ===== */
 .empty-message .add-btn {
     background-color: #49c0f8;
     color: #131f24;
-    width: 150px;
-    padding: 12px 0;
-    font-size: 18px;
+    width: 200px;
+    padding: 10px 0;
+    font-size: 28px;
     border-radius: 20px;
     border: none;
     cursor: pointer;
     font-weight: bold;
+    transition: background-color 0.2s;
 }
 
 .add-btn:hover {
@@ -58,64 +65,96 @@ body{
 }
 
 
-/* ===============================
-   スマホ・タブレット対応
-   画面幅 768px 以下
-=============================== */
-@media screen and (max-width: 768px) {
+/* =========================================
+   画面幅 1024px 以下（タブレット）
+========================================= */
+@media screen and (max-width: 1024px) {
 
-    /* メインコンテンツの左右余白を調整 */
     .main-content {
-        margin-left: 0; /* サイドバーが縦に来る場合に対応 */
-        padding: 20px;
+        margin-left: 0;
+        padding: 35px;
     }
 
     .page-title {
-        font-size: 28px;
+        font-size: 38px;
         text-align: center;
-        margin-bottom: 20px;
+        margin-bottom: 25px;
     }
 
     .divider {
         width: 100%;
-        margin: 10px 0 30px;
+        margin: 15px 0 35px;
     }
 
-    /* フレーズ0件メッセージを少し小さく */
     .empty-message {
-        margin-top: 40px;
-        padding: 0 10px;
+        margin-top: 60px;
+        padding: 0 15px;
     }
 
     .empty-message h3 {
-        font-size: 22px;
+        font-size: 28px;
         margin-bottom: 30px;
-        line-height: 1.4;
     }
 
     .empty-message p {
-        font-size: 15px;
-        line-height: 1.6;
-        margin-bottom: 30px;
+        font-size: 18px;
+        margin-bottom: 35px;
     }
 
-    /* ボタンを少し小さく */
     .empty-message .add-btn {
-        width: 140px;
-        font-size: 16px;
-        padding: 10px 0;
-        border-radius: 16px;
+        width: 180px;
+        padding: 15px 0;
+        font-size: 22px;
     }
 }
 
 
-/* ===============================
-   さらに画面幅 480px 以下（iPhone SE等）
-=============================== */
+/* =========================================
+   画面幅 768px 以下（スマホ大）
+========================================= */
+@media screen and (max-width: 768px) {
+
+    .main-content {
+        margin-left: 0;
+        padding: 25px;
+    }
+
+    .page-title {
+        font-size: 30px;
+        text-align: center;
+    }
+
+    .empty-message {
+        margin-top: 45px;
+        padding: 0 10px;
+    }
+
+    .empty-message h3 {
+        font-size: 24px;
+        margin-bottom: 25px;
+    }
+
+    .empty-message p {
+        font-size: 16px;
+        margin-bottom: 30px;
+        line-height: 1.7;
+    }
+
+    .empty-message .add-btn {
+        width: 160px;
+        font-size: 18px;
+        padding: 12px 0;
+    }
+}
+
+
+/* =========================================
+   画面幅 480px 以下（スマホ小）
+========================================= */
 @media screen and (max-width: 480px) {
 
     .page-title {
-        font-size: 24px;
+        font-size: 26px;
     }
 
     .empty-message h3 {
@@ -123,12 +162,12 @@ body{
     }
 
     .empty-message p {
-        font-size: 14px;
+        font-size: 15px;
     }
 
     .empty-message .add-btn {
-        width: 130px;
-        font-size: 15px;
-        padding: 9px 0;
+        width: 140px;
+        font-size: 16px;
+        padding: 10px 0;
     }
 }

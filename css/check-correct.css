@@ -1,0 +1,108 @@
+/* 全体背景と文字色 */
+
+/* モーダル全体の暗幕 */
+.modal-overlay {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(0, 0, 0, 0.6);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    z-index: 1000;
+}
+
+/* モーダルボックス */
+.modal-box {
+    background-color: #1c2a2f;
+    padding: 25px 30px;
+    width: 90%;
+    height: 500px;
+    max-width: 750px;
+    border-radius: 12px;
+
+    color: #dce6ec;
+    box-shadow: 0px 4px 12px rgba(0, 0, 0, 0.4);
+
+    position: relative;  /* ボタンを絶対配置するため */
+    display: block;      /* flexは解除 */
+
+    /* ここで枠線を追加 */
+    border: 1px solid #5A6A71;  /* 線の太さと色を指定 */
+}
+
+/* モーダルタイトル（正解・不正解） */
+.modal-title {
+    text-align: center;
+    font-size: 40px;
+    font-weight: 700;
+    margin-top: -5px;
+    margin-bottom: 5px;
+    color: #49c0f8;
+}
+
+/* 中のコンテンツ部分 */
+.modal-content {
+    margin-bottom: 0px;
+    padding-left: 50px;
+}
+
+/* 「答え」「解説」の見出し */
+.modal-section-title {
+    font-size: 16px;
+    font-weight: 700;
+    margin: 40px 0 6px 0;
+    color: #dce6ec;
+}
+
+/* JSで注入される本文テキスト */
+#answer,
+#explanation {
+    font-size: 15px;
+    line-height: 1.6;
+    color: #dce6ec;
+}
+
+/* 次へボタン */
+.modal-next-btn {
+    display: block;
+    text-decoration: none;
+    text-align: center;
+
+
+    background-color: #49c0f8;
+    color: #131f24;
+
+    padding: 12px 0;
+    width: 170px;
+    border-radius: 18px;
+
+    font-size: 19px;
+    font-weight: 700;
+
+    position: absolute;     /* 下端固定用 */
+    bottom: 10px;           /* 下端からの距離を調整 */
+    left: 50%;              /* 横中央 */
+    transform: translateX(-50%);
+
+    transition: background-color 0.3s ease;
+
+}
+
+.modal-next-btn:hover {
+    background-color: #36a8d6;
+}
+
+/* タイトル下の横ライン */
+/* 横のボーダーライン */
+.title-line {
+    position: absolute;      /* ボタンと同じ基準で配置 */
+    bottom:75px;            /* ボタン上端からの距離を調整（ボタンのbottom + ライン間隔） */
+    left: 0px;              /* モーダルのpaddingに合わせる */
+    right: 0px;             /* モーダルのpaddingに合わせる */
+    border: none;
+    border-bottom: 1px solid #5A6A71; /* 線の色と太さ */
+    margin: 0;
+}

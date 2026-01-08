@@ -3,16 +3,14 @@
 body {
     margin: 0;
     padding: 0;
-    background-color: #131f24; /* 画像の暗い背景色 */
+    background-color: #131f24;
     font-family: 'Noto Sans JP', sans-serif;
-    color: #dce6ec; /* 明るい文字色 */
-    
-    /* 画面中央寄せの設定 */
+    color: #dce6ec;
     display: flex;
     flex-direction: column;
     justify-content: center;
     align-items: center;
-    min-height: 100vh; /* 画面全体を使用 */
+    min-height: 100vh;
     text-align: center;
 }
 
@@ -22,63 +20,58 @@ body {
     align-items: center;
     justify-content: center;
     width: 100%;
-    max-width: 600px;
+    max-width: 300px; /* 半分 */
 }
 
-/* === ✖ ボタンのスタイルを追加 === */
+/* === ✖ ボタン === */
 .close-button {
     position: fixed;
-    top: 150px;
-    left: 800px;
-    width: 70px;
-    height: 70px;
+    top: 75px;   /* 半分 */
+    left: 400px; /* 半分 */
+    width: 35px; /* 半分 */
+    height: 35px; /* 半分 */
     background: none;
     border: none;
     cursor: pointer;
     z-index: 10;
 }
 
-/* X の線（左右） */
+/* X の線 */
 .close-button::before,
 .close-button::after {
     content: "";
     position: absolute;
     top: 50%;
     left: 50%;
-    width: 60px;              /* X の長さ */
-    height: 2px;              /* 線の細さ（ここが重要） */
-    background-color: #37464f; /* 薄いグレー */
+    width: 30px;             /* 半分 */
+    height: 1px;              /* 半分 */
+    background-color: #787f83;
     transform-origin: center;
-    opacity: 0.7;             /* うっすらに見せる */
+    opacity: 0.35;           /* 半分に薄め */
 }
 
-/* 左上→右下の線 */
 .close-button::before {
     transform: translate(-50%, -50%) rotate(45deg);
 }
-
-/* 右上→左下の線 */
 .close-button::after {
     transform: translate(-50%, -50%) rotate(-45deg);
 }
 
-
-
-/* === メッセージスタイル === */
+/* === メッセージタイトル === */
 .message-title {
-    font-size: 4em;
+    font-size: 2em; /* 半分 */
     font-weight: 700;
-    margin-bottom: 50px;
+    margin-bottom: 25px; /* 半分 */
 }
 
 /* === 次へボタン === */
 .next-button {
-    padding: 25px 70px;
-    font-size: 2.0em;
+    padding: 12.5px 35px; /* 半分 */
+    font-size: 1em;       /* 半分 */
     font-weight: bold;
     border: none;
-    border-radius: 20px;
-    background-color: #49c0f8; /* 画像の青色のボタン */
+    border-radius: 10px;  /* 半分 */
+    background-color: #49c0f8;
     color: #131f24;
     cursor: pointer;
     transition: background-color 0.3s ease;
@@ -92,32 +85,30 @@ body {
 /* === iPad対応 (768px〜1024px) === */
 /* ========================================================= */
 @media (max-width: 1024px) and (min-width: 601px) {
-    
-        
+
     .close-button {
-        top: 70px;
+        top: 35px; /* 半分 */
         left: auto;
-        right: 40px;
-        width: 35px;
-        height: 35px;
+        right: 20px; /* 半分 */
+        width: 17.5px; /* 半分 */
+        height: 17.5px; /* 半分 */
     }
 
     .close-button::before,
     .close-button::after {
-        width: 22px;
-        height: 2px;
+        width: 11px;  /* 半分 */
+        height: 1px;  /* 半分 */
     }
 
-
     .message-title {
-        font-size: 3.5em; /* タイトルを縮小 */
-        margin-bottom: 40px;
+        font-size: 1.75em; /* 半分 */
+        margin-bottom: 20px; /* 半分 */
     }
 
     .next-button {
-        padding: 20px 60px; /* パディングを調整 */
-        font-size: 1.8em; /* ボタンのテキストを縮小 */
-        border-radius: 15px; /* 角丸を調整 */
+        padding: 10px 30px; /* 半分 */
+        font-size: 0.9em;  /* 半分 */
+        border-radius: 7.5px; /* 半分 */
     }
 }
 
@@ -125,37 +116,34 @@ body {
 /* === スマホ対応 (600px以下) === */
 /* ========================================================= */
 @media (max-width: 600px) {
-    
 
     .close-button {
-        top: 50px;
-        right: 20px;
+        top: 25px;   /* 半分 */
+        right: 10px; /* 半分 */
         left: auto;
-        width: 30px;
-        height: 30px;
+        width: 15px; /* 半分 */
+        height: 15px; /* 半分 */
     }
 
     .close-button::before,
     .close-button::after {
-        width: 18px;
-        height: 1.5px; /* スマホは細め */
-        opacity: 0.6;
+        width: 9px;      /* 半分 */
+        height: 0.75px;  /* 半分 */
+        opacity: 0.3;    /* 半分 */
     }
 
-
-
     .message-title {
-        font-size: 2.5em; /* タイトルを大幅に縮小 */
-        margin-bottom: 30px;
+        font-size: 1.25em; /* 半分 */
+        margin-bottom: 15px; /* 半分 */
     }
 
     .next-button {
-        padding: 15px 40px; /* パディングをさらに縮小 */
-        font-size: 1.5em; /* ボタンのテキストを調整 */
-        border-radius: 10px;
-        /* スマホで横幅いっぱいに広げたい場合は以下を使用
-        width: 80%;
-        max-width: 300px;
+        padding: 7.5px 20px; /* 半分 */
+        font-size: 0.75em;   /* 半分 */
+        border-radius: 5px;  /* 半分 */
+        /* 幅を広げる場合は
+        width: 40%;
+        max-width: 150px;
         */
     }
 }

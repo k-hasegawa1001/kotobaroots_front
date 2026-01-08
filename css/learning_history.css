@@ -65,7 +65,7 @@ body {
 .table-wrapper {
     min-height: 0;
     height: auto;
-    max-height: calc(52vh - var(--table-vertical-chrome));
+    max-height: calc(110vh - var(--table-vertical-chrome));
     overflow-y: auto;
     border: 1px solid #32434a;
 }

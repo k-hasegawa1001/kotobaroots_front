@@ -20,10 +20,10 @@ body {
     flex-direction: column;
     align-items: center;
     width: 90%; 
-    max-width: 1100px;
-    height: 100vh;
-    padding-top: 30vh;
-    padding-bottom: 50px;
+    max-width: 550px; /* 半分 */
+    height: 50vh;      /* 半分 */
+    padding-top: 30vh; /* 半分 */
+    padding-bottom: 25px;
     box-sizing: border-box;
     justify-content: flex-start; 
 }
@@ -31,10 +31,10 @@ body {
 /* === ✖ ボタンのスタイル === */
 .close-button {
     position: fixed;
-    top: 150px;
-    left: 800px;
-    width: 70px;
-    height: 70px;
+    top: 75px; /* 半分 */
+    left: 400px; /* 半分 */
+    width: 35px; /* 半分 */
+    height: 35px; /* 半分 */
     background: none;
     border: none;
     cursor: pointer;
@@ -47,9 +47,9 @@ body {
     position: absolute;
     top: 50%;
     left: 50%;
-    width: 60px;
-    height: 2px;
-    background-color: #37464f;
+    width: 30px; /* 半分 */
+    height: 1px;  /* 半分 */
+    background-color: #787f83;
     transform-origin: center;
     opacity: 0.7;
 }
@@ -65,23 +65,23 @@ body {
 /* 英語の単語 */
 .question {
     color: #dce6ec;
-    font-size: 55px;
+    font-size: 27.5px; /* 半分 */
     margin-top: 0; 
-    margin-bottom: 80px;
+    margin-bottom: 40px; /* 半分 */
 }
 
 /* === 入力欄 === */
 .answer-input {
-    width: 90vw;
-    max-width: 1100px;
-    padding: 20px;
-    font-size: 30px;
-    border-radius: 6px;
+    width: 45vw; /* 半分 */
+    max-width: 550px; /* 半分 */
+    padding: 10px; /* 半分 */
+    font-size: 15px; /* 半分 */
+    border-radius: 3px; /* 半分 */
     border: 1px solid #37464f;
     background-color: #202f36;
     color: #dce6ec;
     outline: none;
-    margin-bottom: 500px; 
+    margin-bottom: 250px; /* 半分 */
 }
 
 /* === ボタン配置（画面幅いっぱいで最大間隔） === */
@@ -89,22 +89,22 @@ body {
     display: flex;
     justify-content: space-between;
     align-items: center;
-    width: 100vw;
-    max-width: 100%;
-    padding: 0 550px;
-    box-sizing: border-box;
+    width: 100%;
+    max-width: 700px;
+    padding: 0 20px; /* 横の余白を適度に */
+    flex-wrap: wrap; /* 小さい画面では横幅が足りない時に折り返す */
 }
 
 /* スキップボタン（左） */
 .skip-btn {
     background: none;
     color: #dce6ec;
-    border: 2px solid #37464f;   /* 少し太めに */
-    padding: 22px 0;             /* 縦幅を大きく */
-    border-radius: 25px;
-    font-size: 40px;             /* 文字サイズを大きく */
+    border: 2px solid #37464f;
+    padding: 11px 0; /* 半分 */
+    border-radius: 12.5px; /* 半分 */
+    font-size: 20px; /* 半分 */
     cursor: pointer;
-    width: 300px;                /* 横幅を少し広く */
+    width: 150px; /* 半分 */
     transition: background-color 0.2s;
 }
 
@@ -116,13 +116,13 @@ body {
 .send-btn {
     background: #49c0f8;
     color: #131f24;
-    padding: 22px 0;             /* 縦幅を大きく */
+    padding: 11px 0; /* 半分 */
     border: none;
-    border-radius: 25px;
-    font-size: 40px;             /* 文字サイズを大きく */
+    border-radius: 12.5px; /* 半分 */
+    font-size: 20px; /* 半分 */
     font-weight: bold;
     cursor: pointer;
-    width: 300px;                /* 横幅を少し広く */
+    width: 150px; /* 半分 */
     transition: background-color 0.2s;
 }
 
@@ -133,22 +133,22 @@ body {
 /* === iPad対応 === */
 @media (max-width: 1024px) {
     .button-area {
-        padding: 0 200px; /* 左右余白を調整して画面内に収める */
+        padding: 0 100px; /* 半分 */
     }
 }
 
 /* === タブレット縦向き・大きめスマホ === */
 @media (max-width: 768px) {
     .button-area {
-        padding: 0 100px; /* 左右余白を減らす */
+        padding: 0 50px; /* 半分 */
     }
 }
 
 /* === スマホ対応 === */
 @media (max-width: 480px) {
     .button-area {
-        padding: 0 20px; /* 画面端に収まるよう調整 */
-        overflow-x: auto; /* 横スクロールで収める */
-        -webkit-overflow-scrolling: touch; /* スマホで滑らかスクロール */
+        padding: 0 10px; /* 半分 */
+        overflow-x: auto;
+        -webkit-overflow-scrolling: touch;
     }
 }

@@ -5,228 +5,193 @@ body {
     margin: 0;
     padding: 0;
     font-family: 'Noto Sans JP', sans-serif;
-    background: transparent; /* ← 背景なし。下の本来の画面が見える */
+    background: transparent;
     color: #dce6ec;
 }
 
-/* === 1. モーダルオーバーレイ (画面全体を覆う半透明の背景) === */
+/* === 1. モーダルオーバーレイ === */
 .modal-overlay {
     position: fixed;
     top: 0;
     left: 0;
     width: 100%;
     height: 100%;
-    
-    /* 画面全体を覆い、背景を暗くする */
-    background-color: rgba(0, 0, 0, 0.55); 
-    
-    /* 中央寄せの設定 */
+    background-color: rgba(0, 0, 0, 0.55);
     display: flex;
     justify-content: center;
     align-items: center;
     z-index: 1000;
 }
 
-/* === 2. モーダルコンテンツ (ポップアップ本体) === */
+/* === 2. モーダル本体（半分サイズ） === */
 .modal-content {
-    /* 画像のポップアップの暗い背景色 */
-    background-color: #131f24; 
-    border-radius: 15px;
-    
-    /* コンテンツの縦並びと幅の確保 */
+    background-color: #131f24;
+    border-radius: 7.5px;            /* 半分 */
     display: flex;
     flex-direction: column;
     width: 95%;
-    max-width: 1100px; /* ポップアップの最大幅を調整 */
-    height: auto;
-    
-    /* 上下の内側の余白 */
-    padding: 20px 40px; 
-    padding-bottom: 50px;
-    box-shadow: 0 5px 20px rgba(0, 0, 0, 0.5);
-    position: relative; 
-}
-
-/* モーダルヘッダー全体 */
-.modal-header {
-    position: relative;         /* 子要素の絶対配置を許可 */
-    width: 100%;
-    margin-bottom: 30px;
-    display: flex;
-    justify-content: center;    /* タイトルを中央に */
-    align-items: center;
-    padding-top: 40px;
-}
-
-/* 正解タイトルを中央に */
-.result-title {
-    font-size: 52px;
-    font-weight: 700;
-    color: #49c0f8;
-    margin: 0;
-    text-align: center;
-}
-
-/* --- ボディコンテンツ (問題、答え、解説) --- */
-.modal-body {
-    text-align: left; /* テキストを左寄せに */
-    margin-bottom: 30px;
-}
-
-.section-label {
-    font-size: 28px;
-    font-weight: 700;
-    color: #dce6ec;
-    margin-bottom: 5px;
-}
-
-.content-text {
-    font-size: 27px;
-    font-weight: 400;
-    color: #dce6ec;
-    margin-top: 11px;
-    margin-bottom: 15px;
-    margin-left: 70px;
-}
-
-.explanation-text {
-    font-size: 27px;
-    line-height: 1.6;
-    color: #dce6ec; /* 解説は少し薄い色に */
-    margin-left: 70px;
-
-}
-
-/* === 解説だけスクロール可能にする === */
-.explanation-text {
-    max-height: 300px;      /* スクロール領域の高さ（調整OK） */
-    overflow-y: auto;       /* 縦スクロール */
-    padding-right: 15px;    /* スクロールバーで文字が隠れない */
-}
-
-/* スクロールバー装飾（任意） */
-.explanation-text::-webkit-scrollbar {
-    width: 14px;
-}
-
-.explanation-text::-webkit-scrollbar-track {
-    background: #1e2a30;
-    border-radius: 10px;
-}
-
-.explanation-text::-webkit-scrollbar-thumb {
-    background: #37464f;
-    border-radius: 10px;
-}
-
-
-
-/* --- 次へボタン --- */
-.next-button {
-    width: 100%;
-    max-width: 250px;
-
-    background: #49c0f8;
-    color: #131f24;
-    padding: 15px 0;
-    border: none;
-    border-radius: 10px;
-    font-size: 35px;
-    font-weight: bold;
-    cursor: pointer;
-    transition: background-color 0.2s;
-
-    align-self: center;
-    margin-top: 40px; /* 線の分だけ少し広げる */
+    max-width: 550px;               /* 半分サイズ */
+    padding: 10px 20px;             /* 半分 */
+    padding-bottom: 25px;           /* 半分 */
+    box-shadow: 0 2.5px 10px rgba(0,0,0,0.5);
     position: relative;
 }
 
-/* ここで線を追加 */
+/* === ヘッダー === */
+.modal-header {
+    width: 100%;
+    margin-bottom: 15px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding-top: 20px; /* 半分 */
+}
+
+/* タイトル */
+.result-title {
+    font-size: 26px;   /* 半分 */
+    font-weight: 700;
+    color: #49c0f8;
+    text-align: center;
+}
+
+.result-title.wrong {
+    color: #ee5555;
+}
+
+/* === ボディ === */
+.modal-body {
+    text-align: left;
+    margin-bottom: 15px;       /* 半分 */
+}
+
+.section-label {
+    font-size: 14px;           /* 半分 */
+    font-weight: 700;
+    margin-bottom: 2px;        /* 半分 */
+}
+
+.content-text {
+    font-size: 14px;           /* 半分 */
+    margin-left: 35px;         /* 半分 */
+    margin-bottom: 7px;
+}
+
+.user-answer-text {
+    font-size: 14px;
+    margin-left: 35px;
+}
+
+/* 解説 */
+.explanation-text {
+    font-size: 14px;           /* 半分 */
+    line-height: 1.6;
+    margin-left: 35px;
+    max-height: 150px;         /* 半分 */
+    overflow-y: auto;
+    padding-right: 7px;        /* 半分 */
+}
+
+/* スクロールバー */
+.explanation-text::-webkit-scrollbar {
+    width: 7px;
+}
+.explanation-text::-webkit-scrollbar-track {
+    background: #1e2a30;
+    border-radius: 5px;
+}
+.explanation-text::-webkit-scrollbar-thumb {
+    background: #37464f;
+    border-radius: 5px;
+}
+
+/* === 次へボタン === */
+.next-button {
+    width: 100%;
+    max-width: 125px;          /* 半分 */
+    background: #49c0f8;
+    color: #131f24;
+    padding: 7px 0;            /* 半分 */
+    border: none;
+    border-radius: 5px;        /* 半分 */
+    font-size: 17px;           /* 半分 */
+    font-weight: bold;
+    cursor: pointer;
+    transition: background-color 0.2s;
+    align-self: center;
+    margin-top: 20px;          /* 半分 */
+    position: relative;
+}
+
+/* 区切り線 */
 .next-button::before {
     content: "";
     position: absolute;
-    top: -20px;
-
-    width: 1100px; /* ← これが線の長さ（調整自由） */
-    height: 2px;
+    top: -10px;                 /* 半分 */
+    width: 550px;               /* 半分サイズ */
+    height: 1px;                /* 半分 */
     background-color: #52656d;
-    border-radius: 2px;
-
+    border-radius: 1px;
     left: 50%;
-    transform: translateX(-50%); /* ← 中央基準で配置 */
+    transform: translateX(-50%);
 }
-
 
 .next-button:hover {
     background-color: #36a8d6;
 }
 
-/* === レスポンシブ追加：モーダル === */
+/* === レスポンシブ === */
 @media screen and (max-width: 1024px) {
     .modal-content {
-        padding: 15px 30px;
-        max-width: 90%;
-    }
-    .modal-header {
-        padding-top: 30px;
-        margin-bottom: 20px;
+        padding: 7px 15px;
+        max-width: 45%;
     }
     .result-title {
-        font-size: 42px;
+        font-size: 21px;
     }
     .section-label {
-        font-size: 24px;
+        font-size: 12px;
     }
     .content-text,
+    .user-answer-text,
     .explanation-text {
-        font-size: 22px;
-        margin-left: 50px;
+        font-size: 11px;
+        margin-left: 25px;
     }
     .next-button {
-        max-width: 200px;
-        font-size: 18px;
-        margin-top: 30px;
+        max-width: 100px;
+        font-size: 9px;
+        margin-top: 15px;
     }
     .next-button::before {
-        width: 90%;
-    }
-    .phrase-remove-btn {
-        padding: 14px 40px;
-        font-size: 18px;
+        width: 45%;
     }
 }
 
 @media screen and (max-width: 768px) {
     .modal-content {
-        padding: 10px 20px;
+        padding: 5px 10px;
         width: 95%;
-    }
-    .modal-header {
-        padding-top: 20px;
-        margin-bottom: 15px;
     }
     .result-title {
-        font-size: 32px;
+        font-size: 16px;
     }
     .section-label {
-        font-size: 20px;
+        font-size: 10px;
     }
     .content-text,
+    .user-answer-text,
     .explanation-text {
-        font-size: 18px;
-        margin-left: 20px;
+        font-size: 9px;
+        margin-left: 10px;
     }
     .next-button {
-        max-width: 150px;
-        font-size: 16px;
-        padding: 12px 0;
-        margin-top: 20px;
+        max-width: 75px;
+        font-size: 8px;
+        padding: 6px 0;
+        margin-top: 10px;
     }
     .next-button::before {
-        width: 95%;
-    }
-    .phrase-remove-btn {
-        padding: 12px 30px;
-        font-size: 16px;
+        width: 48%;
     }
 }

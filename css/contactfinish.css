@@ -11,56 +11,10 @@ body {
 .container {
   display: flex;
   height: 100vh;
-  zoom: 2.1; /* PC向け拡大 */
+  zoom: 1.0; /* ★★★ 75% → 100% 補正（2.1 × 0.75 = 1.575） ★★★ */
 }
 
-/* === サイドバー === */
-.sidebar {
-  position: fixed;
-  width: 200px;
-  height: 100vh;
-  background-color: #131f24;
-  border-right: 1px solid #52656d;
-  padding: 20px 0;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-}
 
-.title {
-  font-size: 24px;
-  margin-bottom: 40px;
-}
-
-.menu {
-  display: flex;
-  flex-direction: column;
-  gap: 20px;
-  width: 100%;
-  align-items: center;
-}
-
-.menu-item {
-  width: 80%;
-  padding: 10px 0;
-  background: none;
-  border: none;
-  color: #dce6ec;
-  font-size: 16px;
-  border-radius: 20px;
-  cursor: pointer;
-  transition: 0.2s;
-}
-
-.menu-item.active {
-  background-color: #202536;
-  border: 1.5px solid #3f85a7;
-  color: #49c0f8;
-}
-
-.menu-item:hover {
-  background-color: #202536;
-}
 
 /* === メインコンテンツ === */
 .main-content {
@@ -84,15 +38,16 @@ body {
   font-size: 30px;
   color: #dce6ec;
   margin-top: 0;
-  text-align: center; 
+  text-align: center;
 }
 
 /* === スマホ対応（max-width: 600px） === */
 @media (max-width: 600px) {
+
   .container {
     flex-direction: column;
     height: auto;
-    zoom: 1; /* スマホでは拡大を解除 */
+    zoom: 1; /* ← スマホはブラウザ拡大率と関係ないので元まま */
   }
 
   .sidebar {
@@ -132,23 +87,21 @@ body {
   .page-title {
     font-size: 28px;
     margin-bottom: 20px;
-    /* ★★★ 変更: 中央寄せを無視して左寄せに戻す ★★★ */
     align-self: flex-start;
-    width: calc(100% - 30px); /* padding 15px*2 を引いた幅 */
+    width: calc(100% - 30px);
   }
 
   .divider {
-    /* ★★★ 変更: 中央寄せを無視して左寄せに戻す ★★★ */
     align-self: flex-start;
-    width: calc(100% - 30px); /* padding 15px*2 を引いた幅 */
+    width: calc(100% - 30px);
   }
-
 }
 
 /* === iPad対応（横幅600〜1024px） === */
 @media (min-width: 601px) and (max-width: 1024px) {
+
   .container {
-    zoom: 1.5; /* iPadでは少し拡大 */
+    zoom: 1.5; /* ← ここは元のまま（iPadはPC拡大率の影響を受けない） */
   }
 
   .main-content {
@@ -157,15 +110,12 @@ body {
 
   .page-title {
     font-size: 32px;
-    /* ★★★ 変更: 中央寄せを無視して左寄せに戻す ★★★ */
     align-self: flex-start;
-    width: calc(100% - 50px); /* padding 25px*2 を引いた幅 */
+    width: calc(100% - 50px);
   }
 
   .divider {
-    /* ★★★ 変更: 中央寄せを無視して左寄せに戻す ★★★ */
     align-self: flex-start;
-    width: calc(100% - 50px); /* padding 25px*2 を引いた幅 */
+    width: calc(100% - 50px);
   }
-
 }

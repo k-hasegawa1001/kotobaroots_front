@@ -1,7 +1,8 @@
 /* === 画面全体の薄暗い背景 === */
 body {
-    background: transparent; /* ← 背景なし。下の本来の画面が見える */
+    background: transparent;
 }
+
 .confirm-overlay {
     position: fixed;
     top: 0;
@@ -15,42 +16,42 @@ body {
     z-index: 999;
 }
 
-/* === ポップアップ本体 === */
+/* === ポップアップ本体（全サイズを半分） === */
 .confirm-box {
     background: #131f24;
-    padding: 45px 100px; /* ← 少し大きく */
-    border-radius: 18px; /* ← ほんの少し大きく */
-    width: 92%; /* ← わずかに広げた */
-    max-width: 600px; /* ← 全体サイズUP */
+    padding: 22px 50px;              /* 45px → 22 / 100px → 50 */
+    border-radius: 9px;              /* 18px → 9px */
+    width: 92%;
+    max-width: 300px;                /* 600px → 300px（半分） */
     text-align: center;
-    box-shadow: 0px 4px 24px rgba(0,0,0,0.55);
+    box-shadow: 0px 4px 20px rgba(0,0,0,0.5);
     border: 1px solid #2c3a40;
 }
 
-/* メッセージ */
+/* メッセージ（半分） */
 .confirm-message {
-    font-size: 32px; /* ← 少し大きく */
+    font-size: 16px;                 /* 32px → 16px */
     color: #dce6ec;
-    margin-top: 5px;
-    margin-bottom: 50px; /* ← わずかに広げた */
+    margin-top: 3px;
+    margin-bottom: 25px;             /* 50px → 25px */
 }
 
 /* ボタン配置 */
 .confirm-buttons {
     display: flex;
     justify-content: space-between;
-    gap: 18px; /* ← 少し広く */
+    gap: 9px;                         /* 18px → 9px */
 }
 
-/* キャンセルボタン */
+/* キャンセルボタン（半分） */
 .cancel-btn {
     flex: 1;
     background: none;
     color: #dce6ec;
-    padding: 16px 34px; /* ← 少し大きく */
-    border-radius: 12px;
-    font-size: 35px; /* ← 2px大きく */
-    border: 2px solid #37464f;
+    padding: 8px 17px;                /* 16px/34px → 8px/17px */
+    border-radius: 6px;               /* 12px → 6px */
+    font-size: 18px;                  /* 35px → 18px */
+    border: 1px solid #37464f;        /* 細さも下げた */
     cursor: pointer;
     transition: 0.2s;
 }
@@ -59,14 +60,14 @@ body {
     background: #252036;
 }
 
-/* 削除ボタン */
+/* 削除ボタン（半分） */
 .delete-btn {
     flex: 1;
     background: #ee5555;
     color: #131f24;
-    padding: 16px 34px; /* ← 少し大きく */
-    border-radius: 12px;
-    font-size: 35px; /* ← 2px大きく */
+    padding: 8px 17px;                /* 同じく半分 */
+    border-radius: 6px;
+    font-size: 18px;                  /* 半分 */
     font-weight: 700;
     border: none;
     cursor: pointer;
@@ -76,42 +77,43 @@ body {
 .delete-btn:hover {
     background: #db493f;
 }
-/* === レスポンシブ追加：confirm系 === */
+
+/* === レスポンシブ（同じ割合で半分） === */
 @media screen and (max-width: 1024px) {
     .confirm-box {
-        padding: 35px 60px;
-        max-width: 450px;
+        padding: 17px 30px;
+        max-width: 225px;             /* 450 → 半分 */
     }
     .confirm-message {
-        font-size: 32px;
-        margin-bottom: 25px;
+        font-size: 16px;
+        margin-bottom: 12px;
     }
     .cancel-btn,
     .delete-btn {
-        font-size: 28px;
-        padding: 14px 28px;
+        font-size: 14px;
+        padding: 7px 14px;
     }
     .confirm-buttons {
-        gap: 14px;
+        gap: 7px;
     }
 }
 
 @media screen and (max-width: 768px) {
     .confirm-box {
-        padding: 25px 30px;
-        width: 90%;
+        padding: 14px 20px;
+        width: 88%;
     }
     .confirm-message {
-        font-size: 24px;
-        margin-bottom: 20px;
+        font-size: 14px;
+        margin-bottom: 10px;
     }
     .cancel-btn,
     .delete-btn {
-        font-size: 20px;
-        padding: 12px 20px;
+        font-size: 14px;
+        padding: 6px 12px;
     }
     .confirm-buttons {
         flex-direction: column;
-        gap: 12px;
+        gap: 8px;
     }
 }

@@ -1,0 +1,77 @@
+body {
+    background-color: #131f24;
+    color: #dce6ec;
+    font-family: sans-serif;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+    margin: 0;
+    position: relative;
+}
+
+.container {
+    text-align: center;
+}
+
+input[type="email"] {
+    width: 290px;
+    padding: 12px;
+    border-radius: 9px;
+    border: 2px solid #37464f;
+    background-color: #202f36;
+    color: #dce6ec;
+    font-size: 14px;
+}
+
+input[type="email"]::placeholder {
+    color: #b2babe;
+    font-size: 14px; /* メール専用 */
+}
+
+/* パスワード入力欄のデザイン */
+input[type="password"] {
+    width: 290px;
+    padding: 12px;
+    border-radius: 9px;
+    border: 2px solid #37464f;
+    background-color: #202f36;
+    color: #dce6ec;
+    font-size: 14px;
+}
+
+/* パスワードのプレースホルダー文字色 */
+input[type="password"]::placeholder {
+    color: #b2babe;
+    font-size: 14px; /* メールと同じサイズ */
+}
+
+
+button {
+    background-color: #49c0f8;
+    color: #131f24;
+    border: none;
+    padding: 10px 20px;
+    border-radius: 20px;
+    cursor: pointer;
+    font-size: 16px;
+    width: 310px;
+    font-weight: 700;
+}
+
+button:hover {
+    background-color: #36a8d6; /* 水色ホバー */
+}
+
+/* パスワード忘れリンク */
+p a {
+    color: #dce6ec;
+    text-decoration: underline; /* ← 常に下線を表示 */
+    font-size: 18px;
+}
+
+p a:hover {
+    text-decoration: underline;
+    color: #a4a9aa;
+}

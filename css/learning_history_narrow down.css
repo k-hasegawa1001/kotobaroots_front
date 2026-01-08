@@ -30,11 +30,15 @@ body, html {
     padding: 30px 25px;
     box-shadow: 0 5px 20px rgba(0,0,0,0.5);
     position: absolute;
+
+    /* ★★ 全体を半分に縮小 ★★ */
+    transform: scale(0.5);
+    transform-origin: top right; /* 右上を基準に縮小 */
 }
 
-/* 右上に固定 */
+/* 右上に固定（縮小後も位置キープ） */
 .modal-content.right-top {
-    top: 200px;
+    top: 100px;
     right: 100px;
 }
 
@@ -76,7 +80,7 @@ body, html {
     background-color: #2f4a55;
 }
 
-/* レスポンシブ */
+/* ===== レスポンシブ ===== */
 @media screen and (max-width: 768px) {
     .modal-content.right-top {
         width: 90%;

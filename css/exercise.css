@@ -1,0 +1,60 @@
+body {
+    margin: 0;
+    font-family: "Noto Sans JP", sans-serif;
+    background-color: #131f24;
+    color: #dce6ec;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+}
+
+/* ボタンエリアを画面下に固定 */
+.button-area {
+    position: fixed;
+    bottom: 80px;           /* 画面下からの距離 → 調整可 */
+    left: 50%;
+    transform: translateX(-50%);  /* 中央に配置 */
+
+    width: 100%;
+    max-width: 750px;       /* コンテンツ幅がある場合の中央揃え */
+    display: flex;
+    justify-content: space-between; 
+    padding: 0 40px;        /* 左右の余白 */
+}
+
+/* スキップボタン（枠線だけ） */
+.skip-btn {
+    padding: 10px 28px;
+    border-radius: 14px; /* アカウント関連は24px */
+    border: 2.5px solid #5A6A71;
+    background: transparent;
+    color: #dce6ec;
+    font-size: 19px;
+    width: 160px;
+    cursor: pointer;
+    transition: 0.2s;
+}
+
+.skip-btn:hover {
+    background-color: #23343b;
+}
+
+/* 送信ボタン（青の塗りつぶし） */
+.send-btn {
+    padding: 10px 32px;
+    border-radius: 14px; /* アカウント関連は24px */
+    background-color: #49c0f8;
+    border: none;
+    color: #04323b;
+    font-weight: bold;
+    font-size: 19px;
+    width: 160px;
+    cursor: pointer;
+    box-shadow: 0 6px 18px rgba(54, 168, 214, 0.25);
+    transition: 0.2s;
+}
+
+.send-btn:hover {
+    background-color: #36a8d6;
+}

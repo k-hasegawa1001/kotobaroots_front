@@ -8,52 +8,52 @@ body {
     color: #dce6ec;
     display: flex;
     flex-direction: column;
-    justify-content: flex-start; /* 上から開始 */
-    align-items: center; /* 水平方向は中央 */
+    justify-content: flex-start;
+    align-items: center;
     height: 100vh;
     text-align: center;
-    padding-top: 10vh; /* 画面高さの10%を上部の余白とする */
-    box-sizing: border-box; 
-    overflow-y: auto; /* 念のためスクロールを許可 */
+    padding-top: 5vh; /* 上部余白半分 */
+    box-sizing: border-box;
+    overflow-y: auto;
 }
 
 .title {
-    font-size: 5.0em;
+    font-size: 2.5em; /* 半分 */
     font-weight: 700;
-    margin-bottom: 70px; 
+    margin-bottom: 35px; /* 半分 */
     color: #dce6ec;
 }
 
 .description {
-    font-size: 1.8em;
-    line-height: 1.8;
-    margin-bottom: 30px;
+    font-size: 0.9em; /* 半分 */
+    line-height: 0.9 * 1.8; /* 約半分 */
+    margin-bottom: 15px; /* 半分 */
     color: #dce6ec;
-    max-width: 1100px;
-    padding: 0 20px;
+    max-width: 550px; /* 半分 */
+    padding: 0 10px; /* 半分 */
 }
 
 .question {
-    font-size: 2.4em;
-    margin-bottom: 80px;
+    font-size: 1.2em; /* 半分 */
+    margin-bottom: 40px; /* 半分 */
     color: #dce6ec;
 }
 
 .language-select {
-    width: 300px;
-    padding: 12px;
-    font-size: 2.5em;
-    border-radius: 6px;
+    width: 150px; /* 半分 */
+    padding: 6px; /* 半分 */
+    font-size: 1.25em; /* 半分 */
+    border-radius: 3px; /* 半分 */
     border: 1px solid #dce6ec;
     background-color: #131f24;
     color: #dce6ec;
-    margin-bottom: 180px;
+    margin-bottom: 90px; /* 半分 */
     appearance: none;
     background-image: url('data:image/svg+xml;charset=UTF-8,%3Csvg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="%23dce6ec"%3E%3Cpath d="M7 10l5 5 5-5z"%3E%3C/path%3E%3C/svg%3E');
     background-repeat: no-repeat;
-    background-position: right 10px center;
-    background-size: 20px;
-    padding-right: 35px; /* アイコン分のパディング */
+    background-position: right 5px center; /* 半分 */
+    background-size: 10px; /* 半分 */
+    padding-right: 17px; /* アイコン分の半分パディング */
 }
 
 .language-select option {
@@ -62,11 +62,11 @@ body {
 }
 
 .next-button {
-    padding: 12px 60px;
-    font-size: 2.4em;
+    padding: 6px 30px; /* 半分 */
+    font-size: 1.2em; /* 半分 */
     font-weight: bold;
     border: none;
-    border-radius: 6px;
+    border-radius: 3px; /* 半分 */
     background-color: #49c0f8;
     color: #131f24;
     cursor: pointer;
@@ -82,39 +82,36 @@ body {
 /* ========================================================= */
 @media (max-width: 1024px) and (min-width: 601px) {
     body {
-        padding-top: 8vh; /* 上部余白を少し調整 */
+        padding-top: 4vh; /* 半分 */
     }
 
     .title {
-        font-size: 4.0em; /* タイトルを縮小 */
-        margin-bottom: 60px;
+        font-size: 2.0em; /* 半分 */
+        margin-bottom: 30px; /* 半分 */
     }
 
     .description {
-        font-size: 1.5em; /* 説明文を縮小 */
-        line-height: 1.6;
+        font-size: 0.75em; /* 半分 */
+        line-height: 0.8em; /* 半分 */
     }
 
     .question {
-        font-size: 2.0em; /* 質問文を縮小 */
-        margin-bottom: 70px;
+        font-size: 1.0em; /* 半分 */
+        margin-bottom: 35px; /* 半分 */
     }
 
     .language-select {
-        width: 280px;
-        padding: 10px;
-        font-size: 2.0em; /* セレクトボックスのテキストを縮小 */
-        margin-bottom: 150px;
-    }
-    
-    .language-select {
-        background-size: 18px; /* 矢印アイコンを縮小 */
-        padding-right: 30px;
+        width: 140px; /* 半分 */
+        padding: 5px; /* 半分 */
+        font-size: 1em; /* 半分 */
+        margin-bottom: 75px; /* 半分 */
+        background-size: 9px; /* 半分 */
+        padding-right: 15px; /* 半分 */
     }
 
     .next-button {
-        padding: 10px 50px;
-        font-size: 2.0em; /* ボタンのテキストを縮小 */
+        padding: 5px 25px; /* 半分 */
+        font-size: 1em; /* 半分 */
     }
 }
 
@@ -123,40 +120,37 @@ body {
 /* ========================================================= */
 @media (max-width: 600px) {
     body {
-        padding-top: 5vh; /* 上部余白をさらに縮小 */
+        padding-top: 2.5vh; /* 半分 */
     }
 
     .title {
-        font-size: 2.5em; /* タイトルを大幅に縮小 */
-        margin-bottom: 40px;
+        font-size: 1.25em; /* 半分 */
+        margin-bottom: 20px; /* 半分 */
     }
 
     .description {
-        font-size: 1.0em; /* 説明文を標準サイズに */
-        line-height: 1.5;
-        padding: 0 15px; /* 左右の余白を少し確保 */
-        margin-bottom: 30px;
+        font-size: 0.5em; /* 半分 */
+        line-height: 0.75em; /* 半分 */
+        padding: 0 7.5px; /* 半分 */
+        margin-bottom: 15px; /* 半分 */
     }
-    
+
     .question {
-        font-size: 1.5em; /* 質問文を大幅に縮小 */
-        margin-bottom: 50px;
+        font-size: 0.75em; /* 半分 */
+        margin-bottom: 25px; /* 半分 */
     }
 
     .language-select {
-        width: 250px; /* 幅を固定 */
-        padding: 8px;
-        font-size: 1.8em; /* セレクトボックスのテキストを調整 */
-        margin-bottom: 100px; /* 次へボタンとの距離を調整 */
-    }
-    
-    .language-select {
-        background-size: 16px; /* 矢印アイコンを縮小 */
-        padding-right: 25px;
+        width: 125px; /* 半分 */
+        padding: 4px; /* 半分 */
+        font-size: 0.9em; /* 半分 */
+        margin-bottom: 50px; /* 半分 */
+        background-size: 8px; /* 半分 */
+        padding-right: 12.5px; /* 半分 */
     }
 
     .next-button {
-        padding: 8px 40px;
-        font-size: 1.8em; /* ボタンのテキストを調整 */
+        padding: 4px 20px; /* 半分 */
+        font-size: 0.9em; /* 半分 */
     }
 }

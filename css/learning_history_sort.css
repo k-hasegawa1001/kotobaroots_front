@@ -23,32 +23,32 @@ body, html {
 /* ===== モーダル本体（右上カード） ===== */
 .modal-content {
     background-color: #131f24;   /* カードの背景 */
-    border-radius: 15px;
+    border-radius: 7.5px;        /* 半分 */
     display: flex;
     flex-direction: column;
-    width: 280px;
-    padding: 30px 25px;
-    box-shadow: 0 5px 20px rgba(0,0,0,0.5);
+    width: 140px;                /* 半分 */
+    padding: 15px 12px;          /* 半分 */
+    box-shadow: 0 2.5px 10px rgba(0,0,0,0.5);
     position: absolute;
 }
 
 /* 右上に固定 */
 .modal-content.right-top {
-    top: 200px;
-    right: 10px;
+    top: 100px;  /* 半分 */
+    right: 5px;  /* 半分 */
 }
 
 /* ヘッダー */
 .modal-header {
     width: 100%;
-    margin-bottom: 20px;
+    margin-bottom: 10px; /* 半分 */
     display: flex;
     justify-content: center;
     align-items: center;
 }
 
 .modal-title {
-    font-size: 22px;
+    font-size: 11px; /* 半分 */
     font-weight: 700;
     text-align: center;
     margin: 0;
@@ -58,16 +58,16 @@ body, html {
 .modal-buttons {
     display: flex;
     flex-direction: column;
-    gap: 12px;
+    gap: 6px; /* 半分 */
 }
 
 .modal-button {
     background-color: #24333a;
     color: #dce6ec;
     border: 1px solid #3a4a51;
-    border-radius: 10px;
-    padding: 12px 0;
-    font-size: 23px;
+    border-radius: 5px;  /* 半分 */
+    padding: 6px 0;      /* 半分 */
+    font-size: 11px;     /* 半分 */
     cursor: pointer;
     transition: background 0.2s;
 }
@@ -79,16 +79,16 @@ body, html {
 /* レスポンシブ */
 @media screen and (max-width: 768px) {
     .modal-content.right-top {
-        width: 90%;
-        right: 5%;
-        top: 15px;
-        padding: 20px;
+        width: 45%;        /* 半分 */
+        right: 2.5%;
+        top: 7px;          /* 半分 */
+        padding: 10px;     /* 半分 */
     }
     .modal-title {
-        font-size: 18px;
+        font-size: 9px;    /* 半分 */
     }
     .modal-button {
-        font-size: 14px;
-        padding: 10px 0;
+        font-size: 7px;    /* 半分 */
+        padding: 5px 0;    /* 半分 */
     }
 }

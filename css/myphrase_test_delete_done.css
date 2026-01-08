@@ -1,6 +1,5 @@
-/* === 画面全体の薄暗い背景 === */
 body {
-    background: transparent; /* ← 背景なし。下の本来の画面が見える */
+    background: transparent;
 }
 
 .confirm-overlay {
@@ -17,41 +16,44 @@ body {
 }
 
 /* === 完了ポップアップ本体 === */
+/* ★ すべて半分に縮小 ★ */
 .confirm-box {
     background: #131f24;
-    padding: 100px 80px;
-    border-radius: 18px;
+    padding: 50px 40px; /* 100px 80px → 半分 */
+    border-radius: 9px; /* 18px → 半分 */
     width: 92%;
-    max-width: 520px;
+    max-width: 260px; /* 520px → 半分 */
     text-align: center;
     box-shadow: 0 4px 24px rgba(0, 0, 0, 0.55);
     border: 1px solid #2c3a40;
 }
 
 /* メッセージ */
+/* ★ 45px → 半分の 22.5px → 四捨五入で 22px */
 .done-message {
-    font-size: 45px;
+    font-size: 22px;
     color: #dce6ec;
-    margin: 5px 0;
+    margin: 3px 0; /* 5px → 半分で 2.5px → 3px */
 }
 
-/* === レスポンシブ追加：done-popup === */
+/* === レスポンシブ（1024px 以下） === */
 @media screen and (max-width: 1024px) {
     .confirm-box {
-        padding: 70px 60px;
-        max-width: 450px;
+        padding: 35px 30px; /* 70px 60px → 半分 */
+        max-width: 225px;   /* 450px → 半分 */
     }
     .done-message {
-        font-size: 36px;
+        font-size: 18px; /* 36px → 半分 */
     }
 }
 
+/* === レスポンシブ（768px 以下） === */
 @media screen and (max-width: 768px) {
     .confirm-box {
-        padding: 50px 30px;
+        padding: 25px 15px; /* 50px 30px → 半分 */
         width: 90%;
     }
     .done-message {
-        font-size: 28px;
+        font-size: 14px; /* 28px → 半分 */
     }
 }

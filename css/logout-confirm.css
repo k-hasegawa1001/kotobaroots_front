@@ -1,0 +1,110 @@
+/* ===== モーダルの背景（薄い黒の覆い） ===== */
+.modal-overlay {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100vw;
+    height: 100vh;
+    background: rgba(0, 0, 0, 0.45);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    backdrop-filter: blur(2px);
+    z-index: 2000;
+}
+
+/* ===== モーダルウィンドウ本体 ===== */
+.logout-modal {
+    background-color: #1c2a2f;
+    padding: 34px 45px;      
+    border-radius: 14px;
+
+    /* ここで枠線を追加 */
+    border: 2px solid #5A6A71;  /* 線の太さと色を指定 */
+
+    width: 380px;            
+    max-width: 92%;
+    text-align: center;
+    box-shadow: 0px 4px 12px rgba(0, 0, 0, 0.4);
+    z-index: 2100;
+}
+
+
+/* タイトル部分 */
+.logout-modal h2 {
+    margin: 0 0 25px;
+    font-size: 24px;         /* ← 20px → 23px */
+    font-weight: 500;
+    color: #dce6ec;
+}
+
+/* ボタンの横並び */
+.logout-modal .buttons {
+    display: flex;
+    justify-content: space-between;
+    gap: 22px;
+}
+
+/* キャンセルボタン */
+.logout-modal .cancel-btn {
+    flex: 1;
+    padding: 12px 0;         /* ← 10px → 12px */
+    background: none;
+    border: 2.5px solid #5A6A71;
+    color: #dce6ec;
+    border-radius: 13px; /* アカウント関連は24px */
+    font-size: 19px;
+    cursor: pointer;
+    transition: 0.2s;
+}
+
+.logout-modal .cancel-btn:hover {
+    background-color: #23343b;
+}
+
+/* ログアウトボタン */
+.logout-modal .logout-btn {
+    flex: 1;
+    padding: 12px 0;         /* ← 10px → 12px */
+    background-color: #ee5555;
+    border: none;
+    border-radius: 13px; /* アカウント関連は24px */
+    color: #dce6ec;
+    font-size: 19px;
+    cursor: pointer;
+    transition: 0.2s;
+}
+
+.logout-modal .logout-btn:hover {
+    background-color: #db493f;
+}
+
+/* ===== タブレット対応（601〜900px） ===== */
+@media (max-width: 900px) {
+    .logout-modal {
+        width: 340px;        /* ← 300→340 */
+        padding: 28px 32px;
+    }
+}
+
+/* ===== スマホ用調整（600px以下） ===== */
+@media (max-width: 600px) {
+    .logout-modal {
+        width: 88%;
+        padding: 26px 22px;
+    }
+
+    .logout-modal h2 {
+        font-size: 19px;
+    }
+
+    .logout-modal .buttons {
+        gap: 14px;
+    }
+
+    .cancel-btn,
+    .logout-btn {
+        font-size: 16px;
+        padding: 11px 0;
+    }
+}

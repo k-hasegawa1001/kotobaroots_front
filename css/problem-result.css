@@ -1,0 +1,126 @@
+/* 全体背景 */
+body {
+    background-color: #131f24;
+    color: #dce6ec;
+    font-family: sans-serif;
+    display: flex;
+    flex-direction: column;
+    /* justify-content: center; */
+    align-items: center;
+    height: 100vh;
+    margin: 0;
+    position: relative;
+}
+
+/* 全体コンテナ */
+.container {
+    max-width: 1000px;
+    margin: 0 auto;
+    padding: 40px 20px;
+    text-align: center;
+}
+
+/* 見出し（結果） */
+h2 {
+    font-size: 33px;
+    margin-top: 40px;  /* ← 追加：全体的に下へ移動 */
+    margin-bottom: 0px;
+}
+
+/* 横並びラッパー */
+.info-row {
+    display: flex;
+    justify-content: center; /* 中央に寄せる */
+    align-items: center;     /* 高さを揃える */
+    gap: 450px;               /* 要素間のスペース（お好みで調整） */
+    flex-wrap: wrap;         /* 画面が狭くなったら折り返す */
+    margin-bottom: 10px;     /* 必要なら余白 */
+}
+
+/* 注釈文章 */
+.note {
+    font-size: 19px;
+    margin: 0 0 0px 0;  /* ← 下に20pxの余白を追加 */
+    color: #dce6ec;
+    margin-left: -70px; /* ← 左にずらす（値は調整） */
+}
+
+.accuracy-line {
+    font-size: 30px;
+    color: #93d333;
+    display: inline-flex;
+    /* justify-content: center; */
+    align-items: center;
+    gap: 6px;
+}
+
+
+/* 正解率（数字が入る部分） */
+#accuracy {
+    font-size: 30px;
+    font-weight: bold;
+    color: #93d333;
+    /* margin-left: 10px; */
+}
+
+/* JavaScriptで作る表を置く枠 */
+#results-table {
+    margin: 10px auto;
+    width: 960px;   /* ← これを入れるだけ */
+    border: 1px solid #334155;
+    border-radius: 0px;
+    min-height: 560px; /* 中身がなくても枠が見える */
+    overflow: hidden;
+}
+
+/* 表をJSで作る想定のスタイル */
+#results-table table {
+    width: 100%;
+    border-collapse: collapse;
+}
+
+#results-table th,
+#results-table td {
+    padding: 14px 10px;
+    border-bottom: 1px solid #334155;
+    font-size: 16px;
+}
+
+#results-table th {
+    background-color: #1e293b;
+    color: #dce6ec;
+}
+
+#results-table tr:hover {
+    background-color: rgba(255, 255, 255, 0.05);
+    cursor: pointer;
+}
+
+/* 終了ボタン */
+.button-area {
+    margin-top: 23px; /* 上の枠線との余白 */
+}
+
+#finish-btn {
+    display: block;
+    margin-left: 890px;   /* 右寄せ */
+    margin-right: 0;
+    margin-bottom: 20px;
+
+    background-color: #49c0f8;
+    color: #131f24;
+    border: none;
+    border-radius: 15px;
+    padding: 12px 30px;
+    font-size: 20px;
+    cursor: pointer;
+    width: 175px; /* ログイン・サインアップは310px */
+    font-weight: 600;  /* ← ここを追加（例：600 = やや太め） */
+    transition: background-color 0.3s ease;
+
+    text-decoration: none; /* ← ここを追加 */
+}
+
+#finish-btn:hover {
+    background-color: #36a8d6;
+}
