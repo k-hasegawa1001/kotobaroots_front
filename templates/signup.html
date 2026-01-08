@@ -1,35 +1,36 @@
+<!-- 新規登録 -->
 <!DOCTYPE html>
 <html lang="ja">
-<head>
-    <meta charset="UTF-8">
+  <head>
+    <meta charset="UTF-8" />
     <title>アカウント作成</title>
 
     <!-- 共通CSS -->
-    <link rel="stylesheet" href="../css/common.css">
+    <link rel="stylesheet" href="../css/common.css" />
 
     <!-- 個別CSS -->
-    <link rel="stylesheet" href="../css/signup.css">
-</head>
+    <link rel="stylesheet" href="../css/signup.css" />
+  </head>
 
-<body>
-
+  <body>
     <!-- 左上の戻るボタン（共通クラス） -->
-    <a href="login.html" class="back-icon"></a>
+    <a href="./login.html" class="back-icon"></a>
 
     <div class="container">
-        <h2>アカウント作成</h2>
-        <form>
-            <!-- ユーザー名 -->
-            <input type="text" id="username" name="username" placeholder="ユーザー名" class="input-field"><br><br>
-            <!-- メールアドレス -->
-            <input type="email" id="email" name="email" placeholder="メールアドレス" class="input-field"><br><br>
-            <!-- パスワード -->
-            <input type="password" id="password" name="password" placeholder="パスワード（8文字以上、16文字以下）" class="input-field"><br><br>
-            <!-- パスワード確認用 -->
-            <input type="password" id="confirm-password" name="confirm_password" placeholder="パスワード（確認用）" class="input-field"><br><br>
-            <button type="submit">アカウント作成</button>
-        </form>
+      <h2>アカウント作成</h2>
+      <form>
+        <!-- ユーザー名 -->
+        <input type="text" id="username" name="username" placeholder="ユーザー名" class="input-field" /><br /><br />
+        <!-- メールアドレス -->
+        <input type="email" id="email" name="email" placeholder="メールアドレス" class="input-field" /><br /><br />
+        <!-- パスワード -->
+        <input type="password" id="password" name="password" placeholder="パスワード（8文字以上、16文字以下）" class="input-field" /><br /><br />
+        <!-- パスワード確認用 -->
+        <input type="password" id="confirm-password" name="confirm_password" placeholder="パスワード（確認用）" class="input-field" /><br />
+        <p id="error-message" style="color: red; font-size: 0.9em"></p>
+        <button type="submit">アカウント作成</button>
+      </form>
     </div>
-
-</body>
+    <script src="../js/signup.js"></script>
+  </body>
 </html>

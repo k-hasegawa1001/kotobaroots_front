@@ -6,6 +6,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>トップページ（ログイン状態）</title>
     <link rel="stylesheet" href="../css/notloggedin.css" />
+    <link rel="stylesheet" href="../css/learning_common.css" />
   </head>
   <body>
     <div class="container">
@@ -33,7 +34,6 @@
             </select>
 
             <select class="dropdown language-select">
-              <option value="japanese">日本語</option>
               <option value="english">英語</option>
               <option value="chinese">中国語</option>
               <option value="chinese">韓国語</option>
@@ -43,7 +43,10 @@
         </div>
 
         <hr class="title-line" />
+        <!-- 学習単元のカードを表示するための要素 -->
+        <div id="learning-topics-container" class="topics-grid"></div>
       </main>
     </div>
+    <script src="../js/login_index.js"></script>
   </body>
 </html>

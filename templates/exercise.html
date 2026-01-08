@@ -1,40 +1,36 @@
 <!DOCTYPE html>
 <html lang="ja">
-
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>学習問題</title>
 
     <!-- 共通CSS -->
-    <link rel="stylesheet" href="../css/ui.css">
+    <link rel="stylesheet" href="../css/ui.css" />
 
     <!-- 個別CSS -->
-    <link rel="stylesheet" href="../css/exercise.css">
-</head>
+    <link rel="stylesheet" href="../css/exercise.css" />
+  </head>
 
-<body>
+  <body>
     <!-- 閉じるボタン（共通クラス） -->
     <a href="javascript:void(0);" class="back-icon" id="back-btn"></a>
 
-
     <div class="container">
+      <!-- JavaScriptで問題文を挿入する場所 -->
+      <h2 id="question-title"></h2>
 
-        <!-- JavaScriptで問題文を挿入する場所 -->
-        <h2 id="question-title"></h2>
+      <!-- JavaScriptで表示する例文など -->
+      <p id="question-text"></p>
 
+      <!-- 選択肢が入るボックス（JSで生成） -->
+      <div id="choices-area"></div>
 
-        <!-- JavaScriptで表示する例文など -->
-        <p id="question-text"></p>
-
-        <!-- 選択肢が入るボックス（JSで生成） -->
-        <div id="choices-area"></div>
-
-        <!-- ボタンエリア -->
-        <div class="button-area">
-            <button class="skip-btn" id="skip-btn">スキップ</button>
-            <button class="send-btn" id="send-btn">送信する</button>
-        </div>
+      <!-- ボタンエリア -->
+      <div class="button-area">
+        <button class="skip-btn" id="skip-btn">スキップ</button>
+        <button class="send-btn" id="send-btn">送信する</button>
+      </div>
     </div>
-</body>
+  </body>
 </html>
