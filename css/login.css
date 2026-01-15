@@ -1,4 +1,4 @@
-body {
+﻿body {
     background-color: #131f24;
     color: #dce6ec;
     font-family: sans-serif;
@@ -27,10 +27,10 @@ input[type="email"] {
 
 input[type="email"]::placeholder {
     color: #b2babe;
-    font-size: 14px; /* メール専用 */
+    font-size: 14px; /* 繝｡繝ｼ繝ｫ蟆ら畑 */
 }
 
-/* パスワード入力欄のデザイン */
+/* 繝代せ繝ｯ繝ｼ繝牙・蜉帶ｬ・・繝・じ繧､繝ｳ */
 input[type="password"] {
     width: 290px;
     padding: 12px;
@@ -41,10 +41,10 @@ input[type="password"] {
     font-size: 14px;
 }
 
-/* パスワードのプレースホルダー文字色 */
+/* 繝代せ繝ｯ繝ｼ繝峨・繝励Ξ繝ｼ繧ｹ繝帙Ν繝繝ｼ譁・ｭ苓牡 */
 input[type="password"]::placeholder {
     color: #b2babe;
-    font-size: 14px; /* メールと同じサイズ */
+    font-size: 14px; /* 繝｡繝ｼ繝ｫ縺ｨ蜷後§繧ｵ繧､繧ｺ */
 }
 
 
@@ -61,13 +61,13 @@ button {
 }
 
 button:hover {
-    background-color: #36a8d6; /* 水色ホバー */
+    background-color: #36a8d6; /* 豌ｴ濶ｲ繝帙ヰ繝ｼ */
 }
 
-/* パスワード忘れリンク */
+/* 繝代せ繝ｯ繝ｼ繝牙ｿ倥ｌ繝ｪ繝ｳ繧ｯ */
 p a {
     color: #dce6ec;
-    text-decoration: underline; /* ← 常に下線を表示 */
+    text-decoration: underline; /* 竊・蟶ｸ縺ｫ荳狗ｷ壹ｒ陦ｨ遉ｺ */
     font-size: 18px;
 }
 

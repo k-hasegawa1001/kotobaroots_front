@@ -1,4 +1,4 @@
-body {
+﻿body {
     background-color: #131f24;
     color: #dce6ec;
     font-family: sans-serif;
@@ -15,7 +15,7 @@ body {
     text-align: center;
 }
 
-/* 入力欄共通デザイン */
+/* 蜈･蜉帶ｬ・・騾壹ョ繧ｶ繧､繝ｳ */
 .input-field {
     width: 290px;
     padding: 12px;
@@ -24,10 +24,10 @@ body {
     background-color: #202f36;
     color: #dce6ec;
     font-size: 14px;
-    margin-bottom: 5px; /* 入力欄間の上下間隔 */
+    margin-bottom: 5px; /* 蜈･蜉帶ｬ・俣縺ｮ荳贋ｸ矩俣髫・*/
 }
 
-/* プレースホルダー */
+/* 繝励Ξ繝ｼ繧ｹ繝帙Ν繝繝ｼ */
 .input-field::placeholder {
     color: #b2babe;
     font-size: 14px;
@@ -41,11 +41,11 @@ button {
     border-radius: 20px;
     cursor: pointer;
     font-size: 16px;
-    width: 310px; /* ログインCSSと同じ幅 */
+    width: 310px; /* 繝ｭ繧ｰ繧､繝ｳCSS縺ｨ蜷後§蟷・*/
     font-weight: 700;
-    margin-top: 3px; /* 入力欄との間隔 */
+    margin-top: 3px; /* 蜈･蜉帶ｬ・→縺ｮ髢馴囈 */
 }
 
 button:hover {
-    background-color: #36a8d6; /* ログインCSSと同じホバー色 */
+    background-color: #36a8d6; /* 繝ｭ繧ｰ繧､繝ｳCSS縺ｨ蜷後§繝帙ヰ繝ｼ濶ｲ */
 }

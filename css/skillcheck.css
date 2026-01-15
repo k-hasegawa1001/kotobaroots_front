@@ -1,62 +1,62 @@
-/* === 全体設定と中央寄せ === */
+﻿/* === 蜈ｨ菴楢ｨｭ螳壹→荳ｭ螟ｮ蟇・○ === */
 body {
     margin: 0;
     padding: 0;
-    background-color: #131f24; /* 背景色 */
+    background-color: #131f24; /* 閭梧勹濶ｲ */
     font-family: 'Noto Sans JP', sans-serif;
-    color: #dce6ec; /* テキスト色 */
+    color: #dce6ec; /* 繝・く繧ｹ繝郁牡 */
     display: flex;
     flex-direction: column;
     justify-content: flex-start;
     align-items: center;
-    min-height: 100vh; /* 画面全体の高さ */
+    min-height: 100vh; /* 逕ｻ髱｢蜈ｨ菴薙・鬮倥＆ */
     text-align: center;
-    padding-top: 5vh; /* 上部余白半分に */
+    padding-top: 5vh; /* 荳企Κ菴咏區蜊雁・縺ｫ */
     box-sizing: border-box;
 }
 
 .container {
     display: flex;
-    flex-direction: column; /* 縦に並べる */
-    align-items: center; /* コンテンツを中央に揃える */
+    flex-direction: column; /* 邵ｦ縺ｫ荳ｦ縺ｹ繧・*/
+    align-items: center; /* 繧ｳ繝ｳ繝・Φ繝・ｒ荳ｭ螟ｮ縺ｫ謠・∴繧・*/
 }
 
-/* === タイトル === */
+/* === 繧ｿ繧､繝医Ν === */
 .title {
-    font-size: 2.5em; /* 半分に */
+    font-size: 2.5em; /* 蜊雁・縺ｫ */
     font-weight: 700;
-    margin-bottom: 40px; /* 半分に */
+    margin-bottom: 40px; /* 蜊雁・縺ｫ */
     color: #dce6ec;
 }
 
-/* === 説明文 === */
+/* === 隱ｬ譏取枚 === */
 .description {
-    font-size: 1.25em; /* 半分に */
+    font-size: 1.25em; /* 蜊雁・縺ｫ */
     line-height: 1.6;
-    margin-bottom: 100px; /* 半分に */
+    margin-bottom: 100px; /* 蜊雁・縺ｫ */
     color: #dce6ec;
     max-width: 1000px;
 }
 
-/* === ボタン群のレイアウト === */
+/* === 繝懊ち繝ｳ鄒､縺ｮ繝ｬ繧､繧｢繧ｦ繝・=== */
 .button-group {
     display: flex;
-    flex-direction: column; /* ボタンを縦に並べる */
-    gap: 17px; /* 半分に */
-    width: 250px; /* 半分に */
+    flex-direction: column; /* 繝懊ち繝ｳ繧堤ｸｦ縺ｫ荳ｦ縺ｹ繧・*/
+    gap: 17px; /* 蜊雁・縺ｫ */
+    width: 250px; /* 蜊雁・縺ｫ */
 }
 
-/* === ボタンの共通スタイル === */
+/* === 繝懊ち繝ｳ縺ｮ蜈ｱ騾壹せ繧ｿ繧､繝ｫ === */
 .btn {
-    padding: 12px 30px; /* 半分に */
-    font-size: 0.9em; /* 半分に */
+    padding: 12px 30px; /* 蜊雁・縺ｫ */
+    font-size: 0.9em; /* 蜊雁・縺ｫ */
     font-weight: 1000;
-    border-radius: 5px; /* 半分に */
+    border-radius: 5px; /* 蜊雁・縺ｫ */
     cursor: pointer;
     transition: background-color 0.3s, border-color 0.3s;
 }
 
-/* === 1. メインボタン (青色) === */
+/* === 1. 繝｡繧､繝ｳ繝懊ち繝ｳ (髱定牡) === */
 .btn.primary {
     border: none;
     background-color: #49c0f8;
@@ -67,7 +67,7 @@ body {
     background-color: #3f85a7;
 }
 
-/* === 2. セカンダリボタン (枠線のみ) === */
+/* === 2. 繧ｻ繧ｫ繝ｳ繝繝ｪ繝懊ち繝ｳ (譫邱壹・縺ｿ) === */
 .btn.secondary {
     background-color: transparent;
     border: 1px solid #dce6ec;
@@ -78,17 +78,17 @@ body {
     background-color: #202536;
 }
 
-/* === スマホ対応（例） === */
+/* === 繧ｹ繝槭・蟇ｾ蠢懶ｼ井ｾ具ｼ・=== */
 @media (max-width: 600px) {
     .title {
-        font-size: 1em; /* 半分に */
+        font-size: 1em; /* 蜊雁・縺ｫ */
     }
     .description {
-        font-size: 0.5em; /* 半分に */
+        font-size: 0.5em; /* 蜊雁・縺ｫ */
         padding: 0 15px;
     }
     .button-group {
-        width: 40%; /* 半分に */
-        max-width: 125px; /* 半分に */
+        width: 40%; /* 蜊雁・縺ｫ */
+        max-width: 125px; /* 蜊雁・縺ｫ */
     }
 }

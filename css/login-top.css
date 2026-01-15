@@ -1,4 +1,4 @@
-/* === 全体の背景と文字色 === */
+﻿/* === 蜈ｨ菴薙・閭梧勹縺ｨ譁・ｭ苓牡 === */
 body {
     margin: 0;
     font-family: "Noto Sans JP", sans-serif;
@@ -6,13 +6,13 @@ body {
     color: #dce6ec;
 }
 
-/* === 全体レイアウト === */
+/* === 蜈ｨ菴薙Ξ繧､繧｢繧ｦ繝・=== */
 .container {
     display: flex;
     height: 100vh;
 }
 
-/* === サイドバー === */
+/* === 繧ｵ繧､繝峨ヰ繝ｼ === */
 .sidebar {
     position: fixed;
     left: 0;
@@ -28,24 +28,24 @@ body {
     transition: all 0.3s ease;
 }
 
-/* === タイトル === */
+/* === 繧ｿ繧､繝医Ν === */
 .title {
     font-size: 28px;
-    margin-bottom: 25px; /* ← 少し詰めて見栄えUP */
+    margin-bottom: 25px; /* 竊・蟆代＠隧ｰ繧√※隕区・∴UP */
     font-weight: 450;
 }
 
-/* === ログイン中の表示（追加） === */
+/* === 繝ｭ繧ｰ繧､繝ｳ荳ｭ縺ｮ陦ｨ遉ｺ・郁ｿｽ蜉・・=== */
 .login-status {
     display: flex;
     gap: 4px;
     font-size: 14px;
     color: #dce6ec;
-    margin-bottom: 20px; /* 学習との間に余白 */
+    margin-bottom: 20px; /* 蟄ｦ鄙偵→縺ｮ髢薙↓菴咏區 */
     align-items: center;
 }
 
-/* === メニュー === */
+/* === 繝｡繝九Η繝ｼ === */
 .menu {
     display: flex;
     flex-direction: column;
@@ -66,19 +66,19 @@ body {
     transition: 0.2s;
 }
 
-/* === アクティブ状態 === */
+/* === 繧｢繧ｯ繝・ぅ繝也憾諷・=== */
 .menu-item.active {
     background-color: #202536;
     border: 3.0px solid #3f85a7;
     color: #49c0f8;
 }
 
-/* === ホバー時 === */
+/* === 繝帙ヰ繝ｼ譎・=== */
 .menu-item:hover {
     background-color: #202536;
 }
 
-/* === メインコンテンツ === */
+/* === 繝｡繧､繝ｳ繧ｳ繝ｳ繝・Φ繝・=== */
 .main-content {
     flex: 1;
     background-color: #131f24;
@@ -87,7 +87,7 @@ body {
     transition: margin 0.3s ease;
 }
 
-/* === スクロールバー装飾 === */
+/* === 繧ｹ繧ｯ繝ｭ繝ｼ繝ｫ繝舌・陬・｣ｾ === */
 .main-content::-webkit-scrollbar {
     width: 8px;
 }
@@ -97,7 +97,7 @@ body {
 }
 
 /* ========================================================= */
-/* === iPad対応（横・縦）: 幅 768px〜1024px === */
+/* === iPad蟇ｾ蠢懶ｼ域ｨｪ繝ｻ邵ｦ・・ 蟷・768px縲・024px === */
 /* ========================================================= */
 @media (max-width: 1024px) and (min-width: 601px) {
     .container {
@@ -123,7 +123,7 @@ body {
 }
 
 /* ========================================================= */
-/* === スマホ対応（幅600px以下） === */
+/* === 繧ｹ繝槭・蟇ｾ蠢懶ｼ亥ｹ・00px莉･荳具ｼ・=== */
 /* ========================================================= */
 @media (max-width: 600px) {
     .container {
@@ -167,12 +167,12 @@ body {
 
     .login-status {
         font-size: 12px;
-        margin-bottom: 0; /* スマホは詰める */
+        margin-bottom: 0; /* 繧ｹ繝槭・縺ｯ隧ｰ繧√ｋ */
     }
 }
 
 /* ========================================================= */
-/* === iPhone SEなど超小型画面 === */
+/* === iPhone SE縺ｪ縺ｩ雜・ｰ丞梛逕ｻ髱｢ === */
 /* ========================================================= */
 @media (max-width: 400px) {
     .menu-item {
@@ -181,7 +181,7 @@ body {
     }
 }
 
-/* ログイン/新規登録ボタン */
+/* 繝ｭ繧ｰ繧､繝ｳ/譁ｰ隕冗匳骭ｲ繝懊ち繝ｳ */
 .login-btn {
     background-color: #49c0f8;
     color: #131f24;
@@ -194,7 +194,7 @@ body {
     background-color: #36a8d6;
 }
 
-/* タイトル下の横ライン */
+/* 繧ｿ繧､繝医Ν荳九・讓ｪ繝ｩ繧､繝ｳ */
 .title-line {
     display: block;
     border: none;
@@ -203,14 +203,14 @@ body {
     margin: -5px 30px 25px;
 }
 
-/* ページタイトル */
+/* 繝壹・繧ｸ繧ｿ繧､繝医Ν */
 .page-title {
     font-size: 42px;
     font-weight: 450;
     margin: 25px 50px 5px;
 }
 
-/* タイトルとドロップダウンを横並び */
+/* 繧ｿ繧､繝医Ν縺ｨ繝峨Ο繝・・繝繧ｦ繝ｳ繧呈ｨｪ荳ｦ縺ｳ */
 .title-row {
     display: flex;
     align-items: center;

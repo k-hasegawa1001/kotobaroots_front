@@ -1,0 +1,48 @@
+﻿<!DOCTYPE html>
+<html lang="ja">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>KotobaRoots | ログイン</title>
+    <link rel="stylesheet" href="../shared/styles.css" />
+  </head>
+  <body>
+    <div class="app-shell">
+      <aside id="site-header"></aside>
+      <main class="page">
+        <section class="auth-card card">
+          <header class="page-header">
+            <h1 class="page-title">ログイン</h1>
+            <p class="page-subtitle">学習の続きへ戻りましょう。</p>
+          </header>
+          <div id="status" class="status" hidden aria-live="polite"></div>
+          <form id="login-form" class="form" novalidate>
+            <div class="field">
+              <label for="email">メールアドレス</label>
+              <input id="email" name="email" type="email" autocomplete="email" required />
+            </div>
+            <div class="field">
+              <label for="password">パスワード</label>
+              <input
+                id="password"
+                name="password"
+                type="password"
+                autocomplete="current-password"
+                minlength="8"
+                maxlength="16"
+                required
+              />
+              <small class="page-subtitle">8-16文字で入力してください。</small>
+            </div>
+            <button class="btn" type="submit">ログイン</button>
+          </form>
+          <p class="page-subtitle">
+            まだアカウントが無い方は
+            <a href="./signup.html">アカウント作成</a>
+          </p>
+        </section>
+      </main>
+    </div>
+    <script type="module" src="./login.js"></script>
+  </body>
+</html>

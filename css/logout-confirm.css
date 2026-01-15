@@ -1,4 +1,4 @@
-/* ===== モーダルの背景（薄い黒の覆い） ===== */
+﻿/* ===== 繝｢繝ｼ繝繝ｫ縺ｮ閭梧勹・郁埋縺・ｻ偵・隕・＞・・===== */
 .modal-overlay {
     position: fixed;
     top: 0;
@@ -13,14 +13,14 @@
     z-index: 2000;
 }
 
-/* ===== モーダルウィンドウ本体 ===== */
+/* ===== 繝｢繝ｼ繝繝ｫ繧ｦ繧｣繝ｳ繝峨え譛ｬ菴・===== */
 .logout-modal {
     background-color: #1c2a2f;
     padding: 34px 45px;      
     border-radius: 14px;
 
-    /* ここで枠線を追加 */
-    border: 2px solid #5A6A71;  /* 線の太さと色を指定 */
+    /* 縺薙％縺ｧ譫邱壹ｒ霑ｽ蜉 */
+    border: 2px solid #5A6A71;  /* 邱壹・螟ｪ縺輔→濶ｲ繧呈欠螳・*/
 
     width: 380px;            
     max-width: 92%;
@@ -30,29 +30,29 @@
 }
 
 
-/* タイトル部分 */
+/* 繧ｿ繧､繝医Ν驛ｨ蛻・*/
 .logout-modal h2 {
     margin: 0 0 25px;
-    font-size: 24px;         /* ← 20px → 23px */
+    font-size: 24px;         /* 竊・20px 竊・23px */
     font-weight: 500;
     color: #dce6ec;
 }
 
-/* ボタンの横並び */
+/* 繝懊ち繝ｳ縺ｮ讓ｪ荳ｦ縺ｳ */
 .logout-modal .buttons {
     display: flex;
     justify-content: space-between;
     gap: 22px;
 }
 
-/* キャンセルボタン */
+/* 繧ｭ繝｣繝ｳ繧ｻ繝ｫ繝懊ち繝ｳ */
 .logout-modal .cancel-btn {
     flex: 1;
-    padding: 12px 0;         /* ← 10px → 12px */
+    padding: 12px 0;         /* 竊・10px 竊・12px */
     background: none;
     border: 2.5px solid #5A6A71;
     color: #dce6ec;
-    border-radius: 13px; /* アカウント関連は24px */
+    border-radius: 13px; /* 繧｢繧ｫ繧ｦ繝ｳ繝磯未騾｣縺ｯ24px */
     font-size: 19px;
     cursor: pointer;
     transition: 0.2s;
@@ -62,13 +62,13 @@
     background-color: #23343b;
 }
 
-/* ログアウトボタン */
+/* 繝ｭ繧ｰ繧｢繧ｦ繝医・繧ｿ繝ｳ */
 .logout-modal .logout-btn {
     flex: 1;
-    padding: 12px 0;         /* ← 10px → 12px */
+    padding: 12px 0;         /* 竊・10px 竊・12px */
     background-color: #ee5555;
     border: none;
-    border-radius: 13px; /* アカウント関連は24px */
+    border-radius: 13px; /* 繧｢繧ｫ繧ｦ繝ｳ繝磯未騾｣縺ｯ24px */
     color: #dce6ec;
     font-size: 19px;
     cursor: pointer;
@@ -79,15 +79,15 @@
     background-color: #db493f;
 }
 
-/* ===== タブレット対応（601〜900px） ===== */
+/* ===== 繧ｿ繝悶Ξ繝・ヨ蟇ｾ蠢懶ｼ・01縲・00px・・===== */
 @media (max-width: 900px) {
     .logout-modal {
-        width: 340px;        /* ← 300→340 */
+        width: 340px;        /* 竊・300竊・40 */
         padding: 28px 32px;
     }
 }
 
-/* ===== スマホ用調整（600px以下） ===== */
+/* ===== 繧ｹ繝槭・逕ｨ隱ｿ謨ｴ・・00px莉･荳具ｼ・===== */
 @media (max-width: 600px) {
     .logout-modal {
         width: 88%;

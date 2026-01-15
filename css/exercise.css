@@ -1,4 +1,4 @@
-body {
+﻿body {
     margin: 0;
     font-family: "Noto Sans JP", sans-serif;
     background-color: #131f24;
@@ -9,24 +9,24 @@ body {
     height: 100vh;
 }
 
-/* ボタンエリアを画面下に固定 */
+/* 繝懊ち繝ｳ繧ｨ繝ｪ繧｢繧堤判髱｢荳九↓蝗ｺ螳・*/
 .button-area {
     position: fixed;
-    bottom: 80px;           /* 画面下からの距離 → 調整可 */
+    bottom: 80px;           /* 逕ｻ髱｢荳九°繧峨・霍晞屬 竊・隱ｿ謨ｴ蜿ｯ */
     left: 50%;
-    transform: translateX(-50%);  /* 中央に配置 */
+    transform: translateX(-50%);  /* 荳ｭ螟ｮ縺ｫ驟咲ｽｮ */
 
     width: 100%;
-    max-width: 750px;       /* コンテンツ幅がある場合の中央揃え */
+    max-width: 750px;       /* 繧ｳ繝ｳ繝・Φ繝・ｹ・′縺ゅｋ蝣ｴ蜷医・荳ｭ螟ｮ謠・∴ */
     display: flex;
     justify-content: space-between; 
-    padding: 0 40px;        /* 左右の余白 */
+    padding: 0 40px;        /* 蟾ｦ蜿ｳ縺ｮ菴咏區 */
 }
 
-/* スキップボタン（枠線だけ） */
+/* 繧ｹ繧ｭ繝・・繝懊ち繝ｳ・域棧邱壹□縺托ｼ・*/
 .skip-btn {
     padding: 10px 28px;
-    border-radius: 14px; /* アカウント関連は24px */
+    border-radius: 14px; /* 繧｢繧ｫ繧ｦ繝ｳ繝磯未騾｣縺ｯ24px */
     border: 2.5px solid #5A6A71;
     background: transparent;
     color: #dce6ec;
@@ -40,10 +40,10 @@ body {
     background-color: #23343b;
 }
 
-/* 送信ボタン（青の塗りつぶし） */
+/* 騾∽ｿ｡繝懊ち繝ｳ・磯搨縺ｮ蝪励ｊ縺､縺ｶ縺暦ｼ・*/
 .send-btn {
     padding: 10px 32px;
-    border-radius: 14px; /* アカウント関連は24px */
+    border-radius: 14px; /* 繧｢繧ｫ繧ｦ繝ｳ繝磯未騾｣縺ｯ24px */
     background-color: #49c0f8;
     border: none;
     color: #04323b;

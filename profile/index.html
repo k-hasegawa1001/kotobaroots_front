@@ -1,0 +1,84 @@
+﻿<!DOCTYPE html>
+<html lang="ja">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>KotobaRoots | プロフィール</title>
+    <link rel="stylesheet" href="../shared/styles.css" />
+  </head>
+  <body>
+    <div class="app-shell">
+      <aside id="site-header"></aside>
+      <main class="page">
+        <section class="page-header">
+          <div class="page-title-row">
+            <h1 class="page-title">プロフィール</h1>
+          </div>
+          <p class="page-subtitle">登録情報を確認できます。</p>
+          <div class="page-divider"></div>
+        </section>
+
+        <div id="status" class="status" hidden aria-live="polite"></div>
+
+        <section class="card">
+          <div class="kv-row kv-row-action">
+            <span>ユーザー名</span>
+            <strong id="profile-username"></strong>
+            <button id="edit-username" class="btn outline small" type="button">変更</button>
+          </div>
+          <div class="kv-row kv-row-action">
+            <span>メールアドレス</span>
+            <strong id="profile-email"></strong>
+            <button id="edit-email" class="btn outline small" type="button">変更</button>
+          </div>
+          <div class="kv-row">
+            <span>登録日時</span>
+            <strong id="profile-created"></strong>
+          </div>
+        </section>
+      </main>
+    </div>
+
+    <div id="username-modal" class="modal" hidden>
+      <div class="modal-card">
+        <h2 class="modal-title">ユーザー名を変更</h2>
+        <div id="username-status" class="status" hidden></div>
+        <form id="username-form" class="form" novalidate>
+          <div class="field">
+            <label for="username-input">新しいユーザー名</label>
+            <input id="username-input" name="username" type="text" required />
+          </div>
+          <div class="modal-actions">
+            <button id="close-username-modal" class="btn outline" type="button">キャンセル</button>
+            <button class="btn" type="submit">更新</button>
+          </div>
+        </form>
+      </div>
+    </div>
+
+    <div id="email-modal" class="modal" hidden>
+      <div class="modal-card">
+        <h2 class="modal-title">メールアドレスを変更</h2>
+        <p class="page-subtitle">新しいメールアドレスへ確認メールを送信します。</p>
+        <div id="email-status" class="status" hidden></div>
+        <form id="email-request-form" class="form" novalidate>
+          <div class="field">
+            <label for="email-input">新しいメールアドレス</label>
+            <input id="email-input" name="new_email" type="email" required />
+          </div>
+          <button class="btn" type="submit">確認メールを送信</button>
+        </form>
+        <div class="modal-divider"></div>
+        <p class="page-subtitle">
+          確認メールのリンクを開き、ログイン後「変更を確定」を押して完了します。
+        </p>
+        <div class="modal-actions">
+          <span></span>
+          <button id="close-email-modal" class="btn outline" type="button">閉じる</button>
+        </div>
+      </div>
+    </div>
+
+    <script type="module" src="./index.js"></script>
+  </body>
+</html>

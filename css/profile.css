@@ -1,19 +1,17 @@
-/* === 全体の背景と文字色 === */
+﻿/* ============================================== */
+/* ========== PROFILE PAGE蟆ら畑繧ｹ繧ｿ繧､繝ｫ =========== */
+/* ============================================== */
+
+/* 蜈ｨ菴薙Ξ繧､繧｢繧ｦ繝郁ｪｿ謨ｴ */
 body {
-    margin: 0;
-    font-family: "Noto Sans JP", sans-serif;
     background-color: #131f24;
     color: #dce6ec;
+    margin: 0;
+    font-family: "Noto Sans JP", sans-serif;
 }
 
-/* === 全体レイアウト === */
-.container {
-    display: flex;
-    height: 100vh;
-}
-
-/* === サイドバー === */
-.sidebar {
+/* -------- 繧ｵ繧､繝峨ヰ繝ｼ -------- */
+.sidebar-content {
     position: fixed;
     left: 0;
     top: 0;
@@ -27,55 +25,57 @@ body {
     align-items: center;
 }
 
-/* === タイトル === */
-.title {
+/* 繧ｵ繧､繝峨ヰ繝ｼ繧ｿ繧､繝医Ν */
+.sidebar-title {
     font-size: 28px;
     margin-bottom: 40px;
     font-weight: 450;
 }
 
-/* === メニュー === */
-.menu {
+/* 繝｡繝九Η繝ｼ繝ｪ繧ｹ繝・*/
+.sidebar-menu-list {
     display: flex;
     flex-direction: column;
     gap: 12px;
     width: 100%;
     align-items: center;
+    padding: 0;
+    margin: 0;
+    list-style: none;
 }
 
-.menu-item {
+/* 繝｡繝九Η繝ｼ繧｢繧､繝・Β */
+.sidebar-menu-item,
+.sidebar-menu-logout {
     width: 88%;
     padding: 13px 0;
     background: none;
     border: none;
     color: #dce6ec;
     font-size: 16px;
+    text-decoration: none;
+    text-align: center;
     border-radius: 30px;
     cursor: pointer;
     transition: 0.2s;
 }
 
-/* === アクティブ（選択中） === */
-.menu-item.active {
-    background-color: #202536;
-    border: 3px solid #3f85a7;
-    color: #49c0f8;
-}
-
-/* === ホバー === */
-.menu-item:hover {
+/* 繝帙ヰ繝ｼ */
+.sidebar-menu-item:hover,
+.sidebar-menu-logout:hover {
     background-color: #202536;
 }
 
-/* === メインコンテンツ === */
+/* 繝｡繧､繝ｳ繧ｳ繝ｳ繝・Φ繝・*/
 .main-content {
-    flex: 1;
+    margin-left: 200px;
+    padding: 25px 50px;
     background-color: #131f24;
-    margin-left: 200px; /* ← サイドバーと同じ幅 */
+    height: 100vh;
     overflow-y: auto;
 }
 
-/* === スクロールバー === */
+/* 繧ｹ繧ｯ繝ｭ繝ｼ繝ｫ繝舌・ */
 .main-content::-webkit-scrollbar {
     width: 8px;
 }
@@ -84,55 +84,52 @@ body {
     border-radius: 4px;
 }
 
-/* === タイトル行 === */
-.title-row {
-    display: flex;
-    align-items: center;
-    justify-content: space-between;
-    margin-bottom: 10px;
-}
-
-/* === ページタイトル === */
-.page-title {
+/* 繝壹・繧ｸ繧ｿ繧､繝医Ν */
+.main-title {
     font-size: 42px;
     font-weight: 450;
-    margin: 25px 50px 5px;
+    margin: 25px 0 0 0;
 }
 
-/* === タイトル下の横線 === */
-.title-line {
+/* 繧ｿ繧､繝医Ν荳九Λ繧､繝ｳ */
+.main-title-line {
     border: none;
     border-bottom: 3px solid #5A6A71;
-    width: calc(100% - 65px);
-    margin: -5px 30px 25px;
+    width: 100%;
+    margin: 10px 0 25px 0;
 }
 
-/* === フィルターバー（ドロップダウン） === */
-.filter-bar {
-    display: flex;
-    gap: 25px;
-    margin-right: 40px;
-    margin-top: 30px;
+/* -------- PROFILE諠・ｱ -------- */
+
+.profile-info {
+    margin: 25px 0;
+    padding-left: 5px;
+    font-size: 20px;
+    line-height: 1.8;
 }
 
-.dropdown {
-    background-color: #202f36;
+.profile-label {
+    margin-bottom: 6px;
+    color: #9da4aa;
+}
+
+.profile-value {
+    margin-bottom: 20px;
+    font-weight: 450;
     color: #dce6ec;
-    border: 2px solid #9da4aa;
-    border-radius: 8px;
-    padding: 11px 25px 11px 20px;
-    font-size: 16px;
 }
+
+/* 譛蠕後・鬆・岼縺ｮ菴咏區繧貞炎髯､ */
+.profile-value:last-child {
+    margin-bottom: 0;
+}
+
 
 /* ========================================================= */
-/* === iPad (横〜縦：768〜1024px) === */
+/* === iPad (讓ｪ縲懃ｸｦ・・68縲・024px) === */
 /* ========================================================= */
 @media (max-width: 1024px) and (min-width: 601px) {
-    .container {
-        zoom: 1.6;
-    }
-
-    .sidebar {
+    .sidebar-content {
         width: 150px;
     }
 
@@ -140,27 +137,27 @@ body {
         margin-left: 150px;
     }
 
-    .menu-item {
-        font-size: 15px;
-        padding: 8px 0;
+    .sidebar-title {
+        font-size: 20px;
     }
 
-    .title {
-        font-size: 20px;
+    .sidebar-menu-item,
+    .sidebar-menu-logout {
+        font-size: 15px;
+        padding: 10px 0;
+    }
+
+    .main-title {
+        font-size: 36px;
     }
 }
 
 /* ========================================================= */
-/* === スマホ（〜600px） === */
+/* === 繧ｹ繝槭・・医・00px・・=== */
 /* ========================================================= */
 @media (max-width: 600px) {
-    .container {
-        flex-direction: column;
-        height: auto;
-        zoom: 1;
-    }
 
-    .sidebar {
+    .sidebar-content {
         position: relative;
         width: 100%;
         height: auto;
@@ -171,18 +168,19 @@ body {
         justify-content: space-around;
     }
 
-    .title {
+    .sidebar-title {
         display: none;
     }
 
-    .menu {
+    .sidebar-menu-list {
         flex-direction: row;
         gap: 10px;
         justify-content: space-around;
         width: 100%;
     }
 
-    .menu-item {
+    .sidebar-menu-item,
+    .sidebar-menu-logout {
         font-size: 13px;
         padding: 8px 10px;
         width: auto;
@@ -192,51 +190,23 @@ body {
         margin-left: 0;
         padding: 20px;
     }
-}
 
-/* ========================================================= */
-/* === iPhone SEなど超小画面（〜400px） === */
-/* ========================================================= */
-@media (max-width: 400px) {
-    .menu-item {
-        font-size: 12px;
-        padding: 6px 8px;
+    .main-title {
+        font-size: 32px;
     }
 }
 
-.level-title {
-    font-size: 33px; /* タイトルは42px */
-    font-weight: 450;
-    margin: 20px 60px;       /* 上下=10px 左右=50px の余白 */
-    color: #dce6ec;
-}
+/* ========================================================= */
+/* === 雜・ｰ冗判髱｢・医・00px・・=== */
+/* ========================================================= */
+@media (max-width: 400px) {
+    .sidebar-menu-item,
+    .sidebar-menu-logout {
+        font-size: 12px;
+        padding: 6px 8px;
+    }
 
-.profile-info {
-    padding: 15px 60px;       /* 上下=10px 左右=50px の余白 */
-    margin: 0;
-    font-size: 20px;
-    color: #dce6ec;
-    line-height: 1.8; /* 行間を少し広げて見やすく */
-}
-
-.profile-info > div {
-    margin-bottom: 20px; /* 各行の下に20pxの間隔 */
-}
-
-.profile-info > div:last-child {
-    margin-bottom: 0; /* 最後の行は余白なし */
-}
-
-
-
-.edit-link {
-    color: #49c0f8;          /* 青色リンク */
-    margin-left: 10px;       /* テキストとの余白 */
-    text-decoration: underline;
-    cursor: pointer;
-    font-size: 19px;     /* 隣の文字は20pxだが1px小さく */
-}
-
-.edit-link:hover {
-    color: #36a8d6;          /* ホバーで少し濃く */
+    .main-title {
+        font-size: 28px;
+    }
 }

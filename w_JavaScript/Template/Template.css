@@ -1,17 +1,17 @@
-:root{
-  --bg:#0e2628;      /* 画面全体の暗い背景 */
-  --panel:#0f2b2d;   /* メイン領域 */
-  --sidebar:#0b2a2b; /* サイドバー背景 */
-  --divider:#476166; /* 縦のライン */
-  --accent:#2aa6ff;  /* 選択ボタンの青色 */
-  --text:#e6f3f4;    /* テキスト色 */
+﻿:root{
+  --bg:#0e2628;      /* 逕ｻ髱｢蜈ｨ菴薙・證励＞閭梧勹 */
+  --panel:#0f2b2d;   /* 繝｡繧､繝ｳ鬆伜沺 */
+  --sidebar:#0b2a2b; /* 繧ｵ繧､繝峨ヰ繝ｼ閭梧勹 */
+  --divider:#476166; /* 邵ｦ縺ｮ繝ｩ繧､繝ｳ */
+  --accent:#2aa6ff;  /* 驕ｸ謚槭・繧ｿ繝ｳ縺ｮ髱定牡 */
+  --text:#e6f3f4;    /* 繝・く繧ｹ繝郁牡 */
 }
 
 *{box-sizing:border-box}
 html,body{height:100%;margin:0;font-family:"Noto Sans JP", "Hiragino Kaku Gothic ProN", Meiryo, sans-serif;background:var(--bg);color:var(--text);-webkit-font-smoothing:antialiased}
 .app{display:flex;height:100vh;align-items:stretch}
 
-/* サイドバー */
+/* 繧ｵ繧､繝峨ヰ繝ｼ */
 .sidebar{
   width:220px;
   min-width:220px;
@@ -30,7 +30,7 @@ html,body{height:100%;margin:0;font-family:"Noto Sans JP", "Hiragino Kaku Gothic
   color:var(--text);
 }
 
-/* メニュー */
+/* 繝｡繝九Η繝ｼ */
 .menu{display:flex;flex-direction:column;gap:18px;width:100%}
 .menu-item{
   background:transparent;
@@ -47,7 +47,7 @@ html,body{height:100%;margin:0;font-family:"Noto Sans JP", "Hiragino Kaku Gothic
 }
 .menu-item:hover{transform:translateX(4px);opacity:0.95}
 
-/* 選択中のボタン（画像の楕円枠） */
+/* 驕ｸ謚樔ｸｭ縺ｮ繝懊ち繝ｳ・育判蜒上・讌募・譫・・*/
 .menu-item.active{
   color:var(--accent);
   box-shadow: 0 0 0 3px rgba(42,166,255,0.12) inset;
@@ -57,7 +57,7 @@ html,body{height:100%;margin:0;font-family:"Noto Sans JP", "Hiragino Kaku Gothic
   font-weight:600;
 }
 
-/* サイドの縦ライン（画像の細い線） */
+/* 繧ｵ繧､繝峨・邵ｦ繝ｩ繧､繝ｳ・育判蜒上・邏ｰ縺・ｷ夲ｼ・*/
 .sidebar::after{
   content:"";
   position:absolute;
@@ -69,7 +69,7 @@ html,body{height:100%;margin:0;font-family:"Noto Sans JP", "Hiragino Kaku Gothic
   opacity:0.9;
 }
 
-/* メイン領域 */
+/* 繝｡繧､繝ｳ鬆伜沺 */
 .content{
   flex:1;
   background:var(--panel);
@@ -80,10 +80,10 @@ html,body{height:100%;margin:0;font-family:"Noto Sans JP", "Hiragino Kaku Gothic
   min-height:100vh;
 }
 
-/* 中央は空白（画像通り）*/
+/* 荳ｭ螟ｮ縺ｯ遨ｺ逋ｽ・育判蜒城壹ｊ・・/
 .placeholder{width:100%;height:100%;}
 
-/* 右下のmiroの透かし */
+/* 蜿ｳ荳九・miro縺ｮ騾上°縺・*/
 .watermark{
   position:absolute;
   right:18px;
@@ -96,7 +96,7 @@ html,body{height:100%;margin:0;font-family:"Noto Sans JP", "Hiragino Kaku Gothic
   background:rgba(0,0,0,0.02);
 }
 
-/* 小画面時の調整 */
+/* 蟆冗判髱｢譎ゅ・隱ｿ謨ｴ */
 @media (max-width:640px){
   .sidebar{width:160px;padding:18px}
   .logo{font-size:18px}

@@ -1,4 +1,4 @@
-/* === 画面全体の薄暗い背景 === */
+﻿/* === 逕ｻ髱｢蜈ｨ菴薙・阮・囓縺・レ譎ｯ === */
 body {
     background: transparent;
 }
@@ -16,42 +16,42 @@ body {
     z-index: 999;
 }
 
-/* === 完了ポップアップ本体（半分サイズ） === */
+/* === 螳御ｺ・・繝・・繧｢繝・・譛ｬ菴難ｼ亥濠蛻・し繧､繧ｺ・・=== */
 .confirm-box {
     background: #131f24;
-    padding: 50px 40px;       /* 100px → 50 / 80px → 40 */
-    border-radius: 9px;       /* 18px → 9px */
+    padding: 50px 40px;       /* 100px 竊・50 / 80px 竊・40 */
+    border-radius: 9px;       /* 18px 竊・9px */
     width: 92%;
-    max-width: 260px;         /* 520px → 260px */
+    max-width: 260px;         /* 520px 竊・260px */
     text-align: center;
     box-shadow: 0 4px 12px rgba(0, 0, 0, 0.55);
     border: 1px solid #2c3a40;
 }
 
-/* メッセージ（半分サイズ） */
+/* 繝｡繝・そ繝ｼ繧ｸ・亥濠蛻・し繧､繧ｺ・・*/
 .done-message {
-    font-size: 22px;           /* 45px → 22px */
+    font-size: 22px;           /* 45px 竊・22px */
     color: #dce6ec;
-    margin: 3px 0;             /* 5px → 3px */
+    margin: 3px 0;             /* 5px 竊・3px */
 }
 
-/* === レスポンシブ追加：半分版 === */
+/* === 繝ｬ繧ｹ繝昴Φ繧ｷ繝冶ｿｽ蜉・壼濠蛻・沿 === */
 @media screen and (max-width: 1024px) {
     .confirm-box {
-        padding: 35px 30px;    /* 70px → 35 / 60px → 30 */
-        max-width: 225px;      /* 450px → 225px */
+        padding: 35px 30px;    /* 70px 竊・35 / 60px 竊・30 */
+        max-width: 225px;      /* 450px 竊・225px */
     }
     .done-message {
-        font-size: 18px;       /* 36px → 18px */
+        font-size: 18px;       /* 36px 竊・18px */
     }
 }
 
 @media screen and (max-width: 768px) {
     .confirm-box {
-        padding: 25px 15px;    /* 50px → 25 / 30px → 15 */
+        padding: 25px 15px;    /* 50px 竊・25 / 30px 竊・15 */
         width: 90%;
     }
     .done-message {
-        font-size: 14px;       /* 28px → 14px */
+        font-size: 14px;       /* 28px 竊・14px */
     }
 }

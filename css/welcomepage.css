@@ -1,4 +1,4 @@
-@import url('https://fonts.googleapis.com/css2?family=Noto+Sans+JP:wght@400;700&display=swap');
+﻿@import url('https://fonts.googleapis.com/css2?family=Noto+Sans+JP:wght@400;700&display=swap');
 
 body {
     margin: 0;
@@ -12,48 +12,48 @@ body {
     align-items: center;
     height: 100vh;
     text-align: center;
-    padding-top: 5vh; /* 上部余白半分 */
+    padding-top: 5vh; /* 荳企Κ菴咏區蜊雁・ */
     box-sizing: border-box;
     overflow-y: auto;
 }
 
 .title {
-    font-size: 2.5em; /* 半分 */
+    font-size: 2.5em; /* 蜊雁・ */
     font-weight: 700;
-    margin-bottom: 35px; /* 半分 */
+    margin-bottom: 35px; /* 蜊雁・ */
     color: #dce6ec;
 }
 
 .description {
-    font-size: 0.9em; /* 半分 */
-    line-height: 0.9 * 1.8; /* 約半分 */
-    margin-bottom: 15px; /* 半分 */
+    font-size: 0.9em; /* 蜊雁・ */
+    line-height: 0.9 * 1.8; /* 邏・濠蛻・*/
+    margin-bottom: 15px; /* 蜊雁・ */
     color: #dce6ec;
-    max-width: 550px; /* 半分 */
-    padding: 0 10px; /* 半分 */
+    max-width: 550px; /* 蜊雁・ */
+    padding: 0 10px; /* 蜊雁・ */
 }
 
 .question {
-    font-size: 1.2em; /* 半分 */
-    margin-bottom: 40px; /* 半分 */
+    font-size: 1.2em; /* 蜊雁・ */
+    margin-bottom: 40px; /* 蜊雁・ */
     color: #dce6ec;
 }
 
 .language-select {
-    width: 150px; /* 半分 */
-    padding: 6px; /* 半分 */
-    font-size: 1.25em; /* 半分 */
-    border-radius: 3px; /* 半分 */
+    width: 150px; /* 蜊雁・ */
+    padding: 6px; /* 蜊雁・ */
+    font-size: 1.25em; /* 蜊雁・ */
+    border-radius: 3px; /* 蜊雁・ */
     border: 1px solid #dce6ec;
     background-color: #131f24;
     color: #dce6ec;
-    margin-bottom: 90px; /* 半分 */
+    margin-bottom: 90px; /* 蜊雁・ */
     appearance: none;
     background-image: url('data:image/svg+xml;charset=UTF-8,%3Csvg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="%23dce6ec"%3E%3Cpath d="M7 10l5 5 5-5z"%3E%3C/path%3E%3C/svg%3E');
     background-repeat: no-repeat;
-    background-position: right 5px center; /* 半分 */
-    background-size: 10px; /* 半分 */
-    padding-right: 17px; /* アイコン分の半分パディング */
+    background-position: right 5px center; /* 蜊雁・ */
+    background-size: 10px; /* 蜊雁・ */
+    padding-right: 17px; /* 繧｢繧､繧ｳ繝ｳ蛻・・蜊雁・繝代ョ繧｣繝ｳ繧ｰ */
 }
 
 .language-select option {
@@ -62,11 +62,11 @@ body {
 }
 
 .next-button {
-    padding: 6px 30px; /* 半分 */
-    font-size: 1.2em; /* 半分 */
+    padding: 6px 30px; /* 蜊雁・ */
+    font-size: 1.2em; /* 蜊雁・ */
     font-weight: bold;
     border: none;
-    border-radius: 3px; /* 半分 */
+    border-radius: 3px; /* 蜊雁・ */
     background-color: #49c0f8;
     color: #131f24;
     cursor: pointer;
@@ -78,79 +78,79 @@ body {
 }
 
 /* ========================================================= */
-/* === iPad対応 (768px〜1024px) === */
+/* === iPad蟇ｾ蠢・(768px縲・024px) === */
 /* ========================================================= */
 @media (max-width: 1024px) and (min-width: 601px) {
     body {
-        padding-top: 4vh; /* 半分 */
+        padding-top: 4vh; /* 蜊雁・ */
     }
 
     .title {
-        font-size: 2.0em; /* 半分 */
-        margin-bottom: 30px; /* 半分 */
+        font-size: 2.0em; /* 蜊雁・ */
+        margin-bottom: 30px; /* 蜊雁・ */
     }
 
     .description {
-        font-size: 0.75em; /* 半分 */
-        line-height: 0.8em; /* 半分 */
+        font-size: 0.75em; /* 蜊雁・ */
+        line-height: 0.8em; /* 蜊雁・ */
     }
 
     .question {
-        font-size: 1.0em; /* 半分 */
-        margin-bottom: 35px; /* 半分 */
+        font-size: 1.0em; /* 蜊雁・ */
+        margin-bottom: 35px; /* 蜊雁・ */
     }
 
     .language-select {
-        width: 140px; /* 半分 */
-        padding: 5px; /* 半分 */
-        font-size: 1em; /* 半分 */
-        margin-bottom: 75px; /* 半分 */
-        background-size: 9px; /* 半分 */
-        padding-right: 15px; /* 半分 */
+        width: 140px; /* 蜊雁・ */
+        padding: 5px; /* 蜊雁・ */
+        font-size: 1em; /* 蜊雁・ */
+        margin-bottom: 75px; /* 蜊雁・ */
+        background-size: 9px; /* 蜊雁・ */
+        padding-right: 15px; /* 蜊雁・ */
     }
 
     .next-button {
-        padding: 5px 25px; /* 半分 */
-        font-size: 1em; /* 半分 */
+        padding: 5px 25px; /* 蜊雁・ */
+        font-size: 1em; /* 蜊雁・ */
     }
 }
 
 /* ========================================================= */
-/* === スマホ対応 (600px以下) === */
+/* === 繧ｹ繝槭・蟇ｾ蠢・(600px莉･荳・ === */
 /* ========================================================= */
 @media (max-width: 600px) {
     body {
-        padding-top: 2.5vh; /* 半分 */
+        padding-top: 2.5vh; /* 蜊雁・ */
     }
 
     .title {
-        font-size: 1.25em; /* 半分 */
-        margin-bottom: 20px; /* 半分 */
+        font-size: 1.25em; /* 蜊雁・ */
+        margin-bottom: 20px; /* 蜊雁・ */
     }
 
     .description {
-        font-size: 0.5em; /* 半分 */
-        line-height: 0.75em; /* 半分 */
-        padding: 0 7.5px; /* 半分 */
-        margin-bottom: 15px; /* 半分 */
+        font-size: 0.5em; /* 蜊雁・ */
+        line-height: 0.75em; /* 蜊雁・ */
+        padding: 0 7.5px; /* 蜊雁・ */
+        margin-bottom: 15px; /* 蜊雁・ */
     }
 
     .question {
-        font-size: 0.75em; /* 半分 */
-        margin-bottom: 25px; /* 半分 */
+        font-size: 0.75em; /* 蜊雁・ */
+        margin-bottom: 25px; /* 蜊雁・ */
     }
 
     .language-select {
-        width: 125px; /* 半分 */
-        padding: 4px; /* 半分 */
-        font-size: 0.9em; /* 半分 */
-        margin-bottom: 50px; /* 半分 */
-        background-size: 8px; /* 半分 */
-        padding-right: 12.5px; /* 半分 */
+        width: 125px; /* 蜊雁・ */
+        padding: 4px; /* 蜊雁・ */
+        font-size: 0.9em; /* 蜊雁・ */
+        margin-bottom: 50px; /* 蜊雁・ */
+        background-size: 8px; /* 蜊雁・ */
+        padding-right: 12.5px; /* 蜊雁・ */
     }
 
     .next-button {
-        padding: 4px 20px; /* 半分 */
-        font-size: 0.9em; /* 半分 */
+        padding: 4px 20px; /* 蜊雁・ */
+        font-size: 0.9em; /* 蜊雁・ */
     }
 }

@@ -1,4 +1,4 @@
-/* === ベース === */
+﻿/* === 繝吶・繧ｹ === */
 :root {
     --bg: #131f24;
     --panel: #131f24;
@@ -11,7 +11,7 @@
 
 body {
     margin: 0;
-    background: transparent; /* 背景なしで下の画面が見える */
+    background: transparent; /* 閭梧勹縺ｪ縺励〒荳九・逕ｻ髱｢縺瑚ｦ九∴繧・*/
     color: var(--text);
 }
 
@@ -23,36 +23,36 @@ body {
     display: flex;
     align-items: center;
     justify-content: center;
-    padding: 10px;           /* ← 半分に */
-    backdrop-filter: blur(1px); /* ← ぼかしも半分感覚 */
+    padding: 10px;           /* 竊・蜊雁・縺ｫ */
+    backdrop-filter: blur(1px); /* 竊・縺ｼ縺九＠繧ょ濠蛻・─隕・*/
 }
 
-/* --- modal（半分サイズ） --- */
+/* --- modal・亥濠蛻・し繧､繧ｺ・・--- */
 .modal {
-    width: 500px;                   /* 1000px → 500px */
-    max-width: calc(100% - 20px);   /* 40px → 20px */
+    width: 500px;                   /* 1000px 竊・500px */
+    max-width: calc(100% - 20px);   /* 40px 竊・20px */
     background: var(--panel);
-    border-radius: 10px;            /* 20px → 10px */
-    padding: 30px 30px 20px;        /* 60/60/40 → 30/30/20 */
+    border-radius: 10px;            /* 20px 竊・10px */
+    padding: 30px 30px 20px;        /* 60/60/40 竊・30/30/20 */
     border: 1px solid rgba(255,255,255,0.05);
     box-shadow: 0 5px 20px rgba(0,0,0,0.6);
 }
 
 /* --- fields --- */
 .field {
-    margin-bottom: 15px;             /* 30px → 15px */
-    width: 80%;                      /* 70% → 半分で35% */
+    margin-bottom: 15px;             /* 30px 竊・15px */
+    width: 80%;                      /* 70% 竊・蜊雁・縺ｧ35% */
     margin: 0 auto;
     resize: none;
-    min-height: 70px;                /* 140px → 70px */
+    min-height: 70px;                /* 140px 竊・70px */
 }
 
 .field label {
     display: block;
     text-align: center;
-    font-size: 20px;                 /* 40px → 20px */
+    font-size: 20px;                 /* 40px 竊・20px */
     color: var(--muted);
-    margin-bottom: 10px;             /* 20px → 10px */
+    margin-bottom: 10px;             /* 20px 竊・10px */
 }
 
 .input,
@@ -61,9 +61,9 @@ body {
     background: #202f36;
     border: 1px solid #37464f;
     color: var(--text);
-    padding: 10px 8px;               /* 20px/16px → 10px/8px */
-    border-radius: 5px;              /* 10px → 5px */
-    font-size: 14px;                 /* 27px → 14px */
+    padding: 10px 8px;               /* 20px/16px 竊・10px/8px */
+    border-radius: 5px;              /* 10px 竊・5px */
+    font-size: 14px;                 /* 27px 竊・14px */
     outline: none;
     box-sizing: border-box;
 }
@@ -71,40 +71,40 @@ body {
 .input::placeholder,
 .textarea::placeholder {
     color: #dce6ec;
-    font-size: 15px;                 /* 30px → 15px */
+    font-size: 15px;                 /* 30px 竊・15px */
 }
 
 .textarea {
     resize: none;
-    min-height: 90px;                /* 180px → 90px */
+    min-height: 90px;                /* 180px 竊・90px */
 }
 
 /* --- actions --- */
 .actions {
     display: flex;
     justify-content: space-between;
-    margin-top: 10px;                /* 20px → 10px */
+    margin-top: 10px;                /* 20px 竊・10px */
 }
 
-/* --- ボタン --- */
+/* --- 繝懊ち繝ｳ --- */
 .btn {
-    padding: 7px 14px;               /* 14/28 → 7/14 */
-    min-width: 75px;                  /* 150px → 75px */
-    border-radius: 14px;              /* 28px → 14px */
+    padding: 7px 14px;               /* 14/28 竊・7/14 */
+    min-width: 75px;                  /* 150px 竊・75px */
+    border-radius: 14px;              /* 28px 竊・14px */
     font-weight: 700;
-    font-size: 9px;                    /* 17px → 9px */
+    font-size: 9px;                    /* 17px 竊・9px */
     cursor: pointer;
 }
 
-/* キャンセルボタン */
+/* 繧ｭ繝｣繝ｳ繧ｻ繝ｫ繝懊ち繝ｳ */
 .btn-cancel {
     background: #131f24;
     border: 1px solid var(--outline);
     color: var(--text);
-    font-size: 18px;                  /* 35px → 18px */
-    padding: 6px 16px;                /* 12/32 → 6/16 */
-    border-radius: 6px;               /* 12px → 6px */
-    min-width: 90px;                  /* 180px → 90px */
+    font-size: 18px;                  /* 35px 竊・18px */
+    padding: 6px 16px;                /* 12/32 竊・6/16 */
+    border-radius: 6px;               /* 12px 竊・6px */
+    min-width: 90px;                  /* 180px 竊・90px */
     cursor: pointer;
 }
 
@@ -112,16 +112,16 @@ body {
     background-color: #202536;
 }
 
-/* 追加ボタン（アクセントカラー） */
+/* 霑ｽ蜉繝懊ち繝ｳ・医い繧ｯ繧ｻ繝ｳ繝医き繝ｩ繝ｼ・・*/
 .btn-add {
     background: #49c0f8;
     border: none;
     color: #06202a;
-    font-size: 18px;                  /* 35px → 18px */
-    padding: 6px 45px;                /* 12/90 → 6/45 */
-    border-radius: 6px;               /* 12px → 6px */
+    font-size: 18px;                  /* 35px 竊・18px */
+    padding: 6px 45px;                /* 12/90 竊・6/45 */
+    border-radius: 6px;               /* 12px 竊・6px */
     min-width: 90px;
-    box-shadow: 0 3px 9px rgba(39,176,255,0.16); /* 6/18 → 3/9 */
+    box-shadow: 0 3px 9px rgba(39,176,255,0.16); /* 6/18 竊・3/9 */
     cursor: pointer;
 }
 
@@ -129,18 +129,18 @@ body {
     background-color: #36a8d6;
 }
 
-/* --- スマホレスポンシブ --- */
+/* --- 繧ｹ繝槭・繝ｬ繧ｹ繝昴Φ繧ｷ繝・--- */
 @media (max-width: 480px) {
     .modal {
         width: 95%;
-        padding: 12px;               /* 24px → 12px */
+        padding: 12px;               /* 24px 竊・12px */
     }
     .title {
-        font-size: 10px;             /* 20px → 10px */
+        font-size: 10px;             /* 20px 竊・10px */
     }
     .btn {
-        min-width: 60px;             /* 120px → 60px */
-        font-size: 8px;              /* 15px → 8px */
-        padding: 6px 10px;           /* 12/20 → 6/10 */
+        min-width: 60px;             /* 120px 竊・60px */
+        font-size: 8px;              /* 15px 竊・8px */
+        padding: 6px 10px;           /* 12/20 竊・6/10 */
     }
 }

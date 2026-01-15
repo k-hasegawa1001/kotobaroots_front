@@ -1,7 +1,7 @@
-/* ===== レイアウト維持 ===== */
+﻿/* ===== 繝ｬ繧､繧｢繧ｦ繝育ｶｭ謖・===== */
 html {
     height: 100%;
-    overflow: hidden; /* ページ全体スクロールロック */
+    overflow: hidden; /* 繝壹・繧ｸ蜈ｨ菴薙せ繧ｯ繝ｭ繝ｼ繝ｫ繝ｭ繝・け */
 }
 
 :root {
@@ -14,7 +14,7 @@ body {
     font-family: "Noto Sans JP", sans-serif;
     color: #dce6ec;
     height: 100vh;
-    overflow: hidden; /* ページ全体スクロールロック */
+    overflow: hidden; /* 繝壹・繧ｸ蜈ｨ菴薙せ繧ｯ繝ｭ繝ｼ繝ｫ繝ｭ繝・け */
     box-sizing: border-box;
 }
 
@@ -31,12 +31,12 @@ body {
     row-gap: 16px;
     height: 100vh;
     box-sizing: border-box;
-    overflow: hidden; /* テーブル内スクロールのみ */
+    overflow: hidden; /* 繝・・繝悶Ν蜀・せ繧ｯ繝ｭ繝ｼ繝ｫ縺ｮ縺ｿ */
     min-height: 0;
     max-height: 100vh;
 }
 
-/* ===== ヘッダー行 ===== */
+/* ===== 繝倥ャ繝繝ｼ陦・===== */
 .header-row {
     display: flex;
     justify-content: space-between;
@@ -55,13 +55,13 @@ body {
     cursor: pointer;
 }
 
-/* ===== 下線 ===== */
+/* ===== 荳狗ｷ・===== */
 .divider {
     border-bottom: 2px solid #52656D;
     margin: 10px;
 }
 
-/* ===== 表だけスクロール ===== */
+/* ===== 陦ｨ縺縺代せ繧ｯ繝ｭ繝ｼ繝ｫ ===== */
 .table-wrapper {
     min-height: 0;
     height: auto;
@@ -70,7 +70,7 @@ body {
     border: 1px solid #32434a;
 }
 
-/* スクロールバー */
+/* 繧ｹ繧ｯ繝ｭ繝ｼ繝ｫ繝舌・ */
 .table-wrapper::-webkit-scrollbar {
     width: 10px;
 }
@@ -83,22 +83,22 @@ body {
     background: #37464f;
 }
 
-/* ===== テーブル ===== */
+/* ===== 繝・・繝悶Ν ===== */
 table {
     width: 100%;
     border-collapse: collapse;
     table-layout: fixed;
 }
 
-/* 縦線を追加 */
+/* 邵ｦ邱壹ｒ霑ｽ蜉 */
 th, td {
     border-left: 1px solid #32434a;
     border-right: 1px solid #32434a;
-    text-align: center;     /* 横中央 */
-    vertical-align: middle; /* 縦中央 */
+    text-align: center;     /* 讓ｪ荳ｭ螟ｮ */
+    vertical-align: middle; /* 邵ｦ荳ｭ螟ｮ */
 }
 
-/* 最初と最後の列の縦線を削除 */
+/* 譛蛻昴→譛蠕後・蛻励・邵ｦ邱壹ｒ蜑企勁 */
 th:first-child, td:first-child {
     border-left: none;
 }
@@ -106,7 +106,7 @@ th:last-child, td:last-child {
     border-right: none;
 }
 
-/* ヘッダー */
+/* 繝倥ャ繝繝ｼ */
 thead th {
     background: #1e3a45;
     padding: 14px;
@@ -116,36 +116,36 @@ thead th {
     z-index: 2;
 }
 
-/* 本文 */
+/* 譛ｬ譁・*/
 tbody td {
     padding: 14px;
     border-bottom: 1px solid #1e3a45;
 }
 
-/* 列幅 */
+/* 蛻怜ｹ・*/
 th:nth-child(1), td:nth-child(1) { width: 15%; }
 th:nth-child(2), td:nth-child(2) { width: 65%; }
 th:nth-child(3), td:nth-child(3) { width: 20%; text-align: center; }
 
-/* 正誤文字に対応 */
+/* 豁｣隱､譁・ｭ励↓蟇ｾ蠢・*/
 .status.correct {
-    color: #93d333;  /* 緑色 */
+    color: #93d333;  /* 邱題牡 */
     font-weight: bold;
-    font-size: 18px; /* 好きなサイズに調整 */
+    font-size: 18px; /* 螂ｽ縺阪↑繧ｵ繧､繧ｺ縺ｫ隱ｿ謨ｴ */
 }
 
 .status.incorrect {
-    color: #ee5555;  /* 赤色 */
+    color: #ee5555;  /* 襍､濶ｲ */
     font-weight: bold;
     font-size: 18px;
 }
 
-/* FontAwesome アイコンは非表示にする */
+/* FontAwesome 繧｢繧､繧ｳ繝ｳ縺ｯ髱櫁｡ｨ遉ｺ縺ｫ縺吶ｋ */
 .status i {
     display: none;
 }
 
-/* ===== 行全体をボタン化 ===== */
+/* ===== 陦悟・菴薙ｒ繝懊ち繝ｳ蛹・===== */
 .table-row-button {
     cursor: pointer;
     transition: background 0.2s;
@@ -155,13 +155,13 @@ th:nth-child(3), td:nth-child(3) { width: 20%; text-align: center; }
     background-color: #2f4a55;
 }
 
-/* tdの枠・テキストは既存通り */
+/* td縺ｮ譫繝ｻ繝・く繧ｹ繝医・譌｢蟄倬壹ｊ */
 .table-row-button td {
     padding: 14px;
     border-bottom: 1px solid #1e3a45;
 }
 
-/* ===== レスポンシブ ===== */
+/* ===== 繝ｬ繧ｹ繝昴Φ繧ｷ繝・===== */
 @media screen and (max-width: 768px) {
     .main-content {
         margin-left: 0;

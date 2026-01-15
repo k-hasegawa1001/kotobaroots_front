@@ -1,0 +1,41 @@
+﻿<!DOCTYPE html>
+<html lang="ja">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>KotobaRoots | クイズ</title>
+    <link rel="stylesheet" href="../shared/styles.css" />
+  </head>
+  <body>
+    <div class="app-shell">
+      <aside id="site-header"></aside>
+      <main class="page">
+        <section class="page-header">
+          <div class="page-title-row">
+            <h1 class="page-title">クイズ</h1>
+          </div>
+          <p id="topic-title" class="page-subtitle"></p>
+          <div class="page-divider"></div>
+        </section>
+
+        <div id="status" class="status" hidden aria-live="polite"></div>
+
+        <section class="card">
+          <div class="quiz-meta">
+            <span id="question-progress" class="progress"></span>
+            <span id="question-type" class="badge"></span>
+          </div>
+          <div id="question-text" class="question-text"></div>
+          <div id="answer-area"></div>
+          <div class="card-actions">
+            <button id="reset-button" class="btn outline" type="button" hidden>
+              並び替えをリセット
+            </button>
+            <button id="next-button" class="btn" type="button">次へ</button>
+          </div>
+        </section>
+      </main>
+    </div>
+    <script type="module" src="./quiz.js"></script>
+  </body>
+</html>

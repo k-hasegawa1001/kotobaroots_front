@@ -1,4 +1,4 @@
-/* === 画面全体の薄暗い背景 === */
+﻿/* === 逕ｻ髱｢蜈ｨ菴薙・阮・囓縺・レ譎ｯ === */
 body {
     background: transparent;
 }
@@ -16,42 +16,42 @@ body {
     z-index: 999;
 }
 
-/* === ポップアップ本体（全サイズを半分） === */
+/* === 繝昴ャ繝励い繝・・譛ｬ菴難ｼ亥・繧ｵ繧､繧ｺ繧貞濠蛻・ｼ・=== */
 .confirm-box {
     background: #131f24;
-    padding: 22px 50px;              /* 45px → 22 / 100px → 50 */
-    border-radius: 9px;              /* 18px → 9px */
+    padding: 22px 50px;              /* 45px 竊・22 / 100px 竊・50 */
+    border-radius: 9px;              /* 18px 竊・9px */
     width: 92%;
-    max-width: 300px;                /* 600px → 300px（半分） */
+    max-width: 300px;                /* 600px 竊・300px・亥濠蛻・ｼ・*/
     text-align: center;
     box-shadow: 0px 4px 20px rgba(0,0,0,0.5);
     border: 1px solid #2c3a40;
 }
 
-/* メッセージ（半分） */
+/* 繝｡繝・そ繝ｼ繧ｸ・亥濠蛻・ｼ・*/
 .confirm-message {
-    font-size: 16px;                 /* 32px → 16px */
+    font-size: 16px;                 /* 32px 竊・16px */
     color: #dce6ec;
     margin-top: 3px;
-    margin-bottom: 25px;             /* 50px → 25px */
+    margin-bottom: 25px;             /* 50px 竊・25px */
 }
 
-/* ボタン配置 */
+/* 繝懊ち繝ｳ驟咲ｽｮ */
 .confirm-buttons {
     display: flex;
     justify-content: space-between;
-    gap: 9px;                         /* 18px → 9px */
+    gap: 9px;                         /* 18px 竊・9px */
 }
 
-/* キャンセルボタン（半分） */
+/* 繧ｭ繝｣繝ｳ繧ｻ繝ｫ繝懊ち繝ｳ・亥濠蛻・ｼ・*/
 .cancel-btn {
     flex: 1;
     background: none;
     color: #dce6ec;
-    padding: 8px 17px;                /* 16px/34px → 8px/17px */
-    border-radius: 6px;               /* 12px → 6px */
-    font-size: 18px;                  /* 35px → 18px */
-    border: 1px solid #37464f;        /* 細さも下げた */
+    padding: 8px 17px;                /* 16px/34px 竊・8px/17px */
+    border-radius: 6px;               /* 12px 竊・6px */
+    font-size: 18px;                  /* 35px 竊・18px */
+    border: 1px solid #37464f;        /* 邏ｰ縺輔ｂ荳九￡縺・*/
     cursor: pointer;
     transition: 0.2s;
 }
@@ -60,14 +60,14 @@ body {
     background: #252036;
 }
 
-/* 削除ボタン（半分） */
+/* 蜑企勁繝懊ち繝ｳ・亥濠蛻・ｼ・*/
 .delete-btn {
     flex: 1;
     background: #ee5555;
     color: #131f24;
-    padding: 8px 17px;                /* 同じく半分 */
+    padding: 8px 17px;                /* 蜷後§縺丞濠蛻・*/
     border-radius: 6px;
-    font-size: 18px;                  /* 半分 */
+    font-size: 18px;                  /* 蜊雁・ */
     font-weight: 700;
     border: none;
     cursor: pointer;
@@ -78,11 +78,11 @@ body {
     background: #db493f;
 }
 
-/* === レスポンシブ（同じ割合で半分） === */
+/* === 繝ｬ繧ｹ繝昴Φ繧ｷ繝厄ｼ亥酔縺伜牡蜷医〒蜊雁・・・=== */
 @media screen and (max-width: 1024px) {
     .confirm-box {
         padding: 17px 30px;
-        max-width: 225px;             /* 450 → 半分 */
+        max-width: 225px;             /* 450 竊・蜊雁・ */
     }
     .confirm-message {
         font-size: 16px;

@@ -1,4 +1,4 @@
-body {
+﻿body {
     background-color: #131f24;
     color: #dce6ec;
     font-family: sans-serif;
@@ -15,14 +15,14 @@ body {
     text-align: center;
 }
 
-/* タイトル（h2）の下に余白 */
+/* 繧ｿ繧､繝医Ν・・2・峨・荳九↓菴咏區 */
 .container h2 {
     font-size: 28px;
     font-weight: 500;
     margin-bottom: 30px;
 }
 
-/* ★ HTMLの type="useremail" に合わせて修正 */
+/* 笘・HTML縺ｮ type="useremail" 縺ｫ蜷医ｏ縺帙※菫ｮ豁｣ */
 input[type="useremail"] {
     width: 290px;
     padding: 12px;
@@ -34,13 +34,13 @@ input[type="useremail"] {
     margin-bottom: 10px;
 }
 
-/* placeholder の色設定 */
+/* placeholder 縺ｮ濶ｲ險ｭ螳・*/
 input[type="useremail"]::placeholder {
     color: #b2babe;
     font-size: 14px;
 }
 
-/* ボタン */
+/* 繝懊ち繝ｳ */
 button {
     background-color: #49c0f8;
     color: #131f24;

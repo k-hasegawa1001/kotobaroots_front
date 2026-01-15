@@ -1,22 +1,22 @@
-/* === 全体設定 === */
+﻿/* === 蜈ｨ菴楢ｨｭ螳・=== */
 body {
   margin: 0;
   font-family: "Noto Sans JP", sans-serif;
   background-color: #131f24;
   color: #dce6ec;
-  overflow: hidden; /* ← スクロールを禁止 */
+  overflow: hidden; /* 竊・繧ｹ繧ｯ繝ｭ繝ｼ繝ｫ繧堤ｦ∵ｭ｢ */
 }
 
-/* === レイアウト === */
+/* === 繝ｬ繧､繧｢繧ｦ繝・=== */
 .container {
   display: flex;
   height: 100vh;
-  /* zoom削除 → 1.0倍 */
+  /* zoom蜑企勁 竊・1.0蛟・*/
 }
 
 
 
-/* === メインコンテンツ === */
+/* === 繝｡繧､繝ｳ繧ｳ繝ｳ繝・Φ繝・=== */
 .main-content {
   flex: 1;
   margin-left: 200px;
@@ -34,7 +34,7 @@ body {
   margin-bottom: 70px;
 }
 
-/* === お問い合わせフォーム === */
+/* === 縺雁撫縺・粋繧上○繝輔か繝ｼ繝 === */
 .contact-form {
   display: flex;
   flex-direction: column;
@@ -59,7 +59,7 @@ body {
   color: #dce6ec;
 }
 
-/* === 送信ボタン === */
+/* === 騾∽ｿ｡繝懊ち繝ｳ === */
 .submit-button {
   background-color: #49c0f8;
   border: none;
@@ -77,12 +77,12 @@ body {
   background-color: #36a8d6;
 }
 
-/* === スマホ対応（max-width: 600px） === */
+/* === 繧ｹ繝槭・蟇ｾ蠢懶ｼ・ax-width: 600px・・=== */
 @media (max-width: 600px) {
   .container {
     flex-direction: column;
     height: auto;
-    zoom: 1; /* スマホでは拡大なし */
+    zoom: 1; /* 繧ｹ繝槭・縺ｧ縺ｯ諡｡螟ｧ縺ｪ縺・*/
   }
 
   .sidebar {
@@ -140,10 +140,10 @@ body {
   }
 }
 
-/* === iPad対応（横幅600〜1024px） === */
+/* === iPad蟇ｾ蠢懶ｼ域ｨｪ蟷・00縲・024px・・=== */
 @media (min-width: 601px) and (max-width: 1024px) {
   .container {
-    zoom: 1.5; /* iPadは必要に応じて少し拡大 */
+    zoom: 1.5; /* iPad縺ｯ蠢・ｦ√↓蠢懊§縺ｦ蟆代＠諡｡螟ｧ */
   }
 
   .main-content {

@@ -1,6 +1,6 @@
-@import url('https://fonts.googleapis.com/css2?family=Noto+Sans+JP:wght@400;700&display=swap');
+﻿@import url('https://fonts.googleapis.com/css2?family=Noto+Sans+JP:wght@400;700&display=swap');
 
-/* === ベース設定 === */
+/* === 繝吶・繧ｹ險ｭ螳・=== */
 body {
     margin: 0;
     padding: 0;
@@ -9,7 +9,7 @@ body {
     color: #dce6ec;
 }
 
-/* === 1. モーダルオーバーレイ === */
+/* === 1. 繝｢繝ｼ繝繝ｫ繧ｪ繝ｼ繝舌・繝ｬ繧､ === */
 .modal-overlay {
     position: fixed;
     top: 0;
@@ -23,90 +23,90 @@ body {
     z-index: 1000;
 }
 
-/* === 2. モーダル本体 === */
+/* === 2. 繝｢繝ｼ繝繝ｫ譛ｬ菴・=== */
 .modal-content {
     background-color: #131f24;
-    border-radius: 7.5px; /* 半分 */
+    border-radius: 7.5px; /* 蜊雁・ */
     display: flex;
     flex-direction: column;
     width: 95%;
-    max-width: 550px; /* 半分程度 */
+    max-width: 550px; /* 蜊雁・遞句ｺｦ */
     padding: 10px 20px;
-    padding-bottom: 25px; /* 半分 */
+    padding-bottom: 25px; /* 蜊雁・ */
     box-shadow: 0 2.5px 10px rgba(0, 0, 0, 0.5);
     position: relative;
 }
 
-/* === ヘッダー === */
+/* === 繝倥ャ繝繝ｼ === */
 .modal-header {
     width: 100%;
     margin-bottom: 15px;
     display: flex;
     justify-content: center;
     align-items: center;
-    padding-top: 20px; /* 半分 */
+    padding-top: 20px; /* 蜊雁・ */
 }
 
-/* 結果タイトル */
+/* 邨先棡繧ｿ繧､繝医Ν */
 .result-title {
-    font-size: 26px; /* 半分 */
+    font-size: 26px; /* 蜊雁・ */
     font-weight: 700;
     margin: 0;
     text-align: center;
 }
 
-/* 不正解用 */
+/* 荳肴ｭ｣隗｣逕ｨ */
 .result-title.wrong {
     color: #ee5555;
 }
 
-/* === ボディ === */
+/* === 繝懊ョ繧｣ === */
 .modal-body {
     text-align: left;
-    margin-bottom: 15px; /* 半分 */
+    margin-bottom: 15px; /* 蜊雁・ */
 }
 
 .section-label {
-    font-size: 14px; /* 半分 */
+    font-size: 14px; /* 蜊雁・ */
     font-weight: 700;
     color: #dce6ec;
-    margin-bottom: 2px; /* 半分 */
+    margin-bottom: 2px; /* 蜊雁・ */
 }
 
-/* あなたの答え */
+/* 縺ゅ↑縺溘・遲斐∴ */
 .user-answer-text {
-    font-size: 14px; /* 半分 */
+    font-size: 14px; /* 蜊雁・ */
     font-weight: 400;
     color: #dce6ec;
-    margin-top: 5px; /* 半分 */
+    margin-top: 5px; /* 蜊雁・ */
     margin-bottom: 10px;
-    margin-left: 35px; /* 半分 */
+    margin-left: 35px; /* 蜊雁・ */
 }
 
-/* 正しい答え */
+/* 豁｣縺励＞遲斐∴ */
 .content-text {
-    font-size: 14px; /* 半分 */
+    font-size: 14px; /* 蜊雁・ */
     font-weight: 400;
     color: #dce6ec;
     margin-top: 5px;
     margin-bottom: 7px;
-    margin-left: 35px; /* 半分 */
+    margin-left: 35px; /* 蜊雁・ */
 }
 
-/* 解説（スクロール付き） */
+/* 隗｣隱ｬ・医せ繧ｯ繝ｭ繝ｼ繝ｫ莉倥″・・*/
 .explanation-text {
-    font-size: 14px; /* 半分 */
+    font-size: 14px; /* 蜊雁・ */
     line-height: 1.6;
     color: #dce6ec;
     margin-left: 35px;
-    max-height: 150px; /* 半分 */
+    max-height: 150px; /* 蜊雁・ */
     overflow-y: auto;
-    padding-right: 7px; /* 半分 */
+    padding-right: 7px; /* 蜊雁・ */
 }
 
-/* スクロールバー */
+/* 繧ｹ繧ｯ繝ｭ繝ｼ繝ｫ繝舌・ */
 .explanation-text::-webkit-scrollbar {
-    width: 7px; /* 半分 */
+    width: 7px; /* 蜊雁・ */
 }
 .explanation-text::-webkit-scrollbar-track {
     background: #1e2a30;
@@ -117,31 +117,31 @@ body {
     border-radius: 5px;
 }
 
-/* === 次へボタン === */
+/* === 谺｡縺ｸ繝懊ち繝ｳ === */
 .next-button {
     width: 100%;
-    max-width: 125px; /* 半分 */
+    max-width: 125px; /* 蜊雁・ */
     background: #49c0f8;
     color: #131f24;
-    padding: 7px 0; /* 半分 */
+    padding: 7px 0; /* 蜊雁・ */
     border: none;
-    border-radius: 5px; /* 半分 */
-    font-size: 17px; /* 半分 */
+    border-radius: 5px; /* 蜊雁・ */
+    font-size: 17px; /* 蜊雁・ */
     font-weight: bold;
     cursor: pointer;
     transition: background-color 0.2s;
     align-self: center;
-    margin-top: 20px; /* 半分 */
+    margin-top: 20px; /* 蜊雁・ */
     position: relative;
 }
 
-/* 区切り線 */
+/* 蛹ｺ蛻・ｊ邱・*/
 .next-button::before {
     content: "";
     position: absolute;
-    top: -10px; /* 半分 */
-    width: 550px; /* 半分 */
-    height: 1px;  /* 半分 */
+    top: -10px; /* 蜊雁・ */
+    width: 550px; /* 蜊雁・ */
+    height: 1px;  /* 蜊雁・ */
     background-color: #52656d;
     border-radius: 1px;
     left: 50%;
@@ -152,7 +152,7 @@ body {
     background-color: #36a8d6;
 }
 
-/* === レスポンシブ === */
+/* === 繝ｬ繧ｹ繝昴Φ繧ｷ繝・=== */
 @media screen and (max-width: 1024px) {
     .modal-content {
         padding: 7px 15px;

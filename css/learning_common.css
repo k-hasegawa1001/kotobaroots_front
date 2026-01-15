@@ -1,17 +1,17 @@
-/* グリッドレイアウト */
+﻿/* 繧ｰ繝ｪ繝・ラ繝ｬ繧､繧｢繧ｦ繝・*/
 .topics-grid {
   display: grid;
-  grid-template-columns: repeat(auto-fill, minmax(200px, 1fr)); /* 幅に合わせて自動折り返し */
+  grid-template-columns: repeat(auto-fill, minmax(200px, 1fr)); /* 蟷・↓蜷医ｏ縺帙※閾ｪ蜍墓釜繧願ｿ斐＠ */
   gap: 20px;
   padding: 20px 0;
 }
 
-/* カードのデザイン（添付画像参照） */
+/* 繧ｫ繝ｼ繝峨・繝・じ繧､繝ｳ・域ｷｻ莉倡判蜒丞盾辣ｧ・・*/
 .topic-card {
-  border: 2px solid #ffffff; /* 白い枠線 */
-  border-radius: 15px; /* 角丸 */
+  border: 2px solid #ffffff; /* 逋ｽ縺・棧邱・*/
+  border-radius: 15px; /* 隗剃ｸｸ */
   padding: 20px;
-  height: 120px; /* 高さは適宜調整 */
+  height: 120px; /* 鬮倥＆縺ｯ驕ｩ螳懆ｪｿ謨ｴ */
   display: flex;
   flex-direction: column;
   justify-content: center;
@@ -22,7 +22,7 @@
 }
 
 .topic-card:hover {
-  background-color: rgba(255, 255, 255, 0.1); /* ホバー時にうっすら白く */
+  background-color: rgba(255, 255, 255, 0.1); /* 繝帙ヰ繝ｼ譎ゅ↓縺・▲縺吶ｉ逋ｽ縺・*/
   transform: translateY(-2px);
 }
 
@@ -33,5 +33,5 @@
 }
 
 .difficulty-stars {
-  color: #ffd700; /* 金色 */
+  color: #ffd700; /* 驥題牡 */
 }

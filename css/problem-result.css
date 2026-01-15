@@ -1,4 +1,4 @@
-/* 全体背景 */
+﻿/* 蜈ｨ菴楢レ譎ｯ */
 body {
     background-color: #131f24;
     color: #dce6ec;
@@ -12,7 +12,7 @@ body {
     position: relative;
 }
 
-/* 全体コンテナ */
+/* 蜈ｨ菴薙さ繝ｳ繝・リ */
 .container {
     max-width: 1000px;
     margin: 0 auto;
@@ -20,29 +20,29 @@ body {
     text-align: center;
 }
 
-/* 見出し（結果） */
+/* 隕句・縺暦ｼ育ｵ先棡・・*/
 h2 {
     font-size: 33px;
-    margin-top: 40px;  /* ← 追加：全体的に下へ移動 */
+    margin-top: 40px;  /* 竊・霑ｽ蜉・壼・菴鍋噪縺ｫ荳九∈遘ｻ蜍・*/
     margin-bottom: 0px;
 }
 
-/* 横並びラッパー */
+/* 讓ｪ荳ｦ縺ｳ繝ｩ繝・ヱ繝ｼ */
 .info-row {
     display: flex;
-    justify-content: center; /* 中央に寄せる */
-    align-items: center;     /* 高さを揃える */
-    gap: 450px;               /* 要素間のスペース（お好みで調整） */
-    flex-wrap: wrap;         /* 画面が狭くなったら折り返す */
-    margin-bottom: 10px;     /* 必要なら余白 */
+    justify-content: center; /* 荳ｭ螟ｮ縺ｫ蟇・○繧・*/
+    align-items: center;     /* 鬮倥＆繧呈純縺医ｋ */
+    gap: 450px;               /* 隕∫ｴ髢薙・繧ｹ繝壹・繧ｹ・医♀螂ｽ縺ｿ縺ｧ隱ｿ謨ｴ・・*/
+    flex-wrap: wrap;         /* 逕ｻ髱｢縺檎強縺上↑縺｣縺溘ｉ謚倥ｊ霑斐☆ */
+    margin-bottom: 10px;     /* 蠢・ｦ√↑繧我ｽ咏區 */
 }
 
-/* 注釈文章 */
+/* 豕ｨ驥域枚遶 */
 .note {
     font-size: 19px;
-    margin: 0 0 0px 0;  /* ← 下に20pxの余白を追加 */
+    margin: 0 0 0px 0;  /* 竊・荳九↓20px縺ｮ菴咏區繧定ｿｽ蜉 */
     color: #dce6ec;
-    margin-left: -70px; /* ← 左にずらす（値は調整） */
+    margin-left: -70px; /* 竊・蟾ｦ縺ｫ縺壹ｉ縺呻ｼ亥､縺ｯ隱ｿ謨ｴ・・*/
 }
 
 .accuracy-line {
@@ -55,7 +55,7 @@ h2 {
 }
 
 
-/* 正解率（数字が入る部分） */
+/* 豁｣隗｣邇・ｼ域焚蟄励′蜈･繧矩Κ蛻・ｼ・*/
 #accuracy {
     font-size: 30px;
     font-weight: bold;
@@ -63,17 +63,17 @@ h2 {
     /* margin-left: 10px; */
 }
 
-/* JavaScriptで作る表を置く枠 */
+/* JavaScript縺ｧ菴懊ｋ陦ｨ繧堤ｽｮ縺乗棧 */
 #results-table {
     margin: 10px auto;
-    width: 960px;   /* ← これを入れるだけ */
+    width: 960px;   /* 竊・縺薙ｌ繧貞・繧後ｋ縺縺・*/
     border: 1px solid #334155;
     border-radius: 0px;
-    min-height: 560px; /* 中身がなくても枠が見える */
+    min-height: 560px; /* 荳ｭ霄ｫ縺後↑縺上※繧よ棧縺瑚ｦ九∴繧・*/
     overflow: hidden;
 }
 
-/* 表をJSで作る想定のスタイル */
+/* 陦ｨ繧谷S縺ｧ菴懊ｋ諠ｳ螳壹・繧ｹ繧ｿ繧､繝ｫ */
 #results-table table {
     width: 100%;
     border-collapse: collapse;
@@ -96,14 +96,14 @@ h2 {
     cursor: pointer;
 }
 
-/* 終了ボタン */
+/* 邨ゆｺ・・繧ｿ繝ｳ */
 .button-area {
-    margin-top: 23px; /* 上の枠線との余白 */
+    margin-top: 23px; /* 荳翫・譫邱壹→縺ｮ菴咏區 */
 }
 
 #finish-btn {
     display: block;
-    margin-left: 890px;   /* 右寄せ */
+    margin-left: 890px;   /* 蜿ｳ蟇・○ */
     margin-right: 0;
     margin-bottom: 20px;
 
@@ -114,11 +114,11 @@ h2 {
     padding: 12px 30px;
     font-size: 20px;
     cursor: pointer;
-    width: 175px; /* ログイン・サインアップは310px */
-    font-weight: 600;  /* ← ここを追加（例：600 = やや太め） */
+    width: 175px; /* 繝ｭ繧ｰ繧､繝ｳ繝ｻ繧ｵ繧､繝ｳ繧｢繝・・縺ｯ310px */
+    font-weight: 600;  /* 竊・縺薙％繧定ｿｽ蜉・井ｾ具ｼ・00 = 繧・ｄ螟ｪ繧・ｼ・*/
     transition: background-color 0.3s ease;
 
-    text-decoration: none; /* ← ここを追加 */
+    text-decoration: none; /* 竊・縺薙％繧定ｿｽ蜉 */
 }
 
 #finish-btn:hover {

@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="ja">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>KotobaRoots | メールアドレス確認</title>
+    <link rel="stylesheet" href="../shared/styles.css" />
+  </head>
+  <body>
+    <div class="app-shell">
+      <aside id="site-header"></aside>
+      <main class="page">
+        <section class="page-header">
+          <div class="page-title-row">
+            <h1 class="page-title">メールアドレス確認</h1>
+          </div>
+          <p class="page-subtitle">確認メールのリンクからアクセスしてください。</p>
+          <div class="page-divider"></div>
+        </section>
+
+        <div id="status" class="status" hidden aria-live="polite"></div>
+
+        <section class="card">
+          <p class="page-subtitle">本人確認のため、パスワードを入力して変更を確定します。</p>
+          <div id="login-required" class="status info" hidden>
+            この操作にはログインが必要です。
+          </div>
+          <div id="login-actions" class="card-actions" hidden>
+            <button id="login-button" class="btn" type="button">ログインへ</button>
+          </div>
+          <form id="confirm-form" class="form" novalidate>
+            <div class="field">
+              <label for="confirm-password">パスワード</label>
+              <input id="confirm-password" name="password" type="password" required />
+            </div>
+            <button id="confirm-button" class="btn" type="submit">変更を確定</button>
+          </form>
+        </section>
+      </main>
+    </div>
+
+    <script type="module" src="./edit-email-confirmation.js"></script>
+  </body>
+</html>

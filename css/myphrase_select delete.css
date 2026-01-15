@@ -1,9 +1,9 @@
-/* 画面全体の薄暗い背景 */
+﻿/* 逕ｻ髱｢蜈ｨ菴薙・阮・囓縺・レ譎ｯ */
 body {
     background: transparent;
 }
 
-/* ポップアップ用オーバーレイ */
+/* 繝昴ャ繝励い繝・・逕ｨ繧ｪ繝ｼ繝舌・繝ｬ繧､ */
 .popup-overlay {
     position: fixed;
     top: 0;
@@ -17,35 +17,35 @@ body {
     z-index: 999;
 }
 
-/* ポップアップ本体（全て半分に縮小） */
+/* 繝昴ャ繝励い繝・・譛ｬ菴難ｼ亥・縺ｦ蜊雁・縺ｫ邵ｮ蟆擾ｼ・*/
 .popup-content {
     background: #131f24;
     color: #dce6ec;
-    border-radius: 6px; /* 12px → 半分 */
-    padding: 15px;      /* 30px → 半分 */
+    border-radius: 6px; /* 12px 竊・蜊雁・ */
+    padding: 15px;      /* 30px 竊・蜊雁・ */
     width: 95%;
-    max-width: 800px;   /* 1600px → 半分 */
-    height: 45vh;       /* 90vh → 半分 */
-    max-height: 400px;  /* 800px → 半分 */
-    box-shadow: 0 0 15px rgba(0,0,0,0.7); /* 全体 half */
+    max-width: 800px;   /* 1600px 竊・蜊雁・ */
+    height: 45vh;       /* 90vh 竊・蜊雁・ */
+    max-height: 400px;  /* 800px 竊・蜊雁・ */
+    box-shadow: 0 0 15px rgba(0,0,0,0.7); /* 蜈ｨ菴・half */
     position: relative;
-    padding-bottom: 60px; /* 120px → 半分 */
+    padding-bottom: 60px; /* 120px 竊・蜊雁・ */
 }
 
-/* 見出し */
+/* 隕句・縺・*/
 .popup-content h2 {
     margin-top: 0;
     text-align: center;
-    font-size: 20px; /* 元の約半分に調整 */
+    font-size: 20px; /* 蜈・・邏・濠蛻・↓隱ｿ謨ｴ */
 }
 
 .select-all-wrapper {
-    margin-bottom: 1px; /* 15px → 半分 */
-    font-size: 15px;    /* 30 → 半分 */
+    margin-bottom: 1px; /* 15px 竊・蜊雁・ */
+    font-size: 15px;    /* 30 竊・蜊雁・ */
     cursor: pointer;
     display: inline-block;
-    padding: 5px 10px; /* 半分 */
-    border-radius: 4px; /* 半分 */
+    padding: 5px 10px; /* 蜊雁・ */
+    border-radius: 4px; /* 蜊雁・ */
     transition: background-color 0.2s;
 }
 
@@ -53,31 +53,31 @@ body {
     background-color: #202536;
 }
 
-/* 表スクロール部分 */
+/* 陦ｨ繧ｹ繧ｯ繝ｭ繝ｼ繝ｫ驛ｨ蛻・*/
 .table-wrapper {
-    max-height: calc(100% - 90px); /* 元 180px → 半分 */
+    max-height: calc(100% - 90px); /* 蜈・180px 竊・蜊雁・ */
     overflow-y: auto;
     border: 1px solid #32434a;
-    margin: 1px 0; /* 15px → 半分 */
+    margin: 1px 0; /* 15px 竊・蜊雁・ */
 }
 
-/* スクロールバー */
+/* 繧ｹ繧ｯ繝ｭ繝ｼ繝ｫ繝舌・ */
 .table-wrapper::-webkit-scrollbar {
-    width: 11px; /* 22px → 半分 */
+    width: 11px; /* 22px 竊・蜊雁・ */
 }
 
 .table-wrapper::-webkit-scrollbar-track {
     background: #1e2a30;
-    border-radius: 4px; /* 半分 */
+    border-radius: 4px; /* 蜊雁・ */
 }
 
 .table-wrapper::-webkit-scrollbar-thumb {
     background-color: #37464f;
     border-radius: 4px;
-    border: 2px solid #1e2a30; /* 4px → 半分 */
+    border: 2px solid #1e2a30; /* 4px 竊・蜊雁・ */
 }
 
-/* テーブル */
+/* 繝・・繝悶Ν */
 .word-table {
     width: 100%;
     border-collapse: collapse;
@@ -85,24 +85,24 @@ body {
 
 .word-table td {
     border: 1px solid #32434a;
-    padding: 5px;     /* 10px → 半分 */
+    padding: 5px;     /* 10px 竊・蜊雁・ */
     text-align: left;
-    font-size: 15px;  /* 30px → 半分 */
+    font-size: 15px;  /* 30px 竊・蜊雁・ */
 }
 
-/* チェックボックス */
+/* 繝√ぉ繝・け繝懊ャ繧ｯ繧ｹ */
 .word-table input[type="checkbox"] {
-    transform: scale(1.5); /* 3.0 → 半分 */
-    margin: 3px;           /* 5px → 半分 */
-    margin-bottom: 7px;    /* 15px → 半分 */
+    transform: scale(1.5); /* 3.0 竊・蜊雁・ */
+    margin: 3px;           /* 5px 竊・蜊雁・ */
+    margin-bottom: 7px;    /* 15px 竊・蜊雁・ */
     cursor: pointer;
     vertical-align: middle;
 }
 
-/* 列幅（50% → 50%のまま・配分はそのまま） */
+/* 蛻怜ｹ・ｼ・0% 竊・50%縺ｮ縺ｾ縺ｾ繝ｻ驟榊・縺ｯ縺昴・縺ｾ縺ｾ・・*/
 .word-table th:nth-child(1),
 .word-table td:nth-child(1) {
-    width: 1%; /* 2% → 半分 */
+    width: 1%; /* 2% 竊・蜊雁・ */
 }
 
 .word-table th:nth-child(2),
@@ -115,10 +115,10 @@ word-table td:nth-child(2) {
     width: 49%;
 }
 
-/* 下部ボタンエリア（固定） */
+/* 荳矩Κ繝懊ち繝ｳ繧ｨ繝ｪ繧｢・亥崋螳夲ｼ・*/
 .popup-buttons {
     position: absolute;
-    bottom: 10px; /* 20px → 半分 */
+    bottom: 10px; /* 20px 竊・蜊雁・ */
     left: 50%;
     transform: translateX(-50%);
     width: 90%;
@@ -126,14 +126,14 @@ word-table td:nth-child(2) {
     justify-content: space-between;
 }
 
-/* キャンセルボタン */
+/* 繧ｭ繝｣繝ｳ繧ｻ繝ｫ繝懊ち繝ｳ */
 .btn-cancel {
     background: #131f24;
-    border: 0.75px solid #6b7f88; /* 1.5px → 半分 */
+    border: 0.75px solid #6b7f88; /* 1.5px 竊・蜊雁・ */
     color: #dce6ec;
-    padding: 10px 30px; /* 半分 */
+    padding: 10px 30px; /* 蜊雁・ */
     border-radius: 5px;
-    font-size: 18px; /* 35 → 半分 */
+    font-size: 18px; /* 35 竊・蜊雁・ */
     cursor: pointer;
 }
 
@@ -141,14 +141,14 @@ word-table td:nth-child(2) {
     background-color: #202536;
 }
 
-/* 削除ボタン */
+/* 蜑企勁繝懊ち繝ｳ */
 .btn-delete {
     background: #ff5c5c;
     border: none;
     color: #fff;
-    padding: 10px 55px; /* 半分 */
+    padding: 10px 55px; /* 蜊雁・ */
     border-radius: 5px;
-    font-size: 18px; /* 半分 */
+    font-size: 18px; /* 蜊雁・ */
     cursor: pointer;
 }
 
@@ -157,14 +157,14 @@ word-table td:nth-child(2) {
 }
 
 
-/* === レスポンシブもすべて 半分に調整 === */
+/* === 繝ｬ繧ｹ繝昴Φ繧ｷ繝悶ｂ縺吶∋縺ｦ 蜊雁・縺ｫ隱ｿ謨ｴ === */
 
-/* 1200px以下 */
+/* 1200px莉･荳・*/
 @media screen and (max-width: 1200px) {
     .popup-content {
         width: 95%;
         padding: 10px;
-        max-width: 600px; /* 元の半分基準に再調整 */
+        max-width: 600px; /* 蜈・・蜊雁・蝓ｺ貅悶↓蜀崎ｪｿ謨ｴ */
     }
 
     .word-table td, .word-table th {
@@ -183,11 +183,11 @@ word-table td:nth-child(2) {
     }
 
     .table-wrapper::-webkit-scrollbar {
-        width: 8px; /* 16px → 半分 */
+        width: 8px; /* 16px 竊・蜊雁・ */
     }
 }
 
-/* 768px以下（スマホ） */
+/* 768px莉･荳具ｼ医せ繝槭・・・*/
 @media screen and (max-width: 768px) {
     .popup-content {
         width: 90%;
@@ -212,10 +212,10 @@ word-table td:nth-child(2) {
 
     .word-table th:nth-child(1),
     .word-table td:nth-child(1) {
-        width: 5%; /* 元 10% → 半分 */
+        width: 5%; /* 蜈・10% 竊・蜊雁・ */
     }
 
     .table-wrapper {
-        max-height: 25vh; /* 50vh → 半分 */
+        max-height: 25vh; /* 50vh 竊・蜊雁・ */
     }
 }

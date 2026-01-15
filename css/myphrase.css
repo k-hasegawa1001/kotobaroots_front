@@ -1,4 +1,4 @@
-/* ===== マイフレーズ帳ページ ===== */
+﻿/* ===== 繝槭う繝輔Ξ繝ｼ繧ｺ蟶ｳ繝壹・繧ｸ ===== */
 body{
     overflow: hidden;
 }
@@ -24,16 +24,16 @@ body{
     margin: 20px auto 40px;
 }
 
-/* メインレイアウト（左：テーブル / 右：ボタン） */
+/* 繝｡繧､繝ｳ繝ｬ繧､繧｢繧ｦ繝茨ｼ亥ｷｦ・壹ユ繝ｼ繝悶Ν / 蜿ｳ・壹・繧ｿ繝ｳ・・*/
 .phrase-container {
     display: flex;
-    gap: 80px;  /* ← 300px → 80px にする */
+    gap: 80px;  /* 竊・300px 竊・80px 縺ｫ縺吶ｋ */
     align-items: flex-start;
     padding-left: 0 20px;
 }
 
 
-/* スクロールエリア */
+/* 繧ｹ繧ｯ繝ｭ繝ｼ繝ｫ繧ｨ繝ｪ繧｢ */
 .phrase-table-wrapper {
     width: 900px;
     height: 480px;
@@ -42,7 +42,7 @@ body{
     background-color: #131f24;
 }
 
-/* スクロールバー */
+/* 繧ｹ繧ｯ繝ｭ繝ｼ繝ｫ繝舌・ */
 .phrase-table-wrapper::-webkit-scrollbar {
     width: 10px;
     border: 1px solid #dce6ec;
@@ -54,7 +54,7 @@ body{
     border: 1px solid #dce6ec;
 }
 
-/* テーブル */
+/* 繝・・繝悶Ν */
 .phrase-table {
     width: 100%;
     border-collapse: collapse;
@@ -77,14 +77,14 @@ body{
     font-size: 15px;
 }
 
-/* 右のボタン群 */
+/* 蜿ｳ縺ｮ繝懊ち繝ｳ鄒､ */
 .phrase-buttons {
     display: flex;
     flex-direction: column;
     gap: 22px;
 }
 
-/* 基本ボタン */
+/* 蝓ｺ譛ｬ繝懊ち繝ｳ */
 .btn {
     width: 150px;
     padding: 12px 0;
@@ -95,7 +95,7 @@ body{
     font-weight: bold;
 }
 
-/* 追加ボタン */
+/* 霑ｽ蜉繝懊ち繝ｳ */
 .add-btn {
     background-color: #49c0f8;
     color: #000;
@@ -104,7 +104,7 @@ body{
     background-color: #67d0ff;
 }
 
-/* 削除ボタン */
+/* 蜑企勁繝懊ち繝ｳ */
 .delete-btn {
     background-color: #ef6060;
     color: #000;
@@ -114,7 +114,7 @@ body{
     background-color: #ff7b7b;
 }
 
-/* 問題数プルダウン */
+/* 蝠城｡梧焚繝励Ν繝繧ｦ繝ｳ */
 .question-select {
     padding: 10px;
     font-size: 16px;
@@ -126,7 +126,7 @@ body{
     
 }
 
-/* テストする */
+/* 繝・せ繝医☆繧・*/
 .test-btn {
     background-color: #93d333;
     color: #000;
@@ -143,12 +143,12 @@ body{
 .phrase-table {
     width: 100%;
     border-collapse: collapse;
-    table-layout: fixed;  /* ← 列幅を固定にする */
+    table-layout: fixed;  /* 竊・蛻怜ｹ・ｒ蝗ｺ螳壹↓縺吶ｋ */
 }
 
 .phrase-table th:nth-child(1),
 .phrase-table td:nth-child(1) {
-    width: 35%;  /* 単語・フレーズ列を狭く */
+    width: 35%;  /* 蜊倩ｪ槭・繝輔Ξ繝ｼ繧ｺ蛻励ｒ迢ｭ縺・*/
     border-right: 2px solid #37464f;
     text-align: center;
     vertical-align: middle;
@@ -156,48 +156,48 @@ body{
 
 .phrase-table th:nth-child(2),
 .phrase-table td:nth-child(2) {
-    width: 65%;  /* 意味列を広く */
+    width: 65%;  /* 諢丞袖蛻励ｒ蠎・￥ */
     text-align: center;
     vertical-align: middle;
 }
 
 
-/* ===== 最小限のスマホ修正（幅 768px 以下） ===== */
+/* ===== 譛蟆城剞縺ｮ繧ｹ繝槭・菫ｮ豁｣・亥ｹ・768px 莉･荳具ｼ・===== */
 @media screen and (max-width: 768px) {
 
-    /* メイン領域の左右の余白を狭くする */
+    /* 繝｡繧､繝ｳ鬆伜沺縺ｮ蟾ｦ蜿ｳ縺ｮ菴咏區繧堤強縺上☆繧・*/
     .main-content {
         margin-left: 0;
         padding: 20px;
     }
 
-    /* 左右レイアウトがはみ出るのを防ぐ */
+    /* 蟾ｦ蜿ｳ繝ｬ繧､繧｢繧ｦ繝医′縺ｯ縺ｿ蜃ｺ繧九・繧帝亟縺・*/
     .phrase-container {
         flex-direction: column;
         gap: 40px;
         width: 100%;
     }
 
-    /* テーブルの幅を画面いっぱいに収める */
+    /* 繝・・繝悶Ν縺ｮ蟷・ｒ逕ｻ髱｢縺・▲縺ｱ縺・↓蜿弱ａ繧・*/
     .phrase-table-wrapper {
         width: 100%;
         height: 320px;
     }
 
-    /* ボタン群は中央寄せ */
+    /* 繝懊ち繝ｳ鄒､縺ｯ荳ｭ螟ｮ蟇・○ */
     .phrase-buttons {
         align-items: center;
         width: 100%;
     }
 
-    /* ボタンをスマホに合わせた幅にする */
+    /* 繝懊ち繝ｳ繧偵せ繝槭・縺ｫ蜷医ｏ縺帙◆蟷・↓縺吶ｋ */
     .btn,
     .question-select {
         width: 80%;
         max-width: 250px;
     }
 
-    /* 削除ボタンの余白を除去 */
+    /* 蜑企勁繝懊ち繝ｳ縺ｮ菴咏區繧帝勁蜴ｻ */
     .delete-btn {
         margin-bottom: 0;
     }

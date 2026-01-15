@@ -1,22 +1,22 @@
-/* === 全体設定 === */
+﻿/* === 蜈ｨ菴楢ｨｭ螳・=== */
 body {
   margin: 0;
   font-family: "Noto Sans JP", sans-serif;
   background-color: #131f24;
   color: #dce6ec;
-  overflow: hidden; /* ← スクロールを禁止 */
+  overflow: hidden; /* 竊・繧ｹ繧ｯ繝ｭ繝ｼ繝ｫ繧堤ｦ∵ｭ｢ */
 }
 
-/* === レイアウト === */
+/* === 繝ｬ繧､繧｢繧ｦ繝・=== */
 .container {
   display: flex;
   height: 100vh;
-  zoom: 1.0; /* ★★★ 75% → 100% 補正（2.1 × 0.75 = 1.575） ★★★ */
+  zoom: 1.0; /* 笘・・笘・75% 竊・100% 陬懈ｭ｣・・.1 ﾃ・0.75 = 1.575・・笘・・笘・*/
 }
 
 
 
-/* === メインコンテンツ === */
+/* === 繝｡繧､繝ｳ繧ｳ繝ｳ繝・Φ繝・=== */
 .main-content {
   flex: 1;
   margin-left: 200px;
@@ -41,13 +41,13 @@ body {
   text-align: center;
 }
 
-/* === スマホ対応（max-width: 600px） === */
+/* === 繧ｹ繝槭・蟇ｾ蠢懶ｼ・ax-width: 600px・・=== */
 @media (max-width: 600px) {
 
   .container {
     flex-direction: column;
     height: auto;
-    zoom: 1; /* ← スマホはブラウザ拡大率と関係ないので元まま */
+    zoom: 1; /* 竊・繧ｹ繝槭・縺ｯ繝悶Λ繧ｦ繧ｶ諡｡螟ｧ邇・→髢｢菫ゅ↑縺・・縺ｧ蜈・∪縺ｾ */
   }
 
   .sidebar {
@@ -97,11 +97,11 @@ body {
   }
 }
 
-/* === iPad対応（横幅600〜1024px） === */
+/* === iPad蟇ｾ蠢懶ｼ域ｨｪ蟷・00縲・024px・・=== */
 @media (min-width: 601px) and (max-width: 1024px) {
 
   .container {
-    zoom: 1.5; /* ← ここは元のまま（iPadはPC拡大率の影響を受けない） */
+    zoom: 1.5; /* 竊・縺薙％縺ｯ蜈・・縺ｾ縺ｾ・・Pad縺ｯPC諡｡螟ｧ邇・・蠖ｱ髻ｿ繧貞女縺代↑縺・ｼ・*/
   }
 
   .main-content {

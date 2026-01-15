@@ -1,4 +1,4 @@
-body {
+﻿body {
     background-color: #131f24; 
     color: #dce6ec;             
     font-family: 'Arial', sans-serif;
@@ -11,81 +11,81 @@ body {
 
 .container {
     width: 90%;
-    max-width: 900px; /* ←1800px → 半分 */
-    padding: 10px;    /* ←20px → 半分 */
+    max-width: 900px; /* 竊・800px 竊・蜊雁・ */
+    padding: 10px;    /* 竊・0px 竊・蜊雁・ */
 }
 
-/* タイトル */
+/* 繧ｿ繧､繝医Ν */
 .main-title {
     text-align: center;
-    font-size: 37px;   /* 75px → 半分 */
+    font-size: 37px;   /* 75px 竊・蜊雁・ */
     font-weight: bold;
-    margin-bottom: 20px; /* 40px → 半分 */
+    margin-bottom: 20px; /* 40px 竊・蜊雁・ */
 }
 
-/* 固定部分 */
+/* 蝗ｺ螳夐Κ蛻・*/
 .fixed-header {
     position: sticky;
     top: 0;
     background-color: #131f24;
     z-index: 10;
-    padding-bottom: 10px; /* 20px → 半分 */
+    padding-bottom: 10px; /* 20px 竊・蜊雁・ */
 }
 
 .accuracy-rate-container {
     display: flex;
     justify-content: flex-end;
-    margin-bottom: 5px; /* 10px → 半分 */
+    margin-bottom: 5px; /* 10px 竊・蜊雁・ */
 }
 
 .accuracy-rate {
-    font-size: 28px; /* 55px → 半分 */
+    font-size: 28px; /* 55px 竊・蜊雁・ */
     font-weight: bold;
     color: #93d333;
 }
 
 .explanation-note {
-    font-size: 17px; /* 35px → 半分 */
+    font-size: 17px; /* 35px 竊・蜊雁・ */
     color: #dce6ec;
-    margin-bottom: 10px; /* 20px → 半分 */
+    margin-bottom: 10px; /* 20px 竊・蜊雁・ */
 }
 
-/* スクロール部分 */
+/* 繧ｹ繧ｯ繝ｭ繝ｼ繝ｫ驛ｨ蛻・*/
 .table-area-wrapper {
-    max-height: 450px; /* 900px → 半分 */
+    max-height: 450px; /* 900px 竊・蜊雁・ */
     overflow-y: auto;
 }
 
 .table-area-wrapper::-webkit-scrollbar {
-    width: 10px; /* 20px → 半分 */
+    width: 10px; /* 20px 竊・蜊雁・ */
 }
 
 .table-area-wrapper::-webkit-scrollbar-thumb {
     background-color: #4f4f4f;
-    border-radius: 3px; /* 6px → 半分 */
-    border: 1px solid #131f24; /* 2px → 半分 */
+    border-radius: 3px; /* 6px 竊・蜊雁・ */
+    border: 1px solid #131f24; /* 2px 竊・蜊雁・ */
 }
 
-/* テーブル */
+/* 繝・・繝悶Ν */
 .result-table {
     width: 100%;
     border-collapse: collapse;
     background-color: #131f24;
-    box-shadow: 0 2px 7px rgba(0, 0, 0, 0.7); /* 半分 */
+    box-shadow: 0 2px 7px rgba(0, 0, 0, 0.7); /* 蜊雁・ */
 }
 
 .result-table th,
 .result-table td {
-    padding: 12px 10px; /* 25px→12px / 20px→10px */
-    border: 1px solid #dce6ec; /* 2px → 半分 */
+    padding: 12px 10px; /* 25px竊・2px / 20px竊・0px */
+    border: 1px solid #dce6ec; /* 2px 竊・蜊雁・ */
     text-align: left;
-    font-size: 15px; /* 30px → 半分 */
+    font-size: 15px; /* 30px 竊・蜊雁・ */
 }
 
 .result-table thead th {
     background-color: #131f24;
     font-weight: normal;
-    font-size: 11px; /* 22px → 半分 */
+    font-size: 11px; /* 22px 竊・蜊雁・ */
     position: sticky;
     top: 0;
     z-index: 5;
@@ -96,7 +96,7 @@ body {
     cursor: pointer;
 }
 
-/* 列幅 */
+/* 蛻怜ｹ・*/
 .result-table th:nth-child(1),
 .result-table td:nth-child(1) { width: 30%; }
 
@@ -106,20 +106,20 @@ body {
 .result-table th:nth-child(3),
 .result-table td:nth-child(3) { width: 5%; text-align: center; }
 
-/* 正誤マーク */
+/* 豁｣隱､繝槭・繧ｯ */
 .status {
-    font-size: 15px; /* 30px → 半分 */
+    font-size: 15px; /* 30px 竊・蜊雁・ */
     font-weight: bold;
 }
 
 .status.correct { color: #dce6ec; }
 .status.incorrect { color: #dce6ec; }
 
-/* ボタン */
+/* 繝懊ち繝ｳ */
 .button-area {
     position: fixed;
-    bottom: 10px; /* 20px → 半分 */
-    right: 325px; /* 650px → 半分 */
+    bottom: 10px; /* 20px 竊・蜊雁・ */
+    right: 325px; /* 650px 竊・蜊雁・ */
     z-index: 999;
 }
 
@@ -127,11 +127,11 @@ body {
     background-color: #49c0f8;
     color: #131f24;
     border: none;
-    padding: 11px 40px; /* 22px→11px / 80px→40px */
-    font-size: 20px; /* 40px → 半分 */
+    padding: 11px 40px; /* 22px竊・1px / 80px竊・0px */
+    font-size: 20px; /* 40px 竊・蜊雁・ */
     font-weight: bold;
     cursor: pointer;
-    border-radius: 8px; /* 15px → 半分 */
+    border-radius: 8px; /* 15px 竊・蜊雁・ */
     transition: background-color 0.2s;
 }
 
@@ -140,10 +140,10 @@ body {
 }
 
 /* ============================
-   レスポンシブ（こちらも半分に調整）
+   繝ｬ繧ｹ繝昴Φ繧ｷ繝厄ｼ医％縺｡繧峨ｂ蜊雁・縺ｫ隱ｿ謨ｴ・・
 ============================ */
 
-/* --- スマホ（〜480px） --- */
+/* --- 繧ｹ繝槭・・医・80px・・--- */
 @media (max-width: 480px) {
 
     .container {
@@ -169,7 +169,7 @@ body {
     }
 }
 
-/* --- タブレット（〜768px） --- */
+/* --- 繧ｿ繝悶Ξ繝・ヨ・医・68px・・--- */
 @media (max-width: 768px) {
 
     .main-title { font-size: 27px; }
@@ -188,7 +188,7 @@ body {
     }
 }
 
-/* --- 小さめPC（〜1200px） --- */
+/* --- 蟆上＆繧￣C・医・200px・・--- */
 @media (max-width: 1200px) {
 
     .main-title { font-size: 32px; }

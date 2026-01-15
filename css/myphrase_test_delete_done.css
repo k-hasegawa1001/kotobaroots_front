@@ -1,4 +1,4 @@
-body {
+﻿body {
     background: transparent;
 }
 
@@ -15,45 +15,45 @@ body {
     z-index: 999;
 }
 
-/* === 完了ポップアップ本体 === */
-/* ★ すべて半分に縮小 ★ */
+/* === 螳御ｺ・・繝・・繧｢繝・・譛ｬ菴・=== */
+/* 笘・縺吶∋縺ｦ蜊雁・縺ｫ邵ｮ蟆・笘・*/
 .confirm-box {
     background: #131f24;
-    padding: 50px 40px; /* 100px 80px → 半分 */
-    border-radius: 9px; /* 18px → 半分 */
+    padding: 50px 40px; /* 100px 80px 竊・蜊雁・ */
+    border-radius: 9px; /* 18px 竊・蜊雁・ */
     width: 92%;
-    max-width: 260px; /* 520px → 半分 */
+    max-width: 260px; /* 520px 竊・蜊雁・ */
     text-align: center;
     box-shadow: 0 4px 24px rgba(0, 0, 0, 0.55);
     border: 1px solid #2c3a40;
 }
 
-/* メッセージ */
-/* ★ 45px → 半分の 22.5px → 四捨五入で 22px */
+/* 繝｡繝・そ繝ｼ繧ｸ */
+/* 笘・45px 竊・蜊雁・縺ｮ 22.5px 竊・蝗帶昏莠泌・縺ｧ 22px */
 .done-message {
     font-size: 22px;
     color: #dce6ec;
-    margin: 3px 0; /* 5px → 半分で 2.5px → 3px */
+    margin: 3px 0; /* 5px 竊・蜊雁・縺ｧ 2.5px 竊・3px */
 }
 
-/* === レスポンシブ（1024px 以下） === */
+/* === 繝ｬ繧ｹ繝昴Φ繧ｷ繝厄ｼ・024px 莉･荳具ｼ・=== */
 @media screen and (max-width: 1024px) {
     .confirm-box {
-        padding: 35px 30px; /* 70px 60px → 半分 */
-        max-width: 225px;   /* 450px → 半分 */
+        padding: 35px 30px; /* 70px 60px 竊・蜊雁・ */
+        max-width: 225px;   /* 450px 竊・蜊雁・ */
     }
     .done-message {
-        font-size: 18px; /* 36px → 半分 */
+        font-size: 18px; /* 36px 竊・蜊雁・ */
     }
 }
 
-/* === レスポンシブ（768px 以下） === */
+/* === 繝ｬ繧ｹ繝昴Φ繧ｷ繝厄ｼ・68px 莉･荳具ｼ・=== */
 @media screen and (max-width: 768px) {
     .confirm-box {
-        padding: 25px 15px; /* 50px 30px → 半分 */
+        padding: 25px 15px; /* 50px 30px 竊・蜊雁・ */
         width: 90%;
     }
     .done-message {
-        font-size: 14px; /* 28px → 半分 */
+        font-size: 14px; /* 28px 竊・蜊雁・ */
     }
 }

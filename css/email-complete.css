@@ -1,6 +1,6 @@
-/* email-complete.css */
+﻿/* email-complete.css */
 
-/* 全体設定 */
+/* 蜈ｨ菴楢ｨｭ螳・*/
 body {
     background-color: #131f24;
     color: #dce6ec;
@@ -8,7 +8,7 @@ body {
     margin: 0;
     height: 100vh;
 
-    /* 中央寄せ */
+    /* 荳ｭ螟ｮ蟇・○ */
     display: flex;
     justify-content: center;
     align-items: center;
@@ -16,18 +16,18 @@ body {
     position: relative;
 }
 
-/* コンテナ */
+/* 繧ｳ繝ｳ繝・リ */
 .container {
     text-align: center;
 }
 
-/* メインコンテンツ */
+/* 繝｡繧､繝ｳ繧ｳ繝ｳ繝・Φ繝・*/
 .content {
     text-align: center;
     padding: 20px 0;
 }
 
-/* 完了メッセージ（pタグ） */
+/* 螳御ｺ・Γ繝・そ繝ｼ繧ｸ・・繧ｿ繧ｰ・・*/
 .note {
     font-size: 16px;
     color: #dce6ec;
@@ -37,7 +37,7 @@ body {
     width: 100%;
 }
 
-/* プロフィールに戻るボタン */
+/* 繝励Ο繝輔ぅ繝ｼ繝ｫ縺ｫ謌ｻ繧九・繧ｿ繝ｳ */
 .login-btn {
     display: block;
     text-decoration: none;
@@ -53,11 +53,11 @@ body {
     font-size: 16px;
     font-weight: 700;
 
-    margin: 0 auto; /* ボタンを中央に配置 */
+    margin: 0 auto; /* 繝懊ち繝ｳ繧剃ｸｭ螟ｮ縺ｫ驟咲ｽｮ */
     transition: background-color 0.3s ease;
 }
 
-/* ホバー時 */
+/* 繝帙ヰ繝ｼ譎・*/
 .login-btn:hover {
     background-color: #36a8d6;
 }

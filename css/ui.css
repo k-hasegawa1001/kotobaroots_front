@@ -1,9 +1,9 @@
-.back-icon {
+﻿.back-icon {
     position: absolute;
-    top: 50px;      /* 上から20px */
-    right: auto;    /* 右から20px */
-    left: 450px;     /* 左はリセット */
-    bottom: auto;   /* 下はリセット */
+    top: 50px;      /* 荳翫°繧・0px */
+    right: auto;    /* 蜿ｳ縺九ｉ20px */
+    left: 450px;     /* 蟾ｦ縺ｯ繝ｪ繧ｻ繝・ヨ */
+    bottom: auto;   /* 荳九・繝ｪ繧ｻ繝・ヨ */
     width: 45px;
     height: 45px;
     background-image: url("../png/cross.png");

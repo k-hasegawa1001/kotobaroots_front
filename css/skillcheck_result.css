@@ -1,4 +1,4 @@
-@import url('https://fonts.googleapis.com/css2?family=Noto+Sans+JP:wght@400;700&display=swap');
+﻿@import url('https://fonts.googleapis.com/css2?family=Noto+Sans+JP:wght@400;700&display=swap');
 
 body {
     margin: 0;
@@ -10,42 +10,42 @@ body {
     flex-direction: column;
     justify-content: center;
     align-items: center;
-    min-height: 40vh; /* 半分 */
+    min-height: 40vh; /* 蜊雁・ */
     text-align: center;
 }
 
 .container {
-    width: 45%;      /* 半分 */
-    max-width: 450px; /* 半分 */
-    padding: 10px;   /* 半分 */
+    width: 45%;      /* 蜊雁・ */
+    max-width: 450px; /* 蜊雁・ */
+    padding: 10px;   /* 蜊雁・ */
     margin-top: 200px;
 }
 
-/* === ✖ ボタン === */
+/* === 笨・繝懊ち繝ｳ === */
 .close-button {
     position: fixed;
-    top: 75px;   /* 半分 */
-    left: 400px; /* 半分 */
-    width: 35px; /* 半分 */
-    height: 35px; /* 半分 */
+    top: 75px;   /* 蜊雁・ */
+    left: 400px; /* 蜊雁・ */
+    width: 35px; /* 蜊雁・ */
+    height: 35px; /* 蜊雁・ */
     background: none;
     border: none;
     cursor: pointer;
     z-index: 10;
 }
 
-/* X の線 */
+/* X 縺ｮ邱・*/
 .close-button::before,
 .close-button::after {
     content: "";
     position: absolute;
     top: 50%;
     left: 50%;
-    width: 30px;       /* 半分 */
-    height: 1px;       /* 半分 */
+    width: 30px;       /* 蜊雁・ */
+    height: 1px;       /* 蜊雁・ */
     background-color: #787f83;
     transform-origin: center;
-    opacity: 0.35;     /* 半分 */
+    opacity: 0.35;     /* 蜊雁・ */
 }
 
 .close-button::before {
@@ -55,37 +55,37 @@ body {
     transform: translate(-50%, -50%) rotate(-45deg);
 }
 
-/* === テキスト === */
+/* === 繝・く繧ｹ繝・=== */
 .complete-title {
-    font-size: 1.5em; /* 半分 */
+    font-size: 1.5em; /* 蜊雁・ */
     font-weight: 700;
-    margin-bottom: 25px; /* 半分 */
+    margin-bottom: 25px; /* 蜊雁・ */
 }
 
 .start-message {
-    font-size: 1.5em; /* 半分 */
-    margin-bottom: 5px; /* 半分 */
+    font-size: 1.5em; /* 蜊雁・ */
+    margin-bottom: 5px; /* 蜊雁・ */
 }
 
 .level-result {
-    font-size: 1em; /* 半分 */
+    font-size: 1em; /* 蜊雁・ */
     font-weight: 700;
     color: #49c0f8;
-    margin-bottom: 25px; /* 半分 */
+    margin-bottom: 25px; /* 蜊雁・ */
 }
 
 .encouragement {
-    font-size: 1em; /* 半分 */
-    margin-bottom: 25px; /* 半分 */
+    font-size: 1em; /* 蜊雁・ */
+    margin-bottom: 25px; /* 蜊雁・ */
 }
 
-/* === ボタン === */
+/* === 繝懊ち繝ｳ === */
 .top-button {
-    padding: 10px 22.5px; /* 半分 */
-    font-size: 1.15em;    /* 半分 */
+    padding: 10px 22.5px; /* 蜊雁・ */
+    font-size: 1.15em;    /* 蜊雁・ */
     font-weight: bold;
     border: none;
-    border-radius: 10px;  /* 半分 */
+    border-radius: 10px;  /* 蜊雁・ */
     background-color: #49c0f8;
     color: #131f24;
     cursor: pointer;
@@ -97,7 +97,7 @@ body {
 }
 
 /* ========================================================= */
-/* === iPad対応 (601px〜1000px) === */
+/* === iPad蟇ｾ蠢・(601px縲・000px) === */
 /* ========================================================= */
 @media (max-width: 1000px) and (min-width: 601px) {
 
@@ -116,12 +116,12 @@ body {
     }
 
     .complete-title {
-        font-size: 1em;  /* 半分 */
+        font-size: 1em;  /* 蜊雁・ */
         margin-bottom: 20px;
     }
 
     .start-message {
-        font-size: 0.5em; /* 半分 */
+        font-size: 0.5em; /* 蜊雁・ */
     }
 
     .level-result {
@@ -142,7 +142,7 @@ body {
 }
 
 /* ========================================================= */
-/* === スマホ対応 (max-width: 600px) === */
+/* === 繧ｹ繝槭・蟇ｾ蠢・(max-width: 600px) === */
 /* ========================================================= */
 @media (max-width: 600px) {
 

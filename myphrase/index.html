@@ -1,0 +1,64 @@
+﻿<!DOCTYPE html>
+<html lang="ja">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>KotobaRoots | マイフレーズ</title>
+    <link rel="stylesheet" href="../shared/styles.css" />
+  </head>
+  <body>
+    <div class="app-shell">
+      <aside id="site-header"></aside>
+      <main class="page">
+        <section class="page-header">
+          <div class="page-title-row">
+            <h1 class="page-title">マイフレーズ帳</h1>
+          </div>
+          <p class="page-subtitle">覚えたいフレーズを登録して復習に使います。</p>
+          <div class="page-divider"></div>
+        </section>
+
+        <div id="status" class="status" hidden aria-live="polite"></div>
+
+        <section class="myphrase-layout">
+          <div class="myphrase-table">
+            <div class="myphrase-head">
+              <span></span>
+              <span>単語・フレーズ</span>
+              <span>意味</span>
+            </div>
+            <div id="myphrase-list" class="myphrase-body"></div>
+          </div>
+          <div class="myphrase-actions">
+            <button id="open-add-modal" class="btn" type="button">追加する</button>
+            <button id="delete-selected" class="btn danger" type="button">削除する</button>
+            <p id="question-num" class="myphrase-meta"></p>
+          </div>
+        </section>
+      </main>
+    </div>
+
+    <div id="myphrase-modal" class="modal" hidden>
+      <div class="modal-card">
+        <h2 class="modal-title">新しいフレーズ</h2>
+        <div id="myphrase-modal-status" class="status" hidden></div>
+        <form id="myphrase-form" class="form" novalidate>
+          <div class="field">
+            <label for="phrase">単語・フレーズ</label>
+            <input id="phrase" name="phrase" type="text" placeholder="入力してください" required />
+          </div>
+          <div class="field">
+            <label for="mean">意味</label>
+            <textarea id="mean" name="mean" placeholder="入力してください" required></textarea>
+          </div>
+          <div class="modal-actions">
+            <button id="close-myphrase-modal" class="btn outline" type="button">キャンセル</button>
+            <button class="btn" type="submit">追加</button>
+          </div>
+        </form>
+      </div>
+    </div>
+
+    <script type="module" src="./index.js"></script>
+  </body>
+</html>
