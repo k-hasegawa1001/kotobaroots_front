@@ -44,12 +44,23 @@
         <div id="myphrase-modal-status" class="status" hidden></div>
         <form id="myphrase-form" class="form" novalidate>
           <div class="field">
-            <label for="phrase">単語・フレーズ</label>
-            <input id="phrase" name="phrase" type="text" placeholder="入力してください" required />
+            <input
+              id="phrase"
+              name="phrase"
+              type="text"
+              placeholder="単語・フレーズ"
+              aria-label="単語・フレーズ"
+              required
+            />
           </div>
           <div class="field">
-            <label for="mean">意味</label>
-            <textarea id="mean" name="mean" placeholder="入力してください" required></textarea>
+            <textarea
+              id="mean"
+              name="mean"
+              placeholder="意味"
+              aria-label="意味"
+              required
+            ></textarea>
           </div>
           <div class="modal-actions">
             <button id="close-myphrase-modal" class="btn outline" type="button">キャンセル</button>

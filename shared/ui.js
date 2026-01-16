@@ -3,15 +3,8 @@ import { logout } from "./auth.js";
 
 const NAV_ITEMS = [
   {
-    key: "signup",
-    label: "アカウント作成",
-    href: "/auth/signup.html",
-    showWhen: "guest",
-    type: "link",
-  },
-  {
     key: "auth",
-    label: "ログイン",
+    label: "ログイン／アカウント作成",
     href: "/auth/login.html",
     showWhen: "guest",
     type: "link",
@@ -89,16 +82,16 @@ export function renderHeader({ active, user, showAuth = true } = {}) {
     }
 
     const link = document.createElement("a");
-    const isGuestShortcut = item.key === "auth" || item.key === "signup";
+    const isGuestShortcut = item.key === "auth";
     const targetHref = !user && showAuth && !isGuestShortcut
       ? `/auth/login.html?next=${encodeURIComponent(item.href)}`
       : item.href;
     link.href = buildAppUrl(targetHref);
     link.textContent = item.label;
     link.className = "nav-item";
-    if (item.key === "auth" || item.key === "signup") {
+    if (item.key === "auth") {
       link.classList.add("auth-item");
-      link.classList.add(item.key === "signup" ? "signup-item" : "login-item");
+      link.classList.add("login-item");
     }
     if (active === item.key) {
       link.classList.add("is-active");

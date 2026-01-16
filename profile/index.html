@@ -45,8 +45,14 @@
         <div id="username-status" class="status" hidden></div>
         <form id="username-form" class="form" novalidate>
           <div class="field">
-            <label for="username-input">新しいユーザー名</label>
-            <input id="username-input" name="username" type="text" required />
+            <input
+              id="username-input"
+              name="username"
+              type="text"
+              placeholder="新しいユーザー名"
+              aria-label="新しいユーザー名"
+              required
+            />
           </div>
           <div class="modal-actions">
             <button id="close-username-modal" class="btn outline" type="button">キャンセル</button>
@@ -63,8 +69,14 @@
         <div id="email-status" class="status" hidden></div>
         <form id="email-request-form" class="form" novalidate>
           <div class="field">
-            <label for="email-input">新しいメールアドレス</label>
-            <input id="email-input" name="new_email" type="email" required />
+            <input
+              id="email-input"
+              name="new_email"
+              type="email"
+              placeholder="新しいメールアドレス"
+              aria-label="新しいメールアドレス"
+              required
+            />
           </div>
           <button class="btn" type="submit">確認メールを送信</button>
         </form>

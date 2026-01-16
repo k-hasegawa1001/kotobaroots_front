@@ -23,8 +23,13 @@
         <section class="card">
           <form id="ai-form" class="form" novalidate>
             <div class="field">
-              <label for="input-english">解説してほしい英文</label>
-              <textarea id="input-english" name="input_english" required></textarea>
+              <textarea
+                id="input-english"
+                name="input_english"
+                placeholder="解説してほしい英文"
+                aria-label="解説してほしい英文"
+                required
+              ></textarea>
             </div>
             <button class="btn" type="submit">解説を生成</button>
           </form>

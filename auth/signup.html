@@ -7,44 +7,58 @@
     <link rel="stylesheet" href="../shared/styles.css" />
   </head>
   <body>
-    <div class="app-shell">
+    <div class="app-shell auth-shell">
       <aside id="site-header"></aside>
-      <main class="page">
+      <main class="page auth-page">
         <section class="auth-card card">
           <header class="page-header">
             <h1 class="page-title">アカウント作成</h1>
-            <p class="page-subtitle">学習を始めるための情報を入力してください。</p>
           </header>
           <div id="status" class="status" hidden aria-live="polite"></div>
           <form id="signup-form" class="form" novalidate>
             <div class="field">
-              <label for="username">ユーザー名</label>
-              <input id="username" name="username" type="text" autocomplete="username" required />
+              <input
+                id="username"
+                name="username"
+                type="text"
+                autocomplete="username"
+                placeholder="ユーザー名"
+                aria-label="ユーザー名"
+                required
+              />
             </div>
             <div class="field">
-              <label for="email">メールアドレス</label>
-              <input id="email" name="email" type="email" autocomplete="email" required />
+              <input
+                id="email"
+                name="email"
+                type="email"
+                autocomplete="email"
+                placeholder="メールアドレス"
+                aria-label="メールアドレス"
+                required
+              />
             </div>
             <div class="field">
-              <label for="password">パスワード</label>
               <input
                 id="password"
                 name="password"
                 type="password"
                 autocomplete="new-password"
+                placeholder="パスワード（8~16文字で入力）"
+                aria-label="パスワード"
                 minlength="8"
                 maxlength="16"
                 required
               />
-              <small class="page-subtitle">8-16文字で入力してください。</small>
             </div>
             <div class="field">
-              <label for="password-confirm">パスワード（確認）</label>
               <input
                 id="password-confirm"
                 name="passwordConfirm"
                 type="password"
                 autocomplete="new-password"
+                placeholder="パスワード（確認）"
+                aria-label="パスワード（確認）"
                 minlength="8"
                 maxlength="16"
                 required

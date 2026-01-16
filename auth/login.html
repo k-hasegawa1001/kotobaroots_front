@@ -7,32 +7,38 @@
     <link rel="stylesheet" href="../shared/styles.css" />
   </head>
   <body>
-    <div class="app-shell">
+    <div class="app-shell auth-shell">
       <aside id="site-header"></aside>
-      <main class="page">
+      <main class="page auth-page">
         <section class="auth-card card">
           <header class="page-header">
             <h1 class="page-title">ログイン</h1>
-            <p class="page-subtitle">学習の続きへ戻りましょう。</p>
           </header>
           <div id="status" class="status" hidden aria-live="polite"></div>
           <form id="login-form" class="form" novalidate>
             <div class="field">
-              <label for="email">メールアドレス</label>
-              <input id="email" name="email" type="email" autocomplete="email" required />
+              <input
+                id="email"
+                name="email"
+                type="email"
+                autocomplete="email"
+                placeholder="メールアドレス"
+                aria-label="メールアドレス"
+                required
+              />
             </div>
             <div class="field">
-              <label for="password">パスワード</label>
               <input
                 id="password"
                 name="password"
                 type="password"
                 autocomplete="current-password"
+                placeholder="パスワード（8~16文字で入力）"
+                aria-label="パスワード"
                 minlength="8"
                 maxlength="16"
                 required
               />
-              <small class="page-subtitle">8-16文字で入力してください。</small>
             </div>
             <button class="btn" type="submit">ログイン</button>
           </form>

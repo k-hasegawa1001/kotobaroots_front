@@ -27,8 +27,14 @@
           </div>
           <form id="confirm-form" class="form" novalidate>
             <div class="field">
-              <label for="confirm-password">パスワード</label>
-              <input id="confirm-password" name="password" type="password" required />
+              <input
+                id="confirm-password"
+                name="password"
+                type="password"
+                placeholder="パスワード（8~16文字で入力）"
+                aria-label="パスワード"
+                required
+              />
             </div>
             <button id="confirm-button" class="btn" type="submit">変更を確定</button>
           </form>

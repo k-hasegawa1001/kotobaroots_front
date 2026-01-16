@@ -43,7 +43,7 @@ function scheduleRedirect() {
   if (redirected) {
     return;
   }
-  renderHeader({ active: "signup", user: null, showAuth: true });
+  renderHeader({ active: "auth", user: null, showAuth: true });
 
   form.addEventListener("submit", async (event) => {
     event.preventDefault();
