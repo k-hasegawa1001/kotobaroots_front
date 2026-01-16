@@ -14,7 +14,7 @@ function openModal() {
   }
   modalTimerId = window.setTimeout(() => {
     closeModal();
-  }, 3000);
+  }, 1500);
 }
 
 function closeModal() {

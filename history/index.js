@@ -1,29 +1,20 @@
-﻿import { requireAuth } from "../shared/auth.js";
-import { renderHeader, formatDate } from "../shared/ui.js";
-import { loadHistory } from "../shared/storage.js";
+﻿import { apiFetch, ApiError } from "../shared/api.js";
+import { requireAuth } from "../shared/auth.js";
+import { renderHeader, formatDate, setStatus } from "../shared/ui.js";
 
 const historyList = document.getElementById("history-list");
 const languageFilter = document.getElementById("language-filter");
+const statusEl = document.getElementById("status");
 
 let historyEntries = [];
 
 function buildLanguageOptions(entries) {
-  const languages = Array.from(
-    new Set(entries.map((item) => item.language || "unknown"))
-  );
-
   languageFilter.textContent = "";
-  const allOption = document.createElement("option");
-  allOption.value = "all";
-  allOption.textContent = "すべて";
-  languageFilter.appendChild(allOption);
-
-  languages.forEach((lang) => {
-    const option = document.createElement("option");
-    option.value = lang;
-    option.textContent = lang === "unknown" ? "不明" : lang;
-    languageFilter.appendChild(option);
-  });
+  const option = document.createElement("option");
+  option.value = "current";
+  option.textContent = entries.length ? "現在の学習言語" : "学習言語";
+  languageFilter.appendChild(option);
+  languageFilter.disabled = true;
 }
 
 function renderHistory(entries) {
@@ -41,29 +32,31 @@ function renderHistory(entries) {
     row.className = "table-row";
 
     const title = document.createElement("h4");
-    title.textContent = item.topicTitle ? item.topicTitle : `単元 ID: ${item.topicId}`;
+    title.textContent = item.topic || "単元名不明";
 
     const meta = document.createElement("p");
-    meta.textContent = `${formatDate(item.createdAt)} ・ 正解率 ${item.accuracy}%`;
+    meta.textContent = formatDate(item.created_at);
 
     const tag = document.createElement("span");
     tag.className = "tag";
-    tag.textContent = `正解 ${item.correctCount} / ${item.total}`;
+    tag.textContent = item.is_passed ? "正解" : "不正解";
 
-    const details = document.createElement("details");
-    const summary = document.createElement("summary");
-    summary.textContent = "詳細を見る";
-    details.appendChild(summary);
+    const userAnswer = document.createElement("p");
+    userAnswer.textContent = `あなたの回答: ${item.user_answer || ""}`;
 
-    const list = document.createElement("ol");
-    item.questions.forEach((question, index) => {
-      const li = document.createElement("li");
-      li.textContent = `Q${index + 1}: ${question.question} / あなた: ${question.userAnswer} / 正解: ${question.correctAnswer}`;
-      list.appendChild(li);
-    });
-    details.appendChild(list);
+    const correctAnswer = document.createElement("p");
+    correctAnswer.textContent = item.correct_answer
+      ? `正解: ${item.correct_answer}`
+      : "正解: （正解）";
 
-    row.append(title, meta, tag, details);
+    row.append(title, meta, tag, userAnswer, correctAnswer);
+
+    if (item.explanation) {
+      const explanation = document.createElement("p");
+      explanation.textContent = `解説: ${item.explanation}`;
+      row.appendChild(explanation);
+    }
+
     historyList.appendChild(row);
   });
 }
@@ -74,20 +67,20 @@ async function init() {
     return;
   }
   renderHeader({ active: "history", user: profile });
+  buildLanguageOptions([]);
 
-  historyEntries = loadHistory();
-  buildLanguageOptions(historyEntries);
-  renderHistory(historyEntries);
-
-  languageFilter.addEventListener("change", () => {
-    const filter = languageFilter.value;
-    if (filter === "all") {
-      renderHistory(historyEntries);
-      return;
-    }
-    const filtered = historyEntries.filter((item) => (item.language || "unknown") === filter);
-    renderHistory(filtered);
-  });
+  try {
+    const data = await apiFetch("/kotobaroots/learning/history");
+    historyEntries = data.histories || [];
+    buildLanguageOptions(historyEntries);
+    renderHistory(historyEntries);
+  } catch (error) {
+    const message = error instanceof ApiError
+      ? `学習履歴の取得に失敗しました。(${error.message})`
+      : "学習履歴の取得に失敗しました。";
+    setStatus(statusEl, { type: "error", message });
+    renderHistory([]);
+  }
 }
 
 init();

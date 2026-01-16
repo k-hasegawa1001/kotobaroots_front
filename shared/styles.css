@@ -240,6 +240,7 @@ img {
   width: 100%;
   max-width: none;
   min-width: 0;
+  font-size: 1.1rem;
 }
 
 .page-header {
@@ -255,7 +256,7 @@ img {
 
 .page-title {
   font-family: var(--font-display);
-  font-size: clamp(2rem, 2.6vw, 2.6rem);
+  font-size: clamp(2.4rem, 3.4vw, 3.4rem);
   margin: 0;
   letter-spacing: 0.04em;
 }
@@ -312,6 +313,22 @@ small.page-subtitle {
   gap: 12px;
 }
 
+.unit-card.is-clickable {
+  cursor: pointer;
+  transition: transform 0.2s ease, border-color 0.2s ease, background 0.2s ease;
+}
+
+.unit-card.is-clickable:hover {
+  border-color: var(--accent);
+  background: rgba(255, 255, 255, 0.04);
+  transform: translateY(-2px);
+}
+
+.unit-card.locked {
+  opacity: 0.6;
+  cursor: not-allowed;
+}
+
 .unit-card h3 {
   margin-top: 0;
   font-size: 1rem;
@@ -366,6 +383,34 @@ small.page-subtitle {
 label {
   font-weight: 500;
   font-size: 0.9rem;
+}
+
+.page label {
+  font-size: 1rem;
+}
+
+.page input,
+.page textarea,
+.page select {
+  padding: 12px 16px;
+  font-size: 1.05rem;
+}
+
+.page .btn {
+  padding: 12px 22px;
+  font-size: 1.05rem;
+}
+
+.page .option-button {
+  padding: 14px 16px;
+}
+
+.page .token {
+  padding: 10px 14px;
+}
+
+.page .table-row {
+  padding: 16px 18px;
 }
 
 input,
@@ -508,7 +553,7 @@ small {
   border-bottom: none;
 }
 
-.quiz-meta {
+.learn-meta {
   display: flex;
   align-items: center;
   justify-content: space-between;

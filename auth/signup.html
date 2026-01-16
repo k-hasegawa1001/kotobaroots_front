@@ -38,6 +38,18 @@
               />
               <small class="page-subtitle">8-16文字で入力してください。</small>
             </div>
+            <div class="field">
+              <label for="password-confirm">パスワード（確認）</label>
+              <input
+                id="password-confirm"
+                name="passwordConfirm"
+                type="password"
+                autocomplete="new-password"
+                minlength="8"
+                maxlength="16"
+                required
+              />
+            </div>
             <button class="btn" type="submit">アカウントを作成</button>
           </form>
           <p class="page-subtitle">
@@ -46,6 +58,11 @@
           </p>
         </section>
       </main>
+    </div>
+    <div id="signup-success-modal" class="modal" hidden>
+      <div class="modal-card">
+        <p class="page-subtitle">アカウントを作成しました。</p>
+      </div>
     </div>
     <script type="module" src="./signup.js"></script>
   </body>

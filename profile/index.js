@@ -15,6 +15,9 @@ const usernameForm = document.getElementById("username-form");
 const usernameInput = document.getElementById("username-input");
 const usernameStatus = document.getElementById("username-status");
 const closeUsernameModal = document.getElementById("close-username-modal");
+const successModal = document.getElementById("profile-success-modal");
+const successMessage = document.getElementById("profile-success-message");
+let successTimerId = null;
 
 const emailModal = document.getElementById("email-modal");
 const emailRequestForm = document.getElementById("email-request-form");
@@ -31,6 +34,27 @@ function openModal(modal, statusElToClear) {
 
 function closeModal(modal) {
   modal.hidden = true;
+}
+
+function openSuccessModal(message) {
+  if (successMessage) {
+    successMessage.textContent = message;
+  }
+  successModal.hidden = false;
+  if (successTimerId) {
+    window.clearTimeout(successTimerId);
+  }
+  successTimerId = window.setTimeout(() => {
+    closeSuccessModal();
+  }, 1500);
+}
+
+function closeSuccessModal() {
+  successModal.hidden = true;
+  if (successTimerId) {
+    window.clearTimeout(successTimerId);
+    successTimerId = null;
+  }
 }
 
 [usernameModal, emailModal].forEach((modal) => {
@@ -87,7 +111,8 @@ async function init() {
       });
       usernameEl.textContent = newName;
       closeModal(usernameModal);
-      setStatus(statusEl, { type: "success", message: "ユーザー名を更新しました。" });
+      setStatus(statusEl, { message: "" });
+      openSuccessModal("ユーザー名を更新しました。");
     } catch (error) {
       const message = error instanceof ApiError ? error.message : "更新に失敗しました。";
       setStatus(usernameStatus, { type: "error", message });
@@ -107,10 +132,9 @@ async function init() {
         method: "POST",
         data: { new_email: newEmail },
       });
-      setStatus(emailStatus, {
-        type: "success",
-        message: "確認メールを送信しました。メールのリンクから変更を完了してください。",
-      });
+      closeModal(emailModal);
+      setStatus(emailStatus, { message: "" });
+      openSuccessModal("確認メールを送信しました。");
     } catch (error) {
       const message = error instanceof ApiError ? error.message : "送信に失敗しました。";
       setStatus(emailStatus, { type: "error", message });

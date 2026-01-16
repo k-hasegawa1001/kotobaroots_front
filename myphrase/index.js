@@ -11,6 +11,9 @@ const modal = document.getElementById("myphrase-modal");
 const modalForm = document.getElementById("myphrase-form");
 const modalStatus = document.getElementById("myphrase-modal-status");
 const closeModalButton = document.getElementById("close-myphrase-modal");
+const successModal = document.getElementById("myphrase-success-modal");
+const successMessage = document.getElementById("myphrase-success-message");
+let successTimerId = null;
 
 let myphrases = [];
 
@@ -26,6 +29,27 @@ function openModal() {
 
 function closeModal() {
   modal.hidden = true;
+}
+
+function openSuccessModal(message) {
+  if (successMessage) {
+    successMessage.textContent = message;
+  }
+  successModal.hidden = false;
+  if (successTimerId) {
+    window.clearTimeout(successTimerId);
+  }
+  successTimerId = window.setTimeout(() => {
+    closeSuccessModal();
+  }, 1500);
+}
+
+function closeSuccessModal() {
+  successModal.hidden = true;
+  if (successTimerId) {
+    window.clearTimeout(successTimerId);
+    successTimerId = null;
+  }
 }
 
 openModalButton.addEventListener("click", openModal);
@@ -108,7 +132,8 @@ async function init() {
         data: { phrase, mean },
       });
       closeModal();
-      setStatus(statusEl, { type: "success", message: "追加しました。" });
+      setStatus(statusEl, { message: "" });
+      openSuccessModal("追加しました。");
       await loadMyphrases();
     } catch (error) {
       const message = error instanceof ApiError ? error.message : "追加に失敗しました。";
@@ -132,7 +157,8 @@ async function init() {
         method: "DELETE",
         data: { delete_ids: selected },
       });
-      setStatus(statusEl, { type: "success", message: res.msg || "削除しました。" });
+      setStatus(statusEl, { message: "" });
+      openSuccessModal(res.msg || "削除しました。");
       await loadMyphrases();
     } catch (error) {
       const message = error instanceof ApiError ? error.message : "削除に失敗しました。";

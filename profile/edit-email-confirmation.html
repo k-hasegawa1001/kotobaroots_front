@@ -20,13 +20,10 @@
 
         <div id="status" class="status" hidden aria-live="polite"></div>
 
-        <section class="card">
+        <section class="card auth-card">
           <p class="page-subtitle">本人確認のため、パスワードを入力して変更を確定します。</p>
           <div id="login-required" class="status info" hidden>
             この操作にはログインが必要です。
-          </div>
-          <div id="login-actions" class="card-actions" hidden>
-            <button id="login-button" class="btn" type="button">ログインへ</button>
           </div>
           <form id="confirm-form" class="form" novalidate>
             <div class="field">
@@ -37,6 +34,12 @@
           </form>
         </section>
       </main>
+    </div>
+
+    <div id="email-success-modal" class="modal" hidden>
+      <div class="modal-card">
+        <p class="page-subtitle">メールアドレスを更新しました。</p>
+      </div>
     </div>
 
     <script type="module" src="./edit-email-confirmation.js"></script>

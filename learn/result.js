@@ -57,7 +57,13 @@ async function init() {
   }
   renderHeader({ active: "learn", user: profile });
 
-  const stored = sessionStorage.getItem("quizResult");
+  const saveError = sessionStorage.getItem("learnSaveError");
+  if (saveError) {
+    setStatus(statusEl, { type: "error", message: `履歴の保存に失敗しました。${saveError}` });
+    sessionStorage.removeItem("learnSaveError");
+  }
+
+  const stored = sessionStorage.getItem("learnResult");
   if (!stored) {
     setStatus(statusEl, { type: "error", message: "結果データが見つかりません。" });
     return;
