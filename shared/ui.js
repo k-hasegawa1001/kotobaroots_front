@@ -23,6 +23,66 @@ const NAV_ITEMS = [
   },
 ];
 
+function ensureLogoutModal() {
+  let modal = document.getElementById("logout-modal");
+  if (modal) {
+    return modal;
+  }
+
+  modal = document.createElement("div");
+  modal.id = "logout-modal";
+  modal.className = "modal";
+  modal.hidden = true;
+
+  const card = document.createElement("div");
+  card.className = "modal-card";
+
+  const message = document.createElement("p");
+  message.className = "page-subtitle";
+  message.textContent = "ログアウトしますか？";
+
+  const actions = document.createElement("div");
+  actions.className = "modal-actions";
+
+  const cancelButton = document.createElement("button");
+  cancelButton.type = "button";
+  cancelButton.className = "btn outline";
+  cancelButton.textContent = "キャンセル";
+
+  const confirmButton = document.createElement("button");
+  confirmButton.type = "button";
+  confirmButton.className = "btn danger";
+  confirmButton.id = "logout-confirm";
+  confirmButton.textContent = "ログアウト";
+
+  actions.append(cancelButton, confirmButton);
+  card.append(message, actions);
+  modal.appendChild(card);
+  document.body.appendChild(modal);
+
+  cancelButton.addEventListener("click", () => {
+    modal.hidden = true;
+  });
+
+  modal.addEventListener("click", (event) => {
+    if (event.target === modal) {
+      modal.hidden = true;
+    }
+  });
+
+  confirmButton.addEventListener("click", async () => {
+    confirmButton.disabled = true;
+    try {
+      await logout();
+    } catch (error) {
+      // Continue to login screen even when logout fails.
+    }
+    window.location.href = buildAppUrl("/auth/login.html");
+  });
+
+  return modal;
+}
+
 function shouldShowNavItem(item, user, showAuth) {
   if (item.showWhen === "guest") {
     return !user && showAuth;
@@ -42,12 +102,24 @@ export function renderHeader({ active, user, showAuth = true } = {}) {
   header.textContent = "";
   header.className = "sidebar";
 
+  const topRow = document.createElement("div");
+  topRow.className = "sidebar-top";
+
   const brandLink = document.createElement("a");
   brandLink.href = buildAppUrl("/learn/index.html");
   brandLink.textContent = "KotobaRoots";
   brandLink.className = "sidebar-brand";
 
-  header.appendChild(brandLink);
+  const toggleButton = document.createElement("button");
+  toggleButton.type = "button";
+  toggleButton.className = "sidebar-toggle";
+  toggleButton.textContent = "メニュー";
+  toggleButton.setAttribute("aria-controls", "sidebar-nav");
+  toggleButton.setAttribute("aria-expanded", "false");
+  toggleButton.setAttribute("aria-label", "メニューを開閉");
+
+  topRow.append(brandLink, toggleButton);
+  header.appendChild(topRow);
 
   if (user) {
     const userInfo = document.createElement("div");
@@ -59,6 +131,7 @@ export function renderHeader({ active, user, showAuth = true } = {}) {
 
   const nav = document.createElement("nav");
   nav.className = "sidebar-nav";
+  nav.id = "sidebar-nav";
 
   NAV_ITEMS.forEach((item) => {
     if (!shouldShowNavItem(item, user, showAuth)) {
@@ -70,12 +143,12 @@ export function renderHeader({ active, user, showAuth = true } = {}) {
       button.className = "nav-item logout-item";
       button.textContent = item.label;
       button.addEventListener("click", async () => {
-        try {
-          await logout();
-        } catch (error) {
-          // Continue to login screen even when logout fails.
+        const modal = ensureLogoutModal();
+        const confirmButton = modal.querySelector("#logout-confirm");
+        if (confirmButton instanceof HTMLButtonElement) {
+          confirmButton.disabled = false;
         }
-        window.location.href = buildAppUrl("/auth/login.html");
+        modal.hidden = false;
       });
       nav.appendChild(button);
       return;
@@ -101,6 +174,26 @@ export function renderHeader({ active, user, showAuth = true } = {}) {
   });
 
   header.appendChild(nav);
+
+  toggleButton.addEventListener("click", () => {
+    const isOpen = header.classList.toggle("is-open");
+    toggleButton.setAttribute("aria-expanded", String(isOpen));
+  });
+
+  nav.addEventListener("click", (event) => {
+    const target = event.target;
+    if (!(target instanceof HTMLElement)) {
+      return;
+    }
+    const clicked = target.closest("a,button");
+    if (!clicked) {
+      return;
+    }
+    if (window.matchMedia("(max-width: 880px)").matches) {
+      header.classList.remove("is-open");
+      toggleButton.setAttribute("aria-expanded", "false");
+    }
+  });
 }
 
 export function setStatus(element, { type = "info", message = "" } = {}) {

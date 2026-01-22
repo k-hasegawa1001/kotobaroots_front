@@ -9,7 +9,7 @@
   <body>
     <div class="app-shell">
       <aside id="site-header"></aside>
-      <main class="page">
+      <main class="page profile-page">
         <section class="page-header">
           <div class="page-title-row">
             <h1 class="page-title">プロフィール</h1>
@@ -24,12 +24,12 @@
           <div class="kv-row kv-row-action">
             <span>ユーザー名</span>
             <strong id="profile-username"></strong>
-            <button id="edit-username" class="btn outline small" type="button">変更</button>
+            <button id="edit-username" class="btn outline profile-edit-btn" type="button">変更</button>
           </div>
           <div class="kv-row kv-row-action">
             <span>メールアドレス</span>
             <strong id="profile-email"></strong>
-            <button id="edit-email" class="btn outline small" type="button">変更</button>
+            <button id="edit-email" class="btn outline profile-edit-btn" type="button">変更</button>
           </div>
           <div class="kv-row">
             <span>登録日時</span>
@@ -56,7 +56,7 @@
           </div>
           <div class="modal-actions">
             <button id="close-username-modal" class="btn outline" type="button">キャンセル</button>
-            <button class="btn" type="submit">更新</button>
+            <button class="btn" type="submit">変更</button>
           </div>
         </form>
       </div>
@@ -86,7 +86,7 @@
         </p>
         <div class="modal-actions">
           <span></span>
-          <button id="close-email-modal" class="btn outline" type="button">閉じる</button>
+          <button id="close-email-modal" class="btn outline" type="button">キャンセル</button>
         </div>
       </div>
     </div>

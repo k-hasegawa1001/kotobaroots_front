@@ -17,6 +17,39 @@ function buildLanguageOptions(entries) {
   languageFilter.disabled = true;
 }
 
+function parseHistoryDate(value) {
+  if (!value) {
+    return 0;
+  }
+  const iso = String(value).replace(" ", "T");
+  const parsed = new Date(iso);
+  if (Number.isNaN(parsed.getTime())) {
+    return 0;
+  }
+  return parsed.getTime();
+}
+
+function groupHistories(entries) {
+  const groups = new Map();
+  entries.forEach((entry) => {
+    const topic = entry.topic || "単元名不明";
+    const createdAt = entry.created_at || "";
+    const key = `${topic}__${createdAt}`;
+    if (!groups.has(key)) {
+      groups.set(key, {
+        key,
+        topic,
+        createdAt,
+        items: [],
+      });
+    }
+    groups.get(key).items.push(entry);
+  });
+  return Array.from(groups.values()).sort(
+    (a, b) => parseHistoryDate(b.createdAt) - parseHistoryDate(a.createdAt)
+  );
+}
+
 function renderHistory(entries) {
   historyList.textContent = "";
   if (!entries.length) {
@@ -27,37 +60,90 @@ function renderHistory(entries) {
     return;
   }
 
-  entries.forEach((item) => {
-    const row = document.createElement("div");
-    row.className = "table-row";
+  const groups = groupHistories(entries);
+  groups.forEach((group) => {
+    const total = group.items.length;
+    const correct = group.items.filter((item) => item.is_passed).length;
+    const accuracy = total ? Math.round((correct / total) * 100) : 0;
 
-    const title = document.createElement("h4");
-    title.textContent = item.topic || "単元名不明";
+    const details = document.createElement("details");
+    details.className = "history-group";
 
-    const meta = document.createElement("p");
-    meta.textContent = formatDate(item.created_at);
+    const summary = document.createElement("summary");
+    summary.className = "history-summary";
 
-    const tag = document.createElement("span");
-    tag.className = "tag";
-    tag.textContent = item.is_passed ? "正解" : "不正解";
+    const title = document.createElement("div");
+    title.className = "history-summary-topic";
+    title.textContent = group.topic;
 
-    const userAnswer = document.createElement("p");
-    userAnswer.textContent = `あなたの回答: ${item.user_answer || ""}`;
-
-    const correctAnswer = document.createElement("p");
-    correctAnswer.textContent = item.correct_answer
-      ? `正解: ${item.correct_answer}`
-      : "正解: （正解）";
-
-    row.append(title, meta, tag, userAnswer, correctAnswer);
-
-    if (item.explanation) {
-      const explanation = document.createElement("p");
-      explanation.textContent = `解説: ${item.explanation}`;
-      row.appendChild(explanation);
+    const accuracyEl = document.createElement("div");
+    accuracyEl.className = "history-summary-accuracy";
+    accuracyEl.textContent = `正答率: ${accuracy}%`;
+    if (accuracy >= 80) {
+      accuracyEl.classList.add("is-high");
+    } else {
+      accuracyEl.classList.add("is-low");
     }
 
-    historyList.appendChild(row);
+    const meta = document.createElement("div");
+    meta.className = "history-summary-meta";
+    meta.textContent = `学習日時: ${formatDate(group.createdAt)}`;
+
+    summary.append(title, accuracyEl, meta);
+    details.appendChild(summary);
+
+    const list = document.createElement("div");
+    list.className = "history-question-list";
+
+    group.items.forEach((item, index) => {
+      const row = document.createElement("div");
+      row.className = "history-question";
+
+      const head = document.createElement("div");
+      head.className = "history-question-head";
+
+      const number = document.createElement("span");
+      number.className = "history-question-number";
+      number.textContent = `Q${index + 1}`;
+
+      const tag = document.createElement("span");
+      tag.className = "tag";
+      if (item.is_passed) {
+        tag.classList.add("is-correct");
+        tag.textContent = "〇";
+      } else {
+        tag.classList.add("is-wrong");
+        tag.textContent = "✕";
+      }
+
+      head.append(number, tag);
+
+      const questionText = document.createElement("p");
+      questionText.className = "history-question-text";
+      questionText.textContent = `問題: ${item.question || item.question_statement || ""}`;
+
+      const userAnswer = document.createElement("p");
+      userAnswer.textContent = `あなたの回答: ${item.user_answer || ""}`;
+
+      const correctAnswer = document.createElement("p");
+      const resolvedCorrect = item.correct_answer || item.user_answer || "";
+      correctAnswer.textContent = resolvedCorrect
+        ? `正解: ${resolvedCorrect}`
+        : "正解: -";
+
+      row.append(head, questionText, userAnswer, correctAnswer);
+
+      if (item.explanation) {
+        const explanation = document.createElement("p");
+        explanation.textContent = `解説: ${item.explanation}`;
+        row.appendChild(explanation);
+      }
+
+      list.appendChild(row);
+    });
+
+    details.appendChild(list);
+    historyList.appendChild(details);
   });
 }
 

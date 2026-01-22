@@ -77,9 +77,7 @@ function renderPlaceholderCards(count = 12) {
 
 function renderTopics() {
   topicsEl.textContent = "";
-  const visibleTopics = state.topics.filter(
-    (topic) => topic.difficulty <= state.currentMax
-  );
+  const visibleTopics = state.topics;
 
   if (visibleTopics.length === 0) {
     renderPlaceholderCards(8);
@@ -178,7 +176,7 @@ async function updateLearningConfig({ levelId, languageId }) {
   } catch (error) {
     const message = error instanceof ApiError
       ? error.message
-      : "学習設定の更新に失敗しました。";
+      : "学習設定の変更に失敗しました。";
     setStatus(statusEl, { type: "error", message });
     state.selectedLevelId = previousLevel;
     state.selectedLanguageId = previousLanguage;

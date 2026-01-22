@@ -12,7 +12,7 @@
       <main class="page">
         <section class="page-header">
           <div class="page-title-row">
-            <h1 class="page-title">マイフレーズ帳</h1>
+            <h1 class="page-title">マイフレーズ</h1>
           </div>
           <p class="page-subtitle">覚えたいフレーズを登録して復習に使います。</p>
           <div class="page-divider"></div>
@@ -33,6 +33,7 @@
             <button id="open-add-modal" class="btn" type="button">追加する</button>
             <button id="delete-selected" class="btn danger" type="button">削除する</button>
             <p id="question-num" class="myphrase-meta"></p>
+            <button id="start-test" class="btn success myphrase-test" type="button">テストする</button>
           </div>
         </section>
       </main>
@@ -73,6 +74,19 @@
     <div id="myphrase-success-modal" class="modal" hidden>
       <div class="modal-card">
         <p id="myphrase-success-message" class="page-subtitle"></p>
+      </div>
+    </div>
+
+    <div id="myphrase-test-modal" class="modal" hidden>
+      <div class="modal-card">
+        <h2 class="modal-title">マイフレーズテスト</h2>
+        <p id="myphrase-test-meta" class="page-subtitle"></p>
+        <div id="myphrase-test-status" class="status" hidden></div>
+        <div id="myphrase-test-list" class="test-list"></div>
+        <div class="modal-actions">
+          <span></span>
+          <button id="close-test-modal" class="btn outline" type="button">キャンセル</button>
+        </div>
       </div>
     </div>
 

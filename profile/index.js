@@ -112,9 +112,9 @@ async function init() {
       usernameEl.textContent = newName;
       closeModal(usernameModal);
       setStatus(statusEl, { message: "" });
-      openSuccessModal("ユーザー名を更新しました。");
+      openSuccessModal("ユーザー名を変更しました。");
     } catch (error) {
-      const message = error instanceof ApiError ? error.message : "更新に失敗しました。";
+      const message = error instanceof ApiError ? error.message : "変更に失敗しました。";
       setStatus(usernameStatus, { type: "error", message });
     }
   });

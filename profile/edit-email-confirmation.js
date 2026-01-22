@@ -97,7 +97,7 @@ async function init() {
         window.location.href = buildAppUrl(`/auth/login.html?next=${next}`);
         return;
       }
-      const message = error instanceof ApiError ? error.message : "更新に失敗しました。";
+      const message = error instanceof ApiError ? error.message : "変更に失敗しました。";
       setStatus(statusEl, { type: "error", message });
     }
   });
