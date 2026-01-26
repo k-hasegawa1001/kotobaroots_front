@@ -799,21 +799,16 @@ ol {
   display: flex;
   flex-direction: column;
   align-items: center;
-  justify-content: flex-start;
+  justify-content: center;
   min-height: 100vh;
-  padding: 72px 48px 72px;
+  padding: 64px 48px;
   font-size: 1.2rem;
 }
 
 .auth-page .auth-card {
   width: min(var(--auth-card-max), 100%);
   max-width: var(--auth-card-max);
-  margin-left: calc(
-    -1 * min(
-      calc(var(--sidebar-width) / 2),
-      max(0px, calc((100% - var(--auth-card-max)) / 2))
-    )
-  );
+  margin-left: 0;
   padding: 28px 32px;
 }
 
@@ -952,10 +947,11 @@ ol {
 }
 
 .row-check {
-  width: 18px;
-  height: 18px;
+  width: 30px;
+  height: 30px;
   accent-color: var(--accent);
   align-self: center;
+  cursor: pointer;
 }
 
 .myphrase-actions {
@@ -980,37 +976,79 @@ ol {
   font-size: 0.85rem;
 }
 
-.test-list {
+.test-body {
   display: grid;
-  gap: 12px;
+  gap: 18px;
   margin-top: 12px;
-  max-height: 360px;
-  overflow: auto;
 }
 
-.test-row {
-  border: 1px solid var(--line);
-  border-radius: 14px;
-  padding: 14px 16px;
-  background: rgba(255, 255, 255, 0.02);
-  display: grid;
-  gap: 10px;
-}
-
-.test-row-head {
+.test-progress {
   display: flex;
   align-items: center;
   justify-content: space-between;
   gap: 12px;
-}
-
-.test-phrase {
-  font-weight: 600;
-}
-
-.test-mean {
   color: var(--muted);
-  line-height: 1.6;
+  font-size: 1.1rem;
+}
+
+.test-card {
+  border: 1px solid var(--line);
+  border-radius: 14px;
+  padding: 18px 20px;
+  background: rgba(255, 255, 255, 0.02);
+  display: grid;
+  gap: 16px;
+  text-align: left;
+}
+
+.test-field {
+  display: grid;
+  gap: 8px;
+}
+
+.test-field-label {
+  font-size: 1.1rem;
+  color: var(--muted);
+}
+
+.test-field-value {
+  font-size: 1.6rem;
+}
+
+.test-input {
+  width: 100%;
+}
+
+.test-feedback {
+  border: 1px solid var(--line);
+  border-radius: 14px;
+  padding: 16px;
+  background: rgba(255, 255, 255, 0.03);
+  display: grid;
+  gap: 8px;
+  margin-top: 12px;
+}
+
+.test-feedback-row {
+  display: flex;
+  justify-content: center;
+}
+
+.test-feedback-text {
+  margin: 0;
+}
+
+.test-answer-area {
+  margin-top: 16px;
+  display: grid;
+  gap: 10px;
+}
+
+.test-actions {
+  display: flex;
+  justify-content: center;
+  gap: 12px;
+  flex-wrap: wrap;
 }
 
 .history-group {
@@ -1144,6 +1182,61 @@ ol {
   text-align: center;
 }
 
+#answer-feedback-modal .modal-card,
+#myphrase-feedback-modal .modal-card {
+  width: min(860px, 94vw);
+  padding: 0;
+}
+
+#answer-feedback-modal .answer-feedback-title,
+#myphrase-feedback-modal .answer-feedback-title {
+  padding: 24px 36px 12px;
+}
+
+#answer-feedback-modal .answer-feedback-title.is-correct,
+#myphrase-feedback-modal .answer-feedback-title.is-correct {
+  color: #6dd6a8;
+}
+
+#answer-feedback-modal .answer-feedback-title.is-wrong,
+#myphrase-feedback-modal .answer-feedback-title.is-wrong {
+  color: #ff6b6b;
+}
+
+#answer-feedback-modal .answer-feedback-body,
+#myphrase-feedback-modal .answer-feedback-body {
+  border-top: 1px solid var(--line);
+  padding: 8px 36px 20px;
+  max-height: 50vh;
+  overflow-y: auto;
+  text-align: left;
+}
+
+#answer-feedback-modal .answer-feedback-body::-webkit-scrollbar,
+#myphrase-feedback-modal .answer-feedback-body::-webkit-scrollbar {
+  width: 8px;
+}
+
+#answer-feedback-modal .answer-feedback-body::-webkit-scrollbar-track,
+#myphrase-feedback-modal .answer-feedback-body::-webkit-scrollbar-track {
+  background: transparent;
+}
+
+#answer-feedback-modal .answer-feedback-body::-webkit-scrollbar-thumb,
+#myphrase-feedback-modal .answer-feedback-body::-webkit-scrollbar-thumb {
+  background: rgba(255, 255, 255, 0.25);
+  border-radius: 999px;
+}
+
+#answer-feedback-modal .answer-feedback-footer,
+#myphrase-feedback-modal .answer-feedback-footer {
+  border-top: 1px solid var(--line);
+  padding: 18px 36px 24px;
+  display: flex;
+  justify-content: center;
+  background: rgba(255, 255, 255, 0.02);
+}
+
 .modal-title {
   font-family: var(--font-display);
   font-size: 2rem;
@@ -1172,11 +1265,33 @@ ol {
   font-size: 1.4rem;
 }
 
+.modal-block {
+  display: grid;
+  gap: 6px;
+  padding: 12px 0;
+}
+
+.modal-block + .modal-block {
+  border-top: 1px solid var(--line);
+}
+
+.modal-block .page-subtitle {
+  margin: 0;
+}
+
 .modal-actions {
   display: flex;
   justify-content: space-between;
   gap: 12px;
   margin-top: 18px;
+}
+
+.modal-actions.is-end {
+  justify-content: flex-end;
+}
+
+.modal-actions.is-center {
+  justify-content: center;
 }
 
 .modal-divider {
@@ -1211,7 +1326,7 @@ ol {
   }
 
   .auth-page {
-    padding: 56px 32px 64px;
+    padding: 48px 32px;
   }
 
   .page {
@@ -1303,7 +1418,7 @@ ol {
   }
 
   .auth-page {
-    padding: 40px 20px 48px;
+    padding: 32px 20px;
   }
 
   .auth-page .auth-card {

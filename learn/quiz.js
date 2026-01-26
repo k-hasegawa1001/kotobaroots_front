@@ -109,15 +109,17 @@ function openFeedbackModal(
     return;
   }
 
-  feedbackTitle.textContent = isCorrect ? "〇 正解" : "✕ 不正解";
+  feedbackTitle.textContent = isCorrect ? "正解" : "不正解";
+  feedbackTitle.classList.toggle("is-correct", isCorrect);
+  feedbackTitle.classList.toggle("is-wrong", !isCorrect);
   feedbackUser.textContent = userAnswer || "";
   feedbackCorrect.textContent = correctAnswer || "";
-  feedbackExplanation.textContent = explanation ? `解説: ${explanation}` : "解説: なし";
+  feedbackExplanation.textContent = explanation ? explanation : "なし";
   feedbackModal.hidden = false;
   nextButton.disabled = true;
 
   if (feedbackNextButton) {
-    feedbackNextButton.textContent = isLast ? "結果へ" : "次の問題へ";
+    feedbackNextButton.textContent = "つぎへ";
   }
 
   pendingAdvance = () => {

@@ -31,20 +31,30 @@
             <button id="reset-button" class="btn outline" type="button" hidden>
               並び替えをリセット
             </button>
-            <button id="next-button" class="btn" type="button">次へ</button>
+            <button id="next-button" class="btn" type="button">回答する</button>
           </div>
         </section>
       </main>
     </div>
     <div id="answer-feedback-modal" class="modal" hidden>
-      <div class="modal-card">
-        <h2 id="feedback-title" class="modal-title"></h2>
-        <div class="modal-divider"></div>
-        <p class="page-subtitle">あなたの回答: <span id="feedback-user"></span></p>
-        <p class="page-subtitle">正解: <span id="feedback-correct"></span></p>
-        <p id="feedback-explanation" class="page-subtitle"></p>
-        <div class="modal-actions">
-          <button id="feedback-next-button" class="btn" type="button">次の問題へ</button>
+      <div class="modal-card answer-feedback-card">
+        <h2 id="feedback-title" class="modal-title answer-feedback-title"></h2>
+        <div class="answer-feedback-body">
+          <div class="modal-block">
+            <p class="page-subtitle">あなたの回答</p>
+            <p id="feedback-user" class="page-subtitle"></p>
+          </div>
+          <div class="modal-block">
+            <p class="page-subtitle">正解</p>
+            <p id="feedback-correct" class="page-subtitle"></p>
+          </div>
+          <div class="modal-block">
+            <p class="page-subtitle">解説</p>
+            <p id="feedback-explanation" class="page-subtitle"></p>
+          </div>
+        </div>
+        <div class="answer-feedback-footer">
+          <button id="feedback-next-button" class="btn" type="button">つぎへ</button>
         </div>
       </div>
     </div>

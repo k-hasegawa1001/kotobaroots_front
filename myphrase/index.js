@@ -15,12 +15,16 @@ const closeModalButton = document.getElementById("close-myphrase-modal");
 const successModal = document.getElementById("myphrase-success-modal");
 const successMessage = document.getElementById("myphrase-success-message");
 const testButton = document.getElementById("start-test");
-const testModal = document.getElementById("myphrase-test-modal");
-const testList = document.getElementById("myphrase-test-list");
-const testStatus = document.getElementById("myphrase-test-status");
-const testMeta = document.getElementById("myphrase-test-meta");
-const closeTestButton = document.getElementById("close-test-modal");
+const testStartModal = document.getElementById("myphrase-test-start-modal");
+const testStartStatus = document.getElementById("myphrase-test-start-status");
+const testStartForm = document.getElementById("myphrase-test-start-form");
+const testStartSelect = document.getElementById("myphrase-test-count");
+const closeTestStartButton = document.getElementById("close-test-start");
+const deleteConfirmModal = document.getElementById("myphrase-delete-modal");
+const deleteConfirmButton = document.getElementById("confirm-delete-myphrase");
+const deleteCancelButton = document.getElementById("cancel-delete-myphrase");
 let successTimerId = null;
+let pendingDeleteIds = [];
 
 let myphrases = [];
 let myphraseQuestionNum = 10;
@@ -60,12 +64,43 @@ function closeSuccessModal() {
   }
 }
 
-function openTestModal() {
-  testModal.hidden = false;
+function openTestStartModal() {
+  if (!testStartModal || !testStartSelect) {
+    return;
+  }
+  setStatus(testStartStatus, { message: "" });
+  const selectedValue = String(myphraseQuestionNum || 10);
+  if (testStartSelect.querySelector(`option[value="${selectedValue}"]`)) {
+    testStartSelect.value = selectedValue;
+  } else {
+    testStartSelect.value = "10";
+  }
+  testStartModal.hidden = false;
+  testStartSelect.focus();
 }
 
-function closeTestModal() {
-  testModal.hidden = true;
+function closeTestStartModal() {
+  if (testStartModal) {
+    testStartModal.hidden = true;
+  }
+}
+
+function openDeleteConfirmModal(selectedIds) {
+  if (!deleteConfirmModal) {
+    return;
+  }
+  pendingDeleteIds = Array.isArray(selectedIds) ? selectedIds : [];
+  deleteConfirmModal.hidden = false;
+  if (deleteConfirmButton) {
+    deleteConfirmButton.focus();
+  }
+}
+
+function closeDeleteConfirmModal() {
+  if (deleteConfirmModal) {
+    deleteConfirmModal.hidden = true;
+  }
+  pendingDeleteIds = [];
 }
 
 openModalButton.addEventListener("click", openModal);
@@ -75,12 +110,40 @@ modal.addEventListener("click", (event) => {
     closeModal();
   }
 });
-closeTestButton.addEventListener("click", closeTestModal);
-testModal.addEventListener("click", (event) => {
-  if (event.target === testModal) {
-    closeTestModal();
-  }
-});
+if (testButton) {
+  testButton.addEventListener("click", openTestStartModal);
+}
+if (closeTestStartButton) {
+  closeTestStartButton.addEventListener("click", closeTestStartModal);
+}
+if (testStartModal) {
+  testStartModal.addEventListener("click", (event) => {
+    if (event.target === testStartModal) {
+      closeTestStartModal();
+    }
+  });
+}
+if (deleteCancelButton) {
+  deleteCancelButton.addEventListener("click", closeDeleteConfirmModal);
+}
+if (deleteConfirmModal) {
+  deleteConfirmModal.addEventListener("click", (event) => {
+    if (event.target === deleteConfirmModal) {
+      closeDeleteConfirmModal();
+    }
+  });
+}
+if (deleteConfirmButton) {
+  deleteConfirmButton.addEventListener("click", async () => {
+    if (!pendingDeleteIds.length) {
+      closeDeleteConfirmModal();
+      return;
+    }
+    const deleteIds = pendingDeleteIds.slice();
+    closeDeleteConfirmModal();
+    await deleteMyphrases(deleteIds);
+  });
+}
 
 function renderList() {
   listEl.textContent = "";
@@ -134,48 +197,21 @@ async function loadMyphrases() {
   }
 }
 
-function renderTestQuestions(questions) {
-  testList.textContent = "";
-  testMeta.textContent = questions.length ? `出題数: ${questions.length}` : "";
-
-  if (!questions.length) {
-    const empty = document.createElement("p");
-    empty.className = "page-subtitle";
-    empty.textContent = "テスト用のフレーズがありません。";
-    testList.appendChild(empty);
-    return;
-  }
-
-  questions.forEach((question, index) => {
-    const row = document.createElement("div");
-    row.className = "test-row";
-
-    const head = document.createElement("div");
-    head.className = "test-row-head";
-
-    const phrase = document.createElement("div");
-    phrase.className = "test-phrase";
-    phrase.textContent = `${index + 1}. ${question.phrase || ""}`;
-
-    const toggle = document.createElement("button");
-    toggle.type = "button";
-    toggle.className = "btn outline small test-toggle";
-    toggle.textContent = "答えを見る";
-
-    const mean = document.createElement("div");
-    mean.className = "test-mean";
-    mean.textContent = question.mean || "";
-    mean.hidden = true;
-
-    toggle.addEventListener("click", () => {
-      mean.hidden = !mean.hidden;
-      toggle.textContent = mean.hidden ? "答えを見る" : "答えを隠す";
+async function deleteMyphrases(selected) {
+  try {
+    await apiFetch("/kotobaroots/myphrase", {
+      method: "DELETE",
+      data: { delete_ids: selected },
     });
-
-    head.append(phrase, toggle);
-    row.append(head, mean);
-    testList.appendChild(row);
-  });
+    setStatus(statusEl, { message: "" });
+    const deletedCount = Array.isArray(selected) ? selected.length : 0;
+    const deletedLabel = deletedCount ? `${deletedCount}件 削除しました。` : "削除しました。";
+    openSuccessModal(deletedLabel);
+    await loadMyphrases();
+  } catch (error) {
+    const message = error instanceof ApiError ? error.message : "削除に失敗しました。";
+    setStatus(statusEl, { type: "error", message });
+  }
 }
 
 async function init() {
@@ -185,6 +221,23 @@ async function init() {
   }
   renderHeader({ active: "myphrase", user: profile });
   await loadMyphrases();
+
+  if (testStartForm) {
+    testStartForm.addEventListener("submit", (event) => {
+      event.preventDefault();
+      if (!testStartSelect) {
+        return;
+      }
+      const rawValue = testStartSelect.value;
+      const count = Number(rawValue);
+      if (!Number.isFinite(count) || count <= 0) {
+        setStatus(testStartStatus, { type: "error", message: "出題数を選択してください。" });
+        return;
+      }
+      closeTestStartModal();
+      window.location.href = `./test.html?count=${count}`;
+    });
+  }
 
   modalForm.addEventListener("submit", async (event) => {
     event.preventDefault();
@@ -224,42 +277,9 @@ async function init() {
       setStatus(statusEl, { type: "error", message: "削除対象を選択してください。" });
       return;
     }
-
-    try {
-      const res = await apiFetch("/kotobaroots/myphrase", {
-        method: "DELETE",
-        data: { delete_ids: selected },
-      });
-      setStatus(statusEl, { message: "" });
-      const deletedCount = Array.isArray(selected) ? selected.length : 0;
-      const deletedLabel = deletedCount ? `${deletedCount}件 削除しました。` : "削除しました。";
-      openSuccessModal(deletedLabel);
-      await loadMyphrases();
-    } catch (error) {
-      const message = error instanceof ApiError ? error.message : "削除に失敗しました。";
-      setStatus(statusEl, { type: "error", message });
-    }
+    openDeleteConfirmModal(selected);
   });
 
-  testButton.addEventListener("click", async () => {
-    setStatus(testStatus, { message: "" });
-    testButton.disabled = true;
-    try {
-      const data = await apiFetch("/kotobaroots/myphrase/test", {
-        method: "PUT",
-        data: { myphrase_question_num: myphraseQuestionNum || 10 },
-      });
-      renderTestQuestions(data.questions || []);
-      openTestModal();
-    } catch (error) {
-      const message = error instanceof ApiError ? error.message : "テストの開始に失敗しました。";
-      setStatus(testStatus, { type: "error", message });
-      renderTestQuestions([]);
-      openTestModal();
-    } finally {
-      testButton.disabled = false;
-    }
-  });
 }
 
 init();

@@ -33,7 +33,9 @@
             <button id="open-add-modal" class="btn" type="button">追加する</button>
             <button id="delete-selected" class="btn danger" type="button">削除する</button>
             <p id="question-num" class="myphrase-meta"></p>
-            <button id="start-test" class="btn success myphrase-test" type="button">テストする</button>
+            <button id="start-test" class="btn success myphrase-test" type="button">
+              テストする
+            </button>
           </div>
         </section>
       </main>
@@ -77,15 +79,33 @@
       </div>
     </div>
 
-    <div id="myphrase-test-modal" class="modal" hidden>
+    <div id="myphrase-test-start-modal" class="modal" hidden>
       <div class="modal-card">
-        <h2 class="modal-title">マイフレーズテスト</h2>
-        <p id="myphrase-test-meta" class="page-subtitle"></p>
-        <div id="myphrase-test-status" class="status" hidden></div>
-        <div id="myphrase-test-list" class="test-list"></div>
+        <h2 class="modal-title">出題数を選択</h2>
+        <div id="myphrase-test-start-status" class="status" hidden></div>
+        <form id="myphrase-test-start-form" class="form" novalidate>
+          <div class="field">
+            <select id="myphrase-test-count" name="count" required>
+              <option value="10">10問</option>
+              <option value="30">30問</option>
+              <option value="50">50問</option>
+              <option value="100">100問</option>
+            </select>
+          </div>
+          <div class="modal-actions">
+            <button id="close-test-start" class="btn outline" type="button">キャンセル</button>
+            <button class="btn" type="submit">テスト開始</button>
+          </div>
+        </form>
+      </div>
+    </div>
+
+    <div id="myphrase-delete-modal" class="modal" hidden>
+      <div class="modal-card">
+        <h2 class="modal-title">削除しますか？</h2>
         <div class="modal-actions">
-          <span></span>
-          <button id="close-test-modal" class="btn outline" type="button">キャンセル</button>
+          <button id="cancel-delete-myphrase" class="btn outline" type="button">キャンセル</button>
+          <button id="confirm-delete-myphrase" class="btn danger" type="button">削除する</button>
         </div>
       </div>
     </div>

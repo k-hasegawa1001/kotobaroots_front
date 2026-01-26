@@ -4,6 +4,7 @@ import { renderHeader, formatDate, setStatus } from "../shared/ui.js";
 
 const historyList = document.getElementById("history-list");
 const languageFilter = document.getElementById("language-filter");
+const accuracyFilter = document.getElementById("accuracy-filter");
 const statusEl = document.getElementById("status");
 
 let historyEntries = [];
@@ -15,6 +16,16 @@ function buildLanguageOptions(entries) {
   option.textContent = entries.length ? "現在の学習言語" : "学習言語";
   languageFilter.appendChild(option);
   languageFilter.disabled = true;
+}
+
+function setupAccuracyFilter(entries) {
+  if (!accuracyFilter) {
+    return;
+  }
+  accuracyFilter.disabled = entries.length === 0;
+  if (!accuracyFilter.value) {
+    accuracyFilter.value = "all";
+  }
 }
 
 function parseHistoryDate(value) {
@@ -50,6 +61,31 @@ function groupHistories(entries) {
   );
 }
 
+function getGroupAccuracy(group) {
+  const total = group.items.length;
+  const correct = group.items.filter((item) => item.is_passed).length;
+  return total ? Math.round((correct / total) * 100) : 0;
+}
+
+function filterGroupsByAccuracy(groups) {
+  if (!accuracyFilter || accuracyFilter.value === "all") {
+    return groups;
+  }
+  return groups.filter((group) => {
+    const accuracy = getGroupAccuracy(group);
+    if (accuracyFilter.value === "high") {
+      return accuracy >= 80;
+    }
+    if (accuracyFilter.value === "mid") {
+      return accuracy >= 50 && accuracy < 80;
+    }
+    if (accuracyFilter.value === "low") {
+      return accuracy < 50;
+    }
+    return true;
+  });
+}
+
 function renderHistory(entries) {
   historyList.textContent = "";
   if (!entries.length) {
@@ -60,11 +96,17 @@ function renderHistory(entries) {
     return;
   }
 
-  const groups = groupHistories(entries);
+  const groups = filterGroupsByAccuracy(groupHistories(entries));
+  if (!groups.length) {
+    const empty = document.createElement("p");
+    empty.className = "page-subtitle";
+    empty.textContent = "条件に一致する履歴がありません。";
+    historyList.appendChild(empty);
+    return;
+  }
+
   groups.forEach((group) => {
-    const total = group.items.length;
-    const correct = group.items.filter((item) => item.is_passed).length;
-    const accuracy = total ? Math.round((correct / total) * 100) : 0;
+    const accuracy = getGroupAccuracy(group);
 
     const details = document.createElement("details");
     details.className = "history-group";
@@ -154,11 +196,13 @@ async function init() {
   }
   renderHeader({ active: "history", user: profile });
   buildLanguageOptions([]);
+  setupAccuracyFilter([]);
 
   try {
     const data = await apiFetch("/kotobaroots/learning/history");
     historyEntries = data.histories || [];
     buildLanguageOptions(historyEntries);
+    setupAccuracyFilter(historyEntries);
     renderHistory(historyEntries);
   } catch (error) {
     const message = error instanceof ApiError
@@ -167,6 +211,12 @@ async function init() {
     setStatus(statusEl, { type: "error", message });
     renderHistory([]);
   }
+}
+
+if (accuracyFilter) {
+  accuracyFilter.addEventListener("change", () => {
+    renderHistory(historyEntries);
+  });
 }
 
 init();

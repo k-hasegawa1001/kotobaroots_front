@@ -4,10 +4,19 @@
 
 ### 1. バックエンドを起動
 
-1. ターミナルでバックエンドフォルダへ移動します。
+1. ターミナルでバックエンドへ移動します。
    - `cd C:\projects\kotobaroots_back`
-2. 既存の手順（venv/依存導入/起動）に従って起動し、`http://127.0.0.1:5000` で待機させます。
-   - 例: `python apps/app.py`（プロジェクトの起動方法に合わせてください）
+2. 仮想環境と依存パッケージを準備します（初回のみ）。
+   - `python -m venv venv`
+   - `venv\Scripts\activate`
+   - `pip install -r requirements.txt`
+3. `.env` の設定を確認します。
+   - `FRONTEND_URL` は Live Server のポートに合わせる（例: `http://127.0.0.1:5500`）
+   - AI解説を使う場合は `OPENAI_API_KEY` を設定
+   - メール送信機能を使う場合は `MAIL_*` を設定
+4. サーバを起動します。
+   - 例: `flask --app apps.app:create_app run --host 127.0.0.1 --port 5000`
+   - 既存の起動手順がある場合はそれに従ってください。
 
 ### 2. フロントエンドを起動（Live Server 前提）
 
@@ -21,10 +30,10 @@
 
 1. アカウント作成 → ログイン → ログアウト
 2. 学習: 言語/難易度 → 単元 → 学習10問 → 結果
-3. 履歴: 一覧表示 + 言語フィルタ
-4. マイフレーズ: 追加 → 一括削除
-5. AI解説: 入力 → 結果
-6. プロフィール: 表示
+3. 履歴: 一覧表示 + 正答率フィルタ
+4. マイフレーズ: 追加 → 一括削除 → テスト
+5. AI解説: 入力 → 結果 → 履歴
+6. プロフィール: 表示 / ユーザー名変更 / メールアドレス変更
 7. お問い合わせ: 送信
 
 ### 注意点
@@ -53,9 +62,9 @@
 
 - 認証: アカウント作成 / ログイン / ログアウト（Cookie セッション）
 - 学習: 単元取得 / 学習実施（4形式 + 並び替え） / 問題ごとのフィードバックモーダル / 結果表示 / 学習結果保存 / 学習設定変更
-- 学習履歴: 履歴取得 / 一覧表示
+- 学習履歴: 単元ごとの開閉表示 / 問題内容表示 / 〇✕表示 / 正答率レンジフィルタ
 - プロフィール: 参照 / ユーザー名変更 / メールアドレス変更（確認メール送信 → 確認ページで確定）
-- マイフレーズ: 一覧 / 追加（モーダル） / 複数選択削除 / テスト
+- マイフレーズ: 一覧 / 追加（モーダル） / 複数選択削除（確認モーダル） / テスト（問数選択 + 別ページで一問一答）
 - AI解説: 生成 / 履歴表示
 - お問い合わせ: 本文送信 / 送信完了モーダル
 - UI: サイドバー共通表示 / 未ログインガード / フォームのプレースホルダー統一
@@ -63,15 +72,15 @@
 ### 未実装 / 一部未実装
 
 - パスワードリセット画面（`/api/auth/request-reset-password`, `/api/auth/reset-password` に対応する UI が未実装）
-- 学習履歴の言語フィルタ（UIはあるが現在 disabled）
+- 学習履歴の言語フィルタ（UIはあるが API が現在言語のみ返すため disabled）
 - マイフレーズの編集
 - 学習の `POST /api/kotobaroots/learning/generate-questions` は未使用
 
-### 機能の提案
+### 提案＆改善案
 
 - パスワードリセットの導線追加（メール送信 → 新パスワード設定）
-- 学習履歴のセッション単位表示とフィルタ（言語 / 期間 / 正答率）
-- マイフレーズの編集機能とテストモード追加
+- 学習履歴の期間フィルタや並び替え（新しい順 / 正答率順）
+- マイフレーズの編集機能とテスト結果の保存
 - モバイル向けサイドバーの折りたたみ（ハンバーガー）対応
 
 ## 認証/CSRF
@@ -92,6 +101,12 @@
   - res: `{ msg }`
 - `POST /api/auth/create-user`
   - req: `{ username, email, password }`
+  - res: `{ msg }`
+- `POST /api/auth/request-reset-password`
+  - req: `{ email }`
+  - res: `{ msg }`
+- `POST /api/auth/reset-password`
+  - req: `{ token, new_password }`
   - res: `{ msg }`
 
 ### learn
@@ -126,7 +141,7 @@
 
 ### ai
 - `POST /api/kotobaroots/ai-explanation`
-  - req: `{ input_english }`
+  - req: `{ input_string }`
   - res: `{ msg, translation, explanation }`
 - `GET /api/kotobaroots/ai-explanation/history`
   - res: `[{ id, input_english, japanese_translation, explanation, created_at }]`
