@@ -20,7 +20,7 @@
   --danger: #ef5a5a;
   --shadow: 0 18px 36px rgba(0, 0, 0, 0.35);
   --radius: 18px;
-  --sidebar-width: 380px;
+  --sidebar-width: clamp(260px, 26vw, 380px);
   --auth-card-max: 680px;
   --font-body: "Zen Kaku Gothic New", "Hiragino Kaku Gothic ProN", "Meiryo", sans-serif;
   --font-display: "Shippori Mincho B1", "Zen Kaku Gothic New", "Hiragino Mincho ProN", serif;
@@ -36,7 +36,11 @@ body {
   font-family: var(--font-body);
   color: var(--text);
   overflow-y: scroll;
-  background: radial-gradient(circle at 12% 12%, rgba(74, 182, 255, 0.1), transparent 45%),
+  overflow-x: hidden;
+  background:
+    radial-gradient(circle at 12% 12%, rgba(74, 182, 255, 0.1), transparent 45%),
+    radial-gradient(circle at 86% 18%, rgba(74, 182, 255, 0.12), transparent 42%),
+    radial-gradient(circle at 88% 72%, rgba(79, 209, 255, 0.08), transparent 45%),
     linear-gradient(180deg, var(--bg) 0%, var(--bg-deep) 100%);
   line-height: 1.6;
 }
@@ -59,6 +63,7 @@ img {
   min-height: 100vh;
   display: grid;
   grid-template-columns: var(--sidebar-width) minmax(0, 1fr);
+  align-items: stretch;
 }
 
 .sidebar {
@@ -71,6 +76,8 @@ img {
   position: sticky;
   top: 0;
   height: 100vh;
+  overflow-y: auto;
+  overscroll-behavior: contain;
   font-size: 1.2rem;
 }
 
@@ -130,6 +137,7 @@ img {
   margin-top: 16px;
   align-items: stretch;
   flex: 1;
+  min-height: 0;
 }
 
 .nav-item {
@@ -270,13 +278,12 @@ img {
 }
 
 .page {
-  padding: 32px 48px 64px;
+  padding: clamp(24px, 3vw, 32px) clamp(20px, 4vw, 48px) clamp(48px, 6vw, 64px);
   width: 100%;
-  max-width: 1500px;
+  max-width: 1600px;
   min-width: 0;
   margin: 0 auto;
   font-size: 1.4rem;
-  transform: none;
 }
 
 .page-header {
@@ -285,9 +292,10 @@ img {
 
 .page-title-row {
   display: flex;
-  align-items: center;
+  align-items: flex-start;
   justify-content: space-between;
   gap: 16px;
+  flex-wrap: wrap;
 }
 
 .page-title {
@@ -315,10 +323,13 @@ small.page-subtitle {
 .page-actions {
   display: flex;
   gap: 12px;
+  flex-wrap: wrap;
 }
 
 .page-actions select {
-  min-width: 120px;
+  min-width: 140px;
+  max-width: 240px;
+  flex: 1 1 160px;
 }
 
 .section {
@@ -348,6 +359,7 @@ small.page-subtitle {
   display: flex;
   flex-direction: column;
   gap: 12px;
+  min-width: 0;
 }
 
 .unit-card.is-clickable {
@@ -405,7 +417,7 @@ small.page-subtitle {
 
 .card-grid {
   display: grid;
-  grid-template-columns: repeat(4, minmax(220px, 1fr));
+  grid-template-columns: repeat(4, minmax(0, 1fr));
   gap: 26px;
 }
 
@@ -659,6 +671,7 @@ small {
   justify-content: space-between;
   gap: 12px;
   margin-bottom: 16px;
+  flex-wrap: wrap;
 }
 
 .progress {
@@ -799,7 +812,7 @@ ol {
   display: flex;
   flex-direction: column;
   align-items: center;
-  justify-content: center;
+  justify-content: flex-start;
   min-height: 100vh;
   padding: 64px 48px;
   font-size: 1.2rem;
@@ -1064,6 +1077,7 @@ ol {
   align-items: center;
   justify-content: space-between;
   gap: 12px;
+  flex-wrap: wrap;
   color: var(--text);
   cursor: pointer;
   list-style: none;
@@ -1088,11 +1102,15 @@ ol {
   font-weight: 700;
   color: var(--text);
   font-size: 1.8rem;
+  min-width: 0;
+  flex: 1 1 220px;
 }
 
 .history-summary-accuracy {
   font-weight: 600;
   font-size: 1.35rem;
+  min-width: 0;
+  flex: 0 1 180px;
 }
 
 .history-summary-accuracy.is-high {
@@ -1106,6 +1124,8 @@ ol {
 .history-summary-meta {
   color: var(--muted);
   font-size: 1.35rem;
+  min-width: 0;
+  flex: 0 1 260px;
 }
 
 
@@ -1123,6 +1143,7 @@ ol {
   display: grid;
   gap: 2px;
   line-height: 1.5;
+  word-break: break-word;
 }
 
 .history-question-head {
@@ -1178,14 +1199,18 @@ ol {
   border-radius: 18px;
   padding: 32px 36px;
   box-shadow: 0 24px 60px rgba(0, 0, 0, 0.4);
-  transform: translateY(-80px);
+  transform: translateY(-32px);
   text-align: center;
+  max-height: calc(100vh - 96px);
+  overflow-y: auto;
 }
 
 #answer-feedback-modal .modal-card,
 #myphrase-feedback-modal .modal-card {
   width: min(860px, 94vw);
   padding: 0;
+  max-height: calc(100vh - 96px);
+  overflow: hidden;
 }
 
 #answer-feedback-modal .answer-feedback-title,
@@ -1300,49 +1325,11 @@ ol {
   margin: 16px 0;
 }
 
-@media (min-width: 881px) {
-  .page {
-    max-width: min(1500px, calc(100% - var(--sidebar-width)));
-    transform: translateX(calc(var(--sidebar-width) / -2));
-  }
-}
-
-@media (max-width: 960px) {
+@media (max-width: 1024px) {
   :root {
-    --sidebar-width: 300px;
+    --sidebar-width: 280px;
   }
 
-  .app-shell {
-    grid-template-columns: var(--sidebar-width) minmax(0, 1fr);
-  }
-
-  .sidebar {
-    padding: 28px 20px;
-  }
-
-  .nav-item.auth-item {
-    font-size: 1.2rem;
-    padding: 18px 16px;
-  }
-
-  .auth-page {
-    padding: 48px 32px;
-  }
-
-  .page {
-    padding: 24px;
-  }
-
-  .myphrase-layout {
-    grid-template-columns: 1fr;
-  }
-
-  .card-grid {
-    grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
-  }
-}
-
-@media (max-width: 880px) {
   .app-shell {
     grid-template-columns: 1fr;
   }
@@ -1381,6 +1368,7 @@ ol {
   .nav-item.auth-item {
     white-space: normal;
     line-height: 1.2;
+    font-size: 1.2rem;
   }
 
   .nav-item.logout-item {
@@ -1393,6 +1381,25 @@ ol {
 
   .auth-page .auth-card {
     margin-left: 0;
+  }
+
+  .auth-page {
+    padding: 48px 32px;
+  }
+
+  .myphrase-layout {
+    grid-template-columns: 1fr;
+  }
+
+  .card-grid {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+}
+
+@media (min-width: 1025px) {
+  .page {
+    margin-left: clamp(0px, 1.5vw, 32px);
+    margin-right: auto;
   }
 }
 
@@ -1414,7 +1421,7 @@ ol {
   }
 
   .nav-item {
-    font-size: 1.15rem;
+    font-size: 1.1rem;
   }
 
   .auth-page {
@@ -1436,8 +1443,32 @@ ol {
     flex-wrap: wrap;
   }
 
+  .page-actions select {
+    max-width: none;
+  }
+
   .kv-row {
     grid-template-columns: 1fr;
+  }
+
+  .card-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .history-summary {
+    flex-direction: column;
+    align-items: flex-start;
+  }
+
+  .modal-card {
+    transform: none;
+    width: min(620px, 94vw);
+  }
+}
+
+@media (max-height: 700px) {
+  .modal-card {
+    transform: none;
   }
 }
 
