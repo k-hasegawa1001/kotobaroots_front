@@ -1,6 +1,7 @@
-﻿import { apiFetch, ApiError } from "../shared/api.js";
+﻿import { apiFetch, getErrorMessage, ERROR_TYPES } from "../shared/api.js";
 import { requireAuth } from "../shared/auth.js";
 import { renderHeader, setStatus, formatDate } from "../shared/ui.js";
+import { validateEmail, validateUsername } from "../shared/validators.js";
 
 const statusEl = document.getElementById("status");
 const usernameEl = document.getElementById("profile-username");
@@ -81,7 +82,7 @@ async function init() {
     emailEl.textContent = data.email || "";
     createdEl.textContent = formatDate(data.created_at);
   } catch (error) {
-    const message = error instanceof ApiError ? error.message : "プロフィールの取得に失敗しました。";
+    const message = getErrorMessage(error, "プロフィールの取得に失敗しました。");
     setStatus(statusEl, { type: "error", message });
   }
 
@@ -99,8 +100,14 @@ async function init() {
     event.preventDefault();
     const newName = String(usernameInput.value || "").trim();
 
-    if (!newName) {
-      setStatus(usernameStatus, { type: "error", message: "ユーザー名を入力してください。" });
+    const usernameError = validateUsername(newName);
+    if (usernameError) {
+      setStatus(usernameStatus, { type: "error", message: usernameError });
+      return;
+    }
+
+    if (newName === usernameEl.textContent) {
+      setStatus(usernameStatus, { type: "error", message: "現在のユーザー名と同じです。" });
       return;
     }
 
@@ -114,7 +121,9 @@ async function init() {
       setStatus(statusEl, { message: "" });
       openSuccessModal("ユーザー名を変更しました。");
     } catch (error) {
-      const message = error instanceof ApiError ? error.message : "変更に失敗しました。";
+      const message = getErrorMessage(error, "変更に失敗しました。", {
+        [ERROR_TYPES.Conflict]: "このユーザー名は既に使われています。",
+      });
       setStatus(usernameStatus, { type: "error", message });
     }
   });
@@ -122,8 +131,15 @@ async function init() {
   emailRequestForm.addEventListener("submit", async (event) => {
     event.preventDefault();
     const newEmail = String(emailInput.value || "").trim();
-    if (!newEmail) {
-      setStatus(emailStatus, { type: "error", message: "新しいメールアドレスを入力してください。" });
+
+    const emailError = validateEmail(newEmail);
+    if (emailError) {
+      setStatus(emailStatus, { type: "error", message: emailError });
+      return;
+    }
+
+    if (newEmail === emailEl.textContent) {
+      setStatus(emailStatus, { type: "error", message: "現在のメールアドレスと同じです。" });
       return;
     }
 
@@ -136,7 +152,9 @@ async function init() {
       setStatus(emailStatus, { message: "" });
       openSuccessModal("確認メールを送信しました。");
     } catch (error) {
-      const message = error instanceof ApiError ? error.message : "送信に失敗しました。";
+      const message = getErrorMessage(error, "送信に失敗しました。", {
+        [ERROR_TYPES.Conflict]: "このメールアドレスは既に使われています。",
+      });
       setStatus(emailStatus, { type: "error", message });
     }
   });

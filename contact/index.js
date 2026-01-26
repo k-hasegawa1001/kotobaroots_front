@@ -1,6 +1,7 @@
-﻿import { apiFetch, ApiError } from "../shared/api.js";
+﻿import { apiFetch, getErrorMessage } from "../shared/api.js";
 import { requireAuth } from "../shared/auth.js";
 import { renderHeader, setStatus } from "../shared/ui.js";
+import { validateContactContent } from "../shared/validators.js";
 
 const statusEl = document.getElementById("status");
 const form = document.getElementById("contact-form");
@@ -39,8 +40,9 @@ async function init() {
     const formData = new FormData(form);
     const content = String(formData.get("content") || "").trim();
 
-    if (!content) {
-      setStatus(statusEl, { type: "error", message: "本文を入力してください。" });
+    const contentError = validateContactContent(content);
+    if (contentError) {
+      setStatus(statusEl, { type: "error", message: contentError });
       return;
     }
 
@@ -52,7 +54,7 @@ async function init() {
       form.reset();
       openModal();
     } catch (error) {
-      const message = error instanceof ApiError ? error.message : "送信に失敗しました。";
+      const message = getErrorMessage(error, "送信に失敗しました。");
       setStatus(statusEl, { type: "error", message });
     }
   });

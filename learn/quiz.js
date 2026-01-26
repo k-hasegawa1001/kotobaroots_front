@@ -1,8 +1,8 @@
-﻿import { apiFetch, ApiError } from "../shared/api.js";
+﻿import { apiFetch, getErrorMessage } from "../shared/api.js";
 import { requireAuth } from "../shared/auth.js";
 import { buildAppUrl } from "../shared/config.js";
 import { renderHeader, setStatus } from "../shared/ui.js";
-import { normalizeAnswer } from "../shared/validators.js";
+import { normalizeAnswer, validateAnswer } from "../shared/validators.js";
 import { addHistory } from "../shared/storage.js";
 
 const statusEl = document.getElementById("status");
@@ -315,9 +315,7 @@ async function finalizeLearning() {
     });
     sessionStorage.removeItem("learnSaveError");
   } catch (error) {
-    const message = error instanceof ApiError
-      ? error.message
-      : "学習履歴の保存に失敗しました。";
+    const message = getErrorMessage(error, "学習履歴の保存に失敗しました。");
     sessionStorage.setItem("learnSaveError", message);
   }
 
@@ -369,7 +367,7 @@ async function init() {
     topicTitleEl.textContent = state.topicTitle ? `単元: ${state.topicTitle}` : "";
     renderQuestion();
   } catch (error) {
-    const message = error instanceof ApiError ? error.message : "問題の取得に失敗しました。";
+    const message = getErrorMessage(error, "問題の取得に失敗しました。");
     setStatus(statusEl, { type: "error", message });
   }
 }
@@ -383,8 +381,9 @@ function submitAnswer() {
   const current = normalizeQuestion(state.questions[state.index]);
   const userAnswer = state.currentAnswer;
 
-  if (!userAnswer || !String(userAnswer).trim()) {
-    setStatus(statusEl, { type: "error", message: "回答を入力してください。" });
+  const answerError = validateAnswer(userAnswer);
+  if (answerError) {
+    setStatus(statusEl, { type: "error", message: answerError });
     return;
   }
 

@@ -75,7 +75,7 @@ function ensureLogoutModal() {
     try {
       await logout();
     } catch (error) {
-      // Continue to login screen even when logout fails.
+      console.error("Logout failed", error);
     }
     window.location.href = buildAppUrl("/auth/login.html");
   });

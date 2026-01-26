@@ -1,6 +1,7 @@
-﻿import { apiFetch, ApiError } from "../shared/api.js";
+﻿import { apiFetch, getErrorMessage } from "../shared/api.js";
 import { requireAuth } from "../shared/auth.js";
 import { renderHeader, setStatus } from "../shared/ui.js";
+import { validateAnswer } from "../shared/validators.js";
 
 const statusEl = document.getElementById("status");
 const testProgress = document.getElementById("test-progress");
@@ -161,8 +162,9 @@ function handleSubmitAnswer() {
   }
 
   const answer = String(currentAnswerInput.value || "").trim();
-  if (!answer) {
-    setStatus(statusEl, { type: "error", message: "回答を入力してください。" });
+  const answerError = validateAnswer(answer);
+  if (answerError) {
+    setStatus(statusEl, { type: "error", message: answerError });
     currentAnswerInput.focus();
     return;
   }
@@ -228,7 +230,7 @@ async function fetchQuestions() {
     });
     startTest(data.questions || []);
   } catch (error) {
-    const message = error instanceof ApiError ? error.message : "テストの開始に失敗しました。";
+    const message = getErrorMessage(error, "テストの開始に失敗しました。");
     setStatus(statusEl, { type: "error", message });
   }
 }

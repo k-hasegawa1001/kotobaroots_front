@@ -1,4 +1,4 @@
-﻿import { apiFetch, ApiError } from "../shared/api.js";
+﻿import { apiFetch, getErrorMessage } from "../shared/api.js";
 import { requireAuth } from "../shared/auth.js";
 import { buildAppUrl } from "../shared/config.js";
 import { renderHeader, setStatus } from "../shared/ui.js";
@@ -35,6 +35,7 @@ function loadStoredConfig() {
     const raw = localStorage.getItem(CONFIG_STORAGE_KEY);
     return raw ? JSON.parse(raw) : null;
   } catch (error) {
+    console.error("Failed to load learning config", error);
     return null;
   }
 }
@@ -145,9 +146,7 @@ async function fetchLearningData() {
     difficultyCap.textContent = `解放済み: 難易度 ${state.currentMax}`;
     renderTopics();
   } catch (error) {
-    const message = error instanceof ApiError
-      ? `学習データの取得に失敗しました。(${error.message})`
-      : "学習データの取得に失敗しました。";
+    const message = getErrorMessage(error, "学習データの取得に失敗しました。");
     setStatus(statusEl, { type: "error", message: `${message} 学習APIが未実装の可能性があります。` });
     renderPlaceholderCards(8);
   }
@@ -174,9 +173,7 @@ async function updateLearningConfig({ levelId, languageId }) {
     saveStoredConfig();
     await fetchLearningData();
   } catch (error) {
-    const message = error instanceof ApiError
-      ? error.message
-      : "学習設定の変更に失敗しました。";
+    const message = getErrorMessage(error, "学習設定の変更に失敗しました。");
     setStatus(statusEl, { type: "error", message });
     state.selectedLevelId = previousLevel;
     state.selectedLanguageId = previousLanguage;

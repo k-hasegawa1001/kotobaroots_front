@@ -1,7 +1,8 @@
-﻿import { apiFetch, ApiError } from "../shared/api.js";
+﻿import { apiFetch, getErrorMessage, ERROR_TYPES, ApiError } from "../shared/api.js";
 import { getProfile } from "../shared/auth.js";
 import { buildAppUrl } from "../shared/config.js";
 import { renderHeader, setStatus } from "../shared/ui.js";
+import { validatePassword } from "../shared/validators.js";
 
 const statusEl = document.getElementById("status");
 const form = document.getElementById("confirm-form");
@@ -71,10 +72,13 @@ async function init() {
   form.addEventListener("submit", async (event) => {
     event.preventDefault();
     const password = String(passwordInput.value || "");
-    if (!password) {
-      setStatus(statusEl, { type: "error", message: "パスワードを入力してください。" });
+
+    const passwordError = validatePassword(password);
+    if (passwordError) {
+      setStatus(statusEl, { type: "error", message: passwordError });
       return;
     }
+
     if (!profile && !profileError) {
       const next = encodeURIComponent(`${window.location.pathname}${window.location.search}`);
       window.location.href = buildAppUrl(`/auth/login.html?next=${next}`);
@@ -92,12 +96,12 @@ async function init() {
       });
       form.reset();
     } catch (error) {
-      if (error instanceof ApiError && error.status === 401) {
+      if (error instanceof ApiError && error.type === ERROR_TYPES.Unauthorized) {
         const next = encodeURIComponent(`${window.location.pathname}${window.location.search}`);
         window.location.href = buildAppUrl(`/auth/login.html?next=${next}`);
         return;
       }
-      const message = error instanceof ApiError ? error.message : "変更に失敗しました。";
+      const message = getErrorMessage(error, "変更に失敗しました。");
       setStatus(statusEl, { type: "error", message });
     }
   });

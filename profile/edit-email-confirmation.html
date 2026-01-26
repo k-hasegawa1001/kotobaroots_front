@@ -1,38 +1,35 @@
-<!DOCTYPE html>
+﻿<!DOCTYPE html>
 <html lang="ja">
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>KotobaRoots | メールアドレス確認</title>
+    <title>KotobaRoots | メールアドレス変更</title>
     <link rel="stylesheet" href="../shared/styles.css" />
   </head>
   <body>
-    <div class="app-shell">
+    <div class="app-shell auth-shell">
       <aside id="site-header"></aside>
-      <main class="page">
-        <section class="page-header">
-          <div class="page-title-row">
-            <h1 class="page-title">メールアドレス確認</h1>
-          </div>
-          <p class="page-subtitle">確認メールのリンクからアクセスしてください。</p>
-          <div class="page-divider"></div>
-        </section>
-
-        <div id="status" class="status" hidden aria-live="polite"></div>
-
-        <section class="card auth-card">
-          <p class="page-subtitle">本人確認のため、パスワードを入力して変更を確定します。</p>
+      <main class="page auth-page">
+        <section class="auth-card card">
+          <header class="page-header">
+            <h1 class="page-title">メールアドレス変更</h1>
+          </header>
+          <div id="status" class="status" hidden aria-live="polite"></div>
           <div id="login-required" class="status info" hidden>
             この操作にはログインが必要です。
           </div>
+
           <form id="confirm-form" class="form" novalidate>
             <div class="field">
               <input
                 id="confirm-password"
                 name="password"
                 type="password"
+                autocomplete="current-password"
                 placeholder="パスワード（8~16文字で入力）"
                 aria-label="パスワード"
+                minlength="8"
+                maxlength="16"
                 required
               />
             </div>

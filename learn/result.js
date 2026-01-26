@@ -108,7 +108,7 @@ async function init() {
 
   const saveError = sessionStorage.getItem("learnSaveError");
   if (saveError) {
-    setStatus(statusEl, { type: "error", message: `履歴の保存に失敗しました。${saveError}` });
+    setStatus(statusEl, { type: "error", message: saveError });
     sessionStorage.removeItem("learnSaveError");
   }
 

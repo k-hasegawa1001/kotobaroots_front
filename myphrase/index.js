@@ -1,6 +1,7 @@
-﻿import { apiFetch, ApiError } from "../shared/api.js";
+﻿import { apiFetch, getErrorMessage } from "../shared/api.js";
 import { requireAuth } from "../shared/auth.js";
 import { renderHeader, setStatus } from "../shared/ui.js";
+import { validateMeaning, validatePhrase } from "../shared/validators.js";
 
 const statusEl = document.getElementById("status");
 const listEl = document.getElementById("myphrase-list");
@@ -31,7 +32,7 @@ let myphraseQuestionNum = 10;
 
 function openModal() {
   modal.hidden = false;
-  modalStatus.hidden = true;
+  setStatus(modalStatus, { message: "" });
   modalForm.reset();
   const firstInput = modalForm.querySelector("input, textarea");
   if (firstInput) {
@@ -192,7 +193,7 @@ async function loadMyphrases() {
       : "";
     renderList();
   } catch (error) {
-    const message = error instanceof ApiError ? error.message : "取得に失敗しました。";
+    const message = getErrorMessage(error, "取得に失敗しました。");
     setStatus(statusEl, { type: "error", message });
   }
 }
@@ -209,7 +210,7 @@ async function deleteMyphrases(selected) {
     openSuccessModal(deletedLabel);
     await loadMyphrases();
   } catch (error) {
-    const message = error instanceof ApiError ? error.message : "削除に失敗しました。";
+    const message = getErrorMessage(error, "削除に失敗しました。");
     setStatus(statusEl, { type: "error", message });
   }
 }
@@ -247,8 +248,15 @@ async function init() {
     const phrase = String(formData.get("phrase") || "").trim();
     const mean = String(formData.get("mean") || "").trim();
 
-    if (!phrase || !mean) {
-      setStatus(modalStatus, { type: "error", message: "単語・意味を入力してください。" });
+    const phraseError = validatePhrase(phrase);
+    if (phraseError) {
+      setStatus(modalStatus, { type: "error", message: phraseError });
+      return;
+    }
+
+    const meaningError = validateMeaning(mean);
+    if (meaningError) {
+      setStatus(modalStatus, { type: "error", message: meaningError });
       return;
     }
 
@@ -262,7 +270,7 @@ async function init() {
       openSuccessModal("追加しました。");
       await loadMyphrases();
     } catch (error) {
-      const message = error instanceof ApiError ? error.message : "追加に失敗しました。";
+      const message = getErrorMessage(error, "追加に失敗しました。");
       setStatus(modalStatus, { type: "error", message });
     }
   });

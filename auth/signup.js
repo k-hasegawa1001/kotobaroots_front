@@ -1,8 +1,13 @@
-﻿import { apiFetch, ApiError } from "../shared/api.js";
+﻿import { apiFetch, getErrorMessage, ERROR_TYPES } from "../shared/api.js";
 import { redirectIfAuthenticated } from "../shared/auth.js";
 import { buildAppUrl } from "../shared/config.js";
 import { renderHeader, setStatus } from "../shared/ui.js";
-import { isValidEmail, isValidPassword } from "../shared/validators.js";
+import {
+  validateEmail,
+  validatePassword,
+  validatePasswordConfirmation,
+  validateUsername,
+} from "../shared/validators.js";
 
 const form = document.getElementById("signup-form");
 const statusEl = document.getElementById("status");
@@ -55,20 +60,27 @@ function scheduleRedirect() {
     const password = String(formData.get("password") || "");
     const passwordConfirm = String(formData.get("passwordConfirm") || "");
 
-    if (!username) {
-      setStatus(statusEl, { type: "error", message: "ユーザー名を入力してください。" });
+    const usernameError = validateUsername(username);
+    if (usernameError) {
+      setStatus(statusEl, { type: "error", message: usernameError });
       return;
     }
-    if (!isValidEmail(email)) {
-      setStatus(statusEl, { type: "error", message: "メールアドレスを正しく入力してください。" });
+
+    const emailError = validateEmail(email);
+    if (emailError) {
+      setStatus(statusEl, { type: "error", message: emailError });
       return;
     }
-    if (!isValidPassword(password)) {
-      setStatus(statusEl, { type: "error", message: "パスワードは8-16文字で入力してください。" });
+
+    const passwordError = validatePassword(password);
+    if (passwordError) {
+      setStatus(statusEl, { type: "error", message: passwordError });
       return;
     }
-    if (password !== passwordConfirm) {
-      setStatus(statusEl, { type: "error", message: "パスワードが一致しません。" });
+
+    const confirmError = validatePasswordConfirmation(password, passwordConfirm);
+    if (confirmError) {
+      setStatus(statusEl, { type: "error", message: confirmError });
       return;
     }
 
@@ -82,7 +94,9 @@ function scheduleRedirect() {
       openSuccessModal();
       scheduleRedirect();
     } catch (error) {
-      const message = error instanceof ApiError ? error.message : "登録に失敗しました。";
+      const message = getErrorMessage(error, "登録に失敗しました。", {
+        [ERROR_TYPES.Conflict]: "このメールアドレスは既に使われています。",
+      });
       setStatus(statusEl, { type: "error", message });
     }
   });

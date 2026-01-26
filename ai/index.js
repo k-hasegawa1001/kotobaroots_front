@@ -1,6 +1,7 @@
-﻿import { apiFetch, ApiError } from "../shared/api.js";
+﻿import { apiFetch, getErrorMessage, ERROR_TYPES } from "../shared/api.js";
 import { requireAuth } from "../shared/auth.js";
 import { renderHeader, setStatus, formatDate } from "../shared/ui.js";
+import { validateAiInput } from "../shared/validators.js";
 
 const statusEl = document.getElementById("status");
 const form = document.getElementById("ai-form");
@@ -58,7 +59,7 @@ async function loadHistory() {
     const items = await apiFetch("/kotobaroots/ai-explanation/history");
     renderHistory(items || []);
   } catch (error) {
-    const message = error instanceof ApiError ? error.message : "履歴の取得に失敗しました。";
+    const message = getErrorMessage(error, "履歴の取得に失敗しました。");
     setStatus(statusEl, { type: "error", message });
   }
 }
@@ -79,8 +80,9 @@ async function init() {
     const formData = new FormData(form);
     const inputEnglish = String(formData.get("input_english") || "").trim();
 
-    if (!inputEnglish) {
-      setStatus(statusEl, { type: "error", message: "英文を入力してください。" });
+    const inputError = validateAiInput(inputEnglish);
+    if (inputError) {
+      setStatus(statusEl, { type: "error", message: inputError });
       return;
     }
 
@@ -92,9 +94,9 @@ async function init() {
       renderResult(data);
       await loadHistory();
     } catch (error) {
-      const message = error instanceof ApiError && error.status >= 500
-        ? "AI機能は現在利用できません。"
-        : (error instanceof ApiError ? error.message : "解説の取得に失敗しました。");
+      const message = getErrorMessage(error, "解説の取得に失敗しました。", {
+        [ERROR_TYPES.ExternalServiceError]: "AI機能は現在利用できません。",
+      });
       setStatus(statusEl, { type: "error", message });
     }
   });

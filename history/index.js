@@ -1,4 +1,4 @@
-﻿import { apiFetch, ApiError } from "../shared/api.js";
+﻿import { apiFetch, getErrorMessage } from "../shared/api.js";
 import { requireAuth } from "../shared/auth.js";
 import { renderHeader, formatDate, setStatus } from "../shared/ui.js";
 
@@ -205,9 +205,7 @@ async function init() {
     setupAccuracyFilter(historyEntries);
     renderHistory(historyEntries);
   } catch (error) {
-    const message = error instanceof ApiError
-      ? `学習履歴の取得に失敗しました。(${error.message})`
-      : "学習履歴の取得に失敗しました。";
+    const message = getErrorMessage(error, "学習履歴の取得に失敗しました。");
     setStatus(statusEl, { type: "error", message });
     renderHistory([]);
   }

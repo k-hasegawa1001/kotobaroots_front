@@ -5,6 +5,7 @@ export function loadHistory() {
     const raw = localStorage.getItem(HISTORY_KEY);
     return raw ? JSON.parse(raw) : [];
   } catch (error) {
+    console.error("Failed to load history", error);
     return [];
   }
 }
