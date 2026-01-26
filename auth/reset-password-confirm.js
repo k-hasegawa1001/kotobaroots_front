@@ -1,7 +1,7 @@
-﻿import { apiFetch, getErrorMessage } from "./shared/api.js";
-import { buildAppUrl } from "./shared/config.js";
-import { renderHeader, setStatus } from "./shared/ui.js";
-import { validatePassword, validatePasswordConfirmation } from "./shared/validators.js";
+﻿import { apiFetch, getErrorMessage } from "../shared/api.js";
+import { buildAppUrl } from "../shared/config.js";
+import { renderHeader, setStatus } from "../shared/ui.js";
+import { validatePassword, validatePasswordConfirmation } from "../shared/validators.js";
 
 const statusEl = document.getElementById("status");
 const form = document.getElementById("reset-form");

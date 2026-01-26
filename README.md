@@ -47,9 +47,10 @@
 
 - `/auth/login.html` ログイン
 - `/auth/signup.html` アカウント作成
-- `/reset-password-request.html` パスワードリセット（メール送信）
-- `/reset-password-confirm.html` パスワード変更（メールのリンク先）
-- `/reset-password.html` パスワードリセット自動振り分け（トークン有無で遷移）
+- `/auth/reset-password-request.html` パスワードリセット（メール送信）
+- `/auth/reset-password-confirm.html` パスワード変更（メールのリンク先）
+- `/auth/reset-password.html` パスワードリセット自動振り分け（トークン有無で遷移）
+- `/reset-password.html` 互換用リダイレクト（メール内リンク保持）
 - `/learn/index.html` 学習トップ（単元一覧）
 - `/learn/learn.html` 学習
 - `/learn/result.html` 結果
