@@ -192,16 +192,14 @@ function renderRearrangement(question) {
     : shuffleTokens(question.answer.split(" ").filter(Boolean));
 
   if (state.selectedTokens.length === 0) {
-    state.tokenPool = tokens;
-  }
-
-  const selectedSet = new Set(state.selectedTokens.map((item) => item.id));
-  const availableTokens = state.tokenPool
-    .map((token, index) => ({
+    state.tokenPool = tokens.map((token, index) => ({
       id: `${index}-${token}`,
       token,
-    }))
-    .filter((item) => !selectedSet.has(item.id));
+      used: false,
+    }));
+  }
+
+  const availableTokens = state.tokenPool.filter((item) => !item.used);
 
   const preview = document.createElement("div");
   preview.className = "answer-preview";
@@ -220,6 +218,7 @@ function renderRearrangement(question) {
     chip.className = "token";
     chip.textContent = item.token;
     chip.addEventListener("click", () => {
+      item.used = true;
       state.selectedTokens.push(item);
       state.currentAnswer = joinTokens(
         state.selectedTokens.map((tokenItem) => tokenItem.token),
@@ -230,28 +229,7 @@ function renderRearrangement(question) {
     list.appendChild(chip);
   });
 
-  if (state.selectedTokens.length) {
-    const selectedList = document.createElement("div");
-    selectedList.className = "token-list";
-    state.selectedTokens.forEach((item, index) => {
-      const chip = document.createElement("button");
-      chip.type = "button";
-      chip.className = "token selected";
-      chip.textContent = item.token;
-      chip.addEventListener("click", () => {
-        state.selectedTokens.splice(index, 1);
-        state.currentAnswer = joinTokens(
-          state.selectedTokens.map((tokenItem) => tokenItem.token),
-          question.answer
-        );
-        renderQuestion();
-      });
-      selectedList.appendChild(chip);
-    });
-    answerAreaEl.append(preview, selectedList, list);
-  } else {
-    answerAreaEl.append(preview, list);
-  }
+  answerAreaEl.append(preview, list);
 }
 
 function renderQuestion() {
