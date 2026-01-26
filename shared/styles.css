@@ -892,7 +892,7 @@ ol {
   display: grid;
   grid-template-columns: minmax(0, 1fr) 200px;
   gap: 24px;
-  align-items: stretch;
+  align-items: start;
 }
 
 .myphrase-table {
@@ -900,6 +900,7 @@ ol {
   border-radius: 12px;
   overflow: hidden;
   background: rgba(255, 255, 255, 0.02);
+  align-self: start;
 }
 
 .myphrase-table.is-empty {
@@ -971,7 +972,8 @@ ol {
   display: flex;
   flex-direction: column;
   gap: 14px;
-  height: 100%;
+  height: auto;
+  align-self: start;
 }
 
 .myphrase-actions .btn {
@@ -1073,11 +1075,10 @@ ol {
 }
 
 .history-summary {
-  display: flex;
+  display: grid;
+  grid-template-columns: minmax(220px, 1fr) minmax(160px, 220px) minmax(220px, 280px);
   align-items: center;
-  justify-content: space-between;
   gap: 12px;
-  flex-wrap: wrap;
   color: var(--text);
   cursor: pointer;
   list-style: none;
@@ -1103,14 +1104,15 @@ ol {
   color: var(--text);
   font-size: 1.8rem;
   min-width: 0;
-  flex: 1 1 220px;
+  justify-self: start;
 }
 
 .history-summary-accuracy {
   font-weight: 600;
   font-size: 1.35rem;
   min-width: 0;
-  flex: 0 1 180px;
+  justify-self: center;
+  text-align: center;
 }
 
 .history-summary-accuracy.is-high {
@@ -1125,7 +1127,8 @@ ol {
   color: var(--muted);
   font-size: 1.35rem;
   min-width: 0;
-  flex: 0 1 260px;
+  justify-self: start;
+  white-space: nowrap;
 }
 
 
@@ -1456,6 +1459,7 @@ ol {
   }
 
   .history-summary {
+    display: flex;
     flex-direction: column;
     align-items: flex-start;
   }
