@@ -1,4 +1,7 @@
-﻿export const API_BASE_URL = "http://127.0.0.1:5000/api";
+﻿const isLocal = ["localhost", "127.0.0.1"].includes(window.location.hostname);
+
+export const API_BASE_URL = isLocal ? "http://127.0.0.1:5000/api" : "/api";
+
 
 const APP_BASE_PATH = (() => {
   const parts = window.location.pathname.split("/").filter(Boolean);
