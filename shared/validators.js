@@ -42,7 +42,7 @@ export function validateEmail(value) {
     return "メールアドレスが長すぎます。";
   }
   if (!isValidEmail(email)) {
-    return "メールアドレスを正しく入力してください。";
+    return "メールアドレス形式で入力してください。";
   }
   return "";
 }

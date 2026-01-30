@@ -14,13 +14,21 @@
           <div class="page-title-row">
             <h1 class="page-title">マイフレーズ</h1>
           </div>
-          <p class="page-subtitle">覚えたいフレーズを登録して復習に使います。</p>
+          <p class="page-subtitle">覚えたいフレーズを追加して復習に使います。</p>
           <div class="page-divider"></div>
         </section>
 
         <div id="status" class="status" hidden aria-live="polite"></div>
 
-        <section class="myphrase-layout">
+        <section id="myphrase-layout" class="myphrase-layout is-loading">
+          <div id="myphrase-empty-state" class="myphrase-empty-state" hidden>
+            <p class="page-subtitle">
+              まだマイフレーズがありません。<br />
+              マイフレーズを追加してみましょう。
+            </p>
+            <button id="empty-add-button" class="btn" type="button">追加する</button>
+          </div>
+
           <div class="myphrase-table">
             <div class="myphrase-head">
               <span></span>
@@ -29,10 +37,18 @@
             </div>
             <div id="myphrase-list" class="myphrase-body"></div>
           </div>
-          <div class="myphrase-actions">
+          <div id="myphrase-actions" class="myphrase-actions">
             <button id="open-add-modal" class="btn" type="button">追加する</button>
             <button id="delete-selected" class="btn danger" type="button">削除する</button>
-            <p id="question-num" class="myphrase-meta"></p>
+            <p id="question-num" class="myphrase-meta" hidden></p>
+            <label class="myphrase-select-label" for="myphrase-test-count">出題数</label>
+            <select id="myphrase-test-count" class="myphrase-select" name="count">
+              <option value="10" selected>10問</option>
+              <option value="20">20問</option>
+              <option value="30">30問</option>
+              <option value="50">50問</option>
+              <option value="100">100問</option>
+            </select>
             <button id="start-test" class="btn success myphrase-test" type="button">
               テストする
             </button>
@@ -67,7 +83,7 @@
           </div>
           <div class="modal-actions">
             <button id="close-myphrase-modal" class="btn outline" type="button">キャンセル</button>
-            <button class="btn" type="submit">追加</button>
+            <button class="btn" type="submit">追加する</button>
           </div>
         </form>
       </div>
@@ -76,27 +92,6 @@
     <div id="myphrase-success-modal" class="modal" hidden>
       <div class="modal-card">
         <p id="myphrase-success-message" class="page-subtitle"></p>
-      </div>
-    </div>
-
-    <div id="myphrase-test-start-modal" class="modal" hidden>
-      <div class="modal-card">
-        <h2 class="modal-title">出題数を選択</h2>
-        <div id="myphrase-test-start-status" class="status" hidden></div>
-        <form id="myphrase-test-start-form" class="form" novalidate>
-          <div class="field">
-            <select id="myphrase-test-count" name="count" required>
-              <option value="10">10問</option>
-              <option value="30">30問</option>
-              <option value="50">50問</option>
-              <option value="100">100問</option>
-            </select>
-          </div>
-          <div class="modal-actions">
-            <button id="close-test-start" class="btn outline" type="button">キャンセル</button>
-            <button class="btn" type="submit">テスト開始</button>
-          </div>
-        </form>
       </div>
     </div>
 

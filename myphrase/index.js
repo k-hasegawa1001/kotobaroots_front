@@ -4,8 +4,12 @@ import { renderHeader, setStatus } from "../shared/ui.js";
 import { validateMeaning, validatePhrase } from "../shared/validators.js";
 
 const statusEl = document.getElementById("status");
+const layoutEl = document.getElementById("myphrase-layout");
 const listEl = document.getElementById("myphrase-list");
 const tableEl = document.querySelector(".myphrase-table");
+const actionsEl = document.getElementById("myphrase-actions");
+const emptyStateEl = document.getElementById("myphrase-empty-state");
+const emptyAddButton = document.getElementById("empty-add-button");
 const deleteButton = document.getElementById("delete-selected");
 const questionNumEl = document.getElementById("question-num");
 const openModalButton = document.getElementById("open-add-modal");
@@ -16,11 +20,7 @@ const closeModalButton = document.getElementById("close-myphrase-modal");
 const successModal = document.getElementById("myphrase-success-modal");
 const successMessage = document.getElementById("myphrase-success-message");
 const testButton = document.getElementById("start-test");
-const testStartModal = document.getElementById("myphrase-test-start-modal");
-const testStartStatus = document.getElementById("myphrase-test-start-status");
-const testStartForm = document.getElementById("myphrase-test-start-form");
-const testStartSelect = document.getElementById("myphrase-test-count");
-const closeTestStartButton = document.getElementById("close-test-start");
+const testCountSelect = document.getElementById("myphrase-test-count");
 const deleteConfirmModal = document.getElementById("myphrase-delete-modal");
 const deleteConfirmButton = document.getElementById("confirm-delete-myphrase");
 const deleteCancelButton = document.getElementById("cancel-delete-myphrase");
@@ -29,6 +29,23 @@ let pendingDeleteIds = [];
 
 let myphrases = [];
 let myphraseQuestionNum = 10;
+
+function setEmptyState(isEmpty) {
+  if (layoutEl) {
+    layoutEl.classList.toggle("is-empty", isEmpty);
+    layoutEl.classList.remove("is-loading");
+  }
+  if (tableEl) {
+    tableEl.hidden = isEmpty;
+    tableEl.classList.toggle("is-empty", isEmpty);
+  }
+  if (actionsEl) {
+    actionsEl.hidden = isEmpty;
+  }
+  if (emptyStateEl) {
+    emptyStateEl.hidden = !isEmpty;
+  }
+}
 
 function openModal() {
   modal.hidden = false;
@@ -65,27 +82,6 @@ function closeSuccessModal() {
   }
 }
 
-function openTestStartModal() {
-  if (!testStartModal || !testStartSelect) {
-    return;
-  }
-  setStatus(testStartStatus, { message: "" });
-  const selectedValue = String(myphraseQuestionNum || 10);
-  if (testStartSelect.querySelector(`option[value="${selectedValue}"]`)) {
-    testStartSelect.value = selectedValue;
-  } else {
-    testStartSelect.value = "10";
-  }
-  testStartModal.hidden = false;
-  testStartSelect.focus();
-}
-
-function closeTestStartModal() {
-  if (testStartModal) {
-    testStartModal.hidden = true;
-  }
-}
-
 function openDeleteConfirmModal(selectedIds) {
   if (!deleteConfirmModal) {
     return;
@@ -105,6 +101,9 @@ function closeDeleteConfirmModal() {
 }
 
 openModalButton.addEventListener("click", openModal);
+if (emptyAddButton) {
+  emptyAddButton.addEventListener("click", openModal);
+}
 closeModalButton.addEventListener("click", closeModal);
 modal.addEventListener("click", (event) => {
   if (event.target === modal) {
@@ -112,16 +111,11 @@ modal.addEventListener("click", (event) => {
   }
 });
 if (testButton) {
-  testButton.addEventListener("click", openTestStartModal);
-}
-if (closeTestStartButton) {
-  closeTestStartButton.addEventListener("click", closeTestStartModal);
-}
-if (testStartModal) {
-  testStartModal.addEventListener("click", (event) => {
-    if (event.target === testStartModal) {
-      closeTestStartModal();
-    }
+  testButton.addEventListener("click", () => {
+    const rawValue = testCountSelect ? testCountSelect.value : "";
+    const count = Number(rawValue);
+    const resolved = Number.isFinite(count) && count > 0 ? count : 10;
+    window.location.href = `./test.html?count=${resolved}`;
   });
 }
 if (deleteCancelButton) {
@@ -150,19 +144,11 @@ function renderList() {
   listEl.textContent = "";
 
   if (!myphrases.length) {
-    if (tableEl) {
-      tableEl.classList.add("is-empty");
-    }
-    const empty = document.createElement("div");
-    empty.className = "myphrase-row myphrase-empty";
-    empty.textContent = "まだ登録されていません。";
-    listEl.appendChild(empty);
+    setEmptyState(true);
     return;
   }
 
-  if (tableEl) {
-    tableEl.classList.remove("is-empty");
-  }
+  setEmptyState(false);
   myphrases.forEach((item) => {
     const row = document.createElement("div");
     row.className = "myphrase-row";
@@ -188,13 +174,24 @@ async function loadMyphrases() {
     const data = await apiFetch("/kotobaroots/myphrase");
     myphrases = data.myphrases || [];
     myphraseQuestionNum = data.question_num || myphraseQuestionNum;
-    questionNumEl.textContent = myphraseQuestionNum
-      ? `現在の出題数: ${myphraseQuestionNum}`
-      : "";
+    if (questionNumEl) {
+      questionNumEl.textContent = "";
+      questionNumEl.hidden = true;
+    }
+    if (testCountSelect) {
+      const preferred = String(myphraseQuestionNum || 10);
+      if (testCountSelect.querySelector(`option[value="${preferred}"]`)) {
+        testCountSelect.value = preferred;
+      } else {
+        testCountSelect.value = "10";
+      }
+    }
     renderList();
   } catch (error) {
     const message = getErrorMessage(error, "取得に失敗しました。");
     setStatus(statusEl, { type: "error", message });
+    myphrases = [];
+    renderList();
   }
 }
 
@@ -222,23 +219,6 @@ async function init() {
   }
   renderHeader({ active: "myphrase", user: profile });
   await loadMyphrases();
-
-  if (testStartForm) {
-    testStartForm.addEventListener("submit", (event) => {
-      event.preventDefault();
-      if (!testStartSelect) {
-        return;
-      }
-      const rawValue = testStartSelect.value;
-      const count = Number(rawValue);
-      if (!Number.isFinite(count) || count <= 0) {
-        setStatus(testStartStatus, { type: "error", message: "出題数を選択してください。" });
-        return;
-      }
-      closeTestStartModal();
-      window.location.href = `./test.html?count=${count}`;
-    });
-  }
 
   modalForm.addEventListener("submit", async (event) => {
     event.preventDefault();
