@@ -480,7 +480,8 @@ label {
 }
 
 .page .token {
-  padding: 14px 18px;
+  padding: 18px 24px;
+  font-size: 1.3rem;
 }
 
 .page .table-row {
@@ -692,7 +693,7 @@ small {
 }
 
 .option-button {
-  padding: 12px 14px;
+  padding: 16px 18px;
   border-radius: 12px;
   border: 1px solid var(--line-strong);
   background: transparent;
@@ -700,6 +701,7 @@ small {
   cursor: pointer;
   color: var(--text);
   transition: all 0.2s ease;
+  font-size: 1.4rem;
 }
 
 .option-button.is-selected {
@@ -733,12 +735,24 @@ small {
 }
 
 .answer-preview {
-  padding: 12px 14px;
+  padding: 18px 22px;
   border-radius: 12px;
   background: rgba(255, 255, 255, 0.05);
   border: 1px solid var(--line);
-  min-height: 48px;
+  font-size: 1.5rem;
+  height: 64px;
   margin-top: 10px;
+  display: flex;
+  align-items: center;
+  overflow: hidden;
+  white-space: nowrap;
+  text-overflow: ellipsis;
+}
+
+#answer-area input {
+  padding: 18px 22px;
+  font-size: 1.5rem;
+  height: 64px;
 }
 
 .table {

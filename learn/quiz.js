@@ -13,6 +13,7 @@ const questionTextEl = document.getElementById("question-text");
 const answerAreaEl = document.getElementById("answer-area");
 const resetButton = document.getElementById("reset-button");
 const nextButton = document.getElementById("next-button");
+const skipButton = document.getElementById("skip-button");
 const feedbackModal = document.getElementById("answer-feedback-modal");
 const feedbackTitle = document.getElementById("feedback-title");
 const feedbackUser = document.getElementById("feedback-user");
@@ -117,6 +118,9 @@ function openFeedbackModal(
   feedbackExplanation.textContent = explanation ? explanation : "なし";
   feedbackModal.hidden = false;
   nextButton.disabled = true;
+  if (skipButton) {
+    skipButton.disabled = true;
+  }
 
   if (feedbackNextButton) {
     feedbackNextButton.textContent = "つぎへ";
@@ -144,6 +148,9 @@ function closeFeedbackModal() {
   }
   feedbackModal.hidden = true;
   nextButton.disabled = false;
+  if (skipButton) {
+    skipButton.disabled = false;
+  }
   pendingAdvance = null;
 }
 
@@ -401,6 +408,48 @@ function submitAnswer() {
 }
 
 nextButton.addEventListener("click", submitAnswer);
+if (skipButton) {
+  skipButton.addEventListener("click", () => {
+    if (isTransitioning) {
+      return;
+    }
+    setStatus(statusEl, { message: "" });
+    const current = normalizeQuestion(state.questions[state.index]);
+
+    const answerRecord = {
+      question: current.question,
+      format: current.format,
+      userAnswer: "スキップされました。",
+      correctAnswer: current.answer,
+      explanation: current.explanation,
+      choices: Array.isArray(current.options) ? current.options : [],
+      isCorrect: false,
+    };
+
+    state.answers.push(answerRecord);
+    isTransitioning = true;
+
+    openFeedbackModal(
+      {
+        isCorrect: false,
+        userAnswer: "スキップされました。",
+        correctAnswer: current.answer,
+        explanation: current.explanation,
+        isLast: state.index >= state.questions.length - 1,
+      },
+      () => {
+        isTransitioning = false;
+        if (state.index < state.questions.length - 1) {
+          state.index += 1;
+          state.selectedTokens = [];
+          renderQuestion();
+        } else {
+          finalizeLearning();
+        }
+      }
+    );
+  });
+}
 
 document.addEventListener("keydown", (event) => {
   if (event.key !== "Enter" || event.isComposing) {
