@@ -150,7 +150,7 @@ async function init() {
       });
       closeModal(emailModal);
       setStatus(emailStatus, { message: "" });
-      openSuccessModal("確認メールを送信しました。");
+      openSuccessModal("メールアドレス変更リンクを送信しました。");
     } catch (error) {
       const message = getErrorMessage(error, "送信に失敗しました。", {
         [ERROR_TYPES.Conflict]: "このメールアドレスは既に使われています。",

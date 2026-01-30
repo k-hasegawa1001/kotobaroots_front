@@ -895,6 +895,45 @@ ol {
   align-items: start;
 }
 
+.myphrase-layout.is-loading .myphrase-table,
+.myphrase-layout.is-loading .myphrase-actions,
+.myphrase-layout.is-loading .myphrase-empty-state {
+  display: none;
+}
+
+.myphrase-layout.is-empty {
+  grid-template-columns: 1fr;
+}
+
+.myphrase-layout.is-empty .myphrase-table,
+.myphrase-layout.is-empty .myphrase-actions {
+  display: none;
+}
+
+.myphrase-empty-state {
+  grid-column: 1 / -1;
+  padding: 48px 24px 24px;
+  text-align: center;
+  display: grid;
+  gap: 18px;
+  justify-items: center;
+}
+
+.myphrase-empty-state[hidden] {
+  display: none;
+}
+
+.myphrase-empty-state .page-subtitle {
+  font-size: 2.2rem;
+  line-height: 1.7;
+}
+
+.myphrase-empty-state .btn {
+  width: auto;
+  padding: 22px 44px;
+  font-size: 1.55rem;
+}
+
 .myphrase-table {
   border: 1px solid var(--line-strong);
   border-radius: 12px;
@@ -980,6 +1019,22 @@ ol {
   width: 100%;
   padding: 20px 24px;
   font-size: 1.45rem;
+}
+
+.myphrase-select-label {
+  font-size: 1rem;
+  color: var(--muted);
+}
+
+.myphrase-select {
+  width: 100%;
+  padding: 14px 16px;
+  border-radius: 12px;
+  border: 1px solid var(--line-strong);
+  background-color: var(--surface-strong);
+  color: var(--text);
+  font-size: 1.2rem;
+  box-shadow: inset 0 0 0 1px rgba(255, 255, 255, 0.06);
 }
 
 .myphrase-test {

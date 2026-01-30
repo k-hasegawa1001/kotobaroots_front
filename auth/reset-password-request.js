@@ -50,7 +50,7 @@ function init() {
         data: { email },
       });
       form.reset();
-      openModal("パスワードリセットメールを送信しました。");
+      openModal("パスワードリセットリンクを送信しました。");
     } catch (error) {
       const message = getErrorMessage(error, "送信に失敗しました。");
       setStatus(statusEl, { type: "error", message });
