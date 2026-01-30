@@ -94,7 +94,7 @@ function renderTopics() {
     title.textContent = topic.topic;
 
     const meta = document.createElement("p");
-    meta.textContent = `難易度 ${topic.difficulty}`;
+    meta.textContent = `難易度 ${index + 1}`;
 
     const locked = topic.difficulty > state.currentMax;
     if (locked) {
@@ -137,65 +137,6 @@ function renderTopics() {
     topicsEl.appendChild(card);
   });
 }
-function redirectToLogin() {
-  const next = encodeURIComponent(`${window.location.pathname}${window.location.search}`);
-  window.location.href = buildAppUrl(`/auth/login.html?next=${next}`);
-}
-
-function ensureGuestStartButton() {
-  const learnMeta = document.querySelector(".learn-meta");
-  if (!learnMeta || learnMeta.querySelector(".learn-guest-start")) {
-    return;
-  }
-
-  const button = document.createElement("button");
-  button.type = "button";
-  button.className = "btn learn-guest-start";
-  button.textContent = "学習を開始する";
-  button.addEventListener("click", redirectToLogin);
-  learnMeta.appendChild(button);
-}
-
-function renderGuestCards(count = 8) {
-  topicsEl.textContent = "";
-  for (let index = 0; index < count; index += 1) {
-    const card = document.createElement("article");
-    card.className = "card unit-card is-clickable";
-    card.style.setProperty("--delay", `${index * 0.04}s`);
-    card.setAttribute("role", "button");
-    card.setAttribute("tabindex", "0");
-    card.setAttribute("aria-label", "ログインして学習を開始");
-
-    const title = document.createElement("h3");
-    title.textContent = `ユニット ${index + 1}`;
-
-    const meta = document.createElement("p");
-    meta.textContent = "難易度 -";
-
-    const action = document.createElement("div");
-    action.className = "card-actions";
-    const startButton = document.createElement("button");
-    startButton.type = "button";
-    startButton.className = "btn outline";
-    startButton.textContent = "開始";
-    startButton.addEventListener("click", (event) => {
-      event.stopPropagation();
-      redirectToLogin();
-    });
-    action.appendChild(startButton);
-
-    card.addEventListener("click", redirectToLogin);
-    card.addEventListener("keydown", (event) => {
-      if (event.key === "Enter" || event.key === " ") {
-        event.preventDefault();
-        redirectToLogin();
-      }
-    });
-
-    card.append(title, meta, action);
-    topicsEl.appendChild(card);
-  }
-}
 
 async function fetchLearningData() {
   try {
@@ -211,7 +152,7 @@ async function fetchLearningData() {
   }
 }
 
-async function updateLearningConfig';({ levelId, languageId }) {
+async function updateLearningConfig({ levelId, languageId }) {
   setStatus(statusEl, { message: "" });
   setSelectsDisabled(true);
 
@@ -276,6 +217,10 @@ async function init() {
 }
 
 init();
+
+
+
+
 
 
 

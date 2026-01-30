@@ -1,0 +1,42 @@
+﻿<!DOCTYPE html>
+<html lang="ja">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>KotobaRoots | 学習トップ</title>
+    <link rel="stylesheet" href="../shared/styles.css" />
+  </head>
+  <body>
+    <div class="app-shell">
+      <aside id="site-header"></aside>
+      <main class="page">
+        <section class="page-header">
+          <div class="page-title-row">
+            <h1 class="page-title">学習</h1>
+            <div class="page-actions">
+              <select id="difficulty-select"></select>
+              <select id="language-select" disabled>
+                <option>英語（アメリカ）</option>
+                <option>英語（イギリス）</option>
+                <option>中国語</option>
+              </select>
+            </div>
+          </div>
+          <p class="page-subtitle">ログインをすると学習が開始できます。</p>
+          <div class="page-divider"></div>
+        </section>
+
+        <div id="status" class="status" hidden aria-live="polite"></div>
+
+        <section class="section">
+          <div class="learn-meta">
+            <h2 class="section-title">ユニット一覧</h2>
+            <span id="difficulty-cap" class="badge">解放済み: 難易度 1</span>
+          </div>
+          <div id="topics" class="card-grid"></div>
+        </section>
+      </main>
+    </div>
+    <script type="module" src="./guest.js"></script>
+  </body>
+</html>
