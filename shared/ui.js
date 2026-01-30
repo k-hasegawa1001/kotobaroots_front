@@ -179,6 +179,24 @@ export function renderHeader({ active, user, showAuth = true } = {}) {
 
   header.appendChild(nav);
 
+  const authLink = nav.querySelector(".auth-item");
+  if (authLink) {
+    const updateAuthLabel = () => {
+      authLink.classList.remove("is-multiline");
+      authLink.textContent = "ログイン／アカウント作成";
+      authLink.style.whiteSpace = "nowrap";
+      const needsWrap = authLink.scrollWidth > authLink.clientWidth + 1;
+      if (needsWrap) {
+        authLink.textContent = "ログイン\nアカウント作成";
+        authLink.classList.add("is-multiline");
+        authLink.style.whiteSpace = "";
+      }
+    };
+    const scheduleUpdate = () => requestAnimationFrame(updateAuthLabel);
+    scheduleUpdate();
+    window.addEventListener("resize", scheduleUpdate);
+  }
+
   toggleButton.addEventListener("click", () => {
     const isOpen = header.classList.toggle("is-open");
     toggleButton.setAttribute("aria-expanded", String(isOpen));
@@ -219,3 +237,4 @@ export function formatDate(value) {
   }
   return date.toLocaleString("ja-JP");
 }
+
