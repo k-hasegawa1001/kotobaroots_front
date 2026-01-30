@@ -1,0 +1,50 @@
+﻿<!DOCTYPE html>
+<html lang="ja">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>KotobaRoots | メールアドレス変更</title>
+    <link rel="stylesheet" href="../shared/styles.css" />
+  </head>
+  <body>
+    <div class="app-shell auth-shell">
+      <aside id="site-header"></aside>
+      <main class="page auth-page">
+        <section class="auth-card card">
+          <header class="page-header">
+            <h1 class="page-title">メールアドレス変更</h1>
+          </header>
+          <div id="status" class="status" hidden aria-live="polite"></div>
+          <div id="login-required" class="status info" hidden>
+            この操作にはログインが必要です。
+          </div>
+
+          <form id="confirm-form" class="form" novalidate>
+            <div class="field">
+              <input
+                id="confirm-password"
+                name="password"
+                type="password"
+                autocomplete="current-password"
+                placeholder="パスワード（8~16文字で入力）"
+                aria-label="パスワード"
+                minlength="8"
+                maxlength="16"
+                required
+              />
+            </div>
+            <button id="confirm-button" class="btn" type="submit">変更を確定</button>
+          </form>
+        </section>
+      </main>
+    </div>
+
+    <div id="email-success-modal" class="modal" hidden>
+      <div class="modal-card">
+        <p class="page-subtitle">メールアドレスを変更しました。</p>
+      </div>
+    </div>
+
+    <script type="module" src="./edit-email-confirmation.js"></script>
+  </body>
+</html>

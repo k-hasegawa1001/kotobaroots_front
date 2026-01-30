@@ -1,0 +1,115 @@
+﻿<!DOCTYPE html>
+<html lang="ja">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>KotobaRoots | マイフレーズ</title>
+    <link rel="stylesheet" href="../shared/styles.css" />
+  </head>
+  <body>
+    <div class="app-shell">
+      <aside id="site-header"></aside>
+      <main class="page">
+        <section class="page-header">
+          <div class="page-title-row">
+            <h1 class="page-title">マイフレーズ</h1>
+          </div>
+          <p class="page-subtitle">覚えたいフレーズを登録して復習に使います。</p>
+          <div class="page-divider"></div>
+        </section>
+
+        <div id="status" class="status" hidden aria-live="polite"></div>
+
+        <section class="myphrase-layout">
+          <div class="myphrase-table">
+            <div class="myphrase-head">
+              <span></span>
+              <span>単語・フレーズ</span>
+              <span>意味</span>
+            </div>
+            <div id="myphrase-list" class="myphrase-body"></div>
+          </div>
+          <div class="myphrase-actions">
+            <button id="open-add-modal" class="btn" type="button">追加する</button>
+            <button id="delete-selected" class="btn danger" type="button">削除する</button>
+            <p id="question-num" class="myphrase-meta"></p>
+            <button id="start-test" class="btn success myphrase-test" type="button">
+              テストする
+            </button>
+          </div>
+        </section>
+      </main>
+    </div>
+
+    <div id="myphrase-modal" class="modal" hidden>
+      <div class="modal-card">
+        <h2 class="modal-title">新しいフレーズ</h2>
+        <div id="myphrase-modal-status" class="status" hidden></div>
+        <form id="myphrase-form" class="form" novalidate>
+          <div class="field">
+            <input
+              id="phrase"
+              name="phrase"
+              type="text"
+              placeholder="単語・フレーズ"
+              aria-label="単語・フレーズ"
+              required
+            />
+          </div>
+          <div class="field">
+            <textarea
+              id="mean"
+              name="mean"
+              placeholder="意味"
+              aria-label="意味"
+              required
+            ></textarea>
+          </div>
+          <div class="modal-actions">
+            <button id="close-myphrase-modal" class="btn outline" type="button">キャンセル</button>
+            <button class="btn" type="submit">追加</button>
+          </div>
+        </form>
+      </div>
+    </div>
+
+    <div id="myphrase-success-modal" class="modal" hidden>
+      <div class="modal-card">
+        <p id="myphrase-success-message" class="page-subtitle"></p>
+      </div>
+    </div>
+
+    <div id="myphrase-test-start-modal" class="modal" hidden>
+      <div class="modal-card">
+        <h2 class="modal-title">出題数を選択</h2>
+        <div id="myphrase-test-start-status" class="status" hidden></div>
+        <form id="myphrase-test-start-form" class="form" novalidate>
+          <div class="field">
+            <select id="myphrase-test-count" name="count" required>
+              <option value="10">10問</option>
+              <option value="30">30問</option>
+              <option value="50">50問</option>
+              <option value="100">100問</option>
+            </select>
+          </div>
+          <div class="modal-actions">
+            <button id="close-test-start" class="btn outline" type="button">キャンセル</button>
+            <button class="btn" type="submit">テスト開始</button>
+          </div>
+        </form>
+      </div>
+    </div>
+
+    <div id="myphrase-delete-modal" class="modal" hidden>
+      <div class="modal-card">
+        <h2 class="modal-title">削除しますか？</h2>
+        <div class="modal-actions">
+          <button id="cancel-delete-myphrase" class="btn outline" type="button">キャンセル</button>
+          <button id="confirm-delete-myphrase" class="btn danger" type="button">削除する</button>
+        </div>
+      </div>
+    </div>
+
+    <script type="module" src="./index.js"></script>
+  </body>
+</html>

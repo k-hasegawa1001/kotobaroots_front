@@ -1,0 +1,39 @@
+﻿<!DOCTYPE html>
+<html lang="ja">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>KotobaRoots | 学習履歴</title>
+    <link rel="stylesheet" href="../shared/styles.css" />
+  </head>
+  <body>
+    <div class="app-shell">
+      <aside id="site-header"></aside>
+      <main class="page">
+        <section class="page-header">
+          <div class="page-title-row">
+            <h1 class="page-title">学習履歴</h1>
+            <div class="page-actions">
+              <select id="language-filter"></select>
+              <select id="accuracy-filter">
+                <option value="all">正答率: すべて</option>
+                <option value="high">正答率: 80%以上</option>
+                <option value="mid">正答率: 50〜79%</option>
+                <option value="low">正答率: 0〜49%</option>
+              </select>
+            </div>
+          </div>
+          <p class="page-subtitle">保存された学習履歴を一覧表示します。</p>
+          <div class="page-divider"></div>
+        </section>
+
+        <div id="status" class="status" hidden aria-live="polite"></div>
+
+        <section class="section">
+          <div id="history-list" class="table"></div>
+        </section>
+      </main>
+    </div>
+    <script type="module" src="./index.js"></script>
+  </body>
+</html>

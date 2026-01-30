@@ -1,0 +1,58 @@
+﻿<!DOCTYPE html>
+<html lang="ja">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>KotobaRoots | マイフレーズテスト</title>
+    <link rel="stylesheet" href="../shared/styles.css" />
+  </head>
+  <body>
+    <div class="app-shell">
+      <aside id="site-header"></aside>
+      <main class="page">
+        <section class="page-header">
+          <div class="page-title-row">
+            <h1 class="page-title">マイフレーズテスト</h1>
+          </div>
+          <p class="page-subtitle">単語・フレーズか意味が穴埋めで出題されます。</p>
+          <div class="page-divider"></div>
+        </section>
+
+        <div id="status" class="status" hidden aria-live="polite"></div>
+
+        <section class="section card">
+          <div class="learn-meta">
+            <span id="test-progress" class="progress"></span>
+            <span id="test-type" class="badge"></span>
+          </div>
+          <div id="test-question" class="question-text"></div>
+          <div id="test-answer-area" class="test-answer-area"></div>
+          <div class="card-actions">
+            <button id="test-submit" class="btn" type="button">回答する</button>
+          </div>
+        </section>
+      </main>
+    </div>
+
+    <div id="myphrase-feedback-modal" class="modal" hidden>
+      <div class="modal-card answer-feedback-card">
+        <h2 id="myphrase-feedback-title" class="modal-title answer-feedback-title"></h2>
+        <div class="answer-feedback-body">
+          <div class="modal-block">
+            <p class="page-subtitle">あなたの回答</p>
+            <p id="myphrase-feedback-answer" class="page-subtitle"></p>
+          </div>
+          <div class="modal-block">
+            <p class="page-subtitle">正解</p>
+            <p id="myphrase-feedback-correct" class="page-subtitle"></p>
+          </div>
+        </div>
+        <div class="answer-feedback-footer">
+          <button id="myphrase-feedback-next" class="btn" type="button">つぎへ</button>
+        </div>
+      </div>
+    </div>
+
+    <script type="module" src="./test.js"></script>
+  </body>
+</html>

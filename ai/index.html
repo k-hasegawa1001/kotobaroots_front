@@ -1,0 +1,47 @@
+﻿<!DOCTYPE html>
+<html lang="ja">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>KotobaRoots | AI解説</title>
+    <link rel="stylesheet" href="../shared/styles.css" />
+  </head>
+  <body>
+    <div class="app-shell">
+      <aside id="site-header"></aside>
+      <main class="page ai-page">
+        <section class="page-header">
+          <div class="page-title-row">
+            <h1 class="page-title">AI解説</h1>
+          </div>
+          <p class="page-subtitle">英語表現をわかりやすく分解して学びます。</p>
+          <div class="page-divider"></div>
+        </section>
+
+        <div id="status" class="status" hidden aria-live="polite"></div>
+
+        <section class="card">
+          <form id="ai-form" class="form" novalidate>
+            <div class="field">
+              <textarea
+                id="input-english"
+                name="input_english"
+                placeholder="解説してほしい英文を入力してください。"
+                aria-label="解説してほしい英文"
+                required
+              ></textarea>
+            </div>
+            <button class="btn" type="submit">解説を生成</button>
+          </form>
+          <div id="ai-result" class="section"></div>
+        </section>
+
+        <section class="section">
+          <h2 class="section-title">過去の解説</h2>
+          <div id="ai-history" class="table"></div>
+        </section>
+      </main>
+    </div>
+    <script type="module" src="./index.js"></script>
+  </body>
+</html>
