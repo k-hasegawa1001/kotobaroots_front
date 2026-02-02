@@ -25,6 +25,7 @@ let myphraseQuestionNum = 10;
 let testQuestions = [];
 let testIndex = 0;
 let testScoreCount = 0;
+let testAnswers = [];
 let testAnswered = false;
 let currentAnswerInput = null;
 
@@ -160,6 +161,7 @@ function startTest(questions) {
   }));
   testIndex = 0;
   testScoreCount = 0;
+  testAnswers = [];
   testAnswered = false;
 
   if (!testQuestions.length) {
@@ -199,6 +201,13 @@ function handleSubmitAnswer() {
     testScoreCount += 1;
   }
 
+  testAnswers.push({
+    questionText: testQuestion?.textContent || "",
+    answer,
+    correct,
+    isCorrect,
+  });
+
   testAnswered = true;
   currentAnswerInput.disabled = true;
   if (testSubmitButton) {
@@ -231,7 +240,7 @@ function handleNextQuestion() {
     testIndex += 1;
     renderTestQuestion();
   } else {
-    window.location.href = "./index.html";
+    finalizeTest();
   }
 }
 
@@ -256,6 +265,13 @@ function handleSkipAnswer() {
     testSkipButton.disabled = true;
   }
 
+  testAnswers.push({
+    questionText: testQuestion?.textContent || "",
+    answer: "スキップされました。",
+    correct,
+    isCorrect: false,
+  });
+
   showFeedbackModal({
     isCorrect: false,
     questionText: testQuestion?.textContent || "",
@@ -269,6 +285,20 @@ function handleSkipAnswer() {
     feedbackModal.addEventListener("keydown", handleFeedbackKeydown);
     feedbackModal.focus();
   }
+}
+
+function finalizeTest() {
+  const total = testQuestions.length;
+  const accuracy = total ? Math.round((testScoreCount / total) * 100) : 0;
+  const result = {
+    createdAt: new Date().toISOString(),
+    total,
+    correctCount: testScoreCount,
+    accuracy,
+    questions: testAnswers,
+  };
+  sessionStorage.setItem("myphraseTestResult", JSON.stringify(result));
+  window.location.href = "./result.html";
 }
 
 async function resolveQuestionCount() {
