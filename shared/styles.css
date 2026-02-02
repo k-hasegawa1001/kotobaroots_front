@@ -558,6 +558,11 @@ small {
 
 .btn:hover {
   transform: translateY(-1px);
+  color: var(--bg-deep);
+}
+
+.btn:active {
+  color: var(--bg-deep);
 }
 
 .btn:disabled {
