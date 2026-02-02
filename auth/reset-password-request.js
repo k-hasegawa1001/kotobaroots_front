@@ -8,6 +8,8 @@ const emailInput = document.getElementById("request-email");
 const modal = document.getElementById("reset-modal");
 const modalMessage = document.getElementById("reset-modal-message");
 let modalTimerId = null;
+let redirectTimerId = null;
+const MODAL_DURATION_MS = 1500;
 
 function openModal(message) {
   if (modalMessage) {
@@ -17,9 +19,15 @@ function openModal(message) {
   if (modalTimerId) {
     window.clearTimeout(modalTimerId);
   }
+  if (redirectTimerId) {
+    window.clearTimeout(redirectTimerId);
+  }
   modalTimerId = window.setTimeout(() => {
     closeModal();
-  }, 1500);
+  }, MODAL_DURATION_MS);
+  redirectTimerId = window.setTimeout(() => {
+    window.location.href = "/auth/login.html";
+  }, MODAL_DURATION_MS);
 }
 
 function closeModal() {
@@ -27,6 +35,10 @@ function closeModal() {
   if (modalTimerId) {
     window.clearTimeout(modalTimerId);
     modalTimerId = null;
+  }
+  if (redirectTimerId) {
+    window.clearTimeout(redirectTimerId);
+    redirectTimerId = null;
   }
 }
 

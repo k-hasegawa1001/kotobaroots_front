@@ -106,7 +106,8 @@ export function renderHeader({ active, user, showAuth = true } = {}) {
   topRow.className = "sidebar-top";
 
   const brandLink = document.createElement("a");
-  brandLink.href = buildAppUrl("/learn/index.html");
+  const brandTarget = user ? "/learn/index.html" : "/learn/guest.html";
+  brandLink.href = buildAppUrl(brandTarget);
   brandLink.textContent = "KotobaRoots";
   brandLink.className = "sidebar-brand";
 
@@ -156,9 +157,12 @@ export function renderHeader({ active, user, showAuth = true } = {}) {
 
     const link = document.createElement("a");
     const isGuestShortcut = item.key === "auth";
-    const targetHref = !user && showAuth && !isGuestShortcut
-      ? `/auth/login.html?next=${encodeURIComponent(item.href)}`
-      : item.href;
+    let targetHref = item.href;
+    if (!user && showAuth && item.key === "learn") {
+      targetHref = "/learn/guest.html";
+    } else if (!user && showAuth && !isGuestShortcut) {
+      targetHref = `/auth/login.html?next=${encodeURIComponent(item.href)}`;
+    }
     link.href = buildAppUrl(targetHref);
     link.textContent = item.label;
     link.className = "nav-item";
@@ -174,6 +178,24 @@ export function renderHeader({ active, user, showAuth = true } = {}) {
   });
 
   header.appendChild(nav);
+
+  const authLink = nav.querySelector(".auth-item");
+  if (authLink) {
+    const updateAuthLabel = () => {
+      authLink.classList.remove("is-multiline");
+      authLink.textContent = "ログイン／アカウント作成";
+      authLink.style.whiteSpace = "nowrap";
+      const needsWrap = authLink.scrollWidth > authLink.clientWidth + 1;
+      if (needsWrap) {
+        authLink.textContent = "ログイン\nアカウント作成";
+        authLink.classList.add("is-multiline");
+        authLink.style.whiteSpace = "";
+      }
+    };
+    const scheduleUpdate = () => requestAnimationFrame(updateAuthLabel);
+    scheduleUpdate();
+    window.addEventListener("resize", scheduleUpdate);
+  }
 
   toggleButton.addEventListener("click", () => {
     const isOpen = header.classList.toggle("is-open");
@@ -215,3 +237,4 @@ export function formatDate(value) {
   }
   return date.toLocaleString("ja-JP");
 }
+

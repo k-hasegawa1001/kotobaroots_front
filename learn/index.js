@@ -94,7 +94,7 @@ function renderTopics() {
     title.textContent = topic.topic;
 
     const meta = document.createElement("p");
-    meta.textContent = `難易度 ${topic.difficulty}`;
+    meta.textContent = `難易度 ${index + 1}`;
 
     const locked = topic.difficulty > state.currentMax;
     if (locked) {
@@ -217,3 +217,25 @@ async function init() {
 }
 
 init();
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
