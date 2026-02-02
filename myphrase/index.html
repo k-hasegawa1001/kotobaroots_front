@@ -52,6 +52,12 @@
             <button id="start-test" class="btn success myphrase-test" type="button">
               テストする
             </button>
+            <div id="myphrase-delete-actions" class="myphrase-delete-actions" hidden>
+              <button id="select-all-myphrase" class="btn outline" type="button">一括選択</button>
+              <button id="clear-all-myphrase" class="btn outline" type="button">一括解除</button>
+              <button id="confirm-delete-selected" class="btn danger" type="button">確定</button>
+              <button id="cancel-delete-selected" class="btn outline" type="button">キャンセル</button>
+            </div>
           </div>
         </section>
       </main>
@@ -73,13 +79,14 @@
             />
           </div>
           <div class="field">
-            <textarea
+            <input
               id="mean"
               name="mean"
+              type="text"
               placeholder="意味"
               aria-label="意味"
               required
-            ></textarea>
+            />
           </div>
           <div class="modal-actions">
             <button id="close-myphrase-modal" class="btn outline" type="button">キャンセル</button>
