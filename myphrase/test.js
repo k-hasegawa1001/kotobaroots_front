@@ -9,8 +9,10 @@ const testType = document.getElementById("test-type");
 const testQuestion = document.getElementById("test-question");
 const testAnswerArea = document.getElementById("test-answer-area");
 const testSubmitButton = document.getElementById("test-submit");
+const testSkipButton = document.getElementById("test-skip");
 const feedbackModal = document.getElementById("myphrase-feedback-modal");
 const feedbackTitle = document.getElementById("myphrase-feedback-title");
+const feedbackQuestion = document.getElementById("myphrase-feedback-question");
 const feedbackAnswer = document.getElementById("myphrase-feedback-answer");
 const feedbackCorrect = document.getElementById("myphrase-feedback-correct");
 const feedbackNextButton = document.getElementById("myphrase-feedback-next");
@@ -71,7 +73,7 @@ function buildAnswerInput(placeholder) {
   return input;
 }
 
-function showFeedbackModal({ isCorrect, answer, correct, isLast }) {
+function showFeedbackModal({ isCorrect, questionText, answer, correct, isLast }) {
   if (!feedbackModal) {
     return;
   }
@@ -83,6 +85,9 @@ function showFeedbackModal({ isCorrect, answer, correct, isLast }) {
   if (feedbackAnswer) {
     feedbackAnswer.textContent = answer || "-";
   }
+  if (feedbackQuestion) {
+    feedbackQuestion.textContent = questionText || "-";
+  }
   if (feedbackCorrect) {
     feedbackCorrect.textContent = correct || "-";
   }
@@ -92,9 +97,19 @@ function showFeedbackModal({ isCorrect, answer, correct, isLast }) {
   feedbackModal.hidden = false;
 }
 
+function handleFeedbackKeydown(event) {
+  if (event.key === "Enter") {
+    event.preventDefault();
+    handleNextQuestion();
+  }
+}
+
 function closeFeedbackModal() {
   if (feedbackModal) {
     feedbackModal.hidden = true;
+  }
+  if (feedbackModal) {
+    feedbackModal.removeEventListener("keydown", handleFeedbackKeydown);
   }
 }
 
@@ -110,6 +125,9 @@ function renderTestQuestion() {
 
   if (testSubmitButton) {
     testSubmitButton.disabled = false;
+  }
+  if (testSkipButton) {
+    testSkipButton.disabled = false;
   }
 
   updateTestProgress();
@@ -186,12 +204,22 @@ function handleSubmitAnswer() {
   if (testSubmitButton) {
     testSubmitButton.disabled = true;
   }
+  if (testSkipButton) {
+    testSkipButton.disabled = true;
+  }
   showFeedbackModal({
     isCorrect,
+    questionText: testQuestion?.textContent || "",
     answer,
     correct,
     isLast: testIndex === testQuestions.length - 1,
   });
+
+  if (feedbackModal) {
+    feedbackModal.setAttribute("tabindex", "-1");
+    feedbackModal.addEventListener("keydown", handleFeedbackKeydown);
+    feedbackModal.focus();
+  }
 }
 
 function handleNextQuestion() {
@@ -204,6 +232,42 @@ function handleNextQuestion() {
     renderTestQuestion();
   } else {
     window.location.href = "./index.html";
+  }
+}
+
+function handleSkipAnswer() {
+  if (!currentAnswerInput || testAnswered) {
+    return;
+  }
+
+  const question = testQuestions[testIndex];
+  if (!question) {
+    return;
+  }
+
+  const correct = question.blank === "phrase" ? question.phrase || "" : question.mean || "";
+
+  testAnswered = true;
+  currentAnswerInput.disabled = true;
+  if (testSubmitButton) {
+    testSubmitButton.disabled = true;
+  }
+  if (testSkipButton) {
+    testSkipButton.disabled = true;
+  }
+
+  showFeedbackModal({
+    isCorrect: false,
+    questionText: testQuestion?.textContent || "",
+    answer: "スキップされました。",
+    correct,
+    isLast: testIndex === testQuestions.length - 1,
+  });
+
+  if (feedbackModal) {
+    feedbackModal.setAttribute("tabindex", "-1");
+    feedbackModal.addEventListener("keydown", handleFeedbackKeydown);
+    feedbackModal.focus();
   }
 }
 
@@ -220,6 +284,9 @@ async function fetchQuestions() {
   closeFeedbackModal();
   if (testSubmitButton) {
     testSubmitButton.disabled = true;
+  }
+  if (testSkipButton) {
+    testSkipButton.disabled = true;
   }
 
   try {
@@ -243,6 +310,9 @@ async function init() {
   renderHeader({ active: "myphrase", user: profile });
 
   testSubmitButton.addEventListener("click", handleSubmitAnswer);
+  if (testSkipButton) {
+    testSkipButton.addEventListener("click", handleSkipAnswer);
+  }
   if (feedbackNextButton) {
     feedbackNextButton.addEventListener("click", handleNextQuestion);
   }
