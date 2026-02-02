@@ -1,27 +1,7 @@
 ﻿import { buildAppUrl } from "./config.js";
+import { getNavItems, resolveNavHref } from "./nav.js";
 import { logout } from "./auth.js";
 
-const NAV_ITEMS = [
-  {
-    key: "auth",
-    label: "ログイン／アカウント作成",
-    href: "/auth/login.html",
-    showWhen: "guest",
-    type: "link",
-  },
-  { key: "learn", label: "学習", href: "/learn/index.html", type: "link" },
-  { key: "history", label: "学習履歴", href: "/history/index.html", type: "link" },
-  { key: "myphrase", label: "マイフレーズ", href: "/myphrase/index.html", type: "link" },
-  { key: "ai", label: "AI解説", href: "/ai/index.html", type: "link" },
-  { key: "profile", label: "プロフィール", href: "/profile/index.html", type: "link" },
-  { key: "contact", label: "お問い合わせ", href: "/contact/index.html", type: "link" },
-  {
-    key: "logout",
-    label: "ログアウト",
-    showWhen: "auth",
-    type: "action",
-  },
-];
 
 function ensureLogoutModal() {
   let modal = document.getElementById("logout-modal");
@@ -82,17 +62,6 @@ function ensureLogoutModal() {
 
   return modal;
 }
-
-function shouldShowNavItem(item, user, showAuth) {
-  if (item.showWhen === "guest") {
-    return !user && showAuth;
-  }
-  if (item.showWhen === "auth") {
-    return Boolean(user);
-  }
-  return true;
-}
-
 export function renderHeader({ active, user, showAuth = true } = {}) {
   const header = document.getElementById("site-header");
   if (!header) {
@@ -134,10 +103,7 @@ export function renderHeader({ active, user, showAuth = true } = {}) {
   nav.className = "sidebar-nav";
   nav.id = "sidebar-nav";
 
-  NAV_ITEMS.forEach((item) => {
-    if (!shouldShowNavItem(item, user, showAuth)) {
-      return;
-    }
+  getNavItems({ user, showAuth }).forEach((item) => {
     if (item.type === "action") {
       const button = document.createElement("button");
       button.type = "button";
@@ -156,13 +122,7 @@ export function renderHeader({ active, user, showAuth = true } = {}) {
     }
 
     const link = document.createElement("a");
-    const isGuestShortcut = item.key === "auth";
-    let targetHref = item.href;
-    if (!user && showAuth && item.key === "learn") {
-      targetHref = "/learn/guest.html";
-    } else if (!user && showAuth && !isGuestShortcut) {
-      targetHref = `/auth/login.html?next=${encodeURIComponent(item.href)}`;
-    }
+    const targetHref = resolveNavHref({ item, user, showAuth });
     link.href = buildAppUrl(targetHref);
     link.textContent = item.label;
     link.className = "nav-item";
@@ -237,4 +197,12 @@ export function formatDate(value) {
   }
   return date.toLocaleString("ja-JP");
 }
+
+
+
+
+
+
+
+
 

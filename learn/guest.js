@@ -100,14 +100,12 @@ function getItems() {
 function renderGuestCards() {
   topicsEl.textContent = "";
   const items = getItems();
+  const isBeginner = currentDifficulty === "Beginner";
 
   items.forEach((item, index) => {
     const card = document.createElement("article");
-    card.className = "card unit-card is-clickable";
+    card.className = "card unit-card";
     card.style.setProperty("--delay", `${index * 0.04}s`);
-    card.setAttribute("role", "button");
-    card.setAttribute("tabindex", "0");
-    card.setAttribute("aria-label", "ログインして学習を開始");
 
     const title = document.createElement("h3");
     title.textContent = item.title;
@@ -119,17 +117,28 @@ function renderGuestCards() {
     action.className = "card-actions";
     const hint = document.createElement("span");
     hint.className = "badge";
-    hint.textContent = "クリックで開始";
+
+    const isUnlocked = isBeginner && index === 0;
+    if (isUnlocked) {
+      card.classList.add("is-clickable");
+      card.setAttribute("role", "button");
+      card.setAttribute("tabindex", "0");
+      card.setAttribute("aria-label", "ログインして学習を開始");
+      hint.textContent = "クリックで開始";
+      card.addEventListener("click", redirectToLogin);
+      card.addEventListener("keydown", (event) => {
+        if (event.key === "Enter" || event.key === " ") {
+          event.preventDefault();
+          redirectToLogin();
+        }
+      });
+    } else {
+      card.classList.add("locked");
+      card.setAttribute("aria-disabled", "true");
+      hint.textContent = "ロック中";
+    }
+
     action.appendChild(hint);
-
-    card.addEventListener("click", redirectToLogin);
-    card.addEventListener("keydown", (event) => {
-      if (event.key === "Enter" || event.key === " ") {
-        event.preventDefault();
-        redirectToLogin();
-      }
-    });
-
     card.append(title, meta, action);
     topicsEl.appendChild(card);
   });
