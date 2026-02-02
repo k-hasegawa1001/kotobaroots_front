@@ -11,6 +11,11 @@ const actionsEl = document.getElementById("myphrase-actions");
 const emptyStateEl = document.getElementById("myphrase-empty-state");
 const emptyAddButton = document.getElementById("empty-add-button");
 const deleteButton = document.getElementById("delete-selected");
+const deleteActionsEl = document.getElementById("myphrase-delete-actions");
+const selectAllButton = document.getElementById("select-all-myphrase");
+const clearAllButton = document.getElementById("clear-all-myphrase");
+const confirmDeleteButton = document.getElementById("confirm-delete-selected");
+const cancelDeleteButton = document.getElementById("cancel-delete-selected");
 const questionNumEl = document.getElementById("question-num");
 const openModalButton = document.getElementById("open-add-modal");
 const modal = document.getElementById("myphrase-modal");
@@ -21,11 +26,13 @@ const successModal = document.getElementById("myphrase-success-modal");
 const successMessage = document.getElementById("myphrase-success-message");
 const testButton = document.getElementById("start-test");
 const testCountSelect = document.getElementById("myphrase-test-count");
+const testCountLabel = document.querySelector(".myphrase-select-label");
 const deleteConfirmModal = document.getElementById("myphrase-delete-modal");
 const deleteConfirmButton = document.getElementById("confirm-delete-myphrase");
 const deleteCancelButton = document.getElementById("cancel-delete-myphrase");
 let successTimerId = null;
 let pendingDeleteIds = [];
+let deleteMode = false;
 
 let myphrases = [];
 let myphraseQuestionNum = 10;
@@ -44,6 +51,16 @@ function setEmptyState(isEmpty) {
   }
   if (emptyStateEl) {
     emptyStateEl.hidden = !isEmpty;
+  }
+  if (deleteActionsEl) {
+    deleteActionsEl.hidden = true;
+  }
+  if (deleteButton) {
+    deleteButton.hidden = false;
+  }
+  deleteMode = false;
+  if (layoutEl) {
+    layoutEl.classList.remove("is-delete-mode");
   }
 }
 
@@ -128,17 +145,24 @@ if (deleteConfirmModal) {
     }
   });
 }
-if (deleteConfirmButton) {
-  deleteConfirmButton.addEventListener("click", async () => {
-    if (!pendingDeleteIds.length) {
+  if (deleteConfirmButton) {
+    deleteConfirmButton.addEventListener("click", async () => {
+      if (!pendingDeleteIds.length) {
+        closeDeleteConfirmModal();
+        return;
+      }
+      const deleteIds = pendingDeleteIds.slice();
       closeDeleteConfirmModal();
-      return;
-    }
-    const deleteIds = pendingDeleteIds.slice();
-    closeDeleteConfirmModal();
-    await deleteMyphrases(deleteIds);
-  });
-}
+      await deleteMyphrases(deleteIds);
+    });
+  }
+
+  if (deleteCancelButton) {
+    deleteCancelButton.addEventListener("click", () => {
+      closeDeleteConfirmModal();
+      setDeleteMode(true);
+    });
+  }
 
 function renderList() {
   listEl.textContent = "";
@@ -167,6 +191,36 @@ function renderList() {
     row.append(checkbox, phrase, mean);
     listEl.appendChild(row);
   });
+}
+
+function setDeleteMode(enabled) {
+  deleteMode = enabled;
+  if (layoutEl) {
+    layoutEl.classList.toggle("is-delete-mode", enabled);
+  }
+  if (deleteActionsEl) {
+    deleteActionsEl.hidden = !enabled;
+  }
+  if (deleteButton) {
+    deleteButton.hidden = enabled;
+  }
+  if (openModalButton) {
+    openModalButton.hidden = enabled;
+  }
+  if (testCountLabel) {
+    testCountLabel.hidden = enabled;
+  }
+  if (testCountSelect) {
+    testCountSelect.hidden = enabled;
+  }
+  if (testButton) {
+    testButton.hidden = enabled;
+  }
+  if (!enabled && listEl) {
+    listEl.querySelectorAll("input[type=checkbox]").forEach((input) => {
+      input.checked = false;
+    });
+  }
 }
 
 async function loadMyphrases() {
@@ -206,6 +260,11 @@ async function deleteMyphrases(selected) {
     const deletedLabel = deletedCount ? `${deletedCount}件 削除しました。` : "削除しました。";
     openSuccessModal(deletedLabel);
     await loadMyphrases();
+    if (myphrases.length) {
+      setDeleteMode(true);
+    } else {
+      setDeleteMode(false);
+    }
   } catch (error) {
     const message = getErrorMessage(error, "削除に失敗しました。");
     setStatus(statusEl, { type: "error", message });
@@ -218,6 +277,7 @@ async function init() {
     return;
   }
   renderHeader({ active: "myphrase", user: profile });
+  setDeleteMode(false);
   await loadMyphrases();
 
   modalForm.addEventListener("submit", async (event) => {
@@ -257,16 +317,50 @@ async function init() {
 
   deleteButton.addEventListener("click", async () => {
     setStatus(statusEl, { message: "" });
-    const selected = Array.from(listEl.querySelectorAll("input[type=checkbox]:checked"))
-      .map((input) => Number(input.value))
-      .filter((id) => Number.isFinite(id));
-
-    if (!selected.length) {
-      setStatus(statusEl, { type: "error", message: "削除対象を選択してください。" });
-      return;
-    }
-    openDeleteConfirmModal(selected);
+    setDeleteMode(true);
   });
+
+  if (selectAllButton) {
+    selectAllButton.addEventListener("click", () => {
+      listEl
+        .querySelectorAll("input[type=checkbox]")
+        .forEach((input) => {
+          input.checked = true;
+        });
+    });
+  }
+
+  if (clearAllButton) {
+    clearAllButton.addEventListener("click", () => {
+      listEl
+        .querySelectorAll("input[type=checkbox]")
+        .forEach((input) => {
+          input.checked = false;
+        });
+    });
+  }
+
+  if (cancelDeleteButton) {
+    cancelDeleteButton.addEventListener("click", () => {
+      setDeleteMode(false);
+      setStatus(statusEl, { message: "" });
+    });
+  }
+
+  if (confirmDeleteButton) {
+    confirmDeleteButton.addEventListener("click", () => {
+      setStatus(statusEl, { message: "" });
+      const selected = Array.from(listEl.querySelectorAll("input[type=checkbox]:checked"))
+        .map((input) => Number(input.value))
+        .filter((id) => Number.isFinite(id));
+
+      if (!selected.length) {
+        setStatus(statusEl, { type: "error", message: "削除対象を選択してください。" });
+        return;
+      }
+      openDeleteConfirmModal(selected);
+    });
+  }
 
 }
 

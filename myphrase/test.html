@@ -37,7 +37,16 @@
 
     <div id="myphrase-feedback-modal" class="modal" hidden>
       <div class="modal-card answer-feedback-card">
-        <h2 id="myphrase-feedback-title" class="modal-title answer-feedback-title"></h2>
+        <div class="answer-feedback-header">
+          <h2 id="myphrase-feedback-title" class="modal-title answer-feedback-title"></h2>
+          <button
+            id="myphrase-feedback-delete"
+            class="btn outline small myphrase-delete-button"
+            type="button"
+          >
+            このマイフレーズを削除する
+          </button>
+        </div>
         <div class="answer-feedback-body">
           <div class="modal-block">
             <p class="page-subtitle">問題</p>
@@ -55,6 +64,22 @@
         <div class="answer-feedback-footer">
           <button id="myphrase-feedback-next" class="btn" type="button">つぎへ</button>
         </div>
+      </div>
+    </div>
+
+    <div id="myphrase-delete-confirm-modal" class="modal" hidden>
+      <div class="modal-card delete-confirm-card">
+        <h2 class="modal-title">削除しますか？</h2>
+        <div class="delete-confirm-actions">
+          <button id="cancel-delete-myphrase-test" class="btn outline" type="button">キャンセル</button>
+          <button id="confirm-delete-myphrase-test" class="btn danger" type="button">削除する</button>
+        </div>
+      </div>
+    </div>
+
+    <div id="myphrase-delete-success-modal" class="modal" hidden>
+      <div class="modal-card delete-success-card">
+        <p id="myphrase-delete-success-message" class="page-subtitle">1件 削除しました。</p>
       </div>
     </div>
 

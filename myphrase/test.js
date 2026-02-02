@@ -16,6 +16,12 @@ const feedbackQuestion = document.getElementById("myphrase-feedback-question");
 const feedbackAnswer = document.getElementById("myphrase-feedback-answer");
 const feedbackCorrect = document.getElementById("myphrase-feedback-correct");
 const feedbackNextButton = document.getElementById("myphrase-feedback-next");
+const feedbackDeleteButton = document.getElementById("myphrase-feedback-delete");
+const deleteConfirmModal = document.getElementById("myphrase-delete-confirm-modal");
+const deleteConfirmButton = document.getElementById("confirm-delete-myphrase-test");
+const deleteCancelButton = document.getElementById("cancel-delete-myphrase-test");
+const deleteSuccessModal = document.getElementById("myphrase-delete-success-modal");
+const deleteSuccessMessage = document.getElementById("myphrase-delete-success-message");
 
 const params = new URLSearchParams(window.location.search);
 const requestedCount = Number(params.get("count"));
@@ -28,6 +34,9 @@ let testScoreCount = 0;
 let testAnswers = [];
 let testAnswered = false;
 let currentAnswerInput = null;
+let currentFeedbackQuestion = null;
+let deletingPhrase = false;
+let deleteSuccessTimerId = null;
 
 function normalizeAnswer(value) {
   return String(value || "")
@@ -92,6 +101,10 @@ function showFeedbackModal({ isCorrect, questionText, answer, correct, isLast })
   if (feedbackCorrect) {
     feedbackCorrect.textContent = correct || "-";
   }
+  if (feedbackDeleteButton) {
+    feedbackDeleteButton.classList.toggle("is-hidden", !isCorrect);
+    feedbackDeleteButton.disabled = !isCorrect;
+  }
   if (feedbackNextButton) {
     feedbackNextButton.textContent = "つぎへ";
   }
@@ -109,9 +122,62 @@ function closeFeedbackModal() {
   if (feedbackModal) {
     feedbackModal.hidden = true;
   }
+  if (feedbackDeleteButton) {
+    feedbackDeleteButton.classList.add("is-hidden");
+    feedbackDeleteButton.disabled = false;
+  }
   if (feedbackModal) {
     feedbackModal.removeEventListener("keydown", handleFeedbackKeydown);
   }
+}
+
+function openDeleteConfirmModal() {
+  if (!deleteConfirmModal) {
+    return;
+  }
+  closeFeedbackModal();
+  deleteConfirmModal.hidden = false;
+  if (deleteConfirmButton) {
+    deleteConfirmButton.focus();
+  }
+}
+
+function closeDeleteConfirmModal() {
+  if (deleteConfirmModal) {
+    deleteConfirmModal.hidden = true;
+  }
+}
+
+function restoreFeedbackModal() {
+  if (!feedbackModal) {
+    return;
+  }
+  feedbackModal.hidden = false;
+  if (feedbackModal) {
+    feedbackModal.setAttribute("tabindex", "-1");
+    feedbackModal.addEventListener("keydown", handleFeedbackKeydown);
+    feedbackModal.focus();
+  }
+}
+
+function openDeleteSuccessModal(message, onClose) {
+  if (deleteSuccessMessage) {
+    deleteSuccessMessage.textContent = message;
+  }
+  if (deleteSuccessModal) {
+    deleteSuccessModal.hidden = false;
+  }
+  if (deleteSuccessTimerId) {
+    window.clearTimeout(deleteSuccessTimerId);
+  }
+  deleteSuccessTimerId = window.setTimeout(() => {
+    if (deleteSuccessModal) {
+      deleteSuccessModal.hidden = true;
+    }
+    if (onClose) {
+      onClose();
+    }
+  }, 1500);
 }
 
 function renderTestQuestion() {
@@ -202,6 +268,7 @@ function handleSubmitAnswer() {
   }
 
   testAnswers.push({
+    questionId: question.id,
     questionText: testQuestion?.textContent || "",
     answer,
     correct,
@@ -216,6 +283,7 @@ function handleSubmitAnswer() {
   if (testSkipButton) {
     testSkipButton.disabled = true;
   }
+  currentFeedbackQuestion = question;
   showFeedbackModal({
     isCorrect,
     questionText: testQuestion?.textContent || "",
@@ -266,12 +334,14 @@ function handleSkipAnswer() {
   }
 
   testAnswers.push({
+    questionId: question.id,
     questionText: testQuestion?.textContent || "",
     answer: "スキップされました。",
     correct,
     isCorrect: false,
   });
 
+  currentFeedbackQuestion = question;
   showFeedbackModal({
     isCorrect: false,
     questionText: testQuestion?.textContent || "",
@@ -287,13 +357,54 @@ function handleSkipAnswer() {
   }
 }
 
+async function handleDeleteCurrentPhrase() {
+  if (!feedbackDeleteButton || deletingPhrase) {
+    return;
+  }
+  if (!currentFeedbackQuestion || !currentFeedbackQuestion.id) {
+    return;
+  }
+  openDeleteConfirmModal();
+}
+
+async function confirmDeleteCurrentPhrase() {
+  if (!currentFeedbackQuestion || !currentFeedbackQuestion.id || deletingPhrase) {
+    return;
+  }
+  deletingPhrase = true;
+  if (deleteConfirmButton) {
+    deleteConfirmButton.disabled = true;
+  }
+  try {
+    await apiFetch("/kotobaroots/myphrase", {
+      method: "DELETE",
+      data: { delete_ids: [currentFeedbackQuestion.id] },
+    });
+    closeDeleteConfirmModal();
+    openDeleteSuccessModal("1件 削除しました。", () => {
+      handleNextQuestion();
+    });
+  } catch (error) {
+    const message = getErrorMessage(error, "削除に失敗しました。");
+    setStatus(statusEl, { type: "error", message });
+    closeDeleteConfirmModal();
+    restoreFeedbackModal();
+  } finally {
+    deletingPhrase = false;
+    if (deleteConfirmButton) {
+      deleteConfirmButton.disabled = false;
+    }
+  }
+}
+
 function finalizeTest() {
-  const total = testQuestions.length;
-  const accuracy = total ? Math.round((testScoreCount / total) * 100) : 0;
+  const total = testAnswers.length;
+  const correctCount = testAnswers.filter((item) => item.isCorrect).length;
+  const accuracy = total ? Math.round((correctCount / total) * 100) : 0;
   const result = {
     createdAt: new Date().toISOString(),
     total,
-    correctCount: testScoreCount,
+    correctCount,
     accuracy,
     questions: testAnswers,
   };
@@ -345,6 +456,26 @@ async function init() {
   }
   if (feedbackNextButton) {
     feedbackNextButton.addEventListener("click", handleNextQuestion);
+  }
+  if (feedbackDeleteButton) {
+    feedbackDeleteButton.addEventListener("click", handleDeleteCurrentPhrase);
+  }
+  if (deleteCancelButton) {
+    deleteCancelButton.addEventListener("click", () => {
+      closeDeleteConfirmModal();
+      restoreFeedbackModal();
+    });
+  }
+  if (deleteConfirmButton) {
+    deleteConfirmButton.addEventListener("click", confirmDeleteCurrentPhrase);
+  }
+  if (deleteConfirmModal) {
+    deleteConfirmModal.addEventListener("click", (event) => {
+      if (event.target === deleteConfirmModal) {
+        closeDeleteConfirmModal();
+        restoreFeedbackModal();
+      }
+    });
   }
 
   await fetchQuestions();

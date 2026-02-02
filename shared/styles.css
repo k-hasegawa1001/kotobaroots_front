@@ -1028,6 +1028,22 @@ ol {
   accent-color: var(--accent);
   align-self: center;
   cursor: pointer;
+  opacity: 0;
+  pointer-events: none;
+}
+
+.myphrase-layout.is-delete-mode .row-check {
+  opacity: 1;
+  pointer-events: auto;
+}
+
+.myphrase-layout.is-delete-mode #open-add-modal,
+.myphrase-layout.is-delete-mode #delete-selected,
+.myphrase-layout.is-delete-mode .myphrase-select-label,
+.myphrase-layout.is-delete-mode #myphrase-test-count,
+.myphrase-layout.is-delete-mode #start-test,
+.myphrase-layout.is-delete-mode #question-num {
+  display: none;
 }
 
 .myphrase-actions {
@@ -1036,6 +1052,17 @@ ol {
   gap: 14px;
   height: auto;
   align-self: start;
+}
+
+.myphrase-delete-actions {
+  display: none;
+  flex-direction: column;
+  gap: 12px;
+  margin-top: 4px;
+}
+
+.myphrase-layout.is-delete-mode .myphrase-delete-actions {
+  display: flex;
 }
 
 .myphrase-actions .btn {
@@ -1297,6 +1324,59 @@ ol {
 #answer-feedback-modal .answer-feedback-title,
 #myphrase-feedback-modal .answer-feedback-title {
   padding: 24px 36px 12px;
+}
+
+#myphrase-feedback-modal .answer-feedback-header {
+  position: relative;
+  padding: 24px 36px 12px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+#myphrase-feedback-modal .answer-feedback-title {
+  padding: 0;
+  margin: 0;
+}
+
+#myphrase-feedback-modal .myphrase-delete-button {
+  position: absolute;
+  top: 18px;
+  right: 24px;
+  padding: 6px 14px;
+  font-size: 1rem;
+  border-radius: 999px;
+}
+
+#myphrase-feedback-modal .myphrase-delete-button.is-hidden {
+  visibility: hidden;
+  pointer-events: none;
+}
+
+#myphrase-delete-confirm-modal .modal-card {
+  width: min(700px, 92vw);
+  padding: 28px 36px;
+  text-align: center;
+}
+
+#myphrase-delete-confirm-modal .modal-title {
+  margin: 0 0 18px;
+}
+
+.delete-confirm-actions {
+  display: flex;
+  justify-content: space-between;
+  gap: 18px;
+}
+
+#myphrase-delete-success-modal .modal-card {
+  width: min(720px, 92vw);
+  padding: 22px 32px;
+  text-align: center;
+}
+
+#myphrase-delete-success-modal .page-subtitle {
+  font-size: 1.6rem;
 }
 
 #answer-feedback-modal .answer-feedback-title.is-correct,
