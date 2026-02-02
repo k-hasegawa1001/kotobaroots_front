@@ -5,7 +5,6 @@ import { validatePassword, validatePasswordConfirmation } from "../shared/valida
 
 const statusEl = document.getElementById("status");
 const form = document.getElementById("reset-form");
-const currentPasswordInput = document.getElementById("current-password");
 const newPasswordInput = document.getElementById("new-password");
 const confirmPasswordInput = document.getElementById("confirm-password");
 const modal = document.getElementById("reset-modal");
@@ -59,15 +58,8 @@ function init() {
     event.preventDefault();
     setStatus(statusEl, { message: "" });
 
-    const currentPassword = String(currentPasswordInput.value || "");
     const newPassword = String(newPasswordInput.value || "");
     const confirmPassword = String(confirmPasswordInput.value || "");
-
-    const currentError = validatePassword(currentPassword, "現在のパスワード");
-    if (currentError) {
-      setStatus(statusEl, { type: "error", message: currentError });
-      return;
-    }
 
     const newError = validatePassword(newPassword, "新しいパスワード");
     if (newError) {
