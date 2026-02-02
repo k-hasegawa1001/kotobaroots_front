@@ -5,6 +5,8 @@ import { renderHeader, formatDate, setStatus } from "../shared/ui.js";
 const historyList = document.getElementById("history-list");
 const languageFilter = document.getElementById("language-filter");
 const accuracyFilter = document.getElementById("accuracy-filter");
+const dateFilter = document.getElementById("date-filter");
+const sortFilter = document.getElementById("sort-filter");
 const statusEl = document.getElementById("status");
 
 let historyEntries = [];
@@ -86,6 +88,41 @@ function filterGroupsByAccuracy(groups) {
   });
 }
 
+function filterGroupsByDate(groups) {
+  if (!dateFilter || dateFilter.value === "all") {
+    return groups;
+  }
+  const now = Date.now();
+  const days = dateFilter.value === "7d"
+    ? 7
+    : dateFilter.value === "30d"
+      ? 30
+      : dateFilter.value === "90d"
+        ? 90
+        : null;
+  if (!days) {
+    return groups;
+  }
+  const threshold = now - days * 24 * 60 * 60 * 1000;
+  return groups.filter((group) => parseHistoryDate(group.createdAt) >= threshold);
+}
+
+function sortGroups(groups) {
+  if (!sortFilter || sortFilter.value === "newest") {
+    return groups.slice().sort((a, b) => parseHistoryDate(b.createdAt) - parseHistoryDate(a.createdAt));
+  }
+  if (sortFilter.value === "accuracy") {
+    return groups.slice().sort((a, b) => {
+      const diff = getGroupAccuracy(b) - getGroupAccuracy(a);
+      if (diff !== 0) {
+        return diff;
+      }
+      return parseHistoryDate(b.createdAt) - parseHistoryDate(a.createdAt);
+    });
+  }
+  return groups;
+}
+
 function renderHistory(entries) {
   historyList.textContent = "";
   if (!entries.length) {
@@ -96,7 +133,10 @@ function renderHistory(entries) {
     return;
   }
 
-  const groups = filterGroupsByAccuracy(groupHistories(entries));
+  let groups = groupHistories(entries);
+  groups = filterGroupsByAccuracy(groups);
+  groups = filterGroupsByDate(groups);
+  groups = sortGroups(groups);
   if (!groups.length) {
     const empty = document.createElement("p");
     empty.className = "page-subtitle";
@@ -213,6 +253,18 @@ async function init() {
 
 if (accuracyFilter) {
   accuracyFilter.addEventListener("change", () => {
+    renderHistory(historyEntries);
+  });
+}
+
+if (dateFilter) {
+  dateFilter.addEventListener("change", () => {
+    renderHistory(historyEntries);
+  });
+}
+
+if (sortFilter) {
+  sortFilter.addEventListener("change", () => {
     renderHistory(historyEntries);
   });
 }
