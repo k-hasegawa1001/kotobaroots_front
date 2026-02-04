@@ -10,6 +10,7 @@ const passwordInput = document.getElementById("confirm-password");
 const confirmButton = document.getElementById("confirm-button");
 const loginRequired = document.getElementById("login-required");
 const successModal = document.getElementById("email-success-modal");
+const newEmailDisplay = document.getElementById("new-email-display");
 let successTimerId = null;
 
 function getToken() {
@@ -62,6 +63,17 @@ async function init() {
     });
     confirmButton.disabled = true;
     return;
+  }
+
+  const pendingEmail =
+    sessionStorage.getItem("pendingEmailChange") || localStorage.getItem("pendingEmailChange");
+  if (newEmailDisplay) {
+    if (pendingEmail) {
+      newEmailDisplay.textContent = `新しいメールアドレス：${pendingEmail}`;
+    } else {
+      newEmailDisplay.textContent = "新しいメールアドレス：確認中";
+    }
+    newEmailDisplay.hidden = false;
   }
 
   if (!profile && !profileError) {
