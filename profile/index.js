@@ -143,15 +143,22 @@ async function init() {
       return;
     }
 
+    localStorage.setItem("pendingEmailChange", newEmail);
+    sessionStorage.setItem("pendingEmailChange", newEmail);
+
     try {
       await apiFetch("/kotobaroots/profile/email/request", {
         method: "POST",
         data: { new_email: newEmail },
       });
+      sessionStorage.setItem("pendingEmailChange", newEmail);
+      localStorage.setItem("pendingEmailChange", newEmail);
       closeModal(emailModal);
       setStatus(emailStatus, { message: "" });
       openSuccessModal("メールアドレス変更リンクを送信しました。");
     } catch (error) {
+      localStorage.removeItem("pendingEmailChange");
+      sessionStorage.removeItem("pendingEmailChange");
       const message = getErrorMessage(error, "送信に失敗しました。", {
         [ERROR_TYPES.Conflict]: "このメールアドレスは既に使われています。",
       });
