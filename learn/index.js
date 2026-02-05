@@ -21,7 +21,7 @@ const state = {
 const LANGUAGE_OPTIONS = [
   { id: 1, label: "英語（アメリカ）" },
   { id: 2, label: "英語（イギリス）" },
-  { id: 3, label: "中国語" },
+  // { id: 3, label: "中国語" },
 ];
 
 const LEVEL_OPTIONS = [
