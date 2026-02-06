@@ -1075,6 +1075,10 @@ ol {
   border-bottom: 1px solid var(--line);
 }
 
+.myphrase-layout.is-delete-mode .myphrase-row {
+  cursor: pointer;
+}
+
 .myphrase-row:last-child {
   border-bottom: none;
 }
