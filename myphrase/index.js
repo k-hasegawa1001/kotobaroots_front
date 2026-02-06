@@ -182,6 +182,16 @@ function renderList() {
     checkbox.value = item.id;
     checkbox.className = "row-check";
 
+    row.addEventListener("click", (event) => {
+      if (!deleteMode) {
+        return;
+      }
+      if (event.target === checkbox) {
+        return;
+      }
+      checkbox.checked = !checkbox.checked;
+    });
+
     const phrase = document.createElement("div");
     phrase.textContent = item.phrase;
 
