@@ -118,7 +118,8 @@ img {
 }
 
 .sidebar-user {
-  font-size: 1.25rem;
+  font-size: 1.4rem;
+  font-family: var(--font-body);
   color: var(--muted);
 }
 
@@ -1611,7 +1612,7 @@ ol {
   }
 
   .sidebar-user {
-    font-size: 1rem;
+    font-size: 1.4rem;
   }
 
   .sidebar-nav {
