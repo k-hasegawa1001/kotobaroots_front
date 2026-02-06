@@ -7,6 +7,13 @@ const statusEl = document.getElementById("status");
 const form = document.getElementById("ai-form");
 const resultEl = document.getElementById("ai-result");
 const historyEl = document.getElementById("ai-history");
+const subtitleEl = document.getElementById("ai-subtitle");
+const historyToggle = document.getElementById("ai-history-toggle");
+const historyDrawer = document.getElementById("ai-history-drawer");
+const historyPanel = historyDrawer?.querySelector(".ai-history-panel");
+const historyCloseButtons = historyDrawer?.querySelectorAll("[data-close]") || [];
+
+let lastFocusedElement = null;
 
 function renderResult(data) {
   resultEl.textContent = "";
@@ -54,6 +61,26 @@ function renderHistory(items) {
   });
 }
 
+function updateSubtitle(languageName) {
+  if (!subtitleEl) {
+    return;
+  }
+  if (languageName) {
+    subtitleEl.textContent = `${languageName}表現をわかりやすく分解して学びます。`;
+    return;
+  }
+  subtitleEl.textContent = "英語表現をわかりやすく分解して学びます。";
+}
+
+async function loadCurrentLanguage() {
+  try {
+    const data = await apiFetch("/kotobaroots/learning/config/current");
+    updateSubtitle(data?.language || "");
+  } catch (error) {
+    updateSubtitle("");
+  }
+}
+
 async function loadHistory() {
   try {
     const items = await apiFetch("/kotobaroots/ai-explanation/history");
@@ -64,6 +91,25 @@ async function loadHistory() {
   }
 }
 
+function setDrawerOpen(isOpen) {
+  if (!historyDrawer) {
+    return;
+  }
+  historyDrawer.classList.toggle("is-open", isOpen);
+  historyDrawer.setAttribute("aria-hidden", String(!isOpen));
+  document.body.classList.toggle("is-drawer-open", isOpen);
+
+  if (isOpen) {
+    lastFocusedElement = document.activeElement;
+    if (historyPanel instanceof HTMLElement) {
+      historyPanel.focus();
+    }
+  } else if (lastFocusedElement instanceof HTMLElement) {
+    lastFocusedElement.focus();
+    lastFocusedElement = null;
+  }
+}
+
 async function init() {
   const profile = await requireAuth();
   if (!profile) {
@@ -71,7 +117,26 @@ async function init() {
   }
   renderHeader({ active: "ai", user: profile });
 
+  await loadCurrentLanguage();
   await loadHistory();
+
+  if (historyToggle) {
+    historyToggle.addEventListener("click", () => {
+      setDrawerOpen(true);
+    });
+  }
+
+  historyCloseButtons.forEach((button) => {
+    button.addEventListener("click", () => {
+      setDrawerOpen(false);
+    });
+  });
+
+  document.addEventListener("keydown", (event) => {
+    if (event.key === "Escape" && historyDrawer?.classList.contains("is-open")) {
+      setDrawerOpen(false);
+    }
+  });
 
   form.addEventListener("submit", async (event) => {
     event.preventDefault();

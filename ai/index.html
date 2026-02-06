@@ -13,8 +13,13 @@
         <section class="page-header">
           <div class="page-title-row">
             <h1 class="page-title">AI解説</h1>
+            <div class="page-actions">
+              <button id="ai-history-toggle" class="btn outline" type="button">
+                過去の履歴
+              </button>
+            </div>
           </div>
-          <p class="page-subtitle">英語表現をわかりやすく分解して学びます。</p>
+          <p id="ai-subtitle" class="page-subtitle">英語表現をわかりやすく分解して学びます。</p>
           <div class="page-divider"></div>
         </section>
 
@@ -35,12 +40,25 @@
           </form>
           <div id="ai-result" class="section"></div>
         </section>
-
-        <section class="section">
-          <h2 class="section-title">過去の解説</h2>
-          <div id="ai-history" class="table"></div>
-        </section>
       </main>
+    </div>
+    <div id="ai-history-drawer" class="ai-history-drawer" aria-hidden="true">
+      <div class="ai-history-overlay" data-close></div>
+      <aside
+        class="ai-history-panel"
+        role="dialog"
+        aria-modal="true"
+        aria-label="過去の解説"
+        tabindex="-1"
+      >
+        <div class="ai-history-header">
+          <h2 class="section-title">過去の解説</h2>
+          <button type="button" class="btn outline ai-history-close" data-close>
+            閉じる
+          </button>
+        </div>
+        <div id="ai-history" class="table ai-history-content"></div>
+      </aside>
     </div>
     <script type="module" src="./index.js"></script>
   </body>
