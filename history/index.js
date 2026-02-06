@@ -93,12 +93,12 @@ function filterGroupsByDate(groups) {
     return groups;
   }
   const now = Date.now();
-  const days = dateFilter.value === "7d"
-    ? 7
-    : dateFilter.value === "30d"
-      ? 30
-      : dateFilter.value === "90d"
-        ? 90
+  const days = dateFilter.value === "3d"
+    ? 3
+    : dateFilter.value === "7d"
+      ? 7
+      : dateFilter.value === "30d"
+        ? 30
         : null;
   if (!days) {
     return groups;
