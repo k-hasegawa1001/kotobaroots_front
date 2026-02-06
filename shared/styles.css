@@ -801,7 +801,7 @@ small {
 .ai-history-panel {
   position: relative;
   height: 100%;
-  width: min(420px, 92vw);
+  width: min(1200px, 98vw);
   background: var(--surface);
   border-left: 1px solid var(--line);
   box-shadow: -18px 0 36px rgba(0, 0, 0, 0.35);
@@ -811,6 +811,8 @@ small {
   gap: 16px;
   transform: translateX(100%);
   transition: transform 0.28s ease;
+  font-size: 1.6rem;
+  font-family: var(--font-body);
 }
 
 .ai-history-header {
@@ -818,6 +820,15 @@ small {
   align-items: center;
   justify-content: space-between;
   gap: 12px;
+}
+
+.ai-history-panel .section-title {
+  font-size: 1.8rem;
+}
+
+.ai-history-panel .btn {
+  padding: 12px 22px;
+  font-size: 1.4rem;
 }
 
 .ai-history-content {
